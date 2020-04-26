@@ -1,0 +1,15 @@
+# Habits
+As a user I should be able to create habit with name. To be able to create habits.
+As a user I should be able to define mini, plus and elite for habits. To be able to define elastic habit.
+A user should be able to see the habits in a list. This is to be able to see created habits.
+A user should be able to delete a habit. This is to delete a habit.
+A user should be able to edit a habit. This is to change or correct the habit.
+
+# Calendar
+A user should be able to go to his calandar. This is to be able to go to the calendar.
+A user should be able to click a date to select what level of mini, plus or elite the user made. This is to be able to set a finished habit.
+A user should be able to see colors for each day a habit is entered. This is to be able to see habit progress.
+
+# Widget
+A user should be able to add the calandar as a widget. This is so the user dont have to open the app to see progress.
+A user should be able to click the widget to enter min, plus or elite for last used habit. This is so the user dont need to open the app to enter a habit progress.
