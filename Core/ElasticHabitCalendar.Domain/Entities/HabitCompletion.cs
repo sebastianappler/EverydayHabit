@@ -8,6 +8,6 @@ namespace ElasticHabitCalendar.Domain.Entities
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public Habit CompletedHabit { get; set; }
-        public HabitType HabitType { get; set; }
+        public HabitDifficultyLevel HabitDifficultyLevel { get; set; }
     }
 }

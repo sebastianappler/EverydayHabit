@@ -1,6 +1,6 @@
 ﻿namespace ElasticHabitCalendar.Domain.Enums
 {
-    public enum HabitType
+    public enum HabitDifficultyLevel
     {
         Mini = 1,
         Plus = 2,

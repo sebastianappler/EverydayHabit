@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticHabitCalendar.App", "ElasticHabitCalendar.App\ElasticHabitCalendar.App.csproj", "{7DA7C87F-626A-4951-9794-5600560AA785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticHabitCalendar.Domain", "Core\ElasticHabitCalendar.Domain\ElasticHabitCalendar.Domain.csproj", "{5CD3BBD5-CC52-4F56-884D-C35F45ABB77D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4C7A6AB5-054A-4997-A80D-656B28C2ED05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticHabitCalendar.Application", "..\Core\ElasticHabitCalendar.Application\ElasticHabitCalendar.Application.csproj", "{286F4AFA-FACD-4E06-9FC2-73DC807D77A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticHabitCalendar.Domain", "..\Core\ElasticHabitCalendar.Domain\ElasticHabitCalendar.Domain.csproj", "{FD81062A-5CB6-429C-9595-E8FBB8B249F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,21 +23,21 @@ Global
 		{7DA7C87F-626A-4951-9794-5600560AA785}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DA7C87F-626A-4951-9794-5600560AA785}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DA7C87F-626A-4951-9794-5600560AA785}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{5CD3BBD5-CC52-4F56-884D-C35F45ABB77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CD3BBD5-CC52-4F56-884D-C35F45ABB77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CD3BBD5-CC52-4F56-884D-C35F45ABB77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CD3BBD5-CC52-4F56-884D-C35F45ABB77D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{286F4AFA-FACD-4E06-9FC2-73DC807D77A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{286F4AFA-FACD-4E06-9FC2-73DC807D77A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{286F4AFA-FACD-4E06-9FC2-73DC807D77A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{286F4AFA-FACD-4E06-9FC2-73DC807D77A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD81062A-5CB6-429C-9595-E8FBB8B249F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD81062A-5CB6-429C-9595-E8FBB8B249F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD81062A-5CB6-429C-9595-E8FBB8B249F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD81062A-5CB6-429C-9595-E8FBB8B249F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5CD3BBD5-CC52-4F56-884D-C35F45ABB77D} = {4C7A6AB5-054A-4997-A80D-656B28C2ED05}
 		{286F4AFA-FACD-4E06-9FC2-73DC807D77A7} = {4C7A6AB5-054A-4997-A80D-656B28C2ED05}
+		{FD81062A-5CB6-429C-9595-E8FBB8B249F6} = {4C7A6AB5-054A-4997-A80D-656B28C2ED05}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0836837D-B7F0-4269-9BF4-22C5C5DFDD37}
