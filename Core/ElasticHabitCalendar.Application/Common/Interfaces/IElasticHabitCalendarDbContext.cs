@@ -1,5 +1,7 @@
 ﻿using ElasticHabitCalendar.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ElasticHabitCalendar.Application.Common.Interfaces
 {
@@ -7,5 +9,7 @@ namespace ElasticHabitCalendar.Application.Common.Interfaces
     {
         DbSet<Habit> Habits { get; set; }
         DbSet<HabitCompletion> HabitCompletions { get; set; }
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
