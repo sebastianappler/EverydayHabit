@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticHabitCalendar.Domain
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2A5235B0-C876-4DA6-A34B-614D854C27F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticHabitCalendar.Persistance", "..\Infrastructure\ElasticHabitCalendar.Persistance\ElasticHabitCalendar.Persistance.csproj", "{B9A3B035-3DE5-42D8-841B-91CBDF206AE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticHabitCalendar.Persistence", "..\Infrastructure\ElasticHabitCalendar.Persistence\ElasticHabitCalendar.Persistence.csproj", "{B0920FAA-8FAD-4022-8995-B673684B702B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{FD81062A-5CB6-429C-9595-E8FBB8B249F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD81062A-5CB6-429C-9595-E8FBB8B249F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD81062A-5CB6-429C-9595-E8FBB8B249F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9A3B035-3DE5-42D8-841B-91CBDF206AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9A3B035-3DE5-42D8-841B-91CBDF206AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9A3B035-3DE5-42D8-841B-91CBDF206AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9A3B035-3DE5-42D8-841B-91CBDF206AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0920FAA-8FAD-4022-8995-B673684B702B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0920FAA-8FAD-4022-8995-B673684B702B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0920FAA-8FAD-4022-8995-B673684B702B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0920FAA-8FAD-4022-8995-B673684B702B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,7 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{286F4AFA-FACD-4E06-9FC2-73DC807D77A7} = {4C7A6AB5-054A-4997-A80D-656B28C2ED05}
 		{FD81062A-5CB6-429C-9595-E8FBB8B249F6} = {4C7A6AB5-054A-4997-A80D-656B28C2ED05}
-		{B9A3B035-3DE5-42D8-841B-91CBDF206AE6} = {2A5235B0-C876-4DA6-A34B-614D854C27F4}
+		{B0920FAA-8FAD-4022-8995-B673684B702B} = {2A5235B0-C876-4DA6-A34B-614D854C27F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0836837D-B7F0-4269-9BF4-22C5C5DFDD37}
