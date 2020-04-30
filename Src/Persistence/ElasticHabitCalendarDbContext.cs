@@ -1,14 +1,14 @@
-﻿using ElasticHabitCalendar.Application.Common.Interfaces;
+﻿using ElasticHabitCalendar.AndroidApplication.Common.Interfaces;
 using ElasticHabitCalendar.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ElasticHabitCalendar.Persistance
+namespace ElasticHabitCalendar.Persistence
 {
     public class ElasticHabitCalendarDbContext : DbContext, IElasticHabitCalendarDbContext
     {
-        public ElasticHabitCalendarDbContext(DbContextOptions<ElasticHabitCalendarDbContext> options): base(options)
+        public ElasticHabitCalendarDbContext(DbContextOptions<ElasticHabitCalendarDbContext> options) : base(options)
         {
         }
 

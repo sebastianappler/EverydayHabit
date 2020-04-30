@@ -1,4 +1,4 @@
-﻿using ElasticHabitCalendar.Application;
+﻿using ElasticHabitCalendar.AndroidApplication;
 using ElasticHabitCalendar.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +8,7 @@ using System;
 using System.Reflection;
 using Xamarin.Essentials;
 
-namespace ElasticHabitCalendar.App
+namespace ElasticHabitCalendar.AndroidApp
 {
     public class Startup
     {
@@ -16,7 +16,7 @@ namespace ElasticHabitCalendar.App
         public static void Init()
         {
             var a = Assembly.GetExecutingAssembly();
-            using var stream = a.GetManifestResourceStream("ElasticHabitCalendar.App.appsettings.json");
+            using var stream = a.GetManifestResourceStream("ElasticHabitCalendar.AndroidApp.appsettings.json");
 
             var host = new HostBuilder()
                         .ConfigureHostConfiguration(c =>
@@ -47,7 +47,6 @@ namespace ElasticHabitCalendar.App
         {
             services.AddApplication();
             services.AddPersistence(ctx.Configuration);
-
         }
     }
 }

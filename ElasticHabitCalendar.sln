@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticHabitCalendar.App", "ElasticHabitCalendar.App\ElasticHabitCalendar.App.csproj", "{7DA7C87F-626A-4951-9794-5600560AA785}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidApp", "Src\AndroidApp\AndroidApp.csproj", "{7DA7C87F-626A-4951-9794-5600560AA785}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4C7A6AB5-054A-4997-A80D-656B28C2ED05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticHabitCalendar.Application", "..\Core\ElasticHabitCalendar.Application\ElasticHabitCalendar.Application.csproj", "{286F4AFA-FACD-4E06-9FC2-73DC807D77A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Src\Application\Application.csproj", "{286F4AFA-FACD-4E06-9FC2-73DC807D77A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticHabitCalendar.Domain", "..\Core\ElasticHabitCalendar.Domain\ElasticHabitCalendar.Domain.csproj", "{FD81062A-5CB6-429C-9595-E8FBB8B249F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Src\Domain\Domain.csproj", "{FD81062A-5CB6-429C-9595-E8FBB8B249F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2A5235B0-C876-4DA6-A34B-614D854C27F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticHabitCalendar.Persistence", "..\Infrastructure\ElasticHabitCalendar.Persistence\ElasticHabitCalendar.Persistence.csproj", "{B0920FAA-8FAD-4022-8995-B673684B702B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Src\Persistence\Persistence.csproj", "{B0920FAA-8FAD-4022-8995-B673684B702B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

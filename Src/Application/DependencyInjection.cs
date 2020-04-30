@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace ElasticHabitCalendar.Application
+namespace ElasticHabitCalendar.AndroidApplication
 {
     public static class DependencyInjection
     {
