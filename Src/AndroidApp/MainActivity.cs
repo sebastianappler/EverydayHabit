@@ -45,6 +45,7 @@ namespace ElasticHabitCalendar.AndroidApp
 
             var createdHabit = context.Habits.Find(habit.Id);
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
