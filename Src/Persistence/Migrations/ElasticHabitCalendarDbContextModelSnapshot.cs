@@ -18,7 +18,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("ElasticHabitCalendar.Domain.Entities.Habit", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("HabitId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -28,18 +28,18 @@ namespace Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("HabitId");
 
                     b.ToTable("Habits");
                 });
 
             modelBuilder.Entity("ElasticHabitCalendar.Domain.Entities.HabitCompletion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("HabitCompletionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CompletedHabitId")
+                    b.Property<int?>("CompletedHabitHabitId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Date")
@@ -48,54 +48,54 @@ namespace Persistence.Migrations
                     b.Property<int>("HabitDifficultyLevel")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("HabitCompletionId");
 
-                    b.HasIndex("CompletedHabitId");
+                    b.HasIndex("CompletedHabitHabitId");
 
                     b.ToTable("HabitCompletions");
                 });
 
             modelBuilder.Entity("ElasticHabitCalendar.Domain.Entities.HabitDifficulty", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("HabitDifficultyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Definition")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("HabitDifficultyId");
 
                     b.ToTable("HabitDifficulty");
                 });
 
             modelBuilder.Entity("ElasticHabitCalendar.Domain.Entities.HabitVariant", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("HabitVariantId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EliteId")
+                    b.Property<int?>("EliteHabitDifficultyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("HabitId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("MiniId")
+                    b.Property<int?>("MiniHabitDifficultyId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PlusId")
+                    b.Property<int?>("PlusHabitDifficultyId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("HabitVariantId");
 
-                    b.HasIndex("EliteId");
+                    b.HasIndex("EliteHabitDifficultyId");
 
                     b.HasIndex("HabitId");
 
-                    b.HasIndex("MiniId");
+                    b.HasIndex("MiniHabitDifficultyId");
 
-                    b.HasIndex("PlusId");
+                    b.HasIndex("PlusHabitDifficultyId");
 
                     b.ToTable("HabitVariant");
                 });
@@ -104,14 +104,14 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("ElasticHabitCalendar.Domain.Entities.Habit", "CompletedHabit")
                         .WithMany()
-                        .HasForeignKey("CompletedHabitId");
+                        .HasForeignKey("CompletedHabitHabitId");
                 });
 
             modelBuilder.Entity("ElasticHabitCalendar.Domain.Entities.HabitVariant", b =>
                 {
                     b.HasOne("ElasticHabitCalendar.Domain.Entities.HabitDifficulty", "Elite")
                         .WithMany()
-                        .HasForeignKey("EliteId");
+                        .HasForeignKey("EliteHabitDifficultyId");
 
                     b.HasOne("ElasticHabitCalendar.Domain.Entities.Habit", null)
                         .WithMany("Variants")
@@ -119,11 +119,11 @@ namespace Persistence.Migrations
 
                     b.HasOne("ElasticHabitCalendar.Domain.Entities.HabitDifficulty", "Mini")
                         .WithMany()
-                        .HasForeignKey("MiniId");
+                        .HasForeignKey("MiniHabitDifficultyId");
 
                     b.HasOne("ElasticHabitCalendar.Domain.Entities.HabitDifficulty", "Plus")
                         .WithMany()
-                        .HasForeignKey("PlusId");
+                        .HasForeignKey("PlusHabitDifficultyId");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,7 +9,7 @@ namespace ElasticHabitCalendar.Domain.Entities
             Variants = new HashSet<HabitVariant>();
         }
 
-        public int Id { get; set; }
+        public int HabitId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public ICollection<HabitVariant> Variants { get; set; }

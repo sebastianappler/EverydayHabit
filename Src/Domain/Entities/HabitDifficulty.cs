@@ -2,7 +2,7 @@
 {
     public class HabitDifficulty
     {
-        public int Id { get; set; }
+        public int HabitDifficultyId { get; set; }
         public string Definition { get; set; }
     }
 }

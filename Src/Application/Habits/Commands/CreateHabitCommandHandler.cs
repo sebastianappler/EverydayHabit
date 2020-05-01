@@ -26,7 +26,7 @@ namespace Application.Habits.Commands
             _context.Habits.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return entity.Id;
+            return entity.HabitId;
         }
     }
 }

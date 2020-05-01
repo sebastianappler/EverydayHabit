@@ -20,7 +20,7 @@ namespace ElasticHabitCalendar.AndroidApp
     {
         TextView textMessage;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             
@@ -41,9 +41,9 @@ namespace ElasticHabitCalendar.AndroidApp
             context.Database.Migrate();
 
             var mediator = services.GetRequiredService<IMediator>();
-            var habit = mediator.Send(new CreateHabitCommand { Name = "HabitTest"}, CancellationToken.None);
+            var habitId = await mediator.Send(new CreateHabitCommand { Name = "HabitTest"}, CancellationToken.None);
 
-            var createdHabit = context.Habits.Find(habit.Id);
+            var createdHabit = context.Habits.Find(habitId);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

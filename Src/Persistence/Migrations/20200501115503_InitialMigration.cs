@@ -11,46 +11,47 @@ namespace Persistence.Migrations
                 name: "HabitDifficulty",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    HabitDifficultyId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Definition = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HabitDifficulty", x => x.Id);
+                    table.PrimaryKey("PK_HabitDifficulty", x => x.HabitDifficultyId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Habits",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    HabitId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Habits", x => x.Id);
+                    table.PrimaryKey("PK_Habits", x => x.HabitId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "HabitCompletions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    HabitCompletionId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Date = table.Column<DateTime>(nullable: false),
-                    CompletedHabitId = table.Column<int>(nullable: true),
+                    CompletedHabitHabitId = table.Column<int>(nullable: true),
                     HabitDifficultyLevel = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HabitCompletions", x => x.Id);
+                    table.PrimaryKey("PK_HabitCompletions", x => x.HabitCompletionId);
                     table.ForeignKey(
-                        name: "FK_HabitCompletions_Habits_CompletedHabitId",
-                        column: x => x.CompletedHabitId,
+                        name: "FK_HabitCompletions_Habits_CompletedHabitHabitId",
+                        column: x => x.CompletedHabitHabitId,
                         principalTable: "Habits",
-                        principalColumn: "Id",
+                        principalColumn: "HabitId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -58,51 +59,51 @@ namespace Persistence.Migrations
                 name: "HabitVariant",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    HabitVariantId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    MiniId = table.Column<int>(nullable: true),
-                    PlusId = table.Column<int>(nullable: true),
-                    EliteId = table.Column<int>(nullable: true),
+                    MiniHabitDifficultyId = table.Column<int>(nullable: true),
+                    PlusHabitDifficultyId = table.Column<int>(nullable: true),
+                    EliteHabitDifficultyId = table.Column<int>(nullable: true),
                     HabitId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HabitVariant", x => x.Id);
+                    table.PrimaryKey("PK_HabitVariant", x => x.HabitVariantId);
                     table.ForeignKey(
-                        name: "FK_HabitVariant_HabitDifficulty_EliteId",
-                        column: x => x.EliteId,
+                        name: "FK_HabitVariant_HabitDifficulty_EliteHabitDifficultyId",
+                        column: x => x.EliteHabitDifficultyId,
                         principalTable: "HabitDifficulty",
-                        principalColumn: "Id",
+                        principalColumn: "HabitDifficultyId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_HabitVariant_Habits_HabitId",
                         column: x => x.HabitId,
                         principalTable: "Habits",
-                        principalColumn: "Id",
+                        principalColumn: "HabitId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_HabitVariant_HabitDifficulty_MiniId",
-                        column: x => x.MiniId,
+                        name: "FK_HabitVariant_HabitDifficulty_MiniHabitDifficultyId",
+                        column: x => x.MiniHabitDifficultyId,
                         principalTable: "HabitDifficulty",
-                        principalColumn: "Id",
+                        principalColumn: "HabitDifficultyId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_HabitVariant_HabitDifficulty_PlusId",
-                        column: x => x.PlusId,
+                        name: "FK_HabitVariant_HabitDifficulty_PlusHabitDifficultyId",
+                        column: x => x.PlusHabitDifficultyId,
                         principalTable: "HabitDifficulty",
-                        principalColumn: "Id",
+                        principalColumn: "HabitDifficultyId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitCompletions_CompletedHabitId",
+                name: "IX_HabitCompletions_CompletedHabitHabitId",
                 table: "HabitCompletions",
-                column: "CompletedHabitId");
+                column: "CompletedHabitHabitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitVariant_EliteId",
+                name: "IX_HabitVariant_EliteHabitDifficultyId",
                 table: "HabitVariant",
-                column: "EliteId");
+                column: "EliteHabitDifficultyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HabitVariant_HabitId",
@@ -110,14 +111,14 @@ namespace Persistence.Migrations
                 column: "HabitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitVariant_MiniId",
+                name: "IX_HabitVariant_MiniHabitDifficultyId",
                 table: "HabitVariant",
-                column: "MiniId");
+                column: "MiniHabitDifficultyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitVariant_PlusId",
+                name: "IX_HabitVariant_PlusHabitDifficultyId",
                 table: "HabitVariant",
-                column: "PlusId");
+                column: "PlusHabitDifficultyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
