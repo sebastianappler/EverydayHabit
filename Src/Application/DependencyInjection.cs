@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+using AutoMapper;
+using MediatR;
 
 namespace ElasticHabitCalendar.AndroidApplication
 {
@@ -6,7 +9,8 @@ namespace ElasticHabitCalendar.AndroidApplication
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            //TODO Add mediator and automapper
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             return services;
         }
     }

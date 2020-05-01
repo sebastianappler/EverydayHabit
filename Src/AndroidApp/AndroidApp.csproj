@@ -104,18 +104,25 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MediatR">
+      <Version>8.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting">
       <Version>3.1.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj">
       <Project>{286f4afa-facd-4e06-9fc2-73dc807d77a7}</Project>
       <Name>Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{FD81062A-5CB6-429C-9595-E8FBB8B249F6}</Project>
+      <Name>Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Persistence\Persistence.csproj">
       <Project>{b0920faa-8fad-4022-8995-b673684b702b}</Project>

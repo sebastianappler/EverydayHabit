@@ -5,10 +5,13 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Application.Habits.Commands;
 using ElasticHabitCalendar.Persistence;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.IO;
+using System.Threading;
 
 namespace ElasticHabitCalendar.AndroidApp
 {
@@ -28,11 +31,19 @@ namespace ElasticHabitCalendar.AndroidApp
             BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
             navigation.SetOnNavigationItemSelectedListener(this);
 
+            
             Startup.Init();
-            var context = Startup.ServiceProvider.GetRequiredService<ElasticHabitCalendarDbContext>();
+
+            var services = Startup.ServiceProvider;
+
+            var context = services.GetRequiredService<ElasticHabitCalendarDbContext>();
             var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "ElasticHabitCalendarDatabase.db");
             context.Database.Migrate();
 
+            var mediator = services.GetRequiredService<IMediator>();
+            var habit = mediator.Send(new CreateHabitCommand { Name = "HabitTest"}, CancellationToken.None);
+
+            var createdHabit = context.Habits.Find(habit.Id);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

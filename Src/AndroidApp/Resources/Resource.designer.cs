@@ -91,19 +91,19 @@ namespace ElasticHabitCalendar.AndroidApp
 			global::Xamarin.Essentials.Resource.Drawable.notification_template_icon_low_bg = global::ElasticHabitCalendar.AndroidApp.Resource.Drawable.notification_template_icon_low_bg;
 			global::Xamarin.Essentials.Resource.Drawable.notification_tile_bg = global::ElasticHabitCalendar.AndroidApp.Resource.Drawable.notification_tile_bg;
 			global::Xamarin.Essentials.Resource.Drawable.notify_panel_notification_icon_bg = global::ElasticHabitCalendar.AndroidApp.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Xamarin.Essentials.Resource.Id.actions = global::ElasticHabitCalendar.AndroidApp.Resource.Id.actions;
 			global::Xamarin.Essentials.Resource.Id.action_container = global::ElasticHabitCalendar.AndroidApp.Resource.Id.action_container;
 			global::Xamarin.Essentials.Resource.Id.action_divider = global::ElasticHabitCalendar.AndroidApp.Resource.Id.action_divider;
 			global::Xamarin.Essentials.Resource.Id.action_image = global::ElasticHabitCalendar.AndroidApp.Resource.Id.action_image;
 			global::Xamarin.Essentials.Resource.Id.action_text = global::ElasticHabitCalendar.AndroidApp.Resource.Id.action_text;
-			global::Xamarin.Essentials.Resource.Id.actions = global::ElasticHabitCalendar.AndroidApp.Resource.Id.actions;
 			global::Xamarin.Essentials.Resource.Id.all = global::ElasticHabitCalendar.AndroidApp.Resource.Id.all;
 			global::Xamarin.Essentials.Resource.Id.async = global::ElasticHabitCalendar.AndroidApp.Resource.Id.async;
 			global::Xamarin.Essentials.Resource.Id.blocking = global::ElasticHabitCalendar.AndroidApp.Resource.Id.blocking;
 			global::Xamarin.Essentials.Resource.Id.bottom = global::ElasticHabitCalendar.AndroidApp.Resource.Id.bottom;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_header_text = global::ElasticHabitCalendar.AndroidApp.Resource.Id.browser_actions_header_text;
+			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_items = global::ElasticHabitCalendar.AndroidApp.Resource.Id.browser_actions_menu_items;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_icon = global::ElasticHabitCalendar.AndroidApp.Resource.Id.browser_actions_menu_item_icon;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_item_text = global::ElasticHabitCalendar.AndroidApp.Resource.Id.browser_actions_menu_item_text;
-			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_items = global::ElasticHabitCalendar.AndroidApp.Resource.Id.browser_actions_menu_items;
 			global::Xamarin.Essentials.Resource.Id.browser_actions_menu_view = global::ElasticHabitCalendar.AndroidApp.Resource.Id.browser_actions_menu_view;
 			global::Xamarin.Essentials.Resource.Id.center = global::ElasticHabitCalendar.AndroidApp.Resource.Id.center;
 			global::Xamarin.Essentials.Resource.Id.center_horizontal = global::ElasticHabitCalendar.AndroidApp.Resource.Id.center_horizontal;
@@ -158,14 +158,12 @@ namespace ElasticHabitCalendar.AndroidApp
 			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionContainer = global::ElasticHabitCalendar.AndroidApp.Resource.Style.Widget_Compat_NotificationActionContainer;
 			global::Xamarin.Essentials.Resource.Style.Widget_Compat_NotificationActionText = global::ElasticHabitCalendar.AndroidApp.Resource.Style.Widget_Compat_NotificationActionText;
 			global::Xamarin.Essentials.Resource.Style.Widget_Support_CoordinatorLayout = global::ElasticHabitCalendar.AndroidApp.Resource.Style.Widget_Support_CoordinatorLayout;
-			global::Xamarin.Essentials.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::ElasticHabitCalendar.AndroidApp.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.ColorStateListItem;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_alpha = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.ColorStateListItem_alpha;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_alpha = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.ColorStateListItem_android_alpha;
 			global::Xamarin.Essentials.Resource.Styleable.ColorStateListItem_android_color = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.ColorStateListItem_android_color;
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout;
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_keylines = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_keylines;
-			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_Layout;
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
@@ -174,13 +172,8 @@ namespace ElasticHabitCalendar.AndroidApp
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
 			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::Xamarin.Essentials.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamily = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderAuthority = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderAuthority;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderCerts = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderCerts;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderPackage = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderPackage;
-			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderQuery = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderQuery;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamilyFont;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_font = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamilyFont_android_font;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_android_fontStyle = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamilyFont_android_fontStyle;
@@ -192,7 +185,16 @@ namespace ElasticHabitCalendar.AndroidApp
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamilyFont_fontVariationSettings;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_fontWeight = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamilyFont_fontWeight;
 			global::Xamarin.Essentials.Resource.Styleable.FontFamilyFont_ttcIndex = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderAuthority = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderCerts = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderPackage = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Xamarin.Essentials.Resource.Styleable.FontFamily_fontProviderQuery = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.FontFamily_fontProviderQuery;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColor;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColorItem;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_color = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColorItem_android_color;
+			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_offset = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColorItem_android_offset;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerColor = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColor_android_centerColor;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerX = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColor_android_centerX;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_centerY = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColor_android_centerY;
@@ -205,9 +207,7 @@ namespace ElasticHabitCalendar.AndroidApp
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_startY = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_tileMode = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Essentials.Resource.Styleable.GradientColor_android_type = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColor_android_type;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColorItem;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_color = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColorItem_android_color;
-			global::Xamarin.Essentials.Resource.Styleable.GradientColorItem_android_offset = global::ElasticHabitCalendar.AndroidApp.Resource.Styleable.GradientColorItem_android_offset;
+			global::Xamarin.Essentials.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::ElasticHabitCalendar.AndroidApp.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 		}
 		
 		public partial class Animation
