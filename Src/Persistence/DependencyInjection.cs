@@ -10,7 +10,7 @@ namespace ElasticHabitCalendar.Persistence
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ElasticHabitCalendarDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("ElasticHabitCalendarDatabase")));
+                options.UseSqlite(configuration.GetConnectionString("ElasticHabitCalendarDatabase")));
 
             services.AddScoped<IElasticHabitCalendarDbContext>(provider => provider.GetService<ElasticHabitCalendarDbContext>());
 

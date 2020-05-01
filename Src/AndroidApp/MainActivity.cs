@@ -5,6 +5,10 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using ElasticHabitCalendar.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.IO;
 
 namespace ElasticHabitCalendar.AndroidApp
 {
@@ -25,6 +29,10 @@ namespace ElasticHabitCalendar.AndroidApp
             navigation.SetOnNavigationItemSelectedListener(this);
 
             Startup.Init();
+            var context = Startup.ServiceProvider.GetRequiredService<ElasticHabitCalendarDbContext>();
+            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "ElasticHabitCalendarDatabase.db");
+            context.Database.Migrate();
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
