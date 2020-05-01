@@ -1,4 +1,4 @@
-﻿using ElasticHabitCalendar.AndroidApplication.Common.Interfaces;
+﻿using ElasticHabitCalendar.Androidlication.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

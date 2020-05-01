@@ -1,4 +1,4 @@
-﻿using ElasticHabitCalendar.AndroidApplication.Common.Interfaces;
+﻿using ElasticHabitCalendar.Androidlication.Common.Interfaces;
 using ElasticHabitCalendar.Domain.Entities;
 using MediatR;
 using System.Threading;

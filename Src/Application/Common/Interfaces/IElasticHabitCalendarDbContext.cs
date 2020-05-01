@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ElasticHabitCalendar.AndroidApplication.Common.Interfaces
+namespace ElasticHabitCalendar.Androidlication.Common.Interfaces
 {
     public interface IElasticHabitCalendarDbContext
     {
