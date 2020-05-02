@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>EverydayHabit.EFCoreRunner</AssemblyName>
     <RootNamespace>EverydayHabit.EFCoreRunner</RootNamespace>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

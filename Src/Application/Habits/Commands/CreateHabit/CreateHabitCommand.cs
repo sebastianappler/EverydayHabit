@@ -14,9 +14,9 @@ namespace Application.Habits.Commands.CreateHabit
             private readonly IEverydayHabitDbContext _context;
             private readonly IMediator _mediator;
 
-            public Handler(IEverydayHabitDbContext EverydayHabitDbContext, IMediator mediator)
+            public Handler(IEverydayHabitDbContext everydayHabitDbContext, IMediator mediator)
             {
-                _context = EverydayHabitDbContext;
+                _context = everydayHabitDbContext;
                 _mediator = mediator;
             }
 

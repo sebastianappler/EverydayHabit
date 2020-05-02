@@ -1,4 +1,4 @@
-﻿using EverydayHabit.Androidlication;
+﻿using EverydayHabit.Application;
 using EverydayHabit.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -3,7 +3,7 @@ using System.Reflection;
 using AutoMapper;
 using MediatR;
 
-namespace EverydayHabit.Androidlication
+namespace EverydayHabit.Application
 {
     public static class DependencyInjection
     {
