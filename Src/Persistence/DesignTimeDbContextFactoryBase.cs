@@ -45,7 +45,6 @@ namespace EverydayHabit.Persistence
             Console.WriteLine($"DesignTimeDbContextFactoryBase.Create(string): Connection string: '{connectionString}'.");
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
-
             optionsBuilder.UseSqlite(connectionString);
 
             return CreateNewInstance(optionsBuilder.Options);
