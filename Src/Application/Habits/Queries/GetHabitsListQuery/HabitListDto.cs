@@ -4,14 +4,14 @@ using EverydayHabit.Domain.Entities;
 
 namespace EverydayHabit.Application.Habits.Queries.GetHabitsListQuery
 {
-    public class GetHabitsListDto : IMapFrom<Habit>
+    public class HabitListDto : IMapFrom<Habit>
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Habit, GetHabitsListDto>()
+            profile.CreateMap<Habit, HabitListDto>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitId));
         }
     }

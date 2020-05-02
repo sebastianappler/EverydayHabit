@@ -2,8 +2,8 @@
 
 namespace EverydayHabit.Application.Habits.Queries.GetHabitsListQuery
 {
-    public class GetHabitsListVm
+    public class HabitsListVm
     {
-        public IList<GetHabitsListDto> Habits { get; set; }
+        public IList<HabitListDto> Habits { get; set; }
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EverydayHabit.Application.Habits.Queries.GetHabitsListQuery
 {
-    public class GetHabitsListQuery : IRequest<GetHabitsListVm>
+    public class GetHabitsListQuery : IRequest<HabitsListVm>
     {
-        public class Handler : IRequestHandler<GetHabitsListQuery, GetHabitsListVm>
+        public class Handler : IRequestHandler<GetHabitsListQuery, HabitsListVm>
         {
             private readonly IEverydayHabitDbContext _context;
             private readonly IMapper _mapper;
@@ -21,13 +21,13 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsListQuery
                 _mapper = mapper;
             }
 
-            public async Task<GetHabitsListVm> Handle(GetHabitsListQuery request, CancellationToken cancellationToken)
+            public async Task<HabitsListVm> Handle(GetHabitsListQuery request, CancellationToken cancellationToken)
             {
                 var habits = await _context.Habits
-                    .ProjectTo<GetHabitsListDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<HabitListDto>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
 
-                var vm = new GetHabitsListVm
+                var vm = new HabitsListVm
                 {
                     Habits = habits
                 };
