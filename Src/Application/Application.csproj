@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>EverydayHabit.Application</AssemblyName>
+    <RootNamespace>EverydayHabit.Application</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

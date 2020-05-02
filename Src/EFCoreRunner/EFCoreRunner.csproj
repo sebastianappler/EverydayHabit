@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>EverydayHabit.EFCoreRunner</AssemblyName>
+    <RootNamespace>EverydayHabit.EFCoreRunner</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

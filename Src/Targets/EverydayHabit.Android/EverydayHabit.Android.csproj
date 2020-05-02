@@ -80,9 +80,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EverydayHabit\EverydayHabit.Xamarin.csproj">
+    <ProjectReference Include="..\..\EverydayHabit\Xamarin.csproj">
       <Project>{df4b24b0-f17f-4b91-b420-4584f3120293}</Project>
-      <Name>EverydayHabit.Xamarin</Name>
+      <Name>Xamarin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
-﻿
-using Application.Habits.Commands;
+﻿using Application.Habits.Commands.CreateHabit;
 using EverydayHabit.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>EverydayHabit.Domain</AssemblyName>
+    <RootNamespace>EverydayHabit.Domain</RootNamespace>
   </PropertyGroup>
 
 </Project>
