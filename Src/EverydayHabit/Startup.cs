@@ -1,5 +1,5 @@
-﻿using ElasticHabitCalendar.Androidlication;
-using ElasticHabitCalendar.Persistence;
+﻿using EverydayHabit.Androidlication;
+using EverydayHabit.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,10 +16,10 @@ namespace EverydayHabit
         public static IServiceProvider ServiceProvider { get; set; }
         public static void Init()
         {
-            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "ElasticHabitCalendarDatabase.db");
+            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "EverydayHabitDatabase.db");
 
             var a = Assembly.GetExecutingAssembly();
-            using (var stream = a.GetManifestResourceStream("EverydayHabit.appsettings.json"))
+            using (var stream = a.GetManifestResourceStream("EverydayHabit.Xamarin.appsettings.json"))
             {
                 var host = new HostBuilder()
                    .ConfigureHostConfiguration(c =>

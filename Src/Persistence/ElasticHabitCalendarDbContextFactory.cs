@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ElasticHabitCalendar.Persistence
+namespace EverydayHabit.Persistence
 {
-    public class ElasticHabitCalendarDbContextFactory : DesignTimeDbContextFactoryBase<ElasticHabitCalendarDbContext>
+    public class EverydayHabitDbContextFactory : DesignTimeDbContextFactoryBase<EverydayHabitDbContext>
     {
-        protected override ElasticHabitCalendarDbContext CreateNewInstance(DbContextOptions<ElasticHabitCalendarDbContext> options)
+        protected override EverydayHabitDbContext CreateNewInstance(DbContextOptions<EverydayHabitDbContext> options)
         {
-            return new ElasticHabitCalendarDbContext(options);
+            return new EverydayHabitDbContext(options);
         }
     }
 }

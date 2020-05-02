@@ -1,4 +1,4 @@
-﻿namespace ElasticHabitCalendar.Domain.Entities
+﻿namespace EverydayHabit.Domain.Entities
 {
     public class HabitVariant
     {

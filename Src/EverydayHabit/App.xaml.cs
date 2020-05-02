@@ -1,6 +1,6 @@
 ﻿
 using Application.Habits.Commands;
-using ElasticHabitCalendar.Persistence;
+using EverydayHabit.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +25,7 @@ namespace EverydayHabit
 
             var services = Startup.ServiceProvider;
 
-            var context = services.GetRequiredService<ElasticHabitCalendarDbContext>();
+            var context = services.GetRequiredService<EverydayHabitDbContext>();
             context.Database.Migrate();
 
             var mediator = services.GetRequiredService<IMediator>();

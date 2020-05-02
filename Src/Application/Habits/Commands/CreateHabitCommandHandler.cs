@@ -1,5 +1,5 @@
-﻿using ElasticHabitCalendar.Androidlication.Common.Interfaces;
-using ElasticHabitCalendar.Domain.Entities;
+﻿using EverydayHabit.Androidlication.Common.Interfaces;
+using EverydayHabit.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,11 +8,11 @@ namespace Application.Habits.Commands
 {
     public class CreateHabitCommandHandler : IRequestHandler<CreateHabitCommand, int>
     {
-        private readonly IElasticHabitCalendarDbContext _context;
+        private readonly IEverydayHabitDbContext _context;
 
-        public CreateHabitCommandHandler(IElasticHabitCalendarDbContext elasticHabitCalendarDbContext)
+        public CreateHabitCommandHandler(IEverydayHabitDbContext EverydayHabitDbContext)
         {
-            _context = elasticHabitCalendarDbContext;
+            _context = EverydayHabitDbContext;
         }
 
 

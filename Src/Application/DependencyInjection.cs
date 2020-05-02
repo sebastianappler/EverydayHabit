@@ -3,7 +3,7 @@ using System.Reflection;
 using AutoMapper;
 using MediatR;
 
-namespace ElasticHabitCalendar.Androidlication
+namespace EverydayHabit.Androidlication
 {
     public static class DependencyInjection
     {

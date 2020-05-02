@@ -4,12 +4,12 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 
-namespace ElasticHabitCalendar.Persistence
+namespace EverydayHabit.Persistence
 {
     public abstract class DesignTimeDbContextFactoryBase<TContext> :
         IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
-        private const string ConnectionStringName = "ElasticHabitCalendarDatabase";
+        private const string ConnectionStringName = "EverydayHabitDatabase";
         private const string AspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
 
         public TContext CreateDbContext(string[] args)

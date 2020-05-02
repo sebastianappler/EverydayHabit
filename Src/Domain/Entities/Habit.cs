@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ElasticHabitCalendar.Domain.Entities
+namespace EverydayHabit.Domain.Entities
 {
     public class Habit
     {

@@ -1,4 +1,4 @@
-﻿namespace ElasticHabitCalendar.Domain.Enums
+﻿namespace EverydayHabit.Domain.Enums
 {
     public enum HabitDifficultyLevel
     {

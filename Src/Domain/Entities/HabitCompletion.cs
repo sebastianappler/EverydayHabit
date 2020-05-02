@@ -1,7 +1,7 @@
-﻿using ElasticHabitCalendar.Domain.Enums;
+﻿using EverydayHabit.Domain.Enums;
 using System;
 
-namespace ElasticHabitCalendar.Domain.Entities
+namespace EverydayHabit.Domain.Entities
 {
     public class HabitCompletion
     {

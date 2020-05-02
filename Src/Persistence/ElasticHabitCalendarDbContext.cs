@@ -1,14 +1,14 @@
-﻿using ElasticHabitCalendar.Androidlication.Common.Interfaces;
-using ElasticHabitCalendar.Domain.Entities;
+﻿using EverydayHabit.Androidlication.Common.Interfaces;
+using EverydayHabit.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ElasticHabitCalendar.Persistence
+namespace EverydayHabit.Persistence
 {
-    public class ElasticHabitCalendarDbContext : DbContext, IElasticHabitCalendarDbContext
+    public class EverydayHabitDbContext : DbContext, IEverydayHabitDbContext
     {
-        public ElasticHabitCalendarDbContext(DbContextOptions<ElasticHabitCalendarDbContext> options) : base(options)
+        public EverydayHabitDbContext(DbContextOptions<EverydayHabitDbContext> options) : base(options)
         {
         }
 
@@ -23,7 +23,7 @@ namespace ElasticHabitCalendar.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ElasticHabitCalendarDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EverydayHabitDbContext).Assembly);
         }
     }
 }
