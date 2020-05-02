@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{0D66
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverydayHabit.Android", "Src\Targets\EverydayHabit.Android\EverydayHabit.Android.csproj", "{76E2C1B6-41F5-4E43-999F-8BE72075D7A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin", "Src\EverydayHabit\Xamarin.csproj", "{DF4B24B0-F17F-4B91-B420-4584F3120293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EverydayHabit.XamarinApp", "Src\EverydayHabit\EverydayHabit.XamarinApp.csproj", "{DF4B24B0-F17F-4B91-B420-4584F3120293}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8C21D8CA-CDF2-4B77-AB32-F4A3B3F3A044}"
 EndProject

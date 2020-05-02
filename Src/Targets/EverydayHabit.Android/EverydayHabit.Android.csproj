@@ -94,9 +94,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EverydayHabit\Xamarin.csproj">
+    <ProjectReference Include="..\..\EverydayHabit\EverydayHabit.XamarinApp.csproj">
       <Project>{df4b24b0-f17f-4b91-b420-4584f3120293}</Project>
-      <Name>Xamarin</Name>
+      <Name>EverydayHabit.XamarinApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

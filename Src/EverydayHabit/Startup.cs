@@ -1,4 +1,5 @@
 ﻿using EverydayHabit.Application;
+using EverydayHabit.Infrastructure;
 using EverydayHabit.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +20,7 @@ namespace EverydayHabit
             var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "EverydayHabitDatabase.db");
 
             var a = Assembly.GetExecutingAssembly();
-            using var stream = a.GetManifestResourceStream("EverydayHabit.Xamarin.appsettings.json");
+            using var stream = a.GetManifestResourceStream("EverydayHabit.XamarinApp.appsettings.json");
 
             var host = new HostBuilder()
                 .ConfigureHostConfiguration(c =>
@@ -49,6 +50,7 @@ namespace EverydayHabit
         public static void ConfigureServices(HostBuilderContext ctx, IServiceCollection services)
         {
             services.AddApplication();
+            services.AddInfrasctructure(ctx.Configuration);
             services.AddPersistence(ctx.Configuration);
         }
     }
