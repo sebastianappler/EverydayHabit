@@ -2,7 +2,7 @@
 using EverydayHabit.XamarinApp.Common.Views;
 using System.Threading;
 
-namespace Xamarin.HabitList
+namespace EverydayHabits.XamarinApp.Features
 {
     public partial class HabitList : BaseView 
     {

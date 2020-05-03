@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="HabitList\HabitList.xaml.cs">
+    <Compile Update="Features\HabitList.xaml.cs">
       <DependentUpon>HabitList.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -44,7 +44,10 @@
     <EmbeddedResource Update="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="HabitList\HabitList.xaml">
+    <EmbeddedResource Update="Features\HabitList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

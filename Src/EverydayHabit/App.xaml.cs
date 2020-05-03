@@ -1,5 +1,6 @@
 ﻿using Application.Habits.Commands.CreateHabit;
 using EverydayHabit.Persistence;
+using EverydayHabit.XamarinApp;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.HabitList;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EverydayHabit
@@ -17,7 +17,7 @@ namespace EverydayHabit
         public App()
         {
             InitializeComponent();
-            var nav = new NavigationPage(new HabitList());
+            var nav = new NavigationPage(new MainPage());
             MainPage = nav;
 
             Startup.Init();

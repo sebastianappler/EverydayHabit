@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:features="clr-namespace:EverydayHabits.XamarinApp.Features"
+            mc:Ignorable="d"
+            x:Class="EverydayHabit.XamarinApp.MainPage"
+            >
+  <!--Pages can be added as references or inline-->
+    <features:HabitList Title="Habits" />
+    <ContentPage Title="Tab 2" />
+  <ContentPage Title="Tab 3" />
+</TabbedPage>

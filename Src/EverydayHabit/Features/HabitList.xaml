@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
-             x:Class="Xamarin.HabitList.HabitList">
+             x:Class="EverydayHabits.XamarinApp.Features.HabitList">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
