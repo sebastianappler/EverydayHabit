@@ -6,11 +6,24 @@
             xmlns:features="clr-namespace:EverydayHabit.XamarinApp.Features"
             mc:Ignorable="d"
             x:Class="EverydayHabit.XamarinApp.MainPage"
-            
             >
-    <!--Pages can be added as references or inline-->
-    <features:HabitList />
-    <features:HabitCalendar />
-    <features:HabitSettings />
+
+    <NavigationPage Title="Habits" IconImageSource="ic_list_white_48dp.xml">
+        <x:Arguments>
+            <features:HabitList />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Calendar" IconImageSource="ic_today_white_48dp.xml">
+        <x:Arguments>
+            <features:HabitCalendar />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Settings" IconImageSource="ic_settings_white_48dp.xml">
+        <x:Arguments>
+            <features:HabitSettings />
+        </x:Arguments>
+    </NavigationPage>
    
 </TabbedPage>

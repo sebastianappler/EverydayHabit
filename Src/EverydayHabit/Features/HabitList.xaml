@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
              x:Class="EverydayHabit.XamarinApp.Features.HabitList"
+             Title="Habits"
              IconImageSource="ic_list_white_48dp.xml">
             
     <AbsoluteLayout>
