@@ -3,23 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
-             x:Class="EverydayHabits.XamarinApp.Features.HabitList">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-    <ListView x:Name="listView" Margin="20">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+             x:Class="EverydayHabit.XamarinApp.Features.HabitList"
+             IconImageSource="ic_list_white_48dp.xml">
+            
+    <AbsoluteLayout>
+
+        <ListView x:Name="listView" Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ImageButton Source="ic_add_white_48dp.xml"
+        Padding="10"
+        BackgroundColor="#d94338"
+        CornerRadius="50"
+        AbsoluteLayout.LayoutFlags="PositionProportional"  
+        AbsoluteLayout.LayoutBounds=".90,.95,60,60" 
+        />
+    </AbsoluteLayout>
 </d:BaseView>

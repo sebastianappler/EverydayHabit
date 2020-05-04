@@ -35,6 +35,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Features\HabitCalendar.xaml.cs">
+      <DependentUpon>HabitCalendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Features\HabitSettings.xaml.cs">
+      <DependentUpon>HabitSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Features\HabitList.xaml.cs">
       <DependentUpon>HabitList.xaml</DependentUpon>
     </Compile>
@@ -42,6 +48,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\HabitCalendar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Features\HabitList.xaml">

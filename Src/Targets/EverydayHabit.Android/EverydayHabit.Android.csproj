@@ -89,17 +89,29 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\check2x.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\EverydayHabit\EverydayHabit.XamarinApp.csproj">
       <Project>{df4b24b0-f17f-4b91-b420-4584f3120293}</Project>
       <Name>EverydayHabit.XamarinApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_add_white_48dp.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_list_white_48dp.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_today_white_48dp.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_settings_white_48dp.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties XamarinHotReloadUnhandledDeviceExceptionEverydayHabitAndroidHideInfoBar="True" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

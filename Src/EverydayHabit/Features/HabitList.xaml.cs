@@ -1,9 +1,11 @@
 ﻿using EverydayHabit.Application.Habits.Queries.GetHabitsListQuery;
 using EverydayHabit.XamarinApp.Common.Views;
 using System.Threading;
+using Xamarin.Forms.Xaml;
 
-namespace EverydayHabits.XamarinApp.Features
+namespace EverydayHabit.XamarinApp.Features
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HabitList : BaseView 
     {
         public HabitList()
