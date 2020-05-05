@@ -26,7 +26,8 @@
         BackgroundColor="#d94338"
         CornerRadius="50"
         AbsoluteLayout.LayoutFlags="PositionProportional"  
-        AbsoluteLayout.LayoutBounds=".90,.95,60,60" 
+        AbsoluteLayout.LayoutBounds=".90,.95,60,60"
+        Clicked="AddHabit_Clicked"
         />
     </AbsoluteLayout>
 </d:BaseView>

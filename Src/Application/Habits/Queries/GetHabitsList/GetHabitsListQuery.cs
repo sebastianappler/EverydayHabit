@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EverydayHabit.Application.Habits.Queries.GetHabitsListQuery
+namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
 {
     public class GetHabitsListQuery : IRequest<HabitsListVm>
     {

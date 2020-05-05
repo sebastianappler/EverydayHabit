@@ -1,13 +1,13 @@
 ﻿using Application.IntegrationTests.Common;
 using AutoMapper;
-using EverydayHabit.Application.Habits.Queries.GetHabitsListQuery;
+using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 using EverydayHabit.Persistence;
 using Shouldly;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Application.IntegrationTests.Habits.Queries
+namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
 {
     [Collection("QueryCollection")]
     public class GetHabitsListQueryTests
