@@ -9,7 +9,7 @@
             
     <AbsoluteLayout>
 
-        <ListView x:Name="listView" Margin="20">
+        <ListView x:Name="listView" Margin="20" ItemSelected="OnListItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

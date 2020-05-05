@@ -14,11 +14,6 @@ namespace EverydayHabit.XamarinApp.Features
         public HabitPage()
         {
             InitializeComponent();
-
-            //Title = "Todo Item";
-
-            //var nameEntry = new Entry();
-            //nameEntry.SetBinding(Entry.TextProperty, "Name");
         }
 
         async void OnSaveClicked(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 using EverydayHabit.XamarinApp.Common.Views;
 using System.Threading;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace EverydayHabit.XamarinApp.Features
@@ -20,6 +21,17 @@ namespace EverydayHabit.XamarinApp.Features
 
             var vm = await Mediator.Send(new GetHabitsListQuery(), CancellationToken.None);
             listView.ItemsSource = vm.Habits;
+        }
+
+        async void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new HabitPage
+                {
+                    BindingContext = e.SelectedItem as HabitListDto
+                });
+            }
         }
 
         async void AddHabit_Clicked(object sender, System.EventArgs e)
