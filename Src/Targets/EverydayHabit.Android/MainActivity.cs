@@ -12,6 +12,7 @@ namespace EverydayHabit
         {
             base.OnCreate(bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.FormsMaterial.Init(this, bundle);
             LoadApplication(new App());
         }
     }

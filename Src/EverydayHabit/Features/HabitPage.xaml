@@ -4,15 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
              x:Class="EverydayHabit.XamarinApp.Features.HabitPage"
-            Title="{ Binding Name }">
+             Title="{Binding Name}"
+             Visual="Material">
     <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-        <Label Text="Name" />
-        <Entry Text="{Binding Name}" />
-        
-        <Label Text="Description" />
-        <Entry Text="{Binding Description}" />
-        
-        <Button Text="Save" Clicked="OnSaveClicked" />
+        <StackLayout Spacing="20" 
+                     Padding="10"
+                     BackgroundColor="White">
+            <Editor AutoSize="TextChanges"
+                Placeholder="Name"
+                Text="{Binding Name}"/>
 
+            <Editor AutoSize="TextChanges"
+                Placeholder="Description"
+                Text="{Binding Description}" />
+
+            <Button Text="Save" Clicked="OnSaveClicked" />
+        </StackLayout>
     </StackLayout>
 </d:BaseView>
