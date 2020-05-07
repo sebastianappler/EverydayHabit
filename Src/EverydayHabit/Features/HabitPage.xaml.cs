@@ -20,7 +20,25 @@ namespace EverydayHabit.XamarinApp.Features
         {
             var habitItem = (HabitDetailVm) BindingContext;
 
-            await Mediator.Send(new CreateHabitCommand{ Name = habitItem.Name});
+            if(habitItem.Id != 0)
+            {
+                await Mediator.Send(new UpdateHabitCommand
+                {
+                    Id = habitItem.Id,
+                    Name = habitItem.Name,
+                    Description = habitItem.Description,
+                });
+            }
+            else
+            {
+                await Mediator.Send(new CreateHabitCommand
+                {
+                    Name = habitItem.Name,
+                    Description = habitItem.Description,
+                });
+            }
+           
+
             await Navigation.PopAsync();
         }
     }

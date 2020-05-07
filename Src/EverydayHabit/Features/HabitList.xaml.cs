@@ -27,9 +27,14 @@ namespace EverydayHabit.XamarinApp.Features
         {
             if (e.SelectedItem != null)
             {
+
+                var selectedHabit = e.SelectedItem as HabitListDto;
+
+                var vm = await Mediator.Send(new GetHabitDetailQuery { Id = selectedHabit.Id}, CancellationToken.None);
+
                 await Navigation.PushAsync(new HabitPage
                 {
-                    BindingContext = e.SelectedItem as HabitListDto
+                    BindingContext = vm as HabitDetailVm
                 });
             }
         }

@@ -8,7 +8,10 @@
     <StackLayout Margin="20" VerticalOptions="StartAndExpand">
         <Label Text="Name" />
         <Entry Text="{Binding Name}" />
-
+        
+        <Label Text="Description" />
+        <Entry Text="{Binding Description}" />
+        
         <Button Text="Save" Clicked="OnSaveClicked" />
 
     </StackLayout>
