@@ -9,12 +9,25 @@
             
     <AbsoluteLayout>
 
-        <ListView x:Name="listView" Margin="20" ItemSelected="OnListItemSelected">
+        <ListView x:Name="listView" 
+                  ItemSelected="OnListItemSelected" 
+                  RowHeight="56">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                        <StackLayout 
+                            Margin="0,0,0,0" 
+                            Padding="0" 
+                            Orientation="Horizontal" 
+                            HorizontalOptions="FillAndExpand">
+                            <Frame CornerRadius="20" Margin="8" Padding="0" HeightRequest="40" WidthRequest="40" BackgroundColor="Gray">
+                                <Image Source="ic_fitness_center_white_48dp.xml" Margin="5"/>
+                            </Frame>
+
+                            <Label Text="{Binding Name}"
+                                   Padding="0,12,12,16"
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalOptions="StartAndExpand" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
