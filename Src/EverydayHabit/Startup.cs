@@ -1,6 +1,7 @@
 ﻿using EverydayHabit.Application;
 using EverydayHabit.Infrastructure;
 using EverydayHabit.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -45,6 +46,9 @@ namespace EverydayHabit
 
             //Save our service provider so we can use it later.
             ServiceProvider = host.Services;
+
+            var context = ServiceProvider.GetRequiredService<EverydayHabitDbContext>();
+            context.Database.Migrate();
         }
 
         public static void ConfigureServices(HostBuilderContext ctx, IServiceCollection services)

@@ -5,13 +5,14 @@
              xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
              x:Class="EverydayHabit.XamarinApp.Features.HabitList"
              Title="Habits"
-             IconImageSource="ic_list_white_48dp.xml">
-            
-    <AbsoluteLayout>
+             IconImageSource="ic_list_white_48dp.xml" Visual="Material">
 
+    <AbsoluteLayout>
         <ListView x:Name="listView" 
                   ItemSelected="OnListItemSelected" 
-                  RowHeight="56">
+                  RowHeight="56"
+                  SeparatorVisibility="None"
+                  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -21,7 +22,7 @@
                             Orientation="Horizontal" 
                             HorizontalOptions="FillAndExpand">
                             <Frame CornerRadius="20" Margin="8" Padding="0" HeightRequest="40" WidthRequest="40" BackgroundColor="Gray">
-                                <Image Source="ic_fitness_center_white_48dp.xml" Margin="5"/>
+                                <Image Source="ic_fitness_center_custom_light_grey_48dp.xml" Margin="5"/>
                             </Frame>
 
                             <Label Text="{Binding Name}"
@@ -34,13 +35,15 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ImageButton Source="ic_add_white_48dp.xml"
-        Padding="10"
-        BackgroundColor="#d94338"
-        CornerRadius="50"
-        AbsoluteLayout.LayoutFlags="PositionProportional"  
-        AbsoluteLayout.LayoutBounds=".90,.95,60,60"
-        Clicked="AddHabit_Clicked"
-        />
+        <Button 
+            ImageSource="ic_add_white_48dp.xml"
+            CornerRadius="35"
+            WidthRequest="56"
+            HeightRequest="56"
+            Margin="0,0,16,16"
+            Clicked="AddHabit_Clicked"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+			AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize">
+        </Button>
     </AbsoluteLayout>
 </d:BaseView>

@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="Everydayhabit.Android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+		  android:versionCode="1" 
+		  android:versionName="1.0" 
+		  package="Everydayhabit.Android"
+		  >
 	<uses-sdk android:minSdkVersion="19" />
-	<application android:label="Everydayhabit"></application>
+	<application android:label="Everydayhabit"
+				 android:theme="@android:style/Theme.Material"
+				 >
+	</application>
+	
 </manifest>
