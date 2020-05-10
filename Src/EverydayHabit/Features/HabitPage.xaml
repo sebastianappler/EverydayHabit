@@ -19,6 +19,7 @@
                 Text="{Binding Description}" />
 
             <Button Text="Save" Clicked="OnSaveClicked" />
+            <Button Text="Delete" Clicked="OnDeleteClicked" />
         </StackLayout>
     </StackLayout>
 </d:BaseView>

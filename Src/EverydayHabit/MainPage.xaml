@@ -7,12 +7,12 @@
             mc:Ignorable="d"
             x:Class="EverydayHabit.XamarinApp.MainPage"
             >
-
     <NavigationPage Title="Habits" IconImageSource="ic_list_white_48dp.xml">
         <x:Arguments>
             <features:HabitList />
         </x:Arguments>
     </NavigationPage>
+    
 
     <NavigationPage Title="Calendar" IconImageSource="ic_today_white_48dp.xml">
         <x:Arguments>

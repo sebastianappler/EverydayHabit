@@ -41,5 +41,13 @@ namespace EverydayHabit.XamarinApp.Features
 
             await Navigation.PopAsync();
         }
+
+        async void OnDeleteClicked(object sender, EventArgs e)
+        {
+            var habitItem = (HabitDetailVm)BindingContext;
+
+            await Mediator.Send(new DeleteHabitCommand { Id = habitItem.Id });
+            await Navigation.PopAsync();
+        }
     }
 }

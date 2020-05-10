@@ -16,8 +16,8 @@ namespace EverydayHabit.XamarinApp
     {
         public MainPage()
         {
-            InitializeComponent();
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            InitializeComponent();
         }
     }
 }

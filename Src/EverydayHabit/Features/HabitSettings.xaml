@@ -4,8 +4,6 @@
              xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Class="EverydayHabit.XamarinApp.Features.HabitSettings"
-             IconImageSource="ic_settings_white_48dp.xml"
-             Title="Settings"
             >
     <ContentPage.Content>
         <StackLayout>
