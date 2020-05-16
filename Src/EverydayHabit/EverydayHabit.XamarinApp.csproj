@@ -36,16 +36,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Features\HabitCalendar.xaml.cs">
-      <DependentUpon>HabitCalendar.xaml</DependentUpon>
+    <Compile Update="Features\HabitCalendar\HabitCalendarView.xaml.cs">
+      <DependentUpon>HabitCalendarView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitSettings.xaml.cs">
-      <DependentUpon>HabitSettings.xaml</DependentUpon>
+    <Compile Update="Features\HabitPage\HabitPageView.xaml.cs">
+      <DependentUpon>HabitPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitList.xaml.cs">
-      <DependentUpon>HabitList.xaml</DependentUpon>
+    <Compile Update="Features\HabitSettings\HabitSettingsView.xaml.cs">
+      <DependentUpon>HabitSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Themes\LightTheme.xaml.cs">
+    <Compile Update="Features\HabitList\HabitListView.xaml.cs">
+      <DependentUpon>HabitListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Common\Themes\LightTheme.xaml.cs">
       <DependentUpon>LightTheme.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -54,22 +57,22 @@
     <EmbeddedResource Update="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Controls\CalendarHeader.xaml">
+    <EmbeddedResource Update="Features\HabitCalendar\CalendarHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitCalendar.xaml">
+    <EmbeddedResource Update="Features\HabitCalendar\HabitCalendarView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitList.xaml">
+    <EmbeddedResource Update="Features\HabitList\HabitListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitPage.xaml">
+    <EmbeddedResource Update="Features\HabitPage\HabitPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Themes\LightTheme.xaml">
+    <EmbeddedResource Update="Common\Themes\LightTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

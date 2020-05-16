@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Plugin.Calendar.Interfaces;
 
-namespace EverydayHabit.XamarinApp.Models
+namespace EverydayHabit.XamarinApp.Features.HabitCalendar.Models
 {
     public class DayEventCollection<T> : List<T>, IPersonalizableDayEvent
     {

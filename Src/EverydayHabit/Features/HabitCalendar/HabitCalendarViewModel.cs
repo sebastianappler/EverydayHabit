@@ -1,14 +1,13 @@
 ﻿using Xamarin.Plugin.Calendar.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
-using EverydayHabit.XamarinApp.Models;
+using EverydayHabit.XamarinApp.Features.HabitCalendar.Models;
+using EverydayHabit.XamarinApp.Common.ViewModels;
 
-namespace EverydayHabit.XamarinApp.ViewModels
+namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 {
     public class HabitCalendarViewModel : BasePageViewModel, INotifyPropertyChanged
     {
@@ -81,7 +80,7 @@ namespace EverydayHabit.XamarinApp.ViewModels
         {
             if (item is EventModel eventModel)
             {
-                await App.Current.MainPage.DisplayAlert(eventModel.Name, eventModel.Description, "Ok");
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert(eventModel.Name, eventModel.Description, "Ok");
             }
         }
     }

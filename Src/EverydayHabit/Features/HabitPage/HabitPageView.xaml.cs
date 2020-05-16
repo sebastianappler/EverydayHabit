@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EverydayHabit.XamarinApp.Features
+namespace EverydayHabit.XamarinApp.Features.HabitPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HabitCalendar : ContentPage
+    public partial class HabitPageView : ContentPage
     {
-        public HabitCalendar()
+        public HabitPageView()
         {
             InitializeComponent();
         }

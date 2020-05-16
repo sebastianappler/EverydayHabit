@@ -2,9 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
-            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.ViewModels" 
-            xmlns:controls="clr-namespace:EverydayHabit.XamarinApp.Controls"
-            x:Class="EverydayHabit.XamarinApp.Features.HabitCalendar"
+            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitCalendar"
+            x:Class="EverydayHabit.XamarinApp.Features.HabitCalendar.HabitCalendarView"
             x:Name="habitCalendarPage"
             Title="Calendar"
             Visual="Material"
@@ -26,7 +25,7 @@
         DayTappedCommand="{Binding DayTappedCommand}"
         >
         <plugin:Calendar.HeaderSectionTemplate>
-            <controls:CalendarHeader />
+            <local:CalendarHeader />
         </plugin:Calendar.HeaderSectionTemplate>
         
         <plugin:Calendar.EventTemplate>

@@ -1,10 +1,11 @@
 ﻿using Application.Habits.Commands.CreateHabit;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
+using EverydayHabit.XamarinApp.Common.ViewModels;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace EverydayHabit.XamarinApp.ViewModels
+namespace EverydayHabit.XamarinApp.Features.HabitPage
 {
     public class HabitPageViewModel : BasePageViewModel
     {

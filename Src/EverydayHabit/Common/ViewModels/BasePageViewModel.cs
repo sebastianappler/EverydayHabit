@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EverydayHabit.XamarinApp.ViewModels
+namespace EverydayHabit.XamarinApp.Common.ViewModels
 {
     public class BasePageViewModel : INotifyPropertyChanged
     {

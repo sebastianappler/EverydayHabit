@@ -1,4 +1,4 @@
-﻿namespace EverydayHabit.XamarinApp.Models
+﻿namespace EverydayHabit.XamarinApp.Features.HabitCalendar.Models
 {
     public class EventModel
     {
