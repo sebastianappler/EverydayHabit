@@ -32,6 +32,7 @@ namespace EverydayHabit.XamarinApp.ViewModels
                 }},
             };
         }
+
         private static async Task DayTapped(DateTime date)
         {
             var message = $"Received tap event from date: {date}";

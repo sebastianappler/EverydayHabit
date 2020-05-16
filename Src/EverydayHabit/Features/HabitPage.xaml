@@ -1,25 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<d:BaseView  xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.ViewModels"
              x:Class="EverydayHabit.XamarinApp.Features.HabitPage"
              Title="{Binding Name}"
              Visual="Material">
+
+    <ContentPage.BindingContext>
+        <local:HabitPageViewModel />
+    </ContentPage.BindingContext>
+
     <StackLayout Margin="20" VerticalOptions="StartAndExpand">
         <StackLayout Spacing="20" 
                      Padding="10"
                      BackgroundColor="White">
             <Editor AutoSize="TextChanges"
                 Placeholder="Name"
-                Text="{Binding Name}"/>
+                Text="{Binding HabitItem.Name}"/>
 
             <Editor AutoSize="TextChanges"
                 Placeholder="Description"
-                Text="{Binding Description}" />
+                Text="{Binding HabitItem. Description}" />
 
-            <Button Text="Save" Clicked="OnSaveClicked" />
-            <Button Text="Delete" Clicked="OnDeleteClicked" />
+            <Button Text="Save" Command="{Binding OnSaveClicked}" />
+            <Button Text="Delete" Command="{Binding OnDeleteClicked}" />
         </StackLayout>
     </StackLayout>
-</d:BaseView>
+</ContentPage>

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<d:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
             xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.ViewModels" 
             xmlns:controls="clr-namespace:EverydayHabit.XamarinApp.Controls"
@@ -53,4 +52,4 @@
         </plugin:Calendar.EventTemplate>
     </plugin:Calendar>
 
-</d:BaseView>
+</ContentPage>

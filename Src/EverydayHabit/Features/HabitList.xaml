@@ -1,15 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<d:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
-             x:Class="EverydayHabit.XamarinApp.Features.HabitList"
-             Title="Habits"
-             Visual="Material">
-
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.ViewModels" 
+            xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
+            xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters"
+            x:Class="EverydayHabit.XamarinApp.Features.HabitList"
+            x:Name="habitList"
+            Title="Habits"
+            Visual="Material">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.BindingContext>
+        <local:HabitListViewModel />
+    </ContentPage.BindingContext>
+    
     <AbsoluteLayout>
-        <ListView x:Name="listView" 
-                  ItemSelected="OnListItemSelected" 
+        <ListView ItemsSource="{Binding HabitList}"
                   RowHeight="56"
                   SeparatorVisibility="None"
                   >
@@ -33,13 +43,16 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <behaviours:EventToCommandBehavior EventName="ItemSelected" Command="{Binding OnListItemSelected}" Converter="{StaticResource SelectedItemConverter}" />
+            </ListView.Behaviors>
         </ListView>
 
         <Button 
             ImageSource="ic_add_white_48dp.xml"
-            Clicked="AddHabit_Clicked"
+            Command="{Binding AddHabit_Clicked}"
             Style="{StaticResource FabButtonStyle}"
             />
 
     </AbsoluteLayout>
-</d:BaseView>
+</ContentPage>
