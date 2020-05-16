@@ -7,11 +7,12 @@
             xmlns:controls="clr-namespace:EverydayHabit.XamarinApp.Controls"
             x:Class="EverydayHabit.XamarinApp.Features.HabitCalendar"
             x:Name="habitCalendarPage"
+            Title="Calendar"
+            Visual="Material"
             >
     <ContentPage.BindingContext>
         <local:HabitCalendarViewModel />
     </ContentPage.BindingContext>
-    
     
     <plugin:Calendar
         Padding="10,0"

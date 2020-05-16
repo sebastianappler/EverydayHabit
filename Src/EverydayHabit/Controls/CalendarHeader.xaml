@@ -28,13 +28,12 @@
             VerticalOptions="Center"
             WidthRequest="36">
             <Label
-                FontAttributes="Bold"
                 FontFamily="{StaticResource FontAwesomeSolid}"
-                FontSize="25"
+                FontSize="22"
                 HorizontalOptions="CenterAndExpand"
                 HorizontalTextAlignment="Center"
                 InputTransparent="True"
-                Text="&#xf060;"
+                Text="&#xf053;"
                 TextColor="{Binding ArrowsColor}"
                 VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center" />
@@ -74,11 +73,11 @@
             <Label
                 FontAttributes="Bold"
                 FontFamily="{StaticResource FontAwesomeSolid}"
-                FontSize="25"
+                FontSize="22"
                 HorizontalOptions="CenterAndExpand"
                 HorizontalTextAlignment="Center"
                 InputTransparent="True"
-                Text="&#xf061;"
+                Text="&#xf054;"
                 TextColor="{Binding ArrowsColor}"
                 VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center" />
