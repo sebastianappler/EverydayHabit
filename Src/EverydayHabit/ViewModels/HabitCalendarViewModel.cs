@@ -14,6 +14,7 @@ namespace EverydayHabit.XamarinApp.ViewModels
     {
         public ICommand TodayCommand => new Command(() => { Year = DateTime.Today.Year; Month = DateTime.Today.Month; });
         public ICommand EventSelectedCommand => new Command(async (item) => await ExecuteEventSelectedCommand(item));
+        public ICommand DayTappedCommand => new Command<DateTime>(async (date) => await DayTapped(date));
 
         public HabitCalendarViewModel() : base()
         {
@@ -30,6 +31,11 @@ namespace EverydayHabit.XamarinApp.ViewModels
                     Description = $"This is test event 2's description!"
                 }},
             };
+        }
+        private static async Task DayTapped(DateTime date)
+        {
+            var message = $"Received tap event from date: {date}";
+            Console.WriteLine(message);
         }
 
         public EventCollection Events { get; }

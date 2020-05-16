@@ -3,18 +3,16 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
             xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
-            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.ViewModels"
+            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.ViewModels" 
+            xmlns:controls="clr-namespace:EverydayHabit.XamarinApp.Controls"
             x:Class="EverydayHabit.XamarinApp.Features.HabitCalendar"
             x:Name="habitCalendarPage"
             >
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding TodayCommand}" Text="Today" />
-    </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <local:HabitCalendarViewModel />
     </ContentPage.BindingContext>
-
+    
+    
     <plugin:Calendar
         Padding="10,0"
         Events="{Binding Events}"
@@ -25,8 +23,12 @@
         SelectedDate="{Binding SelectedDate}"
         VerticalOptions="FillAndExpand"
         Year="{Binding Year}"
+        DayTappedCommand="{Binding DayTappedCommand}"
         >
-
+        <plugin:Calendar.HeaderSectionTemplate>
+            <controls:CalendarHeader />
+        </plugin:Calendar.HeaderSectionTemplate>
+        
         <plugin:Calendar.EventTemplate>
             <DataTemplate>
                 <StackLayout

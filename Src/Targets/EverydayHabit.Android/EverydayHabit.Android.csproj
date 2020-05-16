@@ -71,6 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="appsettings.json" />
+    <AndroidAsset Include="Assets\font-awesome-5-free-regular.otf" />
+    <AndroidAsset Include="Assets\font-awesome-5-free-solid.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
