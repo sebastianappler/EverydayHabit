@@ -1,15 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <d:BaseView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             x:Class="EverydayHabit.XamarinApp.Features.HabitCalendar"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="clr-namespace:EverydayHabit.XamarinApp.Common.Views;assembly=EverydayHabit.XamarinApp"
+            xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.ViewModels"
+            x:Class="EverydayHabit.XamarinApp.Features.HabitCalendar"
+            x:Name="habitCalendarPage"
             >
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding TodayCommand}" Text="Today" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <local:HabitCalendarViewModel />
+    </ContentPage.BindingContext>
+
+    <plugin:Calendar
+        Padding="10,0"
+        Events="{Binding Events}"
+        HorizontalOptions="FillAndExpand"
+        MaximumDate="{Binding MaximumDate}"
+        MinimumDate="{Binding MinimumDate}"
+        Month="{Binding Month}"
+        SelectedDate="{Binding SelectedDate}"
+        VerticalOptions="FillAndExpand"
+        Year="{Binding Year}"
+        >
+
+        <plugin:Calendar.EventTemplate>
+            <DataTemplate>
+                <StackLayout
+                    Padding="15,0,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="{Binding Name}" />
+                    <Label
+                        FontSize="Small"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding Description}" />
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BindingContext.EventSelectedCommand, Source={x:Reference habitCalendarPage}}" CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </DataTemplate>
+        </plugin:Calendar.EventTemplate>
+    </plugin:Calendar>
+
 </d:BaseView>
