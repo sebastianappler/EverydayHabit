@@ -10,7 +10,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<HabitVariant> Variants { get; set; }
+        public List<HabitVariation> Variants { get; set; }
 
         public void Mapping(Profile profile)
         {

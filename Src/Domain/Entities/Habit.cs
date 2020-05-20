@@ -6,12 +6,12 @@ namespace EverydayHabit.Domain.Entities
     {
         public Habit()
         {
-            Variants = new HashSet<HabitVariant>();
+            Variants = new HashSet<HabitVariation>();
         }
 
         public int HabitId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<HabitVariant> Variants { get; set; }
+        public ICollection<HabitVariation> Variants { get; set; }
     }
 }

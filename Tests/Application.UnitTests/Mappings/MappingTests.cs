@@ -49,7 +49,7 @@ namespace Application.UnitTests.Mappings
         [Fact]
         public void ShouldMapHabitVariantToHabitVariantDto()
         {
-            var entity = new HabitVariant();
+            var entity = new HabitVariation();
 
             var result = _mapper.Map<HabitVariantDto>(entity);
 

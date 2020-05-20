@@ -13,6 +13,7 @@ namespace EverydayHabit.Persistence
         }
 
         public DbSet<Habit> Habits { get; set; }
+        public DbSet<HabitVariation> HabitVariations { get; set; }
         public DbSet<HabitCompletion> HabitCompletions { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

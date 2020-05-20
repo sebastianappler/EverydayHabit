@@ -8,6 +8,7 @@ namespace EverydayHabit.Androidlication.Common.Interfaces
     public interface IEverydayHabitDbContext
     {
         DbSet<Habit> Habits { get; set; }
+        DbSet<HabitVariation> HabitVariations { get; set; }
         DbSet<HabitCompletion> HabitCompletions { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
