@@ -9,14 +9,10 @@ namespace Persistence.Migrations
             migrationBuilder.DropTable(
                 name: "HabitVariant");
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.RenameColumn(
                 name: "Definition",
+                newName: "Description",
                 table: "HabitDifficulty");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Description",
-                table: "HabitDifficulty",
-                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "DifficultyLevel",
@@ -59,13 +55,13 @@ namespace Persistence.Migrations
                 table: "HabitVariations",
                 column: "HabitId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_HabitDifficulty_HabitVariations_HabitVariantHabitVariationId",
-                table: "HabitDifficulty",
-                column: "HabitVariantHabitVariationId",
-                principalTable: "HabitVariations",
-                principalColumn: "HabitVariationId",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_HabitDifficulty_HabitVariations_HabitVariantHabitVariationId",
+            //    table: "HabitDifficulty",
+            //    column: "HabitVariantHabitVariationId",
+            //    principalTable: "HabitVariations",
+            //    principalColumn: "HabitVariationId",
+            //    onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
