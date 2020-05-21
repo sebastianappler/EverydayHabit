@@ -9,7 +9,7 @@ namespace EverydayHabit.Domain.Entities
             HabitDifficulties = new HashSet<HabitDifficulty>();
         }
 
-        public int HabitVariantId { get; set; }
+        public int HabitVariationId { get; set; }
         public int HabitId { get; set; }
         public string HabitVariantName { get; set; }
 

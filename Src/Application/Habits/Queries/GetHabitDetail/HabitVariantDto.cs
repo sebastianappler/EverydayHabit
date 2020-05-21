@@ -14,7 +14,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail
         public void Mapping(Profile profile)
         {
             profile.CreateMap<HabitVariation, HabitVariantDto>()
-                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitVariantId));
+                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitVariationId));
         }
     }
 }

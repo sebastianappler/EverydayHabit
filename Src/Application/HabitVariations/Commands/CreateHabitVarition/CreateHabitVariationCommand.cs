@@ -32,7 +32,7 @@ namespace Application.Habits.Commands.CreateHabit
                 _context.HabitVariations.Add(entity);
 
                 await _context.SaveChangesAsync(cancellationToken);
-                await _mediator.Publish(new HabitVariationCreated { HabitVariationId = entity.HabitVariantId }, cancellationToken);
+                await _mediator.Publish(new HabitVariationCreated { HabitVariationId = entity.HabitVariationId }, cancellationToken);
 
                 return entity.HabitId;
             }

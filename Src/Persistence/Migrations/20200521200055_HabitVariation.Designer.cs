@@ -3,14 +3,16 @@ using System;
 using EverydayHabit.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(EverydayHabitDbContext))]
-    partial class EverydayHabitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200521200055_HabitVariation")]
+    partial class HabitVariation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
