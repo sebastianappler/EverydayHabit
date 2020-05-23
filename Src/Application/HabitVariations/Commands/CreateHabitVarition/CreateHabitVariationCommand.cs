@@ -1,4 +1,5 @@
 ﻿using EverydayHabit.Androidlication.Common.Interfaces;
+using EverydayHabit.Application.Common.Exceptions;
 using EverydayHabit.Domain.Entities;
 using MediatR;
 using System.Threading;
@@ -8,8 +9,8 @@ namespace Application.Habits.Commands.CreateHabit
 {
     public class CreateHabitVariationCommand : IRequest<int>
     {
+        public int HabitId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
 
         public class Handler : IRequestHandler<CreateHabitVariationCommand, int>
         {
@@ -24,15 +25,23 @@ namespace Application.Habits.Commands.CreateHabit
 
             public async Task<int> Handle(CreateHabitVariationCommand request, CancellationToken cancellationToken)
             {
-                var entity = new HabitVariation
+                var entity = await _context.Habits.FindAsync(request.HabitId);
+
+                if(entity == null)
                 {
-                    
+                    throw new NotFoundException(nameof(Habit), request.HabitId);
+                }
+
+                var habitVariation = new HabitVariation
+                {
+                    HabitId = request.HabitId,
+                    HabitVariantName = request.Name
                 };
 
-                _context.HabitVariations.Add(entity);
+                entity.Variants.Add(habitVariation);
 
                 await _context.SaveChangesAsync(cancellationToken);
-                await _mediator.Publish(new HabitVariationCreated { HabitVariationId = entity.HabitVariationId }, cancellationToken);
+                await _mediator.Publish(new HabitVariationCreated { HabitVariationId = habitVariation.HabitVariationId }, cancellationToken);
 
                 return entity.HabitId;
             }

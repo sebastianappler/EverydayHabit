@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
+using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 using EverydayHabit.Domain.Entities;
 using Shouldly;
@@ -51,10 +52,10 @@ namespace Application.UnitTests.Mappings
         {
             var entity = new HabitVariation();
 
-            var result = _mapper.Map<HabitVariantDto>(entity);
+            var result = _mapper.Map<HabitVariationDto>(entity);
 
             result.ShouldNotBeNull();
-            result.ShouldBeOfType<HabitVariantDto>();
+            result.ShouldBeOfType<HabitVariationDto>();
         }
 
         [Fact]

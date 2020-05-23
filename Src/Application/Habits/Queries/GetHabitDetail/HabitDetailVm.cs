@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EverydayHabit.Application.Common.Mapping;
+using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Domain.Entities;
 using System.Collections.Generic;
 
@@ -10,12 +11,13 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<HabitVariation> Variants { get; set; }
+        public List<HabitVariationDto> VariationsList { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Habit, HabitDetailVm>()
-                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitId));
+                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitId))
+                .ForMember(d => d.VariationsList, opt => opt.MapFrom(s => s.Variants));
         }
     }
 }

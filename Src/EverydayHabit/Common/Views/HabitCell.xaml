@@ -1,0 +1,20 @@
+﻿<ViewCell 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="EverydayHabit.XamarinApp.Common.Views.HabitCell">
+    <StackLayout 
+        HeightRequest="56"
+        Margin="0,0,0,0" 
+        Padding="0" 
+        Orientation="Horizontal" 
+        HorizontalOptions="FillAndExpand">
+        <Frame CornerRadius="20" Margin="8" Padding="0" HeightRequest="40" WidthRequest="40" BackgroundColor="#5E7CE2">
+            <Image Source="ic_fitness_center_custom_light_grey_48dp.xml" Margin="5"/>
+        </Frame>
+
+        <Label Text="{Binding Name}"
+            Padding="0,12,12,16"
+            VerticalTextAlignment="Center" 
+            HorizontalOptions="StartAndExpand"/>
+    </StackLayout>
+</ViewCell>

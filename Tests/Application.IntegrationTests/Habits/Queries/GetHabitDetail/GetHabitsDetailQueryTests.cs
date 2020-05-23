@@ -32,6 +32,7 @@ namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
             result.ShouldBeOfType<HabitDetailVm>();
             result.Id.ShouldBe(1);
             result.Name.ShouldBe("Training");
+            result.VariationsList.ShouldNotBeEmpty();
         }
     }
 }

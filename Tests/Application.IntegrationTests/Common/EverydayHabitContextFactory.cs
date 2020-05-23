@@ -23,11 +23,15 @@ namespace Application.IntegrationTests.Common
                 new Habit { HabitId = 3, Name = "Learn German" },
             });
 
-            var habitCompleted = context.Habits.Find(1);
+            var habit = context.Habits.Find(1);
 
+            habit.Variants.Add(new HabitVariation
+            {
+                HabitVariantName = "Running",
+            });
             context.HabitCompletions.AddRange(new[] {
-                new HabitCompletion { HabitCompletionId = 1, Date = DateTime.Now, HabitDifficultyLevel = HabitDifficultyLevel.Plus, CompletedHabit = habitCompleted },
-                new HabitCompletion { HabitCompletionId = 2, Date = DateTime.Now.AddDays(-1), HabitDifficultyLevel = HabitDifficultyLevel.Mini,  CompletedHabit = habitCompleted },
+                new HabitCompletion { HabitCompletionId = 1, Date = DateTime.Now, HabitDifficultyLevel = HabitDifficultyLevel.Plus, CompletedHabit = habit },
+                new HabitCompletion { HabitCompletionId = 2, Date = DateTime.Now.AddDays(-1), HabitDifficultyLevel = HabitDifficultyLevel.Mini,  CompletedHabit = habit },
             });
 
             context.SaveChanges();

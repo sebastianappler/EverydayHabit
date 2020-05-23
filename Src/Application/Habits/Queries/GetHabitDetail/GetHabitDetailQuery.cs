@@ -6,6 +6,7 @@ using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,14 +29,17 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
 
             public async Task<HabitDetailVm> Handle(GetHabitDetailQuery request, CancellationToken cancellationToken)
             {
-                var entity = await _context.Habits.FindAsync(request.Id);
+                var vm = await _context.Habits
+                    .Where(habit => habit.HabitId == request.Id)
+                    .ProjectTo<HabitDetailVm>(_mapper.ConfigurationProvider)
+                    .SingleOrDefaultAsync(cancellationToken); ;
 
-                if(entity == null)
+                if(vm == null)
                 {
                     throw new NotFoundException(nameof(Habit), request.Id);
                 }
 
-                return _mapper.Map<HabitDetailVm>(entity);
+                return vm;
             }
         }
     }

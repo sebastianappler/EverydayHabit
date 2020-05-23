@@ -3,7 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
             xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" 
-            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitList"
+            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitList" 
+            xmlns:views="clr-namespace:EverydayHabit.XamarinApp.Common.Views"
             x:Class="EverydayHabit.XamarinApp.Features.HabitList.HabitListView"
             x:Name="habitList"
             Title="Habits"
@@ -20,29 +21,15 @@
     
     <AbsoluteLayout>
         <ListView ItemsSource="{Binding HabitList}"
-                  RowHeight="56"
-                  SeparatorVisibility="None"
-                  >
+                RowHeight="56"
+                SeparatorVisibility="None"
+                >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout 
-                            Margin="0,0,0,0" 
-                            Padding="0" 
-                            Orientation="Horizontal" 
-                            HorizontalOptions="FillAndExpand">
-                            <Frame CornerRadius="20" Margin="8" Padding="0" HeightRequest="40" WidthRequest="40" BackgroundColor="#5E7CE2">
-                                <Image Source="ic_fitness_center_custom_light_grey_48dp.xml" Margin="5"/>
-                            </Frame>
-
-                            <Label Text="{Binding Name}"
-                                   Padding="0,12,12,16"
-                                   VerticalTextAlignment="Center" 
-                                   HorizontalOptions="StartAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
+                    <views:HabitCell />
                 </DataTemplate>
             </ListView.ItemTemplate>
+            
             <ListView.Behaviors>
                 <behaviours:EventToCommandBehavior EventName="ItemSelected" Command="{Binding OnListItemSelected}" Converter="{StaticResource SelectedItemConverter}" />
             </ListView.Behaviors>
