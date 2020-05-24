@@ -1,7 +1,11 @@
 ﻿using Application.Habits.Commands.CreateHabit;
+using EverydayHabit.Application.HabitDifficulties.Commands.CreateHabitDifficulty;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
+using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -18,23 +22,8 @@ namespace EverydayHabit.XamarinApp.Features.VariationPage
         public async Task OnSaveClickedCommand()
         {
             if (HabitVariation != null)
-            {
-                if (HabitVariation.Id != 0)
-                {
-                    //await Mediator.Send(new UpdateHabitVariationCommand
-                    //{
-                    //    Id = HabitItem.Id,
-                    //    Name = HabitItem.Name,
-                    //    Description = HabitItem.Description,
-                    //});
-                }
-                else
-                {
-                    await Mediator.Send(new CreateHabitVariationCommand
-                    {
-                        Name = HabitVariation.Name,
-                    });
-                }
+            { 
+              
             }
 
             Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
@@ -44,11 +33,13 @@ namespace EverydayHabit.XamarinApp.Features.VariationPage
         {
             if (HabitVariation != null)
             {
-                //await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
-                //Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
             }
         }
-
-
+        private Editor _mini;
+        public Editor Mini
+        {
+            get => _mini;
+            set => SetProperty(ref _mini, value);
+        }
     }
 }

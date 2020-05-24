@@ -23,7 +23,7 @@
                 Placeholder="Name"
                 Text="{Binding HabitVariation.Name}"/>
 
-            <Editor 
+            <Editor
                 x:Name="Mini"
                 AutoSize="TextChanges"
                 Placeholder="Mini"/>

@@ -63,25 +63,24 @@ namespace EverydayHabit.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HabitDifficulty",
+                name: "HabitDifficulties",
                 columns: table => new
                 {
                     HabitDifficultyId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    HabitVaritionId = table.Column<int>(nullable: false),
+                    HabitVariationId = table.Column<int>(nullable: false),
                     DifficultyLevel = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    HabitVariationId = table.Column<int>(nullable: true)
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HabitDifficulty", x => x.HabitDifficultyId);
+                    table.PrimaryKey("PK_HabitDifficulties", x => x.HabitDifficultyId);
                     table.ForeignKey(
-                        name: "FK_HabitDifficulty_HabitVariations_HabitVariationId",
+                        name: "FK_HabitDifficulties_HabitVariations_HabitVariationId",
                         column: x => x.HabitVariationId,
                         principalTable: "HabitVariations",
                         principalColumn: "HabitVariationId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -90,8 +89,8 @@ namespace EverydayHabit.Persistence.Migrations
                 column: "CompletedHabitHabitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitDifficulty_HabitVariationId",
-                table: "HabitDifficulty",
+                name: "IX_HabitDifficulties_HabitVariationId",
+                table: "HabitDifficulties",
                 column: "HabitVariationId");
 
             migrationBuilder.CreateIndex(
@@ -106,7 +105,7 @@ namespace EverydayHabit.Persistence.Migrations
                 name: "HabitCompletions");
 
             migrationBuilder.DropTable(
-                name: "HabitDifficulty");
+                name: "HabitDifficulties");
 
             migrationBuilder.DropTable(
                 name: "HabitVariations");
