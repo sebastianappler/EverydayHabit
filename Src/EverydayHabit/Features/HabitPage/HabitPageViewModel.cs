@@ -25,15 +25,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
 
         public HabitDetailVm HabitItem { get; set; }
 
-        public async Task OnAddVariationClickedCommand()
-        {
-            await Mediator.Send(new CreateHabitVariationCommand
-                {
-                    HabitId = HabitItem.Id,
-                    Name = HabitItem.Name,
-                });
-        }
-
+      
         public async Task OnSaveClickedCommand()
         {
             if (HabitItem != null)
@@ -67,6 +59,17 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
                 await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
                 Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
             }
+        }
+
+        public async Task OnAddVariationClickedCommand()
+        {
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
+            {
+                BindingContext = new HabitVariationPageViewModel
+                {
+                    HabitVariation = new HabitVariationDetailVm()
+                }
+            });
         }
 
         private async Task OnVariationListItemSelectedCommand(object item)

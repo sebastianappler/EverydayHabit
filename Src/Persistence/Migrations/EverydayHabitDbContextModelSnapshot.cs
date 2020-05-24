@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Persistence.Migrations
+namespace EverydayHabit.Persistence.Migrations
 {
     [DbContext(typeof(EverydayHabitDbContext))]
     partial class EverydayHabitDbContextModelSnapshot : ModelSnapshot
@@ -14,7 +14,7 @@ namespace Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3");
+                .HasAnnotation("ProductVersion", "3.1.4");
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.Habit", b =>
                 {
@@ -67,12 +67,15 @@ namespace Persistence.Migrations
                     b.Property<int>("DifficultyLevel")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("HabitVariantHabitVariationId")
+                    b.Property<int?>("HabitVariationId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("HabitVaritionId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("HabitDifficultyId");
 
-                    b.HasIndex("HabitVariantHabitVariationId");
+                    b.HasIndex("HabitVariationId");
 
                     b.ToTable("HabitDifficulty");
                 });
@@ -105,9 +108,9 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitDifficulty", b =>
                 {
-                    b.HasOne("EverydayHabit.Domain.Entities.HabitVariation", "HabitVariant")
+                    b.HasOne("EverydayHabit.Domain.Entities.HabitVariation", "HabitVariation")
                         .WithMany("HabitDifficulties")
-                        .HasForeignKey("HabitVariantHabitVariationId");
+                        .HasForeignKey("HabitVariationId");
                 });
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitVariation", b =>

@@ -5,22 +5,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.VariationPage"
              mc:Ignorable="d"
-             x:Class="EverydayHabit.XamarinApp.Features.HabitVariationPage.HabitVariationPageView">
+             x:Class="EverydayHabit.XamarinApp.Features.HabitVariationPage.HabitVariationPageView"
+             Visual="Material">
     <ContentPage.BindingContext>
         <local:HabitVariationPageViewModel />
     </ContentPage.BindingContext>
+    <StackLayout >
 
-    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-        <StackLayout Spacing="20" 
-                     Padding="10"
-                     BackgroundColor="White">
+        <StackLayout 
+            VerticalOptions="StartAndExpand"
+            Margin="20"
+            Spacing="20" 
+            Padding="10"
+            BackgroundColor="White">
+           
             <Editor AutoSize="TextChanges"
                 Placeholder="Name"
                 Text="{Binding HabitVariation.Name}"/>
 
-            <!--<Editor AutoSize="TextChanges"
-                Placeholder="Description"
-                Text="{Binding HabitItem.Description}" />-->
+            <Editor 
+                x:Name="Mini"
+                AutoSize="TextChanges"
+                Placeholder="Mini"/>
+
+            <Editor 
+                x:Name="Plus"
+                AutoSize="TextChanges"
+                Placeholder="Plus"/>
+
+            <Editor 
+                x:Name="Elite"
+                AutoSize="TextChanges"
+                Placeholder="Elite" />
 
             <!--<Button Text="AddVariation" Command="{Binding OnAddVariationClicked}" />
             <Button Text="Save" Command="{Binding OnSaveClicked}" />

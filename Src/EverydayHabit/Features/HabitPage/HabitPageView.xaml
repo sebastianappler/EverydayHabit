@@ -37,8 +37,7 @@
                 <Label Text="Variations" ></Label>
                 <ListView ItemsSource="{Binding HabitItem.VariationsList}"
                 RowHeight="56"
-                SeparatorVisibility="None"
-                >
+                SeparatorVisibility="None" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <views:HabitCell />
@@ -50,7 +49,7 @@
                     </ListView.Behaviors>
                 </ListView>
             </StackLayout>
-            <Button Text="AddVariation" Command="{Binding OnAddVariationClicked}" />
+            <Button Text="Add Variation" Command="{Binding OnAddVariationClicked}" />
             <Button Text="Save" Command="{Binding OnSaveClicked}" />
             <Button Text="Delete" Command="{Binding OnDeleteClicked}" />
         </StackLayout>

@@ -6,17 +6,17 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Persistence.Migrations
+namespace EverydayHabit.Persistence.Migrations
 {
     [DbContext(typeof(EverydayHabitDbContext))]
-    [Migration("20200501115503_InitialMigration")]
+    [Migration("20200524103346_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3");
+                .HasAnnotation("ProductVersion", "3.1.4");
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.Habit", b =>
                 {
@@ -63,43 +63,42 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Definition")
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("DifficultyLevel")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("HabitVariationId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("HabitVaritionId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("HabitDifficultyId");
+
+                    b.HasIndex("HabitVariationId");
 
                     b.ToTable("HabitDifficulty");
                 });
 
-            modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitVariant", b =>
+            modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitVariation", b =>
                 {
-                    b.Property<int>("HabitVariantId")
+                    b.Property<int>("HabitVariationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EliteHabitDifficultyId")
+                    b.Property<int>("HabitId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("HabitId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("HabitVariantName")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int?>("MiniHabitDifficultyId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("PlusHabitDifficultyId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("HabitVariantId");
-
-                    b.HasIndex("EliteHabitDifficultyId");
+                    b.HasKey("HabitVariationId");
 
                     b.HasIndex("HabitId");
 
-                    b.HasIndex("MiniHabitDifficultyId");
-
-                    b.HasIndex("PlusHabitDifficultyId");
-
-                    b.ToTable("HabitVariant");
+                    b.ToTable("HabitVariations");
                 });
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitCompletion", b =>
@@ -109,23 +108,20 @@ namespace Persistence.Migrations
                         .HasForeignKey("CompletedHabitHabitId");
                 });
 
-            modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitVariant", b =>
+            modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitDifficulty", b =>
                 {
-                    b.HasOne("EverydayHabit.Domain.Entities.HabitDifficulty", "Elite")
-                        .WithMany()
-                        .HasForeignKey("EliteHabitDifficultyId");
+                    b.HasOne("EverydayHabit.Domain.Entities.HabitVariation", "HabitVariation")
+                        .WithMany("HabitDifficulties")
+                        .HasForeignKey("HabitVariationId");
+                });
 
-                    b.HasOne("EverydayHabit.Domain.Entities.Habit", null)
+            modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitVariation", b =>
+                {
+                    b.HasOne("EverydayHabit.Domain.Entities.Habit", "Habit")
                         .WithMany("Variants")
-                        .HasForeignKey("HabitId");
-
-                    b.HasOne("EverydayHabit.Domain.Entities.HabitDifficulty", "Mini")
-                        .WithMany()
-                        .HasForeignKey("MiniHabitDifficultyId");
-
-                    b.HasOne("EverydayHabit.Domain.Entities.HabitDifficulty", "Plus")
-                        .WithMany()
-                        .HasForeignKey("PlusHabitDifficultyId");
+                        .HasForeignKey("HabitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
