@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
 using EverydayHabit.Application.Common.Mapping;
+using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Domain.Entities;
 using System.Collections.Generic;
 
-namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos
+namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail
 {
-    public class HabitVariationDto : IMapFrom<HabitVariation>
+    public class HabitVariationDetailVm : IMapFrom<HabitVariation>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
+        public int HabitId { get; set; }
         public List<HabitDifficultyDto> DifficultiesList { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<HabitVariation, HabitVariationDto>()
-                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitVariationId))
+            profile.CreateMap<HabitVariation, HabitVariationDetailVm>()
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.HabitVariantName))
                 .ForMember(d => d.DifficultiesList, opt => opt.MapFrom(s => s.HabitDifficulties));
         }

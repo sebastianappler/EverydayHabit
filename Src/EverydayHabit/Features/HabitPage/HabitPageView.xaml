@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitPage" xmlns:views="clr-namespace:EverydayHabit.XamarinApp.Common.Views" xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours"
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitPage" 
+             xmlns:views="clr-namespace:EverydayHabit.XamarinApp.Common.Views" 
+             xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
+             xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters"
              x:Class="EverydayHabit.XamarinApp.Features.HabitPage.HabitPageView"
              Title="{Binding Name}"
              Visual="Material">
@@ -10,6 +13,12 @@
         <local:HabitPageViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <StackLayout Margin="20" VerticalOptions="StartAndExpand">
         <StackLayout Spacing="20" 
                      Padding="10"
@@ -22,17 +31,25 @@
                 Placeholder="Description"
                 Text="{Binding HabitItem.Description}" />
 
-            <ListView ItemsSource="{Binding HabitItem.VariationsList}"
+            <StackLayout Spacing="10" 
+                     Padding="3"
+                     BackgroundColor="White">
+                <Label Text="Variations" ></Label>
+                <ListView ItemsSource="{Binding HabitItem.VariationsList}"
                 RowHeight="56"
                 SeparatorVisibility="None"
                 >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <views:HabitCell />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <views:HabitCell />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.Behaviors>
+                        <behaviours:EventToCommandBehavior EventName="ItemSelected" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource SelectedItemConverter}" />
+                    </ListView.Behaviors>
+                </ListView>
+            </StackLayout>
             <Button Text="AddVariation" Command="{Binding OnAddVariationClicked}" />
             <Button Text="Save" Command="{Binding OnSaveClicked}" />
             <Button Text="Delete" Command="{Binding OnDeleteClicked}" />
