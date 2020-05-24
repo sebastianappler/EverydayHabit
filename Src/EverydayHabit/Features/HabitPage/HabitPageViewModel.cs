@@ -1,7 +1,7 @@
 ﻿using Application.Habits.Commands.CreateHabit;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
-using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Entities;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitVariationPage;

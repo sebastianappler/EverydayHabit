@@ -1,4 +1,4 @@
-﻿using EverydayHabit.Androidlication.Common.Interfaces;
+﻿using EverydayHabit.Application.Common.Interfaces;
 using EverydayHabit.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
@@ -15,6 +15,7 @@ namespace EverydayHabit.Persistence
         public DbSet<Habit> Habits { get; set; }
         public DbSet<HabitVariation> HabitVariations { get; set; }
         public DbSet<HabitCompletion> HabitCompletions { get; set; }
+        public DbSet<HabitDifficulty> HabitDifficulties { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

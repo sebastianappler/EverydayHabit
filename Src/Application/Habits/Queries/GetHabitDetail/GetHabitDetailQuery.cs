@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using EverydayHabit.Androidlication.Common.Interfaces;
 using EverydayHabit.Application.Common.Exceptions;
+using EverydayHabit.Application.Common.Interfaces;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Domain.Entities;
 using MediatR;

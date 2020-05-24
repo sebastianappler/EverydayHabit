@@ -38,9 +38,8 @@
                 AutoSize="TextChanges"
                 Placeholder="Elite" />
 
-            <!--<Button Text="AddVariation" Command="{Binding OnAddVariationClicked}" />
             <Button Text="Save" Command="{Binding OnSaveClicked}" />
-            <Button Text="Delete" Command="{Binding OnDeleteClicked}" />-->
+            <Button Text="Delete" Command="{Binding OnDeleteClicked}" />
         </StackLayout>
     </StackLayout>
 </ContentPage>

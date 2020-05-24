@@ -1,5 +1,5 @@
-﻿using Application.Habits.Commands.CreateHabit;
-using Application.IntegrationTests.Common;
+﻿using Application.IntegrationTests.Common;
+using EverydayHabit.Application.HabitDifficulties.Commands.CreateHabitDifficulty;
 using EverydayHabit.Domain.Enums;
 using MediatR;
 using Moq;
@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Application.IntegrationTests.Habits.Commands.CreateHabit
+namespace Application.IntegrationTests.HabitDifficulties.Commands.CreateHabitDifficulty
 {
     public class CreateHabitDifficultyCommandTests : CommandTestBase
     {

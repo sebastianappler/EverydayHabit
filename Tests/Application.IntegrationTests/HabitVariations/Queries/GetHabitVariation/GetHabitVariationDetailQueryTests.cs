@@ -1,14 +1,14 @@
 ﻿using Application.IntegrationTests.Common;
 using AutoMapper;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
-using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Persistence;
 using Shouldly;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
+namespace Application.IntegrationTests.HabitVariations.Queries.GetHabitVariation
 {
     [Collection("QueryCollection")]
     public class GetHabitVariationDetailQueryTests
@@ -27,7 +27,7 @@ namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
         {
             var sut = new GetHabitVariationDetailQuery.Handler(_context, _mapper);
 
-            var result = await sut.Handle(new GetHabitVariationDetailQuery { Id = 1}, CancellationToken.None);
+            var result = await sut.Handle(new GetHabitVariationDetailQuery { Id = 1 }, CancellationToken.None);
 
             result.ShouldBeOfType<HabitVariationDetailVm>();
             result.HabitId.ShouldBe(1);

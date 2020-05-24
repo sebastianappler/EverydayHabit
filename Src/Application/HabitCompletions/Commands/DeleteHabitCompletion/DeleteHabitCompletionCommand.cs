@@ -1,5 +1,5 @@
-﻿using EverydayHabit.Androidlication.Common.Interfaces;
-using EverydayHabit.Application.Common.Exceptions;
+﻿using EverydayHabit.Application.Common.Exceptions;
+using EverydayHabit.Application.Common.Interfaces;
 using EverydayHabit.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

@@ -1,12 +1,12 @@
-﻿using EverydayHabit.Androidlication.Common.Interfaces;
-using EverydayHabit.Application.Common.Exceptions;
+﻿using EverydayHabit.Application.Common.Exceptions;
+using EverydayHabit.Application.Common.Interfaces;
 using EverydayHabit.Domain.Entities;
 using EverydayHabit.Domain.Enums;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Habits.Commands.CreateHabit
+namespace EverydayHabit.Application.HabitDifficulties.Commands.CreateHabitDifficulty
 {
     public class CreateHabitDifficultyCommand : IRequest<int>
     {
@@ -27,25 +27,26 @@ namespace Application.Habits.Commands.CreateHabit
 
             public async Task<int> Handle(CreateHabitDifficultyCommand request, CancellationToken cancellationToken)
             {
-                var entity = await _context.HabitVariations.FindAsync(request.HabitVariationId);
+                var habitVariation = await _context.HabitVariations.FindAsync(request.HabitVariationId);
 
-                if(entity == null)
+                if (habitVariation == null)
                 {
                     throw new NotFoundException(nameof(HabitVariation), request.HabitVariationId);
                 }
 
-                var habitDifficulty = new HabitDifficulty
+                var entity = new HabitDifficulty
                 {
+                    HabitVariationId = request.HabitVariationId,
                     Description = request.Description,
                     DifficultyLevel = request.DifficultyLevel
                 };
 
-                entity.HabitDifficulties.Add(habitDifficulty);
+                _context.HabitDifficulties.Add(entity);
 
                 await _context.SaveChangesAsync(cancellationToken);
-                await _mediator.Publish(new HabitDifficultyCreated { HabitDifficultyId = habitDifficulty.HabitDifficultyId }, cancellationToken);
+                await _mediator.Publish(new HabitDifficultyCreated { HabitDifficultyId = entity.HabitDifficultyId }, cancellationToken);
 
-                return entity.HabitId;
+                return entity.HabitDifficultyId;
             }
         }
     }

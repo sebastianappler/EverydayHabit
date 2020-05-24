@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Application.IntegrationTests.Habits.Commands.CreateHabit
+namespace Application.IntegrationTests.HabitVariations.Commands.CreateHabitVariation
 {
     public class CreateHabitVariationCommandTests : CommandTestBase
     {
@@ -45,14 +45,13 @@ namespace Application.IntegrationTests.Habits.Commands.CreateHabit
 
             // Act
             var habitVariationId = await sut.Handle(new CreateHabitVariationCommand
-            { 
+            {
                 HabitId = 1,
                 Name = "Running",
             }, CancellationToken.None);
-            
+
             // Assert
             mediatorMock.Verify(m => m.Publish(It.Is<HabitVariationCreated>(h => h.HabitVariationId == habitVariationId), It.IsAny<CancellationToken>()), Times.Once);
         }
-       
     }
 }

@@ -1,4 +1,4 @@
-﻿using EverydayHabit.Androidlication.Common.Interfaces;
+﻿using EverydayHabit.Application.Common.Interfaces;
 using EverydayHabit.Domain.Entities;
 using MediatR;
 using System.Threading;

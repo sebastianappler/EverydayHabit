@@ -1,5 +1,5 @@
-﻿using EverydayHabit.Androidlication.Common.Interfaces;
-using EverydayHabit.Application.Common.Exceptions;
+﻿using EverydayHabit.Application.Common.Exceptions;
+using EverydayHabit.Application.Common.Interfaces;
 using EverydayHabit.Domain.Entities;
 using MediatR;
 using System.Threading;
@@ -43,7 +43,7 @@ namespace Application.Habits.Commands.CreateHabit
                 await _context.SaveChangesAsync(cancellationToken);
                 await _mediator.Publish(new HabitVariationCreated { HabitVariationId = habitVariation.HabitVariationId }, cancellationToken);
 
-                return entity.HabitId;
+                return habitVariation.HabitVariationId;
             }
         }
     }

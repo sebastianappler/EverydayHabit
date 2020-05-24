@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using EverydayHabit.Androidlication.Common.Interfaces;
 using EverydayHabit.Application.Common.Exceptions;
+using EverydayHabit.Application.Common.Interfaces;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
-using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
+namespace EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation
 {
     public class GetHabitVariationDetailQuery : IRequest<HabitVariationDetailVm>
     {
@@ -35,7 +34,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
                     .ProjectTo<HabitVariationDetailVm>(_mapper.ConfigurationProvider)
                     .SingleOrDefaultAsync(cancellationToken); ;
 
-                if(vm == null)
+                if (vm == null)
                 {
                     throw new NotFoundException(nameof(HabitVariation), request.Id);
                 }
