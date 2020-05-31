@@ -67,7 +67,10 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
             {
                 BindingContext = new HabitVariationPageViewModel
                 {
-                    HabitVariation = new HabitVariationDetailVm()
+                    HabitVariation = new HabitVariationDetailVm
+                    {
+                        HabitId = HabitItem.Id
+                    }
                 }
             });
         }

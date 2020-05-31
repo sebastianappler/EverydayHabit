@@ -2,10 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace EverydayHabit.XamarinApp.Common.ViewModels
 {
-    public class BasePageViewModel : INotifyPropertyChanged
+    public class BasePageViewModel : ContentPage, INotifyPropertyChanged
     {
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= _mediator = Startup.ServiceProvider.GetRequiredService<IMediator>();

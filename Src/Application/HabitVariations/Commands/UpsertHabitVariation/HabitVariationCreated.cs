@@ -4,7 +4,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Habits.Commands.CreateHabit
+namespace EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariation
 {
     public class HabitVariationCreated : INotification
     {

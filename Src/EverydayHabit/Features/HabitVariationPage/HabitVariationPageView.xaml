@@ -24,17 +24,17 @@
                 Text="{Binding HabitVariation.Name}"/>
 
             <Editor
-                x:Name="Mini"
+                Text="{Binding Mini.Text}"
                 AutoSize="TextChanges"
                 Placeholder="Mini"/>
 
             <Editor 
-                x:Name="Plus"
+                Text="{Binding Plus.Text}"
                 AutoSize="TextChanges"
                 Placeholder="Plus"/>
 
             <Editor 
-                x:Name="Elite"
+                Text="{Binding Elite.Text}"
                 AutoSize="TextChanges"
                 Placeholder="Elite" />
 
