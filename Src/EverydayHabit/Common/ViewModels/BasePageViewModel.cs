@@ -18,8 +18,6 @@ namespace EverydayHabit.XamarinApp.Common.ViewModels
 
         #region INotifyPropertyChanged
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         protected void SetProperty<TData>(ref TData storage, TData value, [CallerMemberName] string propertyName = "")
         {
             if (storage.Equals(value))

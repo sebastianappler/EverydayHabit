@@ -15,7 +15,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <converters:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -45,7 +45,7 @@
                     </ListView.ItemTemplate>
 
                     <ListView.Behaviors>
-                        <behaviours:EventToCommandBehavior EventName="ItemSelected" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource SelectedItemConverter}" />
+                        <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
                     </ListView.Behaviors>
                 </ListView>
             </StackLayout>

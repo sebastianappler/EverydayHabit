@@ -4,22 +4,22 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Habits.Commands.CreateHabit
+namespace EverydayHabit.Application.HabitDifficulties.Commands.UpsertHabitDifficulty
 {
-    public class HabitDifficultyUpdated : INotification
+    public class HabitDifficultyCreated : INotification
     {
         public int HabitDifficultyId { get; set; }
 
-        public class HabitDifficultyUpdatedHandler : INotificationHandler<HabitDifficultyUpdated>
+        public class HabitDifficultyCreatedHandler : INotificationHandler<HabitDifficultyCreated>
         {
             private readonly INotificationService _notification;
 
-            public HabitDifficultyUpdatedHandler(INotificationService notification)
+            public HabitDifficultyCreatedHandler(INotificationService notification)
             {
                 _notification = notification;
             }
 
-            public async Task Handle(HabitDifficultyUpdated notification, CancellationToken cancellationToken)
+            public async Task Handle(HabitDifficultyCreated notification, CancellationToken cancellationToken)
             {
                 await _notification.SendAsync(new MessageDto());
             }

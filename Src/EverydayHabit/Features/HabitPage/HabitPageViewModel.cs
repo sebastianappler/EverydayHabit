@@ -3,6 +3,7 @@ using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Entities;
+using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitVariationPage;
 using EverydayHabit.XamarinApp.Features.VariationPage;
@@ -65,7 +66,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
         {
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
             {
-                BindingContext = new HabitVariationPageViewModel
+                BindingContext = new HabitVariationPageViewModel()
                 {
                     HabitVariation = new HabitVariationDetailVm
                     {
@@ -79,13 +80,27 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
         {
             if (item is HabitVariationDto selectedHabitVariation)
             {
-                var vm = await Mediator.Send(new GetHabitVariationDetailQuery { Id = selectedHabitVariation.Id }, CancellationToken.None);
+                var habitVariation = await Mediator.Send(new GetHabitVariationDetailQuery { Id = selectedHabitVariation.Id }, CancellationToken.None);
 
+                var mini = new HabitDifficultyDto();
+                var plus = new HabitDifficultyDto();
+                var elite = new HabitDifficultyDto();
+
+                if (habitVariation.DifficultiesList.Any())
+                {
+                    mini = habitVariation.DifficultiesList.SingleOrDefault(d => d.DifficultyLevel == HabitDifficultyLevel.Mini);
+                    plus = habitVariation.DifficultiesList.SingleOrDefault(d => d.DifficultyLevel == HabitDifficultyLevel.Plus);
+                    elite = habitVariation.DifficultiesList.SingleOrDefault(d => d.DifficultyLevel == HabitDifficultyLevel.Elite);
+                }
+               
                 await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
                 {
-                    BindingContext = new HabitVariationPageViewModel
+                    BindingContext = new HabitVariationPageViewModel()
                     {
-                        HabitVariation = vm as HabitVariationDetailVm
+                        HabitVariation = habitVariation,
+                        Mini = mini,
+                        Plus = plus,
+                        Elite = elite
                     }
                 });
             }

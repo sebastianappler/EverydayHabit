@@ -9,7 +9,7 @@ namespace EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariatio
 {
     public class UpsertHabitVariationCommand : IRequest<int>
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public int HabitId { get; set; }
         public string Name { get; set; }
 
@@ -35,9 +35,9 @@ namespace EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariatio
 
                 HabitVariation entity;
 
-                if (request.Id.HasValue)
+                if (request.Id != 0)
                 {
-                    entity = await _context.HabitVariations.FindAsync(request.Id.Value);
+                    entity = await _context.HabitVariations.FindAsync(request.Id);
                 }
                 else
                 {

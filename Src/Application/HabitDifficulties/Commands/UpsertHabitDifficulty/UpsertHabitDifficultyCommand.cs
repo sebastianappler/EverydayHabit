@@ -6,15 +6,16 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EverydayHabit.Application.HabitDifficulties.Commands.CreateHabitDifficulty
+namespace EverydayHabit.Application.HabitDifficulties.Commands.UpsertHabitDifficulty
 {
-    public class CreateHabitDifficultyCommand : IRequest<int>
+    public class UpsertHabitDifficultyCommand : IRequest<int>
     {
+        public int Id { get; set; }
         public int HabitVariationId { get; set; }
         public string Description { get; set; }
         public HabitDifficultyLevel DifficultyLevel { get; set; }
 
-        public class Handler : IRequestHandler<CreateHabitDifficultyCommand, int>
+        public class Handler : IRequestHandler<UpsertHabitDifficultyCommand, int>
         {
             private readonly IEverydayHabitDbContext _context;
             private readonly IMediator _mediator;
@@ -25,7 +26,7 @@ namespace EverydayHabit.Application.HabitDifficulties.Commands.CreateHabitDiffic
                 _mediator = mediator;
             }
 
-            public async Task<int> Handle(CreateHabitDifficultyCommand request, CancellationToken cancellationToken)
+            public async Task<int> Handle(UpsertHabitDifficultyCommand request, CancellationToken cancellationToken)
             {
                 var habitVariation = await _context.HabitVariations.FindAsync(request.HabitVariationId);
 
@@ -34,17 +35,25 @@ namespace EverydayHabit.Application.HabitDifficulties.Commands.CreateHabitDiffic
                     throw new NotFoundException(nameof(HabitVariation), request.HabitVariationId);
                 }
 
-                var entity = new HabitDifficulty
-                {
-                    HabitVariationId = request.HabitVariationId,
-                    Description = request.Description,
-                    DifficultyLevel = request.DifficultyLevel
-                };
+                HabitDifficulty entity;
 
-                _context.HabitDifficulties.Add(entity);
+                if (request.Id != 0)
+                {
+                    entity = await _context.HabitDifficulties.FindAsync(request.Id);
+                    await _mediator.Publish(new HabitDifficultyUpdated { HabitDifficultyId = entity.HabitDifficultyId }, cancellationToken);
+                }
+                else
+                {
+                    entity = new HabitDifficulty();
+                    _context.HabitDifficulties.Add(entity);
+                    await _mediator.Publish(new HabitDifficultyCreated { HabitDifficultyId = entity.HabitDifficultyId }, cancellationToken);
+                }
+
+                entity.HabitVariationId = request.HabitVariationId;
+                entity.Description = request.Description;
+                entity.DifficultyLevel = request.DifficultyLevel;
 
                 await _context.SaveChangesAsync(cancellationToken);
-                await _mediator.Publish(new HabitDifficultyCreated { HabitDifficultyId = entity.HabitDifficultyId }, cancellationToken);
 
                 return entity.HabitDifficultyId;
             }
