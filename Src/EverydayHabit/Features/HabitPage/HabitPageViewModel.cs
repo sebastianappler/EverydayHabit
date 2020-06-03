@@ -6,7 +6,6 @@ using EverydayHabit.Domain.Entities;
 using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitVariationPage;
-using EverydayHabit.XamarinApp.Features.VariationPage;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

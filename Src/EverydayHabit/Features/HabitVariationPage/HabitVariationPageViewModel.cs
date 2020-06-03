@@ -1,14 +1,19 @@
 ﻿using EverydayHabit.Application.HabitDifficulties.Commands.UpsertHabitDifficulty;
+using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
+using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using EverydayHabit.Application.HabitVariations.Commands.DeleteHabitVariation;
 using EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariation;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using EverydayHabit.XamarinApp.Features.HabitPage;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace EverydayHabit.XamarinApp.Features.VariationPage
+namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
 {
     public class HabitVariationPageViewModel : BasePageViewModel
     {
@@ -33,12 +38,21 @@ namespace EverydayHabit.XamarinApp.Features.VariationPage
                 await CreateHabitDifficulties(habitVariationId);
             }
 
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
+            await NavigateToHabitPage();
+        }
+
+        public async Task OnDeleteClickedCommand()
+        {
+            if (HabitVariation != null)
+            {
+                await Mediator.Send(new DeleteHabitVariationCommand { Id = HabitVariation.Id });
+
+                await NavigateToHabitPage();
+            }
         }
 
         private async Task CreateHabitDifficulties(int habitVariationId)
         {
-           
             var miniDifficultyCommand = new UpsertHabitDifficultyCommand
             {
                 Id = Mini.Id,
@@ -70,11 +84,17 @@ namespace EverydayHabit.XamarinApp.Features.VariationPage
             await Mediator.Send(eliteDifficultyCommand);
         }
 
-        public async Task OnDeleteClickedCommand()
+        private async Task NavigateToHabitPage()
         {
-            if (HabitVariation != null)
+            var vm = await Mediator.Send(new GetHabitDetailQuery { Id = HabitVariation.HabitId }, CancellationToken.None);
+
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitPageView
             {
-            }
+                BindingContext = new HabitPageViewModel
+                {
+                    HabitItem = vm as HabitDetailVm
+                }
+            });
         }
 
         private HabitDifficultyDto _mini = new HabitDifficultyDto();
