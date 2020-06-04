@@ -23,6 +23,7 @@
         <ListView ItemsSource="{Binding HabitList}"
                 RowHeight="56"
                 SeparatorVisibility="None"
+                  ItemTapped="ListView_ItemTapped"
                 >
             <ListView.ItemTemplate>
                 <DataTemplate>

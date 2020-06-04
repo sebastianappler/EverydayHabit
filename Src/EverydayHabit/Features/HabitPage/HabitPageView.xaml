@@ -35,9 +35,11 @@
                      Padding="3"
                      BackgroundColor="White">
                 <Label Text="Variations" ></Label>
-                <ListView ItemsSource="{Binding HabitItem.VariationsList}"
-                RowHeight="56"
-                SeparatorVisibility="None" >
+                <ListView 
+                    ItemsSource="{Binding HabitItem.VariationsList}"
+                    RowHeight="56"
+                    SeparatorVisibility="None" 
+                    ItemTapped="ListView_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <views:HabitCell />

@@ -10,5 +10,11 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
         {
             InitializeComponent();
         }
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null) return;
+
+            if (sender is ListView lv) lv.SelectedItem = null;
+        }
     }
 }
