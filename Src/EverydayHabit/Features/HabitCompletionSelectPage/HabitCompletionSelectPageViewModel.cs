@@ -6,7 +6,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
     public class HabitCompletionSelectPageViewModel : BasePageViewModel
     {
         public DateTime DateSelected { get; set; }
-        public string FormattedDate => DateSelected.AddDays(5).ToString("%d MMMM");
+        public string FormattedDate => DateSelected.ToString("%d MMMM");
 
 
         public HabitCompletionSelectPageViewModel()
