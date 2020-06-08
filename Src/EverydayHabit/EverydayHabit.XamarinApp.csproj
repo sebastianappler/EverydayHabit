@@ -42,6 +42,9 @@
     <Compile Update="Features\HabitCalendar\HabitCalendarView.xaml.cs">
       <DependentUpon>HabitCalendarView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Features\HabitCompletionSelectPage\HabitCompletionSelectPageView.xaml.cs">
+      <DependentUpon>HabitCompletionSelectPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Features\HabitPage\HabitPageView.xaml.cs">
       <DependentUpon>HabitPageView.xaml</DependentUpon>
     </Compile>

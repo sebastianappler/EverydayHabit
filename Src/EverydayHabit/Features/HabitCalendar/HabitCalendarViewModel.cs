@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using EverydayHabit.XamarinApp.Features.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage;
 
 namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 {
@@ -32,9 +33,18 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             };
         }
 
-        private static async Task DayTapped(DateTime date)
+        private static async Task DayTapped(DateTime dateSelected)
         {
-            var message = $"Received tap event from date: {date}";
+            var message = $"Received tap event from date: {dateSelected}";
+
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
+            {
+               BindingContext = new HabitCompletionSelectPageViewModel
+               {
+                   DateSelected = dateSelected
+               }
+            });
+
             Console.WriteLine(message);
         }
 
