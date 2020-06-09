@@ -11,8 +11,8 @@
         <local:HabitCompletionSelectPageViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
-        <Label Text="{Binding FormattedDate}" FontSize="24"/>
+    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+        <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15"/>
 
         <Label Text="Variation"></Label>
         <ListView 
@@ -41,7 +41,6 @@
             SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--<TextCell Text="{Binding Description}"></TextCell>-->
                     <ViewCell>
                         <RadioButton Text="{Binding Description}" GroupName="HabitDifficulties"></RadioButton>
                     </ViewCell>

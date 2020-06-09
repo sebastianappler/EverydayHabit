@@ -13,7 +13,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
     {
         public HabitDetailVm HabitSelected { get; set; }
         public DateTime DateSelected { get; set; }
-        public string FormattedDate => DateSelected.ToString("%d MMMM");
+        public string CompletionTitle => $"{DateSelected.ToString("%d MMMM")} - {HabitSelected?.Name}";
         public ICommand OnVariationItemSelected => new Command(async (item) => await OnVariationItemSelectedCommand(item));
 
         private async Task OnVariationItemSelectedCommand(object item)
