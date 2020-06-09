@@ -1,17 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage"
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage" xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours"
              x:Class="EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage.HabitCompletionSelectPageView"
              Title="{Binding DateSelected.Date}"
+             x:Name="HabitCompletionSelectPage"
              Visual="Material">
 
     <ContentPage.BindingContext>
         <local:HabitCompletionSelectPageViewModel />
     </ContentPage.BindingContext>
 
-    
-    <StackLayout Margin="20" VerticalOptions="Center">
-        <Label Text="{Binding FormattedDate}"></Label> 
+    <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
+        <Label Text="{Binding FormattedDate}" FontSize="24"/>
+
+        <Label Text="Variation"></Label>
+        <ListView 
+            ItemsSource="{Binding HabitSelected.VariationsList}"
+            RowHeight="56"
+            SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <RadioButton Text="{Binding Name}" 
+                                     GroupName="HabitVariations" 
+                                     Command="{Binding BindingContext.OnVariationItemSelected, 
+                                                Source={x:Reference HabitCompletionSelectPage}}"
+                                     CommandParameter="{Binding}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Text="Difficulty"></Label>
+
+        <ListView 
+            ItemsSource="{Binding CurrentDifficultyList}"
+            RowHeight="56"
+            HeightRequest="200"
+            SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<TextCell Text="{Binding Description}"></TextCell>-->
+                    <ViewCell>
+                        <RadioButton Text="{Binding Description}" GroupName="HabitDifficulties"></RadioButton>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>

@@ -7,10 +7,12 @@ using Xamarin.Forms;
 using EverydayHabit.XamarinApp.Features.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage;
+using MediatR;
+using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 
 namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 {
-    public class HabitCalendarViewModel : BasePageViewModel, INotifyPropertyChanged
+    public class HabitCalendarViewModel : BasePageViewModel
     {
         public ICommand TodayCommand => new Command(() => { Year = DateTime.Today.Year; Month = DateTime.Today.Month; });
         public ICommand EventSelectedCommand => new Command(async (item) => await ExecuteEventSelectedCommand(item));
@@ -33,15 +35,17 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             };
         }
 
-        private static async Task DayTapped(DateTime dateSelected)
+        private async Task DayTapped(DateTime dateSelected)
         {
             var message = $"Received tap event from date: {dateSelected}";
 
+            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = 1 });
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
             {
                BindingContext = new HabitCompletionSelectPageViewModel
                {
-                   DateSelected = dateSelected
+                   DateSelected = dateSelected,
+                   HabitSelected = habit
                }
             });
 
