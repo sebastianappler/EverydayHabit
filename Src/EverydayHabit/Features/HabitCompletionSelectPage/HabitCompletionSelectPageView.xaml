@@ -42,10 +42,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <RadioButton Text="{Binding Description}" GroupName="HabitDifficulties"></RadioButton>
+                        <RadioButton Text="{Binding Description}" 
+                                     GroupName="HabitDifficulties"
+                                     Command="{Binding BindingContext.OnDifficultyItemSelected, 
+                                                Source={x:Reference HabitCompletionSelectPage}}"
+                                     CommandParameter="{Binding}"/>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button Text="Save" Command="{Binding OnSaveClicked}" />
     </StackLayout>
 </ContentPage>

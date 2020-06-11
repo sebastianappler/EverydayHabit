@@ -30,7 +30,7 @@ namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
 
             result.ShouldBeOfType<HabitCompletionsListVm>();
 
-            result.Habits.Count.ShouldBe(2);
+            result.HabitCompletionsList.Count.ShouldBe(2);
         }
     }
 }

@@ -9,6 +9,8 @@ using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage;
 using MediatR;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using System.Linq;
+using EverydayHabit.Domain.Enums;
 
 namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 {
@@ -20,21 +22,42 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 
         public HabitCalendarViewModel() : base()
         {
-            Events = new EventCollection
-            {
-                [DateTime.Now.AddDays(-3)] = new DayEventCollection<EventModel>(Color.Green, Color.Green) { new EventModel
+            Events = new EventCollection();
+
+            Device.BeginInvokeOnMainThread(async () =>
+            { 
+                var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery());
+
+                foreach (var habitCompletion in habitCompletionVm.HabitCompletionsList)
                 {
-                    Name = $"Test event 1",
-                    Description = $"This is test event 1's description!"
-                }},
-                [DateTime.Now.AddDays(-5)] = new DayEventCollection<EventModel>(Color.Red, Color.Red) { new EventModel
-                {
-                    Name = $"Test event 2",
-                    Description = $"This is test event 2's description!"
-                }},
-            };
+                    var habitCompletionColor = GetHabitCompletionColor(habitCompletion.HabitDifficultyLevel);
+                    Events[habitCompletion.Date] = new DayEventCollection<EventModel>(habitCompletionColor, habitCompletionColor)
+                    {
+                        new EventModel
+                        {
+                            Name = habitCompletion.CompletedHabit.Name,
+                            Description = habitCompletion.HabitDifficultyLevel.ToString()
+                        }
+                    };
+                }
+            });
         }
 
+        private Color GetHabitCompletionColor(HabitDifficultyLevel habitDifficultyLevel)
+        {
+            switch (habitDifficultyLevel)
+            {
+                case HabitDifficultyLevel.Mini:
+                    return Color.Green;
+
+                case HabitDifficultyLevel.Plus:
+                    return Color.Orange;
+
+                case HabitDifficultyLevel.Elite:
+                    return Color.Red;
+            }
+            return Color.Black;
+        }
         private async Task DayTapped(DateTime dateSelected)
         {
             var message = $"Received tap event from date: {dateSelected}";

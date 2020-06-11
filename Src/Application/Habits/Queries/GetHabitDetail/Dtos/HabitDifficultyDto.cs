@@ -10,6 +10,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos
         public int Id { get; set; }
         public string Description { get; set; }
         public HabitDifficultyLevel DifficultyLevel { get; set; }
+        public HabitVariation HabitVariation { get; set; }
 
         public void Mapping(Profile profile)
         {

@@ -29,7 +29,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
 
                 var vm = new HabitCompletionsListVm
                 {
-                    Habits = habitCompletions
+                    HabitCompletionsList = habitCompletions
                 };
 
                 return vm;

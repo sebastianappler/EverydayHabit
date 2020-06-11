@@ -22,7 +22,7 @@ namespace Application.IntegrationTests.Habits.Commands.CreateHabit
 
             // Act
             var habitCompletionId = await sut.Handle(new CreateHabitCompletionCommand { 
-                CompletedHabitId = 1,
+                HabitId = 1,
                 Date = dateTime,
                 HabitDifficultyLevel = HabitDifficultyLevel.Plus
             }, CancellationToken.None);

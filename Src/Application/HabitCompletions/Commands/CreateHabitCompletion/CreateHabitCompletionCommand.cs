@@ -12,7 +12,7 @@ namespace EverydayHabit.Application.HabitCompletions.Commands.CreateHabitComplet
     public class CreateHabitCompletionCommand : IRequest<int>
     {
         public DateTime Date { get; set; }
-        public int CompletedHabitId { get; set; }
+        public int HabitId { get; set; }
         public HabitDifficultyLevel HabitDifficultyLevel { get; set; }
 
         public class Handler : IRequestHandler<CreateHabitCompletionCommand, int>
@@ -28,11 +28,11 @@ namespace EverydayHabit.Application.HabitCompletions.Commands.CreateHabitComplet
 
             public async Task<int> Handle(CreateHabitCompletionCommand request, CancellationToken cancellationToken)
             {
-                var habitCompleted = await _context.Habits.FindAsync(request.CompletedHabitId);
+                var habitCompleted = await _context.Habits.FindAsync(request.HabitId);
 
                 if (habitCompleted == null)
                 {
-                    throw new NotFoundException(nameof(Habit), request.CompletedHabitId);
+                    throw new NotFoundException(nameof(Habit), request.HabitId);
                 }
 
                 var entity = new HabitCompletion
