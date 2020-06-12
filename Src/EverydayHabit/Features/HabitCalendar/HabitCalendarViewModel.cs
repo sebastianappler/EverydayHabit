@@ -1,15 +1,12 @@
 ﻿using Xamarin.Plugin.Calendar.Models;
 using System;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using EverydayHabit.XamarinApp.Features.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage;
-using MediatR;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
-using System.Linq;
 using EverydayHabit.Domain.Enums;
 
 namespace EverydayHabit.XamarinApp.Features.HabitCalendar
