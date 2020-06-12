@@ -15,11 +15,11 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
         public HabitDetailVm HabitSelected { get; set; }
         public DateTime DateSelected { get; set; }
         public string CompletionTitle => $"{DateSelected.ToString("%d MMMM")} - {HabitSelected?.Name}";
-        public ICommand OnVariationItemSelected => new Command(async (item) => await OnVariationItemSelectedCommand(item));
-        public ICommand OnDifficultyItemSelected => new Command(async (item) => await OnDifficultyItemSelectedCommand(item));
+        public ICommand OnVariationItemSelected => new Command((item) => OnVariationItemSelectedCommand(item));
+        public ICommand OnDifficultyItemSelected => new Command((item) => OnDifficultyItemSelectedCommand(item));
         public ICommand OnSaveClicked => new Command(async () => await OnSaveClickedCommand());
 
-        private async Task OnVariationItemSelectedCommand(object item)
+        private void OnVariationItemSelectedCommand(object item)
         {
             if (item is HabitVariationDto selectedHabitVariation)
             {
@@ -36,7 +36,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
             }
         }
         
-        private async Task OnDifficultyItemSelectedCommand(object item)
+        private void OnDifficultyItemSelectedCommand(object item)
         {
             if (item is HabitDifficultyDto selectedDifficulty)
             {
