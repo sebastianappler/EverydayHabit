@@ -26,7 +26,7 @@ namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
         {
             var sut = new GetHabitCompletionsListQuery.Handler(_context, _mapper);
 
-            var result = await sut.Handle(new GetHabitCompletionsListQuery(), CancellationToken.None);
+            var result = await sut.Handle(new GetHabitCompletionsListQuery { HabitId = 1 }, CancellationToken.None);
 
             result.ShouldBeOfType<HabitCompletionsListVm>();
 

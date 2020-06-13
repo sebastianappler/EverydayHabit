@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using EverydayHabit.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
 {
     public class GetHabitCompletionsListQuery : IRequest<HabitCompletionsListVm>
     {
+        public int HabitId { get; set; }
         public class Handler : IRequestHandler<GetHabitCompletionsListQuery, HabitCompletionsListVm>
         {
             private readonly IEverydayHabitDbContext _context;
@@ -24,6 +26,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
             public async Task<HabitCompletionsListVm> Handle(GetHabitCompletionsListQuery request, CancellationToken cancellationToken)
             {
                 var habitCompletions = await _context.HabitCompletions
+                    .Where(hc => hc.CompletedHabit.HabitId == request.HabitId)
                     .ProjectTo<HabitCompletionsListDto>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
 

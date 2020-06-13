@@ -2,7 +2,9 @@
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using EverydayHabit.XamarinApp.Features.HabitCalendar;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -56,7 +58,13 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
                 });
            }
 
-           Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new HabitCalendar.HabitCalendarView());
+           Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new HabitCalendarView 
+           { 
+               BindingContext = new HabitCalendarViewModel
+               {
+                   SelectedHabit = new KeyValuePair<int, string>(HabitSelected.Id, HabitSelected.Name)
+               }
+           });
         }
 
         private DateTime _selectedDate = DateTime.MinValue;

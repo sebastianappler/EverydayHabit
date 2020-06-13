@@ -8,6 +8,12 @@ using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 using EverydayHabit.Domain.Enums;
+using System.Collections.Generic;
+using MediatR;
+using System.Linq;
+using System.Collections.ObjectModel;
+using System.Threading;
+using System.ComponentModel;
 
 namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 {
@@ -16,28 +22,55 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
         public ICommand TodayCommand => new Command(() => { Year = DateTime.Today.Year; Month = DateTime.Today.Month; });
         public ICommand EventSelectedCommand => new Command(async (item) => await ExecuteEventSelectedCommand(item));
         public ICommand DayTappedCommand => new Command<DateTime>(async (date) => await DayTapped(date));
+        public ICommand SelectedHabitChangedCommand => new Command(async (item) => await SelectedHabitChanged(item));
 
         public HabitCalendarViewModel() : base()
         {
             Events = new EventCollection();
 
             Device.BeginInvokeOnMainThread(async () =>
-            { 
-                var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery());
+            {
+                var habitsListVm = await Mediator.Send(new GetHabitsListQuery());
 
-                foreach (var habitCompletion in habitCompletionVm.HabitCompletionsList)
+                if (!habitsListVm.Habits.Any()) return;
+
+                HabitList = new ObservableCollection<HabitListDto>(habitsListVm.Habits);
+
+                foreach(var habit in habitsListVm.Habits)
                 {
-                    var habitCompletionColor = GetHabitCompletionColor(habitCompletion.HabitDifficultyLevel);
-                    Events[habitCompletion.Date] = new DayEventCollection<EventModel>(habitCompletionColor, habitCompletionColor)
-                    {
-                        new EventModel
-                        {
-                            Name = habitCompletion.CompletedHabit.Name,
-                            Description = habitCompletion.HabitDifficultyLevel.ToString()
-                        }
-                    };
+                    PickerHabitList.Add(new KeyValuePair<int, string>(habit.Id, habit.Name));
                 }
+
+                var selectedHabit = habitsListVm.Habits.First();
+
+                if(SelectedHabit.Key == 0)
+                {
+                    SelectedHabit = new KeyValuePair<int, string>(selectedHabit.Id, selectedHabit.Name);
+                }
+
+                await UpdateCalendarEvents(selectedHabit.Id);
             });
+        }
+
+        private async Task UpdateCalendarEvents(int selectedHabitId)
+        {
+            var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery { HabitId = selectedHabitId });
+            
+            Events.Clear();
+
+            foreach (var habitCompletion in habitCompletionVm.HabitCompletionsList)
+            {
+                var habitCompletionColor = GetHabitCompletionColor(habitCompletion.HabitDifficultyLevel);
+
+                Events.Add(habitCompletion.Date, new DayEventCollection<EventModel>(habitCompletionColor, habitCompletionColor)
+                {
+                    new EventModel
+                    {
+                        Name = habitCompletion.CompletedHabit.Name,
+                        Description = habitCompletion.HabitDifficultyLevel.ToString()
+                    }
+                });
+            }
         }
 
         private Color GetHabitCompletionColor(HabitDifficultyLevel habitDifficultyLevel)
@@ -55,11 +88,12 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             }
             return Color.Black;
         }
+
         private async Task DayTapped(DateTime dateSelected)
         {
             var message = $"Received tap event from date: {dateSelected}";
 
-            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = 1 });
+            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
             {
                BindingContext = new HabitCompletionSelectPageViewModel
@@ -72,7 +106,36 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             Console.WriteLine(message);
         }
 
+        private async Task SelectedHabitChanged(object item)
+        {
+            if (item is KeyValuePair<int, string> selectedHabit)
+            {
+                await UpdateCalendarEvents(selectedHabit.Key);
+            }
+        }
         public EventCollection Events { get; }
+
+        private ObservableCollection<KeyValuePair<int, string>> _pickerHabitList = new ObservableCollection<KeyValuePair<int, string>>();
+        public ObservableCollection<KeyValuePair<int, string>> PickerHabitList
+        {
+            get => _pickerHabitList;
+            set => SetProperty(ref _pickerHabitList, value);
+        }
+        
+        private ObservableCollection<HabitListDto> _habitList = new ObservableCollection<HabitListDto>();
+        public ObservableCollection<HabitListDto> HabitList
+        {
+            get => _habitList;
+            set => SetProperty(ref _habitList, value);
+        }
+
+        private KeyValuePair<int, string> _selectedHabit = new KeyValuePair<int, string>();
+        public KeyValuePair<int, string> SelectedHabit
+        {
+            get => _selectedHabit;
+            set => SetProperty(ref _selectedHabit, value);
+        }
+
 
         private int _month = DateTime.Today.Month;
         public int Month
