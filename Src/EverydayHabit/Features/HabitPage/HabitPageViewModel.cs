@@ -27,26 +27,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
       
         public async Task OnSaveClickedCommand()
         {
-            if (HabitItem != null)
-            {
-                if (HabitItem.Id != 0)
-                {
-                    await Mediator.Send(new UpdateHabitCommand
-                    {
-                        Id = HabitItem.Id,
-                        Name = HabitItem.Name,
-                        Description = HabitItem.Description,
-                    });
-                }
-                else
-                {
-                    await Mediator.Send(new CreateHabitCommand
-                    {
-                        Name = HabitItem.Name,
-                        Description = HabitItem.Description,
-                    });
-                }
-            }
+            await UpsertHabitAsync();
 
             Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
         }
@@ -62,6 +43,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
 
         public async Task OnAddVariationClickedCommand()
         {
+            await UpsertHabitAsync();
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitVariationPageView
             {
                 BindingContext = new HabitVariationPageViewModel
@@ -72,6 +54,32 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
                     }
                 }
             });
+        }
+
+        private async Task UpsertHabitAsync()
+        {
+            if (HabitItem != null)
+            {
+                if (HabitItem.Id != 0)
+                {
+                    await Mediator.Send(new UpdateHabitCommand
+                    {
+                        Id = HabitItem.Id,
+                        Name = HabitItem.Name,
+                        Description = HabitItem.Description,
+                    });
+                }
+                else
+                {
+                    var habitId = await Mediator.Send(new CreateHabitCommand
+                    {
+                        Name = HabitItem.Name,
+                        Description = HabitItem.Description,
+                    });
+
+                    HabitItem.Id = habitId;
+                }
+            }
         }
 
         private async Task OnVariationListItemSelectedCommand(object item)
