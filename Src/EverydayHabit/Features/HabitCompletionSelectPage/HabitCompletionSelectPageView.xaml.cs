@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using EverydayHabit.XamarinApp.Features.HabitCalendar;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage

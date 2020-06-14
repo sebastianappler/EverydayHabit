@@ -52,7 +52,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             });
         }
 
-        private async Task UpdateCalendarEvents(int selectedHabitId)
+        public async Task UpdateCalendarEvents(int selectedHabitId)
         {
             var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery { HabitId = selectedHabitId });
             
@@ -99,7 +99,9 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
                BindingContext = new HabitCompletionSelectPageViewModel
                {
                    DateSelected = dateSelected,
-                   HabitSelected = habit
+                   HabitSelected = habit,
+                   Parent = this,
+
                }
             });
 

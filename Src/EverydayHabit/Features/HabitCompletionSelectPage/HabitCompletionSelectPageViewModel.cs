@@ -4,7 +4,6 @@ using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCalendar;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -56,14 +55,13 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
                     Date = DateSelected,
                     HabitDifficultyLevel = SelectedDifficulty.DifficultyLevel
                 });
-           }
 
-           Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new HabitCalendarView 
-           { 
-               BindingContext = new HabitCalendarViewModel
-               {
-                   SelectedHabit = new KeyValuePair<int, string>(HabitSelected.Id, HabitSelected.Name)
-               }
+                await Parent.UpdateCalendarEvents(HabitSelected.Id);
+           }
+           
+           Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new HabitCalendarView
+           {
+               BindingContext = Parent
            });
         }
 
@@ -88,5 +86,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
             get => _currentDifficultyList;
             set => SetProperty(ref _currentDifficultyList, value);
         }
+        public HabitCalendarViewModel Parent { get; internal set; }
     }
 }
