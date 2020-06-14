@@ -62,14 +62,14 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             {
                 var habitCompletionColor = GetHabitCompletionColor(habitCompletion.HabitDifficultyLevel);
 
-                Events.Add(habitCompletion.Date, new DayEventCollection<EventModel>(habitCompletionColor, habitCompletionColor)
+                Events[habitCompletion.Date] = new DayEventCollection<EventModel>(habitCompletionColor, habitCompletionColor)
                 {
                     new EventModel
                     {
                         Name = habitCompletion.CompletedHabit.Name,
                         Description = habitCompletion.HabitDifficultyLevel.ToString()
                     }
-                });
+                };
             }
         }
 
@@ -91,21 +91,20 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 
         private async Task DayTapped(DateTime dateSelected)
         {
-            var message = $"Received tap event from date: {dateSelected}";
-
-            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
+            if(dateSelected <= DateTime.Now)
             {
-               BindingContext = new HabitCompletionSelectPageViewModel
-               {
-                   DateSelected = dateSelected,
-                   HabitSelected = habit,
-                   Parent = this,
+                var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
+                {
+                    BindingContext = new HabitCompletionSelectPageViewModel
+                    {
+                        DateSelected = dateSelected,
+                        HabitSelected = habit,
+                        Parent = this,
 
-               }
-            });
-
-            Console.WriteLine(message);
+                    }
+                });
+            }
         }
 
         private async Task SelectedHabitChanged(object item)

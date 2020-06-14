@@ -37,6 +37,8 @@
             VerticalOptions="FillAndExpand"
             Year="{Binding Year}"
             DayTappedCommand="{Binding DayTappedCommand}"
+            SelectedDayBackgroundColor="{DynamicResource TransparentColor}"
+            TodayOutlineColor="{DynamicResource SecondaryColor}"
             >
             <plugin:Calendar.HeaderSectionTemplate>
                 <local:CalendarHeader />
