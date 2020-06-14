@@ -5,6 +5,7 @@ using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCalendar;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -47,8 +48,8 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
 
         public async Task OnSaveClickedCommand()
         {
-           if(SelectedDifficulty.Id > 0)
-           {
+            if(SelectedDifficulty.Id > 0)
+            {
                 await Mediator.Send(new CreateHabitCompletionCommand
                 {
                     HabitId = HabitSelected.Id,
@@ -57,12 +58,13 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
                 });
 
                 await Parent.UpdateCalendarEvents(HabitSelected.Id);
-           }
-           
-           Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new HabitCalendarView
-           {
-               BindingContext = Parent
-           });
+            }
+
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitCalendarView
+            {
+                BindingContext = Parent
+            });
         }
 
         private DateTime _selectedDate = DateTime.MinValue;

@@ -88,6 +88,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
         {
             var vm = await Mediator.Send(new GetHabitDetailQuery { Id = HabitVariation.HabitId }, CancellationToken.None);
 
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync(false);
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitPageView
             {
                 BindingContext = new HabitPageViewModel
@@ -95,6 +96,8 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
                     HabitItem = vm as HabitDetailVm
                 }
             });
+
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
         }
 
         private HabitDifficultyDto _mini = new HabitDifficultyDto();

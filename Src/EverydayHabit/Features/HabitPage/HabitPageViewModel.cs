@@ -24,7 +24,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
         public ICommand OnVariationListItemSelected => new Command(async (item) => await OnVariationListItemSelectedCommand(item));
 
         public HabitDetailVm HabitItem { get; set; }
-
       
         public async Task OnSaveClickedCommand()
         {
@@ -63,9 +62,9 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
 
         public async Task OnAddVariationClickedCommand()
         {
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitVariationPageView
             {
-                BindingContext = new HabitVariationPageViewModel()
+                BindingContext = new HabitVariationPageViewModel
                 {
                     HabitVariation = new HabitVariationDetailVm
                     {
