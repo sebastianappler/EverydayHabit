@@ -61,10 +61,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
             }
 
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitCalendarView
-            {
-                BindingContext = Parent
-            });
         }
 
         private DateTime _selectedDate = DateTime.MinValue;
