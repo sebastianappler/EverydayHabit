@@ -21,5 +21,6 @@
     <Color x:Key="SecondaryTextColor">#535B65</Color>  <!-- Charcoal (lighter)-->
     <Color x:Key="TertiaryTextColor">#3E454F</Color> <!-- Charcoal -->
     <Color x:Key="TransparentColor">Transparent</Color>
+    <Color x:Key="WhiteColor">#FFFFFF</Color>
 
 </ResourceDictionary>

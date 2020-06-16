@@ -13,20 +13,20 @@
     <ContentPage.BindingContext>
         <local:HabitCalendarViewModel />
     </ContentPage.BindingContext>
-
-    <StackLayout 
+    <AbsoluteLayout>
+        <StackLayout 
         Padding="10,0">
-        <Picker Title="Selected habit" 
+            <Picker Title="Selected habit" 
                 ItemsSource="{Binding PickerHabitList}" 
                 ItemDisplayBinding="{Binding Value}"
                 SelectedItem="{Binding SelectedHabit}">
 
-            <Picker.Behaviors>
-                <behaviours:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedHabitChangedCommand}" CommandParameter="{Binding SelectedHabit}" />
-            </Picker.Behaviors>
-        </Picker>
+                <Picker.Behaviors>
+                    <behaviours:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedHabitChangedCommand}" CommandParameter="{Binding SelectedHabit}" />
+                </Picker.Behaviors>
+            </Picker>
 
-        <plugin:Calendar
+            <plugin:Calendar
             Padding="10,0"
             Events="{Binding Events}"
             HorizontalOptions="FillAndExpand"
@@ -40,32 +40,33 @@
             SelectedDayBackgroundColor="{DynamicResource TransparentColor}"
             TodayOutlineColor="{DynamicResource SecondaryColor}"
             >
-            <plugin:Calendar.HeaderSectionTemplate>
-                <local:CalendarHeader />
-            </plugin:Calendar.HeaderSectionTemplate>
+                <plugin:Calendar.HeaderSectionTemplate>
+                    <local:CalendarHeader />
+                </plugin:Calendar.HeaderSectionTemplate>
 
-            <plugin:Calendar.EventTemplate>
-                <DataTemplate>
-                    <StackLayout
+                <plugin:Calendar.EventTemplate>
+                    <DataTemplate>
+                        <StackLayout
                         Padding="15,0,0,0"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="Medium"
-                            Text="{Binding Name}" />
-                        <Label
-                            FontSize="Small"
-                            LineBreakMode="WordWrap"
-                            Text="{Binding Description}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </plugin:Calendar.EventTemplate>
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.EventSelectedCommand, Source={x:Reference habitCalendarPage}}" CommandParameter="{Binding .}" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </plugin:Calendar.EventTemplate>
-        </plugin:Calendar>
-
-    </StackLayout>
+                <plugin:Calendar.FooterSectionTemplate>
+                    <DataTemplate>
+                        <local:CalendarFooter />
+                    </DataTemplate>
+                </plugin:Calendar.FooterSectionTemplate>
+            </plugin:Calendar>
+        </StackLayout>
+        
+        <Button 
+            ImageSource="ic_check_white_48dp.xml"
+            TextColor="White"
+            Command="{Binding HabitCompletedTapped}"
+            Style="{StaticResource FabButtonStyle}"
+            />
+    </AbsoluteLayout>
 </ContentPage>

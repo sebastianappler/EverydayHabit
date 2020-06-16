@@ -51,7 +51,7 @@
             <Setter Property="BackgroundColor"
                     Value="{DynamicResource PrimaryColor}" />
             <Setter Property="TextColor"
-                    Value="{DynamicResource SecondaryColor}" />
+                    Value="{DynamicResource WhiteColor}" />
             <Setter Property="HeightRequest"
                     Value="56" />
             <Setter Property="WidthRequest"

@@ -22,6 +22,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
         public ICommand TodayCommand => new Command(() => { Year = DateTime.Today.Year; Month = DateTime.Today.Month; });
         public ICommand EventSelectedCommand => new Command(async (item) => await ExecuteEventSelectedCommand(item));
         public ICommand DayTappedCommand => new Command<DateTime>(async (date) => await DayTapped(date));
+        public ICommand HabitCompletedTapped => new Command(async () => await HabitCompleted());
         public ICommand SelectedHabitChangedCommand => new Command(async (item) => await SelectedHabitChanged(item));
 
         public HabitCalendarViewModel() : base()
@@ -93,18 +94,27 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
         {
             if(dateSelected <= DateTime.Now)
             {
-                var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
-                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
-                {
-                    BindingContext = new HabitCompletionSelectPageViewModel
-                    {
-                        DateSelected = dateSelected,
-                        HabitSelected = habit,
-                        Parent = this,
-
-                    }
-                });
+                await OpenHabitCompletionPage(dateSelected);
             }
+        }
+
+        private async Task HabitCompleted()
+        {
+            await OpenHabitCompletionPage(DateTime.Now);
+        }
+
+        private async Task OpenHabitCompletionPage(DateTime date)
+        {
+            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
+            {
+                BindingContext = new HabitCompletionSelectPageViewModel
+                {
+                    DateSelected = date,
+                    HabitSelected = habit,
+                    Parent = this,
+                }
+            });
         }
 
         private async Task SelectedHabitChanged(object item)
