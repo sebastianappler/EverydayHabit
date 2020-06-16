@@ -29,6 +29,7 @@
             <plugin:Calendar
             Padding="10,0"
             Events="{Binding Events}"
+            Culture="{Binding Culture}"
             HorizontalOptions="FillAndExpand"
             MaximumDate="{Binding MaximumDate}"
             MinimumDate="{Binding MinimumDate}"

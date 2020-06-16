@@ -14,6 +14,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 {
@@ -28,6 +29,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
         public HabitCalendarViewModel() : base()
         {
             Events = new EventCollection();
+            Culture = CultureInfo.CreateSpecificCulture("en-GB");
 
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -126,6 +128,12 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
         }
         public EventCollection Events { get; }
 
+        private CultureInfo _culture = CultureInfo.InvariantCulture;
+        public CultureInfo Culture
+        {
+            get => _culture;
+            set => SetProperty(ref _culture, value);
+        }
         private ObservableCollection<KeyValuePair<int, string>> _pickerHabitList = new ObservableCollection<KeyValuePair<int, string>>();
         public ObservableCollection<KeyValuePair<int, string>> PickerHabitList
         {
