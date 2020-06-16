@@ -1,4 +1,5 @@
 ﻿using EverydayHabit.Application.Common.Interfaces;
+using EverydayHabit.Application.Habits.Commands.UpsertHabit;
 using EverydayHabit.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

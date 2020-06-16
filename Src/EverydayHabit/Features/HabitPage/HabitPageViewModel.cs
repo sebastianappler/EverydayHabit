@@ -1,4 +1,5 @@
 ﻿using Application.Habits.Commands.CreateHabit;
+using EverydayHabit.Application.Habits.Commands.UpsertHabit;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
@@ -71,7 +72,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
                 }
                 else
                 {
-                    var habitId = await Mediator.Send(new CreateHabitCommand
+                    var habitId = await Mediator.Send(new UpsertHabitCommand
                     {
                         Name = HabitItem.Name,
                         Description = HabitItem.Description,

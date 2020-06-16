@@ -1,5 +1,5 @@
 ﻿using Application.Common.Interfaces;
-using Application.Notifications.Models;
+using EverydayHabit.Application.Common.Notifications.Models;
 using System.Threading.Tasks;
 
 namespace EverydayHabit.Infrastructure

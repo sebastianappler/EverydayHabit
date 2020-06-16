@@ -1,4 +1,4 @@
-﻿namespace Application.Notifications.Models
+﻿namespace EverydayHabit.Application.Common.Notifications.Models
 {
     public class MessageDto
     {

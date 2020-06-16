@@ -1,5 +1,5 @@
 ﻿using Application.Common.Interfaces;
-using Application.Notifications.Models;
+using EverydayHabit.Application.Common.Notifications.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
