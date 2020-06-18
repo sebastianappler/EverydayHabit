@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EverydayHabit.Persistence.Migrations
 {
     [DbContext(typeof(EverydayHabitDbContext))]
-    [Migration("20200524121510_InitialMigration")]
+    [Migration("20200618180057_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4");
+                .HasAnnotation("ProductVersion", "3.1.5");
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.Habit", b =>
                 {
@@ -26,6 +26,9 @@ namespace EverydayHabit.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("HabitType")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
@@ -41,18 +44,18 @@ namespace EverydayHabit.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CompletedHabitHabitId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("HabitDifficultyLevel")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("HabitId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("HabitCompletionId");
 
-                    b.HasIndex("CompletedHabitHabitId");
+                    b.HasIndex("HabitId");
 
                     b.ToTable("HabitCompletions");
                 });
@@ -100,9 +103,11 @@ namespace EverydayHabit.Persistence.Migrations
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitCompletion", b =>
                 {
-                    b.HasOne("EverydayHabit.Domain.Entities.Habit", "CompletedHabit")
+                    b.HasOne("EverydayHabit.Domain.Entities.Habit", "Habit")
                         .WithMany()
-                        .HasForeignKey("CompletedHabitHabitId");
+                        .HasForeignKey("HabitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitDifficulty", b =>

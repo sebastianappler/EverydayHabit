@@ -69,7 +69,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
                 {
                     new EventModel
                     {
-                        Name = habitCompletion.CompletedHabit.Name,
+                        Name = habitCompletion.Habit.Name,
                         Description = habitCompletion.HabitDifficultyLevel.ToString()
                     }
                 };

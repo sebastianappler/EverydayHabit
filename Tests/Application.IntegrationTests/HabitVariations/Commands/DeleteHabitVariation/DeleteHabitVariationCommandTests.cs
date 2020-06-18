@@ -1,11 +1,7 @@
 ﻿using Application.IntegrationTests.Common;
 using EverydayHabit.Application.HabitVariations.Commands.DeleteHabitVariation;
-using EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariation;
 using MediatR;
 using Moq;
-using Shouldly;
-using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -15,17 +11,16 @@ namespace Application.IntegrationTests.HabitVariations.Commands.CreateHabitVaria
     public class DeleteHabitVariationCommandTests : CommandTestBase
     {
         [Fact]
-        public async Task Handle_GivenValidIdAndZeroOrders_DeletesCustomer()
+        public async Task ShouldDeleteHabitVariation()
         {
-            var validId = 1;
-
-            var command = new DeleteHabitVariationCommand { Id = validId };
+            var habitVarioationId = 1;
+            var command = new DeleteHabitVariationCommand { Id = habitVarioationId };
 
             var mediatorMock = new Mock<IMediator>();
             var sut = new DeleteHabitVariationCommand.Handler(_context, mediatorMock.Object);
             await sut.Handle(command, CancellationToken.None);
 
-            var habitVariation = await _context.HabitVariations.FindAsync(validId);
+            var habitVariation = await _context.HabitVariations.FindAsync(habitVarioationId);
 
             Assert.Null(habitVariation);
         }

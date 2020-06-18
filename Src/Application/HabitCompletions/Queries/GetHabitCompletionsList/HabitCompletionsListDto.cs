@@ -10,7 +10,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public Habit CompletedHabit { get; set; }
+        public Habit Habit { get; set; }
         public HabitDifficultyLevel HabitDifficultyLevel { get; set; }
 
         public void Mapping(Profile profile)

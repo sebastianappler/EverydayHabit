@@ -28,10 +28,24 @@ namespace Application.IntegrationTests.Common
             habit.Variants.Add(new HabitVariation
             {
                 HabitVariantName = "Running",
+                HabitId = 1,
+                Habit = habit
             });
+
             context.HabitCompletions.AddRange(new[] {
-                new HabitCompletion { HabitCompletionId = 1, Date = DateTime.Now, HabitDifficultyLevel = HabitDifficultyLevel.Plus, CompletedHabit = habit },
-                new HabitCompletion { HabitCompletionId = 2, Date = DateTime.Now.AddDays(-1), HabitDifficultyLevel = HabitDifficultyLevel.Mini,  CompletedHabit = habit },
+                new HabitCompletion { 
+                    HabitCompletionId = 1, 
+                    Date = DateTime.Now, 
+                    HabitDifficultyLevel = HabitDifficultyLevel.Plus, 
+                    Habit = habit,
+                    HabitId = habit.HabitId
+                },
+                new HabitCompletion { 
+                    HabitCompletionId = 2, 
+                    Date = DateTime.Now.AddDays(-1), 
+                    HabitDifficultyLevel = HabitDifficultyLevel.Mini, 
+                    Habit = habit,
+                    HabitId = habit.HabitId},
             });
 
             context.SaveChanges();

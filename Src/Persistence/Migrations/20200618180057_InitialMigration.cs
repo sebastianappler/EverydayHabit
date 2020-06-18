@@ -14,7 +14,8 @@ namespace EverydayHabit.Persistence.Migrations
                     HabitId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    HabitType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,19 +28,19 @@ namespace EverydayHabit.Persistence.Migrations
                 {
                     HabitCompletionId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    HabitId = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
-                    CompletedHabitHabitId = table.Column<int>(nullable: true),
                     HabitDifficultyLevel = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HabitCompletions", x => x.HabitCompletionId);
                     table.ForeignKey(
-                        name: "FK_HabitCompletions_Habits_CompletedHabitHabitId",
-                        column: x => x.CompletedHabitHabitId,
+                        name: "FK_HabitCompletions_Habits_HabitId",
+                        column: x => x.HabitId,
                         principalTable: "Habits",
                         principalColumn: "HabitId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,9 +85,9 @@ namespace EverydayHabit.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitCompletions_CompletedHabitHabitId",
+                name: "IX_HabitCompletions_HabitId",
                 table: "HabitCompletions",
-                column: "CompletedHabitHabitId");
+                column: "HabitId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HabitDifficulties_HabitVariationId",

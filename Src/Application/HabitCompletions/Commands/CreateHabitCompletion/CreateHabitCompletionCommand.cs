@@ -39,7 +39,7 @@ namespace EverydayHabit.Application.HabitCompletions.Commands.CreateHabitComplet
                 {
                     Date = request.Date,
                     HabitDifficultyLevel = request.HabitDifficultyLevel,
-                    CompletedHabit = habitCompleted,
+                    Habit = habitCompleted,
                 };
 
                 _context.HabitCompletions.Add(entity);
