@@ -107,16 +107,20 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 
         private async Task OpenHabitCompletionPage(DateTime date)
         {
-            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
+            var habitId = SelectedHabit.Key;
+            if(habitId > 0)
             {
-                BindingContext = new HabitCompletionSelectPageViewModel
+                var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
                 {
-                    DateSelected = date,
-                    HabitSelected = habit,
-                    Parent = this,
-                }
-            });
+                    BindingContext = new HabitCompletionSelectPageViewModel
+                    {
+                        DateSelected = date,
+                        HabitSelected = habit,
+                        Parent = this,
+                    }
+                });
+            }
         }
 
         private async Task SelectedHabitChanged(object item)
