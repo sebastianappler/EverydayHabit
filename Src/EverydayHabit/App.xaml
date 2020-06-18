@@ -9,13 +9,6 @@
     <Application.Resources>
         <ResourceDictionary Source="Common/Themes/LightTheme.xaml" />
 
-        <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor"
-                    Value="{DynamicResource NavigationBarColor}" />
-            <Setter Property="BarTextColor"
-                    Value="{DynamicResource SecondaryColor}" />
-        </Style>
-        
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource SecondaryTextColor}" />
         </Style>

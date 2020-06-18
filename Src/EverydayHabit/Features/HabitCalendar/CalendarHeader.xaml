@@ -2,6 +2,7 @@
 <DataTemplate xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EverydayHabit.XamarinApp.Features.HabitCalendar.CalendarHeader">
+
     <Grid
         Margin="0,2"
         Padding="0"
@@ -46,9 +47,9 @@
         <Label
             Grid.Column="1"
             FontAttributes="Bold"
+            TextColor="{DynamicResource SecondaryColor}"
             FontSize="Medium"
             HorizontalOptions="Center"
-            TextColor="{Binding MonthLabelColor}"
             VerticalOptions="Center">
             <Label.FormattedText>
                 <FormattedString>

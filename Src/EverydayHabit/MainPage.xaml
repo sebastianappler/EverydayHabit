@@ -8,6 +8,7 @@
             xmlns:habitSettings="clr-namespace:EverydayHabit.XamarinApp.Features.HabitSettings"
             mc:Ignorable="d"
             x:Class="EverydayHabit.XamarinApp.MainPage"
+            SelectedTabColor="{DynamicResource PrimaryColor}"
             >
     <NavigationPage Title="Habits" IconImageSource="ic_list_white_48dp.xml">
         <x:Arguments>

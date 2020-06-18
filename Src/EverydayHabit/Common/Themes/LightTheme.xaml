@@ -15,11 +15,19 @@
     
     <Color x:Key="PageBackgroundColor">White</Color>
     <Color x:Key="NavigationBarColor">#92B4F4</Color>
-    <Color x:Key="PrimaryColor">#4472CA</Color> <!-- Han blue  -->
+    
+    <Color x:Key="PrimaryColor">#4472CA</Color> <!-- Egyptian blue  -->
+    <Color x:Key="PrimaryColorDark">#0A369D</Color> <!-- Han blue  -->
+    <Color x:Key="PrimaryColorAlternative">#5E7CE2</Color> <!-- Glaucous  -->
+    <Color x:Key="PrimaryColorBackground">#92B4F4</Color> <!-- French Sky Blue  -->
+    <Color x:Key="PrimaryColorLight">#CFDEE7</Color> <!-- Beau Blue  -->
+    
+    
     <Color x:Key="SecondaryColor">#5E7CE2</Color> <!-- Blue (crayola) -->
     <Color x:Key="PrimaryTextColor">#68717B</Color> <!-- Charcoal (lightest) -->
     <Color x:Key="SecondaryTextColor">#535B65</Color>  <!-- Charcoal (lighter)-->
     <Color x:Key="TertiaryTextColor">#3E454F</Color> <!-- Charcoal -->
+    <Color x:Key="TertiaryLightTextColor">#CFDEE7</Color> <!-- Charcoal -->
     <Color x:Key="TransparentColor">Transparent</Color>
     <Color x:Key="WhiteColor">#FFFFFF</Color>
 

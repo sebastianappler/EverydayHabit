@@ -10,6 +10,7 @@
             Title="Calendar"
             Visual="Material"
             >
+    
     <ContentPage.BindingContext>
         <local:HabitCalendarViewModel />
     </ContentPage.BindingContext>
@@ -38,8 +39,10 @@
             VerticalOptions="FillAndExpand"
             Year="{Binding Year}"
             DayTappedCommand="{Binding DayTappedCommand}"
-            SelectedDayBackgroundColor="{DynamicResource TransparentColor}"
-            TodayOutlineColor="{DynamicResource SecondaryColor}"
+            SelectedDayBackgroundColor="{DynamicResource PrimaryColorLight}"
+            SelectedDayTextColor="{DynamicResource PrimaryTextColor}"
+            TodayOutlineColor="{DynamicResource PrimaryColor}"
+            TodayFillColor="{DynamicResource PrimaryColorLight}"
             >
                 <plugin:Calendar.HeaderSectionTemplate>
                     <local:CalendarHeader />
