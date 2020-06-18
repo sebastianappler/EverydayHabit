@@ -81,13 +81,17 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             switch (habitDifficultyLevel)
             {
                 case HabitDifficultyLevel.Mini:
-                    return Color.Green;
+                    App.Current.Resources.TryGetValue("PrimaryGreen", out var green);
+                    return (Color) green;
 
                 case HabitDifficultyLevel.Plus:
-                    return Color.Orange;
+                    App.Current.Resources.TryGetValue("PrimaryYellow", out var yellow);
+
+                    return (Color) yellow;
 
                 case HabitDifficultyLevel.Elite:
-                    return Color.Red;
+                    App.Current.Resources.TryGetValue("PrimaryRed", out var red);
+                    return (Color) red;
             }
             return Color.Black;
         }

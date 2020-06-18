@@ -18,42 +18,53 @@
             <converters:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-        <StackLayout Spacing="20" 
-                     Padding="10"
-                     BackgroundColor="White">
-            <Editor AutoSize="TextChanges"
-                Placeholder="Name"
-                Text="{Binding HabitItem.Name}"/>
 
-            <Editor AutoSize="TextChanges"
-                Placeholder="Description"
-                Text="{Binding HabitItem.Description}" />
+    <StackLayout 
+        Spacing="20" 
+        Padding="20"
+        BackgroundColor="White"
+        VerticalOptions="StartAndExpand"
+        >
+        <Editor AutoSize="TextChanges"
+            Placeholder="Name"
+            Text="{Binding HabitItem.Name}"/>
 
-            <StackLayout Spacing="10" 
-                     Padding="3"
-                     BackgroundColor="White">
-                <Label Text="Variations" ></Label>
-                <ListView 
-                    ItemsSource="{Binding HabitItem.VariationsList}"
-                    RowHeight="56"
-                    SeparatorVisibility="None" 
-                    ItemTapped="ListView_ItemTapped">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <views:HabitCell />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+        <Editor AutoSize="TextChanges"
+            Placeholder="Description"
+            Text="{Binding HabitItem.Description}" />
 
-                    <ListView.Behaviors>
-                        <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
-                    </ListView.Behaviors>
-                </ListView>
-            </StackLayout>
-            <Button Text="Add Variation" Command="{Binding OnAddVariationClicked}" />
-            <Button Text="Save" Command="{Binding OnSaveClicked}" />
-            <Button Text="Delete" Command="{Binding OnDeleteClicked}" />
+        <StackLayout Spacing="10" 
+                    Padding="3"
+                    BackgroundColor="White">
+            <Label Text="Variations" ></Label>
+            <ListView 
+                ItemsSource="{Binding HabitItem.VariationsList}"
+                RowHeight="56"
+                SeparatorVisibility="None" 
+                ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <views:HabitCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Behaviors>
+                    <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
+                </ListView.Behaviors>
+            </ListView>
+
+
+        </StackLayout>
+        <StackLayout 
+            Spacing="15"
+            Padding="50, 0">
+            <Button ImageSource="ic_add_white_24dp.xml" Text="Add Variation" Command="{Binding OnAddVariationClicked}" />
+            <Button ImageSource="ic_delete_red_24dp.xml" Text="Delete" Command="{Binding OnDeleteClicked}" 
+                    BackgroundColor="White"
+                    TextColor="#FF6B6B"
+                    BorderColor="#FF6B6B"
+                    BorderWidth="4"
+                    FontSize="16"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

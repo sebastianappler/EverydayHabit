@@ -37,7 +37,7 @@
         </ListView>
 
         <Button 
-            ImageSource="ic_add_white_48dp.xml"
+            ImageSource="ic_add_white_30dp.xml"
             Command="{Binding AddHabit_Clicked}"
             Style="{StaticResource FabButtonStyle}"
             />

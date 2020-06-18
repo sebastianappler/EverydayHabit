@@ -22,8 +22,12 @@
     <Color x:Key="PrimaryColorBackground">#92B4F4</Color> <!-- French Sky Blue  -->
     <Color x:Key="PrimaryColorLight">#CFDEE7</Color> <!-- Beau Blue  -->
     
-    
-    <Color x:Key="SecondaryColor">#5E7CE2</Color> <!-- Blue (crayola) -->
+    <Color x:Key="PrimaryRed">#FF6B6B</Color> <!-- Bittersweet  -->
+    <Color x:Key="PrimaryYellow">#fcbf49</Color> <!-- Orange Web  -->
+    <Color x:Key="PrimaryGreen">#31AFA7</Color> <!-- Light Sea Green   -->
+
+
+    <Color x:Key="SecondaryColor">#28818F</Color> <!-- Metallica seaweed -->
     <Color x:Key="PrimaryTextColor">#68717B</Color> <!-- Charcoal (lightest) -->
     <Color x:Key="SecondaryTextColor">#535B65</Color>  <!-- Charcoal (lighter)-->
     <Color x:Key="TertiaryTextColor">#3E454F</Color> <!-- Charcoal -->

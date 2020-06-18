@@ -9,12 +9,21 @@
     <Application.Resources>
         <ResourceDictionary Source="Common/Themes/LightTheme.xaml" />
 
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarTextColor"
+                    Value="{DynamicResource PrimaryColor}" />
+        </Style>
+        
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource SecondaryTextColor}" />
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="TextColor" Value="{DynamicResource SecondaryTextColor}" />
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="FontSize" Value="16" />
+
         </Style>
 
         <Style TargetType="Entry">

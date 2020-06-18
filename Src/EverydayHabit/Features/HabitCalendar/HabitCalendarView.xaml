@@ -41,7 +41,7 @@
             DayTappedCommand="{Binding DayTappedCommand}"
             SelectedDayBackgroundColor="{DynamicResource PrimaryColorLight}"
             SelectedDayTextColor="{DynamicResource PrimaryTextColor}"
-            TodayOutlineColor="{DynamicResource PrimaryColor}"
+            TodayOutlineColor="{DynamicResource PrimaryColorBackground}"
             TodayFillColor="{DynamicResource PrimaryColorLight}"
             >
                 <plugin:Calendar.HeaderSectionTemplate>
@@ -67,7 +67,7 @@
         </StackLayout>
         
         <Button 
-            ImageSource="ic_check_white_48dp.xml"
+            ImageSource="ic_check_white_30dp.xml"
             TextColor="White"
             Command="{Binding HabitCompletedTapped}"
             Style="{StaticResource FabButtonStyle}"

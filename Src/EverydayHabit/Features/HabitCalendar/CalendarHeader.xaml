@@ -47,7 +47,7 @@
         <Label
             Grid.Column="1"
             FontAttributes="Bold"
-            TextColor="{DynamicResource SecondaryColor}"
+            TextColor="{DynamicResource PrimaryColor}"
             FontSize="Medium"
             HorizontalOptions="Center"
             VerticalOptions="Center">
