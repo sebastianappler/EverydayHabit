@@ -42,7 +42,6 @@
             SelectedDayBackgroundColor="{DynamicResource PrimaryColorLight}"
             SelectedDayTextColor="{DynamicResource PrimaryTextColor}"
             TodayOutlineColor="{DynamicResource PrimaryColorBackground}"
-            TodayFillColor="{DynamicResource PrimaryColorLight}"
             >
                 <plugin:Calendar.HeaderSectionTemplate>
                     <local:CalendarHeader />

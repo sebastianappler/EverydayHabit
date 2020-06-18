@@ -16,6 +16,7 @@
         
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource SecondaryTextColor}" />
+            <Setter Property="FontSize" Value="15"/>
         </Style>
 
         <Style TargetType="Button">
