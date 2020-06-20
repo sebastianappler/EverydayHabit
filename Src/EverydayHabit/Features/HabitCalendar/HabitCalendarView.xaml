@@ -26,22 +26,22 @@
                     <behaviours:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedHabitChangedCommand}" CommandParameter="{Binding SelectedHabit}" />
                 </Picker.Behaviors>
             </Picker>
-
+            
             <plugin:Calendar
-            Padding="10,0"
-            Events="{Binding Events}"
-            Culture="{Binding Culture}"
-            HorizontalOptions="FillAndExpand"
-            MaximumDate="{Binding MaximumDate}"
-            MinimumDate="{Binding MinimumDate}"
-            Month="{Binding Month}"
-            SelectedDate="{Binding SelectedDate}"
-            VerticalOptions="FillAndExpand"
-            Year="{Binding Year}"
-            DayTappedCommand="{Binding DayTappedCommand}"
-            SelectedDayBackgroundColor="{DynamicResource PrimaryColorLight}"
-            SelectedDayTextColor="{DynamicResource PrimaryTextColor}"
-            TodayOutlineColor="{DynamicResource PrimaryColorBackground}"
+                Padding="10,0"
+                Events="{Binding Events}"
+                Culture="{Binding Culture}"
+                HorizontalOptions="FillAndExpand"
+                MaximumDate="{Binding MaximumDate}"
+                MinimumDate="{Binding MinimumDate}"
+                Month="{Binding Month}"
+                SelectedDate="{Binding SelectedDate}"
+                VerticalOptions="FillAndExpand"
+                Year="{Binding Year}"
+                DayTappedCommand="{Binding DayTappedCommand}"
+                SelectedDayBackgroundColor="{DynamicResource PrimaryColorLight}"
+                SelectedDayTextColor="{DynamicResource PrimaryTextColor}"
+                TodayOutlineColor="{DynamicResource PrimaryColorBackground}"
             >
                 <plugin:Calendar.HeaderSectionTemplate>
                     <local:CalendarHeader />
@@ -64,12 +64,18 @@
                 </plugin:Calendar.FooterSectionTemplate>
             </plugin:Calendar>
         </StackLayout>
-        
+
         <Button 
-            ImageSource="ic_check_white_30dp.xml"
             TextColor="White"
             Command="{Binding HabitCompletedTapped}"
             Style="{StaticResource FabButtonStyle}"
-            />
+            >
+            <Button.ImageSource>
+                <FontImageSource 
+                         Glyph="check" 
+                         FontFamily="{StaticResource MaterialIcon}"
+                         Size="30"/>
+            </Button.ImageSource>
+        </Button>
     </AbsoluteLayout>
 </ContentPage>

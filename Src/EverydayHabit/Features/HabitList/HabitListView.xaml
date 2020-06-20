@@ -35,12 +35,17 @@
                 <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
             </ListView.Behaviors>
         </ListView>
-
+        
         <Button 
-            ImageSource="ic_add_white_30dp.xml"
             Command="{Binding AddHabit_Clicked}"
-            Style="{StaticResource FabButtonStyle}"
-            />
+            Style="{StaticResource FabButtonStyle}">
+            <Button.ImageSource>
+                <FontImageSource 
+                         Glyph="add" 
+                         FontFamily="{StaticResource MaterialIcon}"
+                         Size="30"/>
+            </Button.ImageSource>
+        </Button>
 
     </AbsoluteLayout>
 </ContentPage>

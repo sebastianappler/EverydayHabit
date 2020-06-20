@@ -9,7 +9,13 @@
         Orientation="Horizontal" 
         HorizontalOptions="FillAndExpand">
         <Frame CornerRadius="20" Margin="8" Padding="0" HeightRequest="40" WidthRequest="40" BackgroundColor="#5E7CE2">
-            <Image Source="ic_fitness_center_custom_light_grey_48dp.xml" Margin="5"/>
+            <Image Margin="5">
+                <Image.Source>
+                    <FontImageSource
+                        Glyph="fitness_center"
+                        FontFamily="{StaticResource MaterialIcon}"/>
+                </Image.Source>
+            </Image>
         </Frame>
 
         <Label Text="{Binding Name}"

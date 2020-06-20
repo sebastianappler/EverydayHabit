@@ -62,8 +62,8 @@
             <Button Text="Add Variation" Command="{Binding OnAddVariationClicked}" >
                 <Button.ImageSource>
                     <FontImageSource 
-                         FontFamily="{StaticResource MaterialIcon}"
                          Glyph="add" 
+                         FontFamily="{StaticResource MaterialIcon}"
                          Size="25"/>
                 </Button.ImageSource>
             </Button>
@@ -75,8 +75,8 @@
                     BorderWidth="4">
                 <Button.ImageSource>
                     <FontImageSource 
-                         FontFamily="{StaticResource MaterialIcon}"
                          Glyph="delete"
+                         FontFamily="{StaticResource MaterialIcon}"
                          Color="#FF6B6B"
                          Size="25"/>
                 </Button.ImageSource>

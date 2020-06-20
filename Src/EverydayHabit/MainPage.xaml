@@ -11,22 +11,38 @@
             SelectedTabColor="{DynamicResource PrimaryColor}"
             UnselectedTabColor="{DynamicResource PrimaryTextColor}"
             >
-    <NavigationPage Title="Habits" IconImageSource="ic_list_white_48dp.xml">
+    <NavigationPage Title="Habits">
         <x:Arguments>
             <habitList:HabitListView />
         </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource 
+                Glyph="list"
+                FontFamily="{StaticResource MaterialIcon}"/>
+        </NavigationPage.IconImageSource>
     </NavigationPage>
 
-    <NavigationPage Title="Calendar" IconImageSource="ic_today_white_48dp.xml">
+    <NavigationPage Title="Calendar">
         <x:Arguments>
             <habitCalendar:HabitCalendarView />
         </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource 
+                Glyph="today"
+                FontFamily="{StaticResource MaterialIcon}"/>
+        </NavigationPage.IconImageSource>
+       
     </NavigationPage>
 
-    <NavigationPage Title="Settings" IconImageSource="ic_settings_white_48dp.xml">
+    <NavigationPage Title="Settings">
         <x:Arguments>
             <habitSettings:HabitSettingsView />
         </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource 
+                Glyph="settings"
+                FontFamily="{StaticResource MaterialIcon}"/>
+        </NavigationPage.IconImageSource>
     </NavigationPage>
    
 </TabbedPage>

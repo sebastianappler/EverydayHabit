@@ -8,17 +8,7 @@
         <On Platform="Android" Value="MaterialIcons-Regular.ttf#Material Design Icons" />
         <On Platform="iOS" Value="Material Design Icons" />
     </OnPlatform>
-    
-     <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
-        <On Platform="Android" Value="font-awesome-5-free-solid.otf#Font Awesome 5 Free Solid" />
-        <On Platform="iOS" Value="FontAwesome5FreeSolid" />
-    </OnPlatform>
-    
-    <OnPlatform x:Key="FontAwesomeRegular" x:TypeArguments="x:String">
-        <On Platform="Android" Value="font-awesome-5-free-regular.otf#Font Awesome 5 Free Regular" />
-        <On Platform="iOS" Value="FontAwesome5FreeRegular" />
-    </OnPlatform>
-    
+
     <Color x:Key="PageBackgroundColor">White</Color>
     <Color x:Key="NavigationBarColor">#92B4F4</Color>
     

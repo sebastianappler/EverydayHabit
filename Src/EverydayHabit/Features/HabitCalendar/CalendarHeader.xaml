@@ -29,12 +29,12 @@
             VerticalOptions="Center"
             WidthRequest="36">
             <Label
-                FontFamily="{StaticResource FontAwesomeSolid}"
-                FontSize="22"
+                FontFamily="{StaticResource MaterialIcon}"
+                Text="navigate_before"
+                FontSize="35"
                 HorizontalOptions="CenterAndExpand"
                 HorizontalTextAlignment="Center"
                 InputTransparent="True"
-                Text="&#xf053;"
                 TextColor="{Binding ArrowsColor}"
                 VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center" />
@@ -72,13 +72,12 @@
             VerticalOptions="CenterAndExpand"
             WidthRequest="36">
             <Label
-                FontAttributes="Bold"
-                FontFamily="{StaticResource FontAwesomeSolid}"
-                FontSize="22"
+                FontFamily="{StaticResource MaterialIcon}"
+                Text="navigate_next"
+                FontSize="35"
                 HorizontalOptions="CenterAndExpand"
                 HorizontalTextAlignment="Center"
                 InputTransparent="True"
-                Text="&#xf054;"
                 TextColor="{Binding ArrowsColor}"
                 VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center" />
