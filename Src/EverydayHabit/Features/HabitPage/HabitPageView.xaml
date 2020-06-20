@@ -58,13 +58,29 @@
         <StackLayout 
             Spacing="15"
             Padding="50, 0">
-            <Button ImageSource="ic_add_white_24dp.xml" Text="Add Variation" Command="{Binding OnAddVariationClicked}" />
-            <Button ImageSource="ic_delete_red_24dp.xml" Text="Delete" Command="{Binding OnDeleteClicked}" 
+            
+            <Button Text="Add Variation" Command="{Binding OnAddVariationClicked}" >
+                <Button.ImageSource>
+                    <FontImageSource 
+                         FontFamily="{StaticResource MaterialIcon}"
+                         Glyph="add" 
+                         Size="25"/>
+                </Button.ImageSource>
+            </Button>
+            
+            <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
                     BackgroundColor="White"
                     TextColor="#FF6B6B"
                     BorderColor="#FF6B6B"
-                    BorderWidth="4"
-                    FontSize="16"/>
+                    BorderWidth="4">
+                <Button.ImageSource>
+                    <FontImageSource 
+                         FontFamily="{StaticResource MaterialIcon}"
+                         Glyph="delete"
+                         Color="#FF6B6B"
+                         Size="25"/>
+                </Button.ImageSource>
+            </Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>
