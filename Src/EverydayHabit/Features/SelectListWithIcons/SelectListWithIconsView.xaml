@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
+             xmlns:views="clr-namespace:EverydayHabit.XamarinApp.Common.Views" 
+             xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" 
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.SelectListWithIcons" 
+             mc:Ignorable="d"
+             x:Class="EverydayHabit.XamarinApp.Features.SelectListWithIcons.SelectListWithIconsView">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <converters:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <ContentPage.BindingContext>
+            <local:SelectListWithIconsViewModel />
+        </ContentPage.BindingContext>
+
+        <ListView ItemsSource="{Binding SelectList}"
+                RowHeight="56"
+                SeparatorVisibility="None"
+                ItemTapped="ListView_ItemTapped"
+                >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <views:ItemWithIconCell />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.Behaviors>
+                <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
+            </ListView.Behaviors>
+        </ListView>
+</ContentPage>

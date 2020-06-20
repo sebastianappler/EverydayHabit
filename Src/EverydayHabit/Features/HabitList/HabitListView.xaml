@@ -23,11 +23,11 @@
         <ListView ItemsSource="{Binding HabitList}"
                 RowHeight="56"
                 SeparatorVisibility="None"
-                  ItemTapped="ListView_ItemTapped"
+                ItemTapped="ListView_ItemTapped"
                 >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <views:HabitCell />
+                    <views:ItemWithIconCell />
                 </DataTemplate>
             </ListView.ItemTemplate>
             

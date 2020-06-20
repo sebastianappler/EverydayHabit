@@ -1,8 +1,11 @@
 ﻿using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using EverydayHabit.XamarinApp.Common.Views;
 using EverydayHabit.XamarinApp.Features.HabitPage;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -21,13 +24,20 @@ namespace EverydayHabit.XamarinApp.Features.HabitList
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var vm = await Mediator.Send(new GetHabitsListQuery(), CancellationToken.None);
-                HabitList = new ObservableCollection<HabitListDto>(vm.Habits);
+                var habitList = vm.Habits.Select(habit => new ItemWithIconModel
+                {
+                    Id = habit.Id,
+                    Name = habit.Name,
+                    Icon = HabitTypeToIconConverter.Convert(habit.Type)
+                });
+
+                HabitList = new ObservableCollection<ItemWithIconModel>(habitList);
             });
         }
 
         private async Task OnListItemSelectedCommand(object item)
         {
-            if (item is HabitListDto selectedHabit)
+            if (item is ItemWithIconModel selectedHabit)
             {
                 var vm = await Mediator.Send(new GetHabitDetailQuery { Id = selectedHabit.Id }, CancellationToken.None);
 
@@ -52,8 +62,8 @@ namespace EverydayHabit.XamarinApp.Features.HabitList
             });
         }
 
-        private ObservableCollection<HabitListDto> _habitList = new ObservableCollection<HabitListDto>();
-        public ObservableCollection<HabitListDto> HabitList
+        private ObservableCollection<ItemWithIconModel> _habitList = new ObservableCollection<ItemWithIconModel>();
+        public ObservableCollection<ItemWithIconModel> HabitList
         {
             get => _habitList;
             set => SetProperty(ref _habitList, value);

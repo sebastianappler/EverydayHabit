@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace EverydayHabit.XamarinApp.Common.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HabitCell : ViewCell
+    public partial class ItemWithIconCell : ViewCell
     {
-        public HabitCell()
+        public ItemWithIconCell()
         {
             InitializeComponent();
         }

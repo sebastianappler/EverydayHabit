@@ -44,7 +44,7 @@
                 ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <views:HabitCell />
+                        <views:ItemWithIconCell />
                     </DataTemplate>
                 </ListView.ItemTemplate>
 
@@ -78,6 +78,15 @@
                          Glyph="delete"
                          FontFamily="{StaticResource MaterialIcon}"
                          Color="#FF6B6B"
+                         Size="25"/>
+                </Button.ImageSource>
+            </Button>
+            
+            <Button Text="Habit Type" Command="{Binding OnHabitTypeSelected}" >
+                <Button.ImageSource>
+                    <FontImageSource 
+                         Glyph="baby_changing_station"
+                         FontFamily="{StaticResource MaterialIcon}"
                          Size="25"/>
                 </Button.ImageSource>
             </Button>

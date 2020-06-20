@@ -36,8 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Common\Views\HabitCell.xaml.cs">
-      <DependentUpon>HabitCell.xaml</DependentUpon>
+    <Compile Update="Common\Views\ItemWithIconCell.xaml.cs">
+      <DependentUpon>ItemWithIconCell.xaml</DependentUpon>
     </Compile>
     <Compile Update="Features\HabitCalendar\CalendarFooter.xaml.cs">
       <DependentUpon>CalendarFooter.xaml</DependentUpon>
@@ -63,13 +63,16 @@
     <Compile Update="Features\HabitVariationPage\HabitVariationPageView.xaml.cs">
       <DependentUpon>HabitVariationPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Features\SelectListWithIcons\SelectListWithIconsView.xaml.cs">
+      <DependentUpon>SelectListWithIconsView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Common\Views\HabitCell.xaml">
+    <EmbeddedResource Update="Common\Views\ItemWithIconCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Features\HabitCalendar\CalendarFooter.xaml">
@@ -88,6 +91,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Features\HabitVariationPage\HabitVariationPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\SelectListWithIcons\SelectListWithIconsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MainPage.xaml">
