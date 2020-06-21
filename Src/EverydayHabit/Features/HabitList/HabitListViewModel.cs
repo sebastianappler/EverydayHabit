@@ -28,7 +28,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitList
                 {
                     Id = habit.Id,
                     Name = habit.Name,
-                    Icon = HabitTypeToIconConverter.Convert(habit.Type)
+                    Icon = HabitTypeToIconConverter.Convert(habit.HabitType)
                 });
 
                 HabitList = new ObservableCollection<ItemWithIconModel>(habitList);
