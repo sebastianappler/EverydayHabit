@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Common\Views\ItemWithIconCell.xaml.cs">
+    <Compile Update="Common\Components\ItemWithIconCell.xaml.cs">
       <DependentUpon>ItemWithIconCell.xaml</DependentUpon>
     </Compile>
     <Compile Update="Features\HabitCalendar\CalendarFooter.xaml.cs">
@@ -69,7 +69,10 @@
     <EmbeddedResource Update="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Common\Views\ItemWithIconCell.xaml">
+    <EmbeddedResource Update="Common\Components\IconBubbleFrame.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Common\Components\ItemWithIconCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Features\HabitCalendar\CalendarFooter.xaml">

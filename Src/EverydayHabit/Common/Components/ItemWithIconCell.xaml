@@ -1,0 +1,20 @@
+﻿<ViewCell 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
+    x:Class="EverydayHabit.XamarinApp.Common.Components.ItemWithIconCell">
+    <StackLayout 
+        HeightRequest="56"
+        Orientation="Horizontal" 
+        HorizontalOptions="FillAndExpand"
+        Margin="5,5,0,0">
+
+        <components:IconBubbleFrame Icon="{Binding Icon}"></components:IconBubbleFrame>
+        
+        <Label Text="{Binding Name}"
+            Margin="2,0,0,8"
+            VerticalTextAlignment="Center" 
+            HorizontalOptions="StartAndExpand"
+            Style="{DynamicResource SmallLabelStyle}"/>
+    </StackLayout>
+</ViewCell>

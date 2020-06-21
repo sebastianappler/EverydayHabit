@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitPage" 
-             xmlns:views="clr-namespace:EverydayHabit.XamarinApp.Common.Views" 
              xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
-             xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters"
+             xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" 
+             xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
              x:Class="EverydayHabit.XamarinApp.Features.HabitPage.HabitPageView"
              Title="Habit"
              Visual="Material">
@@ -36,33 +36,19 @@
         <StackLayout 
         Margin="0,0,0,0" 
         Orientation="Horizontal" 
-        HorizontalOptions="FillAndExpand">
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Center">
 
-            <StackLayout 
-                HeightRequest="56"
-                Margin="5,10,5,10">
-                <Frame 
-                   CornerRadius="20" 
-                   HorizontalOptions="Center" 
-                   Padding="0" 
-                   BackgroundColor="{DynamicResource PrimaryColor}">
-                    <Image Margin="5.7">
-                        <Image.Source>
-                            <FontImageSource
-                        Glyph="{Binding SelectedHabitType.Icon}"
-                        FontFamily="{StaticResource MaterialIcon}"
-                            Color="White"/>
-                        </Image.Source>
-                    </Image>
-                </Frame>
-            </StackLayout>
+            <components:IconBubbleFrame Margin="0,10,0,0" Icon="{Binding SelectedHabitType.Icon}"></components:IconBubbleFrame>
+
 
             <Picker Title="Habit type" 
                 ItemsSource="{Binding PickerHabitTypes}" 
                 ItemDisplayBinding="{Binding Name}"
                 SelectedItem="{Binding SelectedHabitType}"
                 SelectedIndex="{Binding HabitItem.HabitType}"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                Margin="5,0,0,0">
             </Picker>
         </StackLayout>
 
@@ -84,7 +70,7 @@
                 ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <views:ItemWithIconCell />
+                        <components:ItemWithIconCell />
                     </DataTemplate>
                 </ListView.ItemTemplate>
 

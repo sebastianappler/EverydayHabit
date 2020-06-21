@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+             x:Class="EverydayHabit.XamarinApp.Common.Components.IconBubbleFrame"
+             x:Name="this"
+             >
+    <StackLayout 
+        HeightRequest="56">
+        <Frame 
+            BindingContext="{x:Reference this}"
+            CornerRadius="25" 
+            Margin="0" 
+            Padding="0" 
+            HeightRequest="45" 
+            WidthRequest="45" 
+            BackgroundColor="{DynamicResource PrimaryColor}">
+            <Image Margin="7">
+                <Image.Source>
+                    <FontImageSource
+                                Glyph="{Binding Icon}"
+                                FontFamily="{StaticResource MaterialIcon}"/>
+                </Image.Source>
+            </Image>
+        </Frame>
+    </StackLayout>
+</ContentView>

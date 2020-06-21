@@ -4,7 +4,7 @@
             xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
             xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" 
             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitList" 
-            xmlns:views="clr-namespace:EverydayHabit.XamarinApp.Common.Views"
+            xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
             x:Class="EverydayHabit.XamarinApp.Features.HabitList.HabitListView"
             x:Name="habitList"
             Title="Habits"
@@ -20,14 +20,17 @@
     </ContentPage.BindingContext>
     
     <AbsoluteLayout>
-        <ListView ItemsSource="{Binding HabitList}"
-                RowHeight="56"
-                SeparatorVisibility="None"
-                ItemTapped="ListView_ItemTapped"
-                >
+        <ListView 
+            Margin="10,5,5,5"
+            
+            ItemsSource="{Binding HabitList}"
+            RowHeight="56"
+            SeparatorVisibility="None"
+            ItemTapped="ListView_ItemTapped"
+            >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <views:ItemWithIconCell />
+                    <components:ItemWithIconCell />
                 </DataTemplate>
             </ListView.ItemTemplate>
             

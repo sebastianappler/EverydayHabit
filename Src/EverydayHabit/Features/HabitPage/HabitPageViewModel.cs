@@ -3,11 +3,10 @@ using EverydayHabit.Application.Habits.Commands.UpsertHabit;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
-using EverydayHabit.Domain.Entities;
 using EverydayHabit.Domain.Enums;
+using EverydayHabit.XamarinApp.Common.Components;
 using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.ViewModels;
-using EverydayHabit.XamarinApp.Common.Views;
 using EverydayHabit.XamarinApp.Features.HabitVariationPage;
 using System;
 using System.Collections.ObjectModel;
@@ -112,12 +111,12 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
             }
         }
 
-        private static ObservableCollection<ItemWithIconModel> GetHabitTypes()
+        private static ObservableCollection<ItemWithIconCellViewModel> GetHabitTypes()
         {
-            var habitTypes = new ObservableCollection<ItemWithIconModel>();
+            var habitTypes = new ObservableCollection<ItemWithIconCellViewModel>();
             foreach (HabitType habitType in Enum.GetValues(typeof(HabitType)))
             {
-                habitTypes.Add(new ItemWithIconModel
+                habitTypes.Add(new ItemWithIconCellViewModel
                 {
                     Id = (int) habitType,
                     Name = habitType.ToString(),
@@ -128,17 +127,17 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
             return habitTypes;
         }
 
-        private ObservableCollection<ItemWithIconModel> _pickerHabitTypes = GetHabitTypes();
+        private ObservableCollection<ItemWithIconCellViewModel> _pickerHabitTypes = GetHabitTypes();
 
-        public ObservableCollection<ItemWithIconModel> PickerHabitTypes
+        public ObservableCollection<ItemWithIconCellViewModel> PickerHabitTypes
         {
             get => _pickerHabitTypes;
             set => SetProperty(ref _pickerHabitTypes, value);
         }
 
-        private ItemWithIconModel _selectedHabitType = GetHabitTypes().First();
+        private ItemWithIconCellViewModel _selectedHabitType = GetHabitTypes().First();
 
-        public ItemWithIconModel SelectedHabitType
+        public ItemWithIconCellViewModel SelectedHabitType
         {
             get => _selectedHabitType;
             set => SetProperty(ref _selectedHabitType, value);
