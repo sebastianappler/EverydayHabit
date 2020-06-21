@@ -8,7 +8,12 @@
         Padding="0" 
         Orientation="Horizontal" 
         HorizontalOptions="FillAndExpand">
-        <Frame CornerRadius="20" Margin="8" Padding="0" HeightRequest="40" WidthRequest="40" BackgroundColor="#5E7CE2">
+        <Frame CornerRadius="20" 
+               Margin="8" 
+               Padding="0" 
+               HeightRequest="40" 
+               WidthRequest="40" 
+               BackgroundColor="{DynamicResource PrimaryColor}">
             <Image Margin="5">
                 <Image.Source>
                     <FontImageSource
@@ -21,6 +26,7 @@
         <Label Text="{Binding Name}"
             Padding="0,12,12,16"
             VerticalTextAlignment="Center" 
-            HorizontalOptions="StartAndExpand"/>
+            HorizontalOptions="StartAndExpand"
+               FontSize="18"/>
     </StackLayout>
 </ViewCell>

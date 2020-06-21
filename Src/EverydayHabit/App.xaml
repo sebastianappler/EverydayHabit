@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EverydayHabit.App">
+             x:Class="EverydayHabit.App"
+             >
 
     <Application.Resources>
         <ResourceDictionary Source="Common/Themes/LightTheme.xaml" />
@@ -16,7 +17,7 @@
         
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource SecondaryTextColor}" />
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
         <Style TargetType="Button">
@@ -71,26 +72,23 @@
 
         <Style x:Key="LargeLabelStyle"
                TargetType="Label">
-            <Setter Property="TextColor"
-                    Value="{DynamicResource SecondaryTextColor}" />
-            <Setter Property="FontSize"
-                    Value="30" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+            <Setter Property="FontSize" Value="25" />
         </Style>
 
         <Style x:Key="MediumLabelStyle"
                TargetType="Label">
-            <Setter Property="TextColor"
-                    Value="{DynamicResource PrimaryTextColor}" />
-            <Setter Property="FontSize"
-                    Value="25" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontAttributes" Value="Bold" />
         </Style>
 
         <Style x:Key="SmallLabelStyle"
                TargetType="Label">
             <Setter Property="TextColor"
-                    Value="{DynamicResource TertiaryTextColor}" />
+                    Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="FontSize"
-                    Value="15" />
+                    Value="18" />
         </Style>
 
     </Application.Resources>

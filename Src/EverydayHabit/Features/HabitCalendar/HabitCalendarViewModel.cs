@@ -199,7 +199,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             get => _maximumDate;
             set => SetProperty(ref _maximumDate, value);
         }
-
         private async Task ExecuteEventSelectedCommand(object item)
         {
             if (item is EventModel eventModel)

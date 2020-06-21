@@ -5,12 +5,11 @@ using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Entities;
 using EverydayHabit.Domain.Enums;
+using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Common.Views;
-using EverydayHabit.XamarinApp.Features.HabitList;
 using EverydayHabit.XamarinApp.Features.HabitVariationPage;
-using EverydayHabit.XamarinApp.Features.SelectListWithIcons;
-using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
@@ -26,10 +25,16 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
         public ICommand OnDeleteClicked => new Command(async () => await OnDeleteClickedCommand());
         public ICommand OnAddVariationClicked => new Command(async () => await OnAddVariationClickedCommand());
         public ICommand OnVariationListItemSelected => new Command(async (item) => await OnVariationListItemSelectedCommand(item));
-        public ICommand OnHabitTypeSelected => new Command(async (item) => await OnHabitTypeSelectedCommand(item));
 
         public HabitDetailVm HabitItem { get; set; }
-      
+
+        public HabitPageViewModel()
+        {
+            if(HabitItem?.Id > 0)
+            {
+                SelectedHabitType = PickerHabitTypes.SingleOrDefault(ht => ht.Id == (int) HabitItem.HabitType) ?? PickerHabitTypes.First();
+            }
+        }
         public async Task OnSaveClickedCommand()
         {
             await UpsertHabitAsync();
@@ -65,25 +70,15 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
         {
             if (HabitItem != null)
             {
-                if (HabitItem.Id != 0)
+                var habitId = await Mediator.Send(new UpsertHabitCommand
                 {
-                    await Mediator.Send(new UpdateHabitCommand
-                    {
-                        Id = HabitItem.Id,
-                        Name = HabitItem.Name,
-                        Description = HabitItem.Description,
-                    });
-                }
-                else
-                {
-                    var habitId = await Mediator.Send(new UpsertHabitCommand
-                    {
-                        Name = HabitItem.Name,
-                        Description = HabitItem.Description,
-                    });
+                    Id = HabitItem.Id,
+                    Name = HabitItem.Name,
+                    Description = HabitItem.Description,
+                    HabitType = (HabitType) SelectedHabitType.Id
+                });
 
-                    HabitItem.Id = habitId;
-                }
+                HabitItem.Id = habitId;
             }
         }
 
@@ -117,47 +112,36 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
             }
         }
 
-        private async Task OnHabitTypeSelectedCommand(object item)
+        private static ObservableCollection<ItemWithIconModel> GetHabitTypes()
         {
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SelectListWithIconsView
+            var habitTypes = new ObservableCollection<ItemWithIconModel>();
+            foreach (HabitType habitType in Enum.GetValues(typeof(HabitType)))
             {
-                BindingContext = new SelectListWithIconsViewModel
+                habitTypes.Add(new ItemWithIconModel
                 {
-                    SelectList = new ObservableCollection<ItemWithIconModel>()
-                    {
-                        new ItemWithIconModel
-                        {
-                            Id = 1,
-                            Name = "Music",
-                            Icon = "music_note",
-                        },
-                        new ItemWithIconModel
-                        {
-                            Id = 2,
-                            Name = "Training",
-                            Icon = "fitness_center",
-                        },
-                        new ItemWithIconModel
-                        {
-                            Id = 3,
-                            Name = "Learning",
-                            Icon = "menu_book",
-                        },
-                        new ItemWithIconModel
-                        {
-                            Id = 4,
-                            Name = "Meditate",
-                            Icon = "self_improvement",
-                        },
-                        new ItemWithIconModel
-                        {
-                            Id = 5,
-                            Name = "Language",
-                            Icon = "translate",
-                        },
-                    }
-                }
-            });
+                    Id = (int) habitType,
+                    Name = habitType.ToString(),
+                    Icon = HabitTypeToIconConverter.Convert(habitType)
+                });
+            }
+
+            return habitTypes;
+        }
+
+        private ObservableCollection<ItemWithIconModel> _pickerHabitTypes = GetHabitTypes();
+
+        public ObservableCollection<ItemWithIconModel> PickerHabitTypes
+        {
+            get => _pickerHabitTypes;
+            set => SetProperty(ref _pickerHabitTypes, value);
+        }
+
+        private ItemWithIconModel _selectedHabitType = GetHabitTypes().First();
+
+        public ItemWithIconModel SelectedHabitType
+        {
+            get => _selectedHabitType;
+            set => SetProperty(ref _selectedHabitType, value);
         }
     }
 }

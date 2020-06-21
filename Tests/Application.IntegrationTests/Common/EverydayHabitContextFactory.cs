@@ -18,9 +18,9 @@ namespace Application.IntegrationTests.Common
             context.Database.EnsureCreated();
 
             context.Habits.AddRange(new[] {
-                new Habit { HabitId = 1, Name = "Training" },
-                new Habit { HabitId = 2, Name = "Develop EverydayHabits App" },
-                new Habit { HabitId = 3, Name = "Learn German" },
+                new Habit { HabitId = 1, Name = "Training", HabitType = HabitType.Training },
+                new Habit { HabitId = 2, Name = "Develop EverydayHabits App", HabitType = HabitType.Project  },
+                new Habit { HabitId = 3, Name = "Learn German", HabitType = HabitType.Language },
             });
 
             var habit = context.Habits.Find(1);

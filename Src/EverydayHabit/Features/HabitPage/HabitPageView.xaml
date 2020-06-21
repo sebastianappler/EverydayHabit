@@ -6,7 +6,7 @@
              xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
              xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters"
              x:Class="EverydayHabit.XamarinApp.Features.HabitPage.HabitPageView"
-             Title="{Binding Name}"
+             Title="Habit"
              Visual="Material">
 
     <ContentPage.BindingContext>
@@ -33,10 +33,50 @@
             Placeholder="Description"
             Text="{Binding HabitItem.Description}" />
 
+        <StackLayout 
+        Margin="0,0,0,0" 
+        Orientation="Horizontal" 
+        HorizontalOptions="FillAndExpand">
+
+            <StackLayout 
+                HeightRequest="56"
+                Margin="5,10,5,10">
+                <Frame 
+                   CornerRadius="20" 
+                   HorizontalOptions="Center" 
+                   Padding="0" 
+                   BackgroundColor="{DynamicResource PrimaryColor}">
+                    <Image Margin="5.7">
+                        <Image.Source>
+                            <FontImageSource
+                        Glyph="{Binding SelectedHabitType.Icon}"
+                        FontFamily="{StaticResource MaterialIcon}"
+                            Color="White"/>
+                        </Image.Source>
+                    </Image>
+                </Frame>
+            </StackLayout>
+
+            <Picker Title="Habit type" 
+                ItemsSource="{Binding PickerHabitTypes}" 
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedHabitType}"
+                SelectedIndex="{Binding HabitItem.HabitType}"
+                HorizontalOptions="FillAndExpand">
+            </Picker>
+        </StackLayout>
+
         <StackLayout Spacing="10" 
-                    Padding="3"
-                    BackgroundColor="White">
-            <Label Text="Variations" ></Label>
+                    Padding="3">
+            <Label Text="Variations" Style="{DynamicResource SmallLabelStyle}" ></Label>
+            <Button Text="Add Variation" Command="{Binding OnAddVariationClicked}"
+                    Margin="50, 0">
+                <Button.ImageSource>
+                    <FontImageSource 
+                         Glyph="add" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
+                </Button.ImageSource>
+            </Button>
+
             <ListView 
                 ItemsSource="{Binding HabitItem.VariationsList}"
                 RowHeight="56"
@@ -53,18 +93,17 @@
                 </ListView.Behaviors>
             </ListView>
 
-
         </StackLayout>
+        
         <StackLayout 
             Spacing="15"
-            Padding="50, 0">
-            
-            <Button Text="Add Variation" Command="{Binding OnAddVariationClicked}" >
+            Padding="50, 0"
+            VerticalOptions="EndAndExpand">
+          
+            <Button Text="Save" Command="{Binding OnSaveClicked}" >
                 <Button.ImageSource>
                     <FontImageSource 
-                         Glyph="add" 
-                         FontFamily="{StaticResource MaterialIcon}"
-                         Size="25"/>
+                         Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
                 </Button.ImageSource>
             </Button>
             
@@ -75,21 +114,12 @@
                     BorderWidth="4">
                 <Button.ImageSource>
                     <FontImageSource 
-                         Glyph="delete"
-                         FontFamily="{StaticResource MaterialIcon}"
+                         Glyph="delete" FontFamily="{StaticResource MaterialIcon}" Size="25"
                          Color="#FF6B6B"
-                         Size="25"/>
+                         />
                 </Button.ImageSource>
             </Button>
             
-            <Button Text="Habit Type" Command="{Binding OnHabitTypeSelected}" >
-                <Button.ImageSource>
-                    <FontImageSource 
-                         Glyph="category"
-                         FontFamily="{StaticResource MaterialIcon}"
-                         Size="25"/>
-                </Button.ImageSource>
-            </Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

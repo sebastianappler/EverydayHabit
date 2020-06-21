@@ -2,6 +2,7 @@
 using EverydayHabit.Application.Common.Mapping;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Domain.Entities;
+using EverydayHabit.Domain.Enums;
 using System.Collections.Generic;
 
 namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail
@@ -11,6 +12,7 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitDetail
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public HabitType HabitType { get; set; }
         public List<HabitVariationDto> VariationsList { get; set; }
 
         public void Mapping(Profile profile)

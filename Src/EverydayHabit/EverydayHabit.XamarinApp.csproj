@@ -19,7 +19,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.5" />
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
     <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.2.1411" />
   </ItemGroup>
 
@@ -63,9 +63,6 @@
     <Compile Update="Features\HabitVariationPage\HabitVariationPageView.xaml.cs">
       <DependentUpon>HabitVariationPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\SelectListWithIcons\SelectListWithIconsView.xaml.cs">
-      <DependentUpon>SelectListWithIconsView.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -91,9 +88,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Features\HabitVariationPage\HabitVariationPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Features\SelectListWithIcons\SelectListWithIconsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MainPage.xaml">
