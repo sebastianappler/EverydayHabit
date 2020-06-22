@@ -22,7 +22,7 @@
 
     <StackLayout 
         Spacing="15" 
-        Padding="20,00,20,20" 
+        Padding="20,0,20,20" 
         BackgroundColor="White"
         >
 
@@ -84,26 +84,18 @@
                     </ListView.Behaviors>
                 </ListView>
 
-                <BoxView   
+            <BoxView   
                VerticalOptions="Center"
                HeightRequest="0.5"
                BackgroundColor="{DynamicResource TransparentColor}"
                Color="{DynamicResource PrimaryTextColor}" />
 
-            <StackLayout
-                Margin="50,10,50,0"
-                Spacing="15">
-                
-                <Button Text="Save" Command="{Binding OnSaveClicked}"
-                        >
-                    <Button.ImageSource>
-                        <FontImageSource 
-                             Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
-                    </Button.ImageSource>
-                </Button>
-
-                <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
-                    Style="{DynamicResource ButtonDeleteStyle}">
+            <StackLayout Orientation="Horizontal"
+                Spacing="20"
+                Margin="0,10,0,10">
+                <Button Text="" Command="{Binding OnDeleteClicked}" 
+                        Style="{DynamicResource ButtonDeleteStyle}"
+                        WidthRequest="50">
 
                     <Button.ImageSource>
                         <FontImageSource 
@@ -112,8 +104,16 @@
                              />
                     </Button.ImageSource>
                 </Button>
+                <Button Text="Save" Command="{Binding OnSaveClicked}"
+                        HorizontalOptions="FillAndExpand">
+                    <Button.ImageSource>
+                        <FontImageSource 
+                             Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
+                    </Button.ImageSource>
+                </Button>
+
+               
             </StackLayout>
         </StackLayout>
-        
     </StackLayout>
 </ContentPage>

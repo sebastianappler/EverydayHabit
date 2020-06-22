@@ -19,6 +19,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
     {
         public ICommand OnSaveClicked => new Command(async () => await OnSaveClickedCommand());
         public ICommand OnDeleteClicked => new Command(async () => await OnDeleteClickedCommand());
+        public ICommand OnCloseClicked => new Command(async () => await OnCloseClickedCommand());
 
         public HabitVariationDetailVm HabitVariation { get; set; }
 
@@ -49,6 +50,11 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
 
                 await NavigateToHabitPage();
             }
+        }
+        
+        public async Task OnCloseClickedCommand()
+        {
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
         }
 
         private async Task CreateHabitDifficulties(int habitVariationId)
