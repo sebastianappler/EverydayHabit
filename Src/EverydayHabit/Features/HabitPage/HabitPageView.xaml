@@ -7,7 +7,8 @@
              xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
              x:Class="EverydayHabit.XamarinApp.Features.HabitPage.HabitPageView"
              Title="Habit"
-             Visual="Material">
+             Visual="Material"
+             >
 
     <ContentPage.BindingContext>
         <local:HabitPageViewModel />
@@ -20,92 +21,99 @@
     </ContentPage.Resources>
 
     <StackLayout 
-        Spacing="20" 
-        Padding="20"
+        Spacing="15" 
+        Padding="20,00,20,20" 
         BackgroundColor="White"
-        VerticalOptions="StartAndExpand"
         >
-        <Editor AutoSize="TextChanges"
-            Placeholder="Name"
-            Text="{Binding HabitItem.Name}"/>
 
-        <Editor AutoSize="TextChanges"
-            Placeholder="Description"
-            Text="{Binding HabitItem.Description}" />
+            <Editor AutoSize="TextChanges"
+                    Placeholder="Name"
+                    Text="{Binding HabitItem.Name}"
+                />  
 
+            <Editor AutoSize="TextChanges"
+                    Placeholder="Description"
+                    Text="{Binding HabitItem.Description}"
+                />
+            
         <StackLayout 
-        Margin="0,0,0,0" 
-        Orientation="Horizontal" 
-        HorizontalOptions="FillAndExpand"
-        VerticalOptions="Center">
+            Spacing="15" 
+            Margin="0,0,0,0" 
+            Orientation="Horizontal">
 
-            <components:IconBubbleFrame Margin="0,10,0,0" Icon="{Binding SelectedHabitType.Icon}"></components:IconBubbleFrame>
+                <components:IconBubbleFrame Margin="0,10,0,0" Icon="{Binding SelectedHabitType.Icon}"></components:IconBubbleFrame>
 
 
-            <Picker Title="Habit type" 
-                ItemsSource="{Binding PickerHabitTypes}" 
-                ItemDisplayBinding="{Binding Name}"
-                SelectedItem="{Binding SelectedHabitType}"
-                SelectedIndex="{Binding HabitItem.HabitType}"
-                HorizontalOptions="FillAndExpand"
-                Margin="5,0,0,0">
-            </Picker>
-        </StackLayout>
+                <Picker Title="Habit type" 
+                        ItemsSource="{Binding PickerHabitTypes}" 
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedHabitType}"
+                        SelectedIndex="{Binding HabitItem.HabitType}"
+                        Margin="0"
+                        HorizontalOptions="FillAndExpand"
+                    >
+                </Picker>
+            </StackLayout>
 
-        <StackLayout Spacing="10" 
-                    Padding="3">
-            <Label Text="Variations" Style="{DynamicResource SmallLabelStyle}" ></Label>
-            <Button Text="Add Variation" Command="{Binding OnAddVariationClicked}"
-                    Margin="50, 0">
-                <Button.ImageSource>
-                    <FontImageSource 
-                         Glyph="add" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
-                </Button.ImageSource>
-            </Button>
+            <StackLayout
+            Padding="3">
+                <Label Text="Variations" Style="{DynamicResource SmallLabelStyle}" ></Label>
 
-            <ListView 
+                <Button Text="Add Variation" 
+                    Command="{Binding OnAddVariationClicked}"
+                    Margin="0,5,0,5"
+                    HorizontalOptions="Start"
+                    >
+                </Button>
+
+                <ListView 
                 ItemsSource="{Binding HabitItem.VariationsList}"
                 RowHeight="56"
                 SeparatorVisibility="None" 
-                ItemTapped="ListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <components:ItemWithIconCell />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                ItemTapped="ListView_ItemTapped"
+                HeightRequest="250"
+                >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <components:ItemWithIconCell />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
 
-                <ListView.Behaviors>
-                    <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
-                </ListView.Behaviors>
-            </ListView>
+                    <ListView.Behaviors>
+                        <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
+                    </ListView.Behaviors>
+                </ListView>
 
+                <BoxView   
+               VerticalOptions="Center"
+               HeightRequest="0.5"
+               BackgroundColor="{DynamicResource TransparentColor}"
+               Color="{DynamicResource PrimaryTextColor}" />
+
+            <StackLayout
+                Margin="50,10,50,0"
+                Spacing="15">
+                
+                <Button Text="Save" Command="{Binding OnSaveClicked}"
+                        >
+                    <Button.ImageSource>
+                        <FontImageSource 
+                             Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
+                    </Button.ImageSource>
+                </Button>
+
+                <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
+                    Style="{DynamicResource ButtonDeleteStyle}">
+
+                    <Button.ImageSource>
+                        <FontImageSource 
+                             Glyph="delete" FontFamily="{StaticResource MaterialIcon}" Size="25"
+                             Color="{DynamicResource PrimaryRed}"
+                             />
+                    </Button.ImageSource>
+                </Button>
+            </StackLayout>
         </StackLayout>
         
-        <StackLayout 
-            Spacing="15"
-            Padding="50, 0"
-            VerticalOptions="EndAndExpand">
-          
-            <Button Text="Save" Command="{Binding OnSaveClicked}" >
-                <Button.ImageSource>
-                    <FontImageSource 
-                         Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
-                </Button.ImageSource>
-            </Button>
-            
-            <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
-                    BackgroundColor="White"
-                    TextColor="#FF6B6B"
-                    BorderColor="#FF6B6B"
-                    BorderWidth="4">
-                <Button.ImageSource>
-                    <FontImageSource 
-                         Glyph="delete" FontFamily="{StaticResource MaterialIcon}" Size="25"
-                         Color="#FF6B6B"
-                         />
-                </Button.ImageSource>
-            </Button>
-            
-        </StackLayout>
     </StackLayout>
 </ContentPage>

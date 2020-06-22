@@ -10,36 +10,34 @@
     <ContentPage.BindingContext>
         <local:HabitVariationPageViewModel />
     </ContentPage.BindingContext>
-    <StackLayout >
 
-        <StackLayout 
-            VerticalOptions="StartAndExpand"
-            Margin="20"
-            Spacing="20" 
-            Padding="10"
-            BackgroundColor="White">
-           
-            <Editor AutoSize="TextChanges"
-                Placeholder="Name"
-                Text="{Binding HabitVariation.Name}"/>
+    <StackLayout 
+        VerticalOptions="StartAndExpand"
+        Margin="20"
+        Spacing="20" 
+        Padding="10"
+        BackgroundColor="White">
 
-            <Editor
-                Text="{Binding Mini.Description}"
-                AutoSize="TextChanges"
-                Placeholder="Mini"/>
+        <Editor AutoSize="TextChanges"
+            Placeholder="Name"
+            Text="{Binding HabitVariation.Name}"/>
 
-            <Editor 
-                Text="{Binding Plus.Description}"
-                AutoSize="TextChanges"
-                Placeholder="Plus"/>
+        <Editor
+            Text="{Binding Mini.Description}"
+            AutoSize="TextChanges"
+            Placeholder="Mini"/>
 
-            <Editor 
-                Text="{Binding Elite.Description}"
-                AutoSize="TextChanges"
-                Placeholder="Elite" />
+        <Editor 
+            Text="{Binding Plus.Description}"
+            AutoSize="TextChanges"
+            Placeholder="Plus"/>
 
-            <Button Text="Save" Command="{Binding OnSaveClicked}" />
-            <Button Text="Delete" Command="{Binding OnDeleteClicked}" />
-        </StackLayout>
+        <Editor 
+            Text="{Binding Elite.Description}"
+            AutoSize="TextChanges"
+            Placeholder="Elite" />
+
+        <Button Text="Save" Command="{Binding OnSaveClicked}" />
+        <Button Text="Delete" Command="{Binding OnDeleteClicked}" />
     </StackLayout>
 </ContentPage>

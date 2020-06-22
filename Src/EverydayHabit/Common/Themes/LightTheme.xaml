@@ -27,8 +27,8 @@
     <Color x:Key="PrimaryTextColor">#68717B</Color> <!-- Charcoal (lightest) -->
     <Color x:Key="SecondaryTextColor">#535B65</Color>  <!-- Charcoal (lighter)-->
     <Color x:Key="TertiaryTextColor">#3E454F</Color> <!-- Charcoal -->
-    <Color x:Key="TertiaryLightTextColor">#CFDEE7</Color> <!-- Charcoal -->
     <Color x:Key="TransparentColor">Transparent</Color>
+    <Color x:Key="BackgroundGreyColor">#E8E8E8</Color>
     <Color x:Key="WhiteColor">#FFFFFF</Color>
 
 </ResourceDictionary>
