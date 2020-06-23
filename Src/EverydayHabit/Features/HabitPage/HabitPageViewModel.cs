@@ -43,11 +43,12 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
 
         public async Task OnDeleteClickedCommand()
         {
-            if (HabitItem != null)
+            if (HabitItem != null && HabitItem.Id > 0)
             {
                 await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
-                Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
             }
+
+            Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
         }
 
         public async Task OnAddVariationClickedCommand()
