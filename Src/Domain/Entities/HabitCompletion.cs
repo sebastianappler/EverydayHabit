@@ -7,9 +7,11 @@ namespace EverydayHabit.Domain.Entities
     {
         public int HabitCompletionId { get; set; }
         public int HabitId { get; set; }
+        public int HabitVariationId { get; set; }
         public DateTime Date { get; set; }
         public HabitDifficultyLevel HabitDifficultyLevel { get; set; }
 
         public Habit Habit { get; set; }
+        public HabitVariation HabitVariation { get; set; }
     }
 }

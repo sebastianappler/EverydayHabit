@@ -4,22 +4,22 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EverydayHabit.Application.HabitCompletions.Commands.CreateHabitCompletion
+namespace EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion
 {
-    public class HabitCompletionCreated : INotification
+    public class HabitCompletionUpdated : INotification
     {
         public int HabitCompletionId { get; set; }
 
-        public class HabitCompletionCreatedHandler : INotificationHandler<HabitCompletionCreated>
+        public class HabitCompletionUpdatedHandler : INotificationHandler<HabitCompletionUpdated>
         {
             private readonly INotificationService _notification;
 
-            public HabitCompletionCreatedHandler(INotificationService notification)
+            public HabitCompletionUpdatedHandler(INotificationService notification)
             {
                 _notification = notification;
             }
 
-            public async Task Handle(HabitCompletionCreated notification, CancellationToken cancellationToken)
+            public async Task Handle(HabitCompletionUpdated notification, CancellationToken cancellationToken)
             {
                 await _notification.SendAsync(new MessageDto());
             }

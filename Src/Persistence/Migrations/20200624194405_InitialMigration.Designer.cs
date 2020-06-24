@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EverydayHabit.Persistence.Migrations
 {
     [DbContext(typeof(EverydayHabitDbContext))]
-    [Migration("20200618180057_InitialMigration")]
+    [Migration("20200624194405_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,9 +53,14 @@ namespace EverydayHabit.Persistence.Migrations
                     b.Property<int>("HabitId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("HabitVariationId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("HabitCompletionId");
 
                     b.HasIndex("HabitId");
+
+                    b.HasIndex("HabitVariationId");
 
                     b.ToTable("HabitCompletions");
                 });
@@ -106,6 +111,12 @@ namespace EverydayHabit.Persistence.Migrations
                     b.HasOne("EverydayHabit.Domain.Entities.Habit", "Habit")
                         .WithMany()
                         .HasForeignKey("HabitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EverydayHabit.Domain.Entities.HabitVariation", "HabitVariation")
+                        .WithMany()
+                        .HasForeignKey("HabitVariationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -23,27 +23,6 @@ namespace EverydayHabit.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HabitCompletions",
-                columns: table => new
-                {
-                    HabitCompletionId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    HabitId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    HabitDifficultyLevel = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HabitCompletions", x => x.HabitCompletionId);
-                    table.ForeignKey(
-                        name: "FK_HabitCompletions_Habits_HabitId",
-                        column: x => x.HabitId,
-                        principalTable: "Habits",
-                        principalColumn: "HabitId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "HabitVariations",
                 columns: table => new
                 {
@@ -60,6 +39,34 @@ namespace EverydayHabit.Persistence.Migrations
                         column: x => x.HabitId,
                         principalTable: "Habits",
                         principalColumn: "HabitId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HabitCompletions",
+                columns: table => new
+                {
+                    HabitCompletionId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    HabitId = table.Column<int>(nullable: false),
+                    HabitVariationId = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    HabitDifficultyLevel = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HabitCompletions", x => x.HabitCompletionId);
+                    table.ForeignKey(
+                        name: "FK_HabitCompletions_Habits_HabitId",
+                        column: x => x.HabitId,
+                        principalTable: "Habits",
+                        principalColumn: "HabitId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HabitCompletions_HabitVariations_HabitVariationId",
+                        column: x => x.HabitVariationId,
+                        principalTable: "HabitVariations",
+                        principalColumn: "HabitVariationId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -88,6 +95,11 @@ namespace EverydayHabit.Persistence.Migrations
                 name: "IX_HabitCompletions_HabitId",
                 table: "HabitCompletions",
                 column: "HabitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HabitCompletions_HabitVariationId",
+                table: "HabitCompletions",
+                column: "HabitVariationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HabitDifficulties_HabitVariationId",

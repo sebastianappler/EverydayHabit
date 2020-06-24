@@ -40,10 +40,9 @@
                 VerticalOptions="FillAndExpand"
                 Year="{Binding Year}"
                 DayTappedCommand="{Binding DayTappedCommand}"
-                SelectedDayBackgroundColor="{DynamicResource PrimaryColorLight}"
-                SelectedDayTextColor="{DynamicResource PrimaryTextColor}"
-                TodayOutlineColor="{DynamicResource PrimaryColorBackground}"
-            >
+                SelectedDayBackgroundColor="{DynamicResource PrimaryColor}"
+                TodayOutlineColor="{DynamicResource PrimaryColor}"
+                >
                 <plugin:Calendar.HeaderSectionTemplate>
                     <local:CalendarHeader />
                 </plugin:Calendar.HeaderSectionTemplate>
@@ -54,6 +53,14 @@
                         Padding="15,0,0,0"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                Text="{Binding Name}" />
+                            <Label
+                                FontSize="Small"
+                                LineBreakMode="WordWrap"
+                                Text="{Binding Description}" />
                         </StackLayout>
                     </DataTemplate>
                 </plugin:Calendar.EventTemplate>

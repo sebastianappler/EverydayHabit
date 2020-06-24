@@ -31,6 +31,13 @@ namespace Application.IntegrationTests.Common
                 HabitId = 1,
                 Habit = habit
             });
+            
+            habit.Variants.Add(new HabitVariation
+            {
+                HabitVariantName = "Language",
+                HabitId = 2,
+                Habit = habit
+            });
 
             context.HabitCompletions.AddRange(new[] {
                 new HabitCompletion { 

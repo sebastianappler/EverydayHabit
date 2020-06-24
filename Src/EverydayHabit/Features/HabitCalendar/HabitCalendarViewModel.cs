@@ -69,7 +69,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
                 {
                     new EventModel
                     {
-                        Name = habitCompletion.Habit.Name,
+                        Name = habitCompletion.Habit.Description,
                         Description = habitCompletion.HabitDifficultyLevel.ToString()
                     }
                 };
@@ -98,15 +98,14 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 
         private async Task DayTapped(DateTime dateSelected)
         {
-            if(dateSelected <= DateTime.Now)
-            {
-                await OpenHabitCompletionPage(dateSelected);
-            }
         }
 
         private async Task HabitCompleted()
         {
-            await OpenHabitCompletionPage(DateTime.Now);
+            if (SelectedDate <= DateTime.Now)
+            {
+                await OpenHabitCompletionPage(SelectedDate);
+            }
         }
 
         private async Task OpenHabitCompletionPage(DateTime date)

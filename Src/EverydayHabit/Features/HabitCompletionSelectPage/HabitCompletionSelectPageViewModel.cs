@@ -1,4 +1,4 @@
-﻿using EverydayHabit.Application.HabitCompletions.Commands.CreateHabitCompletion;
+﻿using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.XamarinApp.Common.ViewModels;
@@ -50,7 +50,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
         {
             if(SelectedDifficulty.Id > 0)
             {
-                await Mediator.Send(new CreateHabitCompletionCommand
+                await Mediator.Send(new UpsertHabitCompletionCommand
                 {
                     HabitId = HabitSelected.Id,
                     Date = DateSelected,

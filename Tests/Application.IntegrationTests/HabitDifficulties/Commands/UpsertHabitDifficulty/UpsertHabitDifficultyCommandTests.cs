@@ -65,7 +65,6 @@ namespace Application.IntegrationTests.HabitDifficulties.Commands.CreateHabitDif
             habitDifficulty.HabitVariationId.ShouldBe(1);
             habitDifficulty.Description.ShouldBe("Updated difficulty");
             habitDifficulty.DifficultyLevel.ShouldBe(HabitDifficultyLevel.Elite);
-
         }
 
         [Fact]
