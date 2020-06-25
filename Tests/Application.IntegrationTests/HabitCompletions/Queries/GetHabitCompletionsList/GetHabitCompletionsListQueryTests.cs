@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
+namespace Application.IntegrationTests.HabitCompletions.Queries.GetHabitCompletionsList
 {
     [Collection("QueryCollection")]
     public class GetHabitCompletionsListQueryTests
@@ -19,18 +19,6 @@ namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
         {
             _context = fixture.Context;
             _mapper = fixture.Mapper;
-        }
-
-        [Fact]
-        public async Task GetHabitsTest()
-        {
-            var sut = new GetHabitCompletionsListQuery.Handler(_context, _mapper);
-
-            var result = await sut.Handle(new GetHabitCompletionsListQuery { HabitId = 1 }, CancellationToken.None);
-
-            result.ShouldBeOfType<HabitCompletionsListVm>();
-
-            result.HabitCompletionsList.Count.ShouldBe(2);
         }
     }
 }

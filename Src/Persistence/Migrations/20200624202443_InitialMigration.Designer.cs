@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EverydayHabit.Persistence.Migrations
 {
     [DbContext(typeof(EverydayHabitDbContext))]
-    [Migration("20200624194405_InitialMigration")]
+    [Migration("20200624202443_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ namespace EverydayHabit.Persistence.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("HabitDifficultyLevel")
+                    b.Property<int>("HabitDifficultyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("HabitId")
@@ -57,6 +57,8 @@ namespace EverydayHabit.Persistence.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("HabitCompletionId");
+
+                    b.HasIndex("HabitDifficultyId");
 
                     b.HasIndex("HabitId");
 
@@ -108,6 +110,12 @@ namespace EverydayHabit.Persistence.Migrations
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitCompletion", b =>
                 {
+                    b.HasOne("EverydayHabit.Domain.Entities.HabitDifficulty", "HabitDifficulty")
+                        .WithMany()
+                        .HasForeignKey("HabitDifficultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EverydayHabit.Domain.Entities.Habit", "Habit")
                         .WithMany()
                         .HasForeignKey("HabitId")

@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Application.IntegrationTests.Habits.Commands.CreateHabit
 {
-    public class CreateHabitCompletionCommandTests : CommandTestBase
+    public class UpsertHabitCompletionCommandTests : CommandTestBase
     {
         [Fact]
         public async Task Handle_GivenValidRequest_ShouldRaiseHabitCompletionCreatedNotification()
@@ -26,7 +26,7 @@ namespace Application.IntegrationTests.Habits.Commands.CreateHabit
                 HabitId = 1,
                 HabitVariationId = 1,
                 Date = dateTime,
-                HabitDifficultyLevel = HabitDifficultyLevel.Plus
+                HabitDifficultyId = 2
             }, CancellationToken.None);
             
             // Assert
@@ -47,7 +47,7 @@ namespace Application.IntegrationTests.Habits.Commands.CreateHabit
                 HabitId = 1,
                 HabitVariationId = 1,
                 Date = dateTime,
-                HabitDifficultyLevel = HabitDifficultyLevel.Plus
+                HabitDifficultyId = 1,
             }, CancellationToken.None);
             
             // Assert
@@ -69,7 +69,7 @@ namespace Application.IntegrationTests.Habits.Commands.CreateHabit
                 HabitId = 1,
                 HabitVariationId = 1,
                 Date = dateTime,
-                HabitDifficultyLevel = HabitDifficultyLevel.Plus,
+                HabitDifficultyId = 2,
             }, CancellationToken.None);
 
             await sutUpdate.Handle(new UpsertHabitCompletionCommand
@@ -78,7 +78,7 @@ namespace Application.IntegrationTests.Habits.Commands.CreateHabit
                 HabitId = 1,
                 HabitVariationId = 2,
                 Date = dateTime.AddDays(1),
-                HabitDifficultyLevel = HabitDifficultyLevel.Elite
+                HabitDifficultyId = 4,
             }, CancellationToken.None);
 
             var habitCompletion = await _context.HabitCompletions.FindAsync(habitCompletionId);
@@ -87,7 +87,7 @@ namespace Application.IntegrationTests.Habits.Commands.CreateHabit
             habitCompletion.HabitId.ShouldBe(1);
             habitCompletion.HabitVariationId.ShouldBe(2);
             habitCompletion.Date.ShouldBe(dateTime.AddDays(1));
-            habitCompletion.HabitDifficultyLevel.ShouldBe(HabitDifficultyLevel.Elite);
+            habitCompletion.HabitDifficultyId.ShouldBe(4);
         }
     }
 }

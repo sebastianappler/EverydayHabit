@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletionsList.Dtos;
+using System.Collections.Generic;
 
 namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
 {

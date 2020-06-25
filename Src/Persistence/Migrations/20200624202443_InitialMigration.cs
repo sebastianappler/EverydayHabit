@@ -43,34 +43,6 @@ namespace EverydayHabit.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HabitCompletions",
-                columns: table => new
-                {
-                    HabitCompletionId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    HabitId = table.Column<int>(nullable: false),
-                    HabitVariationId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    HabitDifficultyLevel = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HabitCompletions", x => x.HabitCompletionId);
-                    table.ForeignKey(
-                        name: "FK_HabitCompletions_Habits_HabitId",
-                        column: x => x.HabitId,
-                        principalTable: "Habits",
-                        principalColumn: "HabitId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_HabitCompletions_HabitVariations_HabitVariationId",
-                        column: x => x.HabitVariationId,
-                        principalTable: "HabitVariations",
-                        principalColumn: "HabitVariationId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "HabitDifficulties",
                 columns: table => new
                 {
@@ -90,6 +62,45 @@ namespace EverydayHabit.Persistence.Migrations
                         principalColumn: "HabitVariationId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "HabitCompletions",
+                columns: table => new
+                {
+                    HabitCompletionId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    HabitId = table.Column<int>(nullable: false),
+                    HabitVariationId = table.Column<int>(nullable: false),
+                    HabitDifficultyId = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HabitCompletions", x => x.HabitCompletionId);
+                    table.ForeignKey(
+                        name: "FK_HabitCompletions_HabitDifficulties_HabitDifficultyId",
+                        column: x => x.HabitDifficultyId,
+                        principalTable: "HabitDifficulties",
+                        principalColumn: "HabitDifficultyId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HabitCompletions_Habits_HabitId",
+                        column: x => x.HabitId,
+                        principalTable: "Habits",
+                        principalColumn: "HabitId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HabitCompletions_HabitVariations_HabitVariationId",
+                        column: x => x.HabitVariationId,
+                        principalTable: "HabitVariations",
+                        principalColumn: "HabitVariationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HabitCompletions_HabitDifficultyId",
+                table: "HabitCompletions",
+                column: "HabitDifficultyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HabitCompletions_HabitId",

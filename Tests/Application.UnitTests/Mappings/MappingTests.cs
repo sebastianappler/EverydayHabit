@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletionsList.Dtos;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
@@ -67,6 +68,50 @@ namespace Application.UnitTests.Mappings
 
             result.ShouldNotBeNull();
             result.ShouldBeOfType<HabitDifficultyDto>();
+        }
+
+        [Fact]
+        public void ShouldMapHabitToHabitCompletionHabitDto()
+        {
+            var entity = new Habit();
+
+            var result = _mapper.Map<HabitCompletionHabitDto>(entity);
+
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType<HabitCompletionHabitDto>();
+        }
+
+        [Fact]
+        public void ShouldMapHabitVariationToHabitCompletionVariationDto()
+        {
+            var entity = new HabitVariation();
+
+            var result = _mapper.Map<HabitCompletionVariationDto>(entity);
+
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType<HabitCompletionVariationDto>();
+        }
+
+        [Fact]
+        public void ShouldMapHabitDifficultyToHabitCompletionDifficultyDto()
+        {
+            var entity = new HabitDifficulty();
+
+            var result = _mapper.Map<HabitCompletionDifficultyDto>(entity);
+
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType<HabitCompletionDifficultyDto>();
+        }
+
+        [Fact]
+        public void ShouldMapHabitCompletionToHabitCompletionsListDto()
+        {
+            var entity = new HabitCompletion();
+
+            var result = _mapper.Map<HabitCompletionsListDto>(entity);
+
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType<HabitCompletionsListDto>();
         }
     }
 }

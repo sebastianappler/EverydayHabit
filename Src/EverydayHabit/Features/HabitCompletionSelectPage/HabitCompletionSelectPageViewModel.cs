@@ -1,6 +1,7 @@
 ﻿using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
+using EverydayHabit.Domain.Entities;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCalendar;
 using System;
@@ -25,6 +26,8 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
         {
             if (item is HabitVariationDto selectedHabitVariation)
             {
+                SelectedHabitVariation = selectedHabitVariation;
+
                 CurrentDifficultyList.Clear();
                 foreach (var difficulty in selectedHabitVariation.DifficultiesList)
                 {
@@ -48,13 +51,14 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
 
         public async Task OnSaveClickedCommand()
         {
-            if(SelectedDifficulty.Id > 0)
+            if(SelectedHabitVariation.Id > 0 && SelectedDifficulty.Id > 0)
             {
                 await Mediator.Send(new UpsertHabitCompletionCommand
                 {
                     HabitId = HabitSelected.Id,
+                    HabitVariationId = SelectedHabitVariation.Id,
                     Date = DateSelected,
-                    HabitDifficultyLevel = SelectedDifficulty.DifficultyLevel
+                    HabitDifficultyId = SelectedDifficulty.Id
                 });
 
                 await Parent.UpdateCalendarEvents(HabitSelected.Id);
@@ -68,6 +72,13 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
         {
             get => _selectedDate;
             set => SetProperty(ref _selectedDate, value);
+        }
+        
+        private HabitVariationDto _selectedHabitVariation = new HabitVariationDto();
+        public HabitVariationDto SelectedHabitVariation
+        {
+            get => _selectedHabitVariation;
+            set => SetProperty(ref _selectedHabitVariation, value);
         }
         
         private HabitDifficultyDto _selectedDifficulty = new HabitDifficultyDto();

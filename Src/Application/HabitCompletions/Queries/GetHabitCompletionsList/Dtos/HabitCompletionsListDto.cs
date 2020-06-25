@@ -4,19 +4,22 @@ using EverydayHabit.Domain.Entities;
 using EverydayHabit.Domain.Enums;
 using System;
 
-namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
+namespace EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletionsList.Dtos
 {
     public class HabitCompletionsListDto : IMapFrom<HabitCompletion>
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public Habit Habit { get; set; }
-        public HabitDifficultyLevel HabitDifficultyLevel { get; set; }
+        public HabitCompletionHabitDto Habit { get; set; }
+        public HabitCompletionVariationDto HabitVariation { get; set; }
+        public HabitCompletionDifficultyDto HabitDifficulty { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<HabitCompletion, HabitCompletionsListDto>()
-                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitCompletionId));
+                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.HabitCompletionId))
+                ;
+
         }
     }
 }

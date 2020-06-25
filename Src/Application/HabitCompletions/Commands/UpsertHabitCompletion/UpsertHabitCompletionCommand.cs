@@ -16,7 +16,7 @@ namespace EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitComplet
         public DateTime Date { get; set; }
         public int HabitId { get; set; }
         public int HabitVariationId { get; set; }
-        public HabitDifficultyLevel HabitDifficultyLevel { get; set; }
+        public int HabitDifficultyId { get; set; }
 
         public class Handler : IRequestHandler<UpsertHabitCompletionCommand, int>
         {
@@ -42,6 +42,12 @@ namespace EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitComplet
                 {
                     throw new NotFoundException(nameof(HabitVariation), request.HabitVariationId);
                 }
+                
+                var habitDifficulty = habitVariationCompleted.HabitDifficulties.SingleOrDefault(h => h.HabitDifficultyId == request.HabitDifficultyId);
+                if (habitDifficulty == null)
+                {
+                    throw new NotFoundException(nameof(HabitDifficulty), request.HabitDifficultyId);
+                }
 
                 HabitCompletion entity;
 
@@ -58,9 +64,9 @@ namespace EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitComplet
                 }
 
                 entity.Date = request.Date;
-                entity.HabitDifficultyLevel = request.HabitDifficultyLevel;
                 entity.Habit = habitCompleted;
                 entity.HabitVariationId = request.HabitVariationId;
+                entity.HabitDifficultyId = request.HabitDifficultyId;
 
                 await _context.SaveChangesAsync(cancellationToken);
 

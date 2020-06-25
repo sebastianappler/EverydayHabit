@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using EverydayHabit.Application.Common.Interfaces;
+using EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletionsList.Dtos;
+using EverydayHabit.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

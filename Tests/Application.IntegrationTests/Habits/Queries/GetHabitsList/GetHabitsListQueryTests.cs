@@ -22,7 +22,7 @@ namespace Application.IntegrationTests.Habits.Queries.GetHabitsList
         }
 
         [Fact]
-        public async Task GetHabitsTest()
+        public async Task GetHabitsListTest()
         {
             var sut = new GetHabitsListQuery.Handler(_context, _mapper);
 

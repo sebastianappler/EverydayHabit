@@ -45,7 +45,7 @@ namespace EverydayHabit.Persistence.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("HabitDifficultyLevel")
+                    b.Property<int>("HabitDifficultyId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("HabitId")
@@ -55,6 +55,8 @@ namespace EverydayHabit.Persistence.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("HabitCompletionId");
+
+                    b.HasIndex("HabitDifficultyId");
 
                     b.HasIndex("HabitId");
 
@@ -106,6 +108,12 @@ namespace EverydayHabit.Persistence.Migrations
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitCompletion", b =>
                 {
+                    b.HasOne("EverydayHabit.Domain.Entities.HabitDifficulty", "HabitDifficulty")
+                        .WithMany()
+                        .HasForeignKey("HabitDifficultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EverydayHabit.Domain.Entities.Habit", "Habit")
                         .WithMany()
                         .HasForeignKey("HabitId")

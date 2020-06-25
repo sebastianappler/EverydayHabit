@@ -27,6 +27,7 @@ namespace Application.IntegrationTests.Common
 
             habit.Variants.Add(new HabitVariation
             {
+                //Id = 1
                 HabitVariantName = "Running",
                 HabitId = 1,
                 Habit = habit
@@ -34,25 +35,69 @@ namespace Application.IntegrationTests.Common
             
             habit.Variants.Add(new HabitVariation
             {
+                //Id = 2
+                HabitVariantName = "Pushups",
+                HabitId = 1,
+                Habit = habit
+            });
+            
+            habit.Variants.Add(new HabitVariation
+            {
+                //Id = 3
                 HabitVariantName = "Language",
                 HabitId = 2,
                 Habit = habit
             });
 
+            context.HabitDifficulties.AddRange(new[] {
+                new HabitDifficulty
+                {
+                    //Id = 1
+                    DifficultyLevel = HabitDifficultyLevel.Mini,
+                    Description = "Run for 100 meters",
+                    HabitVariationId = 1,
+                },
+                new HabitDifficulty
+                {
+                    //Id = 2
+                    DifficultyLevel = HabitDifficultyLevel.Plus,
+                    Description = "Run for 500 meters",
+                    HabitVariationId = 1
+                },
+                new HabitDifficulty
+                {
+                    //Id = 3
+                    DifficultyLevel = HabitDifficultyLevel.Elite,
+                    Description = "Run for 1500 meters",
+                    HabitVariationId = 1
+                },
+                new HabitDifficulty
+                {
+                    //Id = 4
+                    DifficultyLevel = HabitDifficultyLevel.Plus,
+                    Description = "Do 10 pushups",
+                    HabitVariationId = 2
+                },
+                new HabitDifficulty
+                {
+                    //Id = 5
+                    DifficultyLevel = HabitDifficultyLevel.Plus,
+                    Description = "Learn 10 words 10 pushups",
+                    HabitVariationId = 3
+                },
+            });
             context.HabitCompletions.AddRange(new[] {
                 new HabitCompletion { 
                     HabitCompletionId = 1, 
                     Date = DateTime.Now, 
-                    HabitDifficultyLevel = HabitDifficultyLevel.Plus, 
-                    Habit = habit,
-                    HabitId = habit.HabitId
+                    HabitDifficultyId = 1, 
+                    HabitId = 1
                 },
                 new HabitCompletion { 
                     HabitCompletionId = 2, 
                     Date = DateTime.Now.AddDays(-1), 
-                    HabitDifficultyLevel = HabitDifficultyLevel.Mini, 
-                    Habit = habit,
-                    HabitId = habit.HabitId},
+                    HabitDifficultyId = 2, 
+                    HabitId = 1},
             });
 
             context.SaveChanges();

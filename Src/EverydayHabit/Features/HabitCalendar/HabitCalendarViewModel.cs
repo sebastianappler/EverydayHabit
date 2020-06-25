@@ -63,14 +63,14 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 
             foreach (var habitCompletion in habitCompletionVm.HabitCompletionsList)
             {
-                var habitCompletionColor = GetHabitCompletionColor(habitCompletion.HabitDifficultyLevel);
+                var habitCompletionColor = GetHabitCompletionColor(habitCompletion.HabitDifficulty.DifficultyLevel);
 
                 Events[habitCompletion.Date] = new DayEventCollection<EventModel>(habitCompletionColor, habitCompletionColor)
                 {
                     new EventModel
                     {
-                        Name = habitCompletion.Habit.Description,
-                        Description = habitCompletion.HabitDifficultyLevel.ToString()
+                        Name = habitCompletion.HabitDifficulty.DifficultyLevel.ToString(), 
+                        Description = $"{habitCompletion.HabitVariation.Name} - {habitCompletion.HabitDifficulty.Description}"
                     }
                 };
             }

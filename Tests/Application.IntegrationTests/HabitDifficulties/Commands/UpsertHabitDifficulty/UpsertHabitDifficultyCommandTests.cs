@@ -30,8 +30,9 @@ namespace Application.IntegrationTests.HabitDifficulties.Commands.CreateHabitDif
 
             // Assert
             var habitVariation = await _context.HabitVariations.FindAsync(1);
-            habitVariation.HabitDifficulties.First().HabitDifficultyId.ShouldBe(habitDifficultyId);
-            habitVariation.HabitDifficulties.First().DifficultyLevel.ShouldBe(HabitDifficultyLevel.Mini);
+            var habitDifficulty = habitVariation.HabitDifficulties.SingleOrDefault(hd => hd.HabitDifficultyId == habitDifficultyId);
+            habitDifficulty.HabitDifficultyId.ShouldBe(habitDifficultyId);
+            habitDifficulty.DifficultyLevel.ShouldBe(HabitDifficultyLevel.Mini);
         }
 
         [Fact]
