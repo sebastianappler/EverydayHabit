@@ -55,6 +55,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
             {
                 await Mediator.Send(new UpsertHabitCompletionCommand
                 {
+                    Id = SelectedHabitCompletionId,
                     HabitId = HabitSelected.Id,
                     HabitVariationId = SelectedHabitVariation.Id,
                     Date = DateSelected,
@@ -96,5 +97,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
             set => SetProperty(ref _currentDifficultyList, value);
         }
         public HabitCalendarViewModel Parent { get; internal set; }
+        public int SelectedHabitCompletionId { get; set; }
     }
 }

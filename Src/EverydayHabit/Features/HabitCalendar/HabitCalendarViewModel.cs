@@ -69,6 +69,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
                 {
                     new EventModel
                     {
+                        Id = habitCompletion.Id,
                         Name = habitCompletion.HabitDifficulty.DifficultyLevel.ToString(), 
                         Description = $"{habitCompletion.HabitVariation.Name} - {habitCompletion.HabitDifficulty.Description}"
                     }
@@ -98,6 +99,11 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
 
         private async Task DayTapped(DateTime dateSelected)
         {
+            var selectedEvent = Events.SingleOrDefault(e => e.Key == dateSelected);
+            var dayEventColletion = selectedEvent.Value as DayEventCollection<EventModel>;
+            var eventModel = dayEventColletion.FirstOrDefault();
+
+            SelectedHabitCompletionId = eventModel?.Id ?? 0;
         }
 
         private async Task HabitCompleted()
@@ -118,6 +124,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
                 {
                     BindingContext = new HabitCompletionSelectPageViewModel
                     {
+                        SelectedHabitCompletionId = SelectedHabitCompletionId,
                         DateSelected = date,
                         HabitSelected = habit,
                         Parent = this,
@@ -125,6 +132,8 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
                 });
             }
         }
+        public int SelectedHabitCompletionId { get; set; }
+        public EventCollection Events { get; }
 
         private async Task SelectedHabitChanged(object item)
         {
@@ -133,7 +142,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
                 await UpdateCalendarEvents(selectedHabit.Key);
             }
         }
-        public EventCollection Events { get; }
 
         private CultureInfo _culture = CultureInfo.InvariantCulture;
         public CultureInfo Culture

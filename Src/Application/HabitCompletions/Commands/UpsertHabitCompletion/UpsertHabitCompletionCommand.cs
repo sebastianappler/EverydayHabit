@@ -37,14 +37,14 @@ namespace EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitComplet
                     throw new NotFoundException(nameof(Habit), request.HabitId);
                 }
 
-                var habitVariationCompleted = habitCompleted.Variants.SingleOrDefault(h => h.HabitVariationId == request.HabitVariationId);
+                var habitVariationCompleted = _context.HabitVariations.FindAsync(request.HabitVariationId);
                 if (habitVariationCompleted == null)
                 {
                     throw new NotFoundException(nameof(HabitVariation), request.HabitVariationId);
                 }
                 
-                var habitDifficulty = habitVariationCompleted.HabitDifficulties.SingleOrDefault(h => h.HabitDifficultyId == request.HabitDifficultyId);
-                if (habitDifficulty == null)
+                var habitDifficultyCompleted = _context.HabitDifficulties.FindAsync(request.HabitDifficultyId);
+                if (habitDifficultyCompleted == null)
                 {
                     throw new NotFoundException(nameof(HabitDifficulty), request.HabitDifficultyId);
                 }
