@@ -10,10 +10,10 @@
     </OnPlatform>
 
     <Color x:Key="PageBackgroundColor">#454545</Color>
-    <Color x:Key="NavigationBarColor">#92B4F4</Color>
-    
-    <Color x:Key="PrimaryColor">#4472CA</Color> <!-- Egyptian blue  -->
-    <Color x:Key="PrimaryColorDark">#0A369D</Color> <!-- Han blue  -->
+    <Color x:Key="BarTextColor">#92B4F4</Color>
+
+    <Color x:Key="PrimaryColor">#5E7CE2</Color> <!-- Glaucous  -->
+    <Color x:Key="PrimaryColorDark">#CFDEE7</Color> <!-- Beau Blue  -->
     <Color x:Key="PrimaryColorAlternative">#5E7CE2</Color> <!-- Glaucous  -->
     <Color x:Key="PrimaryColorBackground">#92B4F4</Color> <!-- French Sky Blue  -->
     <Color x:Key="PrimaryColorLight">#CFDEE7</Color> <!-- Beau Blue  -->
@@ -24,11 +24,12 @@
 
 
     <Color x:Key="SecondaryColor">#28818F</Color> <!-- Metallica seaweed -->
-    <Color x:Key="PrimaryTextColor">#68717B</Color> <!-- Charcoal (lightest) -->
-    <Color x:Key="SecondaryTextColor">#535B65</Color>  <!-- Charcoal (lighter)-->
-    <Color x:Key="TertiaryTextColor">#3E454F</Color> <!-- Charcoal -->
+    <Color x:Key="PrimaryTextColor">#92B4F4</Color> <!-- Charcoal (lightest) -->
+    <Color x:Key="SecondaryTextColor">White</Color>  <!-- Charcoal (lighter)-->
+    <Color x:Key="TertiaryTextColor">White</Color> <!-- Charcoal -->
     <Color x:Key="TransparentColor">Transparent</Color>
-    <Color x:Key="BackgroundGreyColor">#E8E8E8</Color>
-    <Color x:Key="WhiteColor">#FFFFFF</Color>
+    <Color x:Key="BackgroundGreyColor">#2b2b2b</Color>
+    <Color x:Key="BackgroundLightColor">#454545</Color>
+    <Color x:Key="WhiteColor">White</Color>
 
 </ResourceDictionary>

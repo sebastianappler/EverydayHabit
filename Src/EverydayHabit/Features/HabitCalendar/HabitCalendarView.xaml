@@ -42,6 +42,11 @@
                 DayTappedCommand="{Binding DayTappedCommand}"
                 SelectedDayBackgroundColor="{DynamicResource PrimaryColor}"
                 TodayOutlineColor="{DynamicResource PrimaryColor}"
+                DaysTitleColor="{DynamicResource PrimaryTextColor}"
+                DeselectedDayTextColor="{DynamicResource SecondaryTextColor}"
+                EventIndicatorTextColor="{DynamicResource SecondaryTextColor}"
+                EventIndicatorSelectedTextColor="{DynamicResource WhiteColor}"
+                SelectedDayTextColor="{DynamicResource WhiteColor}"
                 >
                 <plugin:Calendar.HeaderSectionTemplate>
                     <local:CalendarHeader />

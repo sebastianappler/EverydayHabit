@@ -10,7 +10,7 @@
     </OnPlatform>
 
     <Color x:Key="PageBackgroundColor">White</Color>
-    <Color x:Key="NavigationBarColor">#92B4F4</Color>
+    <Color x:Key="BarTextColor">#4472CA</Color>
     
     <Color x:Key="PrimaryColor">#4472CA</Color> <!-- Egyptian blue  -->
     <Color x:Key="PrimaryColorDark">#0A369D</Color> <!-- Han blue  -->

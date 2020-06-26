@@ -13,8 +13,15 @@ namespace EverydayHabit.XamarinApp.Features.Settings
 
         public SettingsViewModel()
         {
+            if (App.Current.Properties.ContainsKey("DarkModeEnabled"))
+            {
+                var darkModeEnabled = App.Current.Properties["DarkModeEnabled"] as bool?;
 
+                DarkModeEnabled = darkModeEnabled ?? false;
+                DarkModeSwitched();
+            }
         }
+
         public void DarkModeSwitched()
         {
             var mergedDictionaries = App.Current.Resources.MergedDictionaries;
@@ -30,6 +37,9 @@ namespace EverydayHabit.XamarinApp.Features.Settings
                 {
                     mergedDictionaries.Add(new LightTheme());
                 }
+
+                App.Current.Properties["DarkModeEnabled"] = DarkModeEnabled;
+
             }
         }
 
@@ -38,13 +48,6 @@ namespace EverydayHabit.XamarinApp.Features.Settings
         {
             get => _darkModeEnabled;
             set => SetProperty(ref _darkModeEnabled, value);
-        }
-
-        private Switch _darkModeSwitch = new Switch();
-        public Switch DarkModeSwitch
-        {
-            get => _darkModeSwitch;
-            set => SetProperty(ref _darkModeSwitch, value);
         }
     }
 }

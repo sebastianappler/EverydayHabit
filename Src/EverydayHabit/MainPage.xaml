@@ -8,7 +8,7 @@
             xmlns:settings="clr-namespace:EverydayHabit.XamarinApp.Features.Settings"
             mc:Ignorable="d"
             x:Class="EverydayHabit.XamarinApp.MainPage"
-            SelectedTabColor="{DynamicResource PrimaryColor}"
+            SelectedTabColor="{DynamicResource BarTextColor}"
             UnselectedTabColor="{DynamicResource PrimaryTextColor}"
             BackgroundColor="{DynamicResource PageBackgroundColor}"
             >

@@ -101,9 +101,14 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
         {
             var selectedEvent = Events.SingleOrDefault(e => e.Key == dateSelected);
             var dayEventColletion = selectedEvent.Value as DayEventCollection<EventModel>;
-            var eventModel = dayEventColletion.FirstOrDefault();
 
-            SelectedHabitCompletionId = eventModel?.Id ?? 0;
+            if (dayEventColletion != null)
+            {
+                var eventModel = dayEventColletion.FirstOrDefault();
+
+                SelectedHabitCompletionId = eventModel?.Id ?? 0;
+            }
+
         }
 
         private async Task HabitCompleted()
