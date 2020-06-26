@@ -39,6 +39,9 @@
     <Compile Update="Common\Components\ItemWithIconCell.xaml.cs">
       <DependentUpon>ItemWithIconCell.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Common\Themes\DarkTheme.xaml.cs">
+      <DependentUpon>DarkTheme.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Features\HabitCalendar\CalendarFooter.xaml.cs">
       <DependentUpon>CalendarFooter.xaml</DependentUpon>
     </Compile>
@@ -51,8 +54,8 @@
     <Compile Update="Features\HabitPage\HabitPageView.xaml.cs">
       <DependentUpon>HabitPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitSettings\HabitSettingsView.xaml.cs">
-      <DependentUpon>HabitSettingsView.xaml</DependentUpon>
+    <Compile Update="Features\Settings\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Features\HabitList\HabitListView.xaml.cs">
       <DependentUpon>HabitListView.xaml</DependentUpon>

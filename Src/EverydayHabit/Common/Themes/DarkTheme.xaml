@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="EverydayHabit.XamarinApp.Common.Themes.DarkTheme">
+
+    <!--  Fonts  -->
+    <OnPlatform x:Key="MaterialIcon" x:TypeArguments="x:String">
+        <On Platform="Android" Value="MaterialIcons-All.ttf#Material Design Icons" />
+        <On Platform="iOS" Value="Material Design Icons" />
+    </OnPlatform>
+
+    <Color x:Key="PageBackgroundColor">#454545</Color>
+    <Color x:Key="NavigationBarColor">#92B4F4</Color>
+    
+    <Color x:Key="PrimaryColor">#4472CA</Color> <!-- Egyptian blue  -->
+    <Color x:Key="PrimaryColorDark">#0A369D</Color> <!-- Han blue  -->
+    <Color x:Key="PrimaryColorAlternative">#5E7CE2</Color> <!-- Glaucous  -->
+    <Color x:Key="PrimaryColorBackground">#92B4F4</Color> <!-- French Sky Blue  -->
+    <Color x:Key="PrimaryColorLight">#CFDEE7</Color> <!-- Beau Blue  -->
+    
+    <Color x:Key="PrimaryRed">#FF6B6B</Color> <!-- Bittersweet  -->
+    <Color x:Key="PrimaryYellow">#fcbf49</Color> <!-- Orange Web  -->
+    <Color x:Key="PrimaryGreen">#31AFA7</Color> <!-- Light Sea Green   -->
+
+
+    <Color x:Key="SecondaryColor">#28818F</Color> <!-- Metallica seaweed -->
+    <Color x:Key="PrimaryTextColor">#68717B</Color> <!-- Charcoal (lightest) -->
+    <Color x:Key="SecondaryTextColor">#535B65</Color>  <!-- Charcoal (lighter)-->
+    <Color x:Key="TertiaryTextColor">#3E454F</Color> <!-- Charcoal -->
+    <Color x:Key="TransparentColor">Transparent</Color>
+    <Color x:Key="BackgroundGreyColor">#E8E8E8</Color>
+    <Color x:Key="WhiteColor">#FFFFFF</Color>
+
+</ResourceDictionary>

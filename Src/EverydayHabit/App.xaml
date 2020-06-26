@@ -13,6 +13,23 @@
         <Style TargetType="NavigationPage">
             <Setter Property="BarTextColor"
                     Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource PageBackgroundColor}" />
+        </Style>
+        
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource PageBackgroundColor}" />
+        </Style>
+        
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource PageBackgroundColor}" />
+        </Style>
+        
+        <Style TargetType="AbsoluteLayout">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource PageBackgroundColor}" />
         </Style>
         
         <Style TargetType="Label">

@@ -11,47 +11,49 @@
         <local:HabitCompletionSelectPageViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-        <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15"/>
+    <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15"/>
 
-        <Label Text="Variation"></Label>
-        <ListView 
-            ItemsSource="{Binding HabitSelected.VariationsList}"
-            RowHeight="56"
-            SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <RadioButton Text="{Binding Name}" 
-                                     GroupName="HabitVariations" 
-                                     Command="{Binding BindingContext.OnVariationItemSelected, 
-                                                Source={x:Reference HabitCompletionSelectPage}}"
-                                     CommandParameter="{Binding}"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <Label Text="Variation"></Label>
+            <ListView 
+                ItemsSource="{Binding HabitSelected.VariationsList}"
+                RowHeight="56"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <RadioButton Text="{Binding Name}" 
+                                         GroupName="HabitVariations" 
+                                         Command="{Binding BindingContext.OnVariationItemSelected, 
+                                                    Source={x:Reference HabitCompletionSelectPage}}"
+                                         CommandParameter="{Binding}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <Label Text="Difficulty"></Label>
+            <Label Text="Difficulty"></Label>
 
-        <ListView 
-            ItemsSource="{Binding CurrentDifficultyList}"
-            RowHeight="56"
-            HeightRequest="200"
-            SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <RadioButton Text="{Binding Description}" 
-                                     GroupName="HabitDifficulties"
-                                     Command="{Binding BindingContext.OnDifficultyItemSelected, 
-                                                Source={x:Reference HabitCompletionSelectPage}}"
-                                     CommandParameter="{Binding}"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <ListView 
+                ItemsSource="{Binding CurrentDifficultyList}"
+                RowHeight="56"
+                HeightRequest="200"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <RadioButton Text="{Binding Description}" 
+                                         GroupName="HabitDifficulties"
+                                         Command="{Binding BindingContext.OnDifficultyItemSelected, 
+                                                    Source={x:Reference HabitCompletionSelectPage}}"
+                                         CommandParameter="{Binding}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <Button Text="Save" Command="{Binding OnSaveClicked}" />
+            <Button Text="Save" Command="{Binding OnSaveClicked}" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -5,11 +5,12 @@
             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
             xmlns:habitCalendar="clr-namespace:EverydayHabit.XamarinApp.Features.HabitCalendar"
             xmlns:habitList="clr-namespace:EverydayHabit.XamarinApp.Features.HabitList"
-            xmlns:habitSettings="clr-namespace:EverydayHabit.XamarinApp.Features.HabitSettings"
+            xmlns:settings="clr-namespace:EverydayHabit.XamarinApp.Features.Settings"
             mc:Ignorable="d"
             x:Class="EverydayHabit.XamarinApp.MainPage"
             SelectedTabColor="{DynamicResource PrimaryColor}"
             UnselectedTabColor="{DynamicResource PrimaryTextColor}"
+            BackgroundColor="{DynamicResource PageBackgroundColor}"
             >
     <NavigationPage Title="Habits">
         <x:Arguments>
@@ -36,7 +37,7 @@
 
     <NavigationPage Title="Settings">
         <x:Arguments>
-            <habitSettings:HabitSettingsView />
+            <settings:SettingsView />
         </x:Arguments>
         <NavigationPage.IconImageSource>
             <FontImageSource 

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Settings" 
+             xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours"
+             x:Class="EverydayHabit.XamarinApp.Features.Settings.SettingsView"
+             Visual="Material"
+             Title="Settings"
+            >
+
+    <ContentPage.BindingContext>
+        <local:SettingsViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout VerticalOptions="StartAndExpand" Margin="15,0,15,0">
+        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+            <Label VerticalOptions="Center" 
+                   Text="Dark mode enabled" 
+                   Style="{DynamicResource SmallLabelStyle}" />
+
+            <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding DarkModeEnabled}">
+                <Switch.Behaviors>
+                    <behaviours:EventToCommandBehavior EventName="Toggled" Command="{Binding DarkModeSwitchedCommand}"/>
+                </Switch.Behaviors>
+            </Switch>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

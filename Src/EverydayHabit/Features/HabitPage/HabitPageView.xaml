@@ -23,7 +23,7 @@
     <StackLayout 
         Spacing="15" 
         Padding="20,0,20,20" 
-        BackgroundColor="White"
+        
         >
 
             <Editor AutoSize="TextChanges"

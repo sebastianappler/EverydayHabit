@@ -1,12 +1,10 @@
 ﻿using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
-using EverydayHabit.Domain.Entities;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitCalendar;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;

@@ -7,7 +7,8 @@
              mc:Ignorable="d"
              x:Class="EverydayHabit.XamarinApp.Features.HabitVariationPage.HabitVariationPageView"
              Title="Add variation"
-             Visual="Material">
+             Visual="Material"
+             >
     <ContentPage.BindingContext>
         <local:HabitVariationPageViewModel />
     </ContentPage.BindingContext>
@@ -15,7 +16,6 @@
     <StackLayout 
         Spacing="15" 
         Padding="20,0,20,20" 
-        BackgroundColor="White"
         VerticalOptions="FillAndExpand"
         >
         <StackLayout Orientation="Horizontal"
