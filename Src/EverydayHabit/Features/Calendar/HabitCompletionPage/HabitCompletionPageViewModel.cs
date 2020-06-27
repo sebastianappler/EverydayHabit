@@ -64,12 +64,12 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
                 await Parent.UpdateCalendarEvents(HabitSelected.Id);
             }
 
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
         
         public async Task OnClose()
         {
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private DateTime _selectedDate = DateTime.MinValue;

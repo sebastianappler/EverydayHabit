@@ -122,7 +122,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
             if(habitId > 0)
             {
                 var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
-                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionPageView
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitCompletionPageView
                 {
                     BindingContext = new HabitCompletionPageViewModel
                     {

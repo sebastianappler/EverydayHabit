@@ -54,7 +54,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         public async Task OnAddVariationClickedCommand()
         {
             await UpsertHabitAsync();
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitVariationPageView
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
             {
                 BindingContext = new HabitVariationPageViewModel
                 {
@@ -99,7 +99,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                     elite = habitVariation.DifficultiesList.SingleOrDefault(d => d.DifficultyLevel == HabitDifficultyLevel.Elite);
                 }
                
-                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitVariationPageView
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
                 {
                     BindingContext = new HabitVariationPageViewModel()
                     {

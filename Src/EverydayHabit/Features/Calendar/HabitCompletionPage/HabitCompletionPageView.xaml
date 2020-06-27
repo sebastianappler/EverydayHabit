@@ -4,21 +4,11 @@
              xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
              xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage" 
              x:Class="EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage.HabitCompletionPageView"
-             Title="{Binding DateSelected.Date}"
+             Title="Completed Habit"
              x:Name="HabitCompletionPage"
              Visual="Material">
-
-    <ContentPage.BindingContext>
-        <local:HabitCompletionPageViewModel />
-    </ContentPage.BindingContext>
-    <StackLayout>
-
-        <components:ModalNavigationBar 
-            Title="Completed habit" 
-            OnCloseCommand="{Binding OnCloseCommand}"
-        />
-
-        <StackLayout 
+    
+    <StackLayout 
             Padding="20" 
             VerticalOptions="FillAndExpand"
             >
@@ -83,5 +73,4 @@
 
             </StackLayout>
         </StackLayout>
-    </StackLayout>
 </ContentPage>

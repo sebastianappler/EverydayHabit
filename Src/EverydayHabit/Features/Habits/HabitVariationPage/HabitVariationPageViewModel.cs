@@ -40,7 +40,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
             }
 
             await NavigateToHabitPage();
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
         }
 
         public async Task OnDelete()
@@ -55,7 +54,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
         
         public async Task OnClose()
         {
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private async Task CreateHabitDifficulties(int habitVariationId)
@@ -95,6 +94,8 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
         {
             var vm = await Mediator.Send(new GetHabitDetailQuery { Id = HabitVariation.HabitId }, CancellationToken.None);
 
+            //Pop current page and previous page before pushing a updated page to the navigation stack
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync(animated: false);
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync(animated: false);
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitPageView
             {
