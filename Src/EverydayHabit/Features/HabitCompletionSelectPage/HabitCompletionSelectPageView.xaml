@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage" xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours"
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage" xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
              x:Class="EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage.HabitCompletionSelectPageView"
              Title="{Binding DateSelected.Date}"
              x:Name="HabitCompletionSelectPage"
@@ -10,50 +10,75 @@
     <ContentPage.BindingContext>
         <local:HabitCompletionSelectPageViewModel />
     </ContentPage.BindingContext>
+    <StackLayout>
 
-    <StackLayout VerticalOptions="FillAndExpand">
-        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-            <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15"/>
+        <components:ModalNavigationBar 
+            Title="Completed habit" 
+            OnCloseCommand="{Binding OnCloseCommand}"
+        />
 
-            <Label Text="Variation"></Label>
-            <ListView 
+        <StackLayout 
+        Padding="20" VerticalOptions="FillAndExpand" >
+
+            <StackLayout 
+                
+                VerticalOptions="StartAndExpand">
+                <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15"/>
+
+                <Label Text="Variation"></Label>
+                <ListView 
                 ItemsSource="{Binding HabitSelected.VariationsList}"
                 RowHeight="56"
                 SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <RadioButton Text="{Binding Name}" 
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <RadioButton Text="{Binding Name}" 
                                          GroupName="HabitVariations" 
                                          Command="{Binding BindingContext.OnVariationItemSelected, 
                                                     Source={x:Reference HabitCompletionSelectPage}}"
                                          CommandParameter="{Binding}"/>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-            <Label Text="Difficulty"></Label>
+                <Label Text="Difficulty"></Label>
 
-            <ListView 
+                <ListView 
                 ItemsSource="{Binding CurrentDifficultyList}"
                 RowHeight="56"
                 HeightRequest="200"
                 SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <RadioButton Text="{Binding Description}" 
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <RadioButton Text="{Binding Description}" 
                                          GroupName="HabitDifficulties"
                                          Command="{Binding BindingContext.OnDifficultyItemSelected, 
                                                     Source={x:Reference HabitCompletionSelectPage}}"
                                          CommandParameter="{Binding}"/>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
 
-            <Button Text="Save" Command="{Binding OnSaveClicked}" />
+            <StackLayout  
+                Spacing="20"
+                Margin="0,5,0,0"
+                VerticalOptions="EndAndExpand">
+                <Button WidthRequest="190" 
+                        HorizontalOptions="Center" 
+                        Text="Save" 
+                        Command="{Binding OnSaveClicked}" >
+                    <Button.ImageSource>
+                        <FontImageSource 
+                                Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
+                    </Button.ImageSource>
+                </Button>
+
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 </ContentPage>

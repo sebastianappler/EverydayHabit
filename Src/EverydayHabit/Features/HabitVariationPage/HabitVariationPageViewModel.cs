@@ -8,6 +8,7 @@ using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.HabitPage;
+using Microsoft.EntityFrameworkCore.Internal;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,13 +18,13 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
 {
     public class HabitVariationPageViewModel : BasePageViewModel
     {
-        public ICommand OnSaveClicked => new Command(async () => await OnSaveClickedCommand());
-        public ICommand OnDeleteClicked => new Command(async () => await OnDeleteClickedCommand());
-        public ICommand OnCloseClicked => new Command(async () => await OnCloseClickedCommand());
+        public ICommand OnSaveCommand => new Command(async () => await OnSave());
+        public ICommand OnDeleteCommand => new Command(async () => await OnDelete());
+        public ICommand OnCloseCommand => new Command(async () => await OnClose());
 
         public HabitVariationDetailVm HabitVariation { get; set; }
 
-        public async Task OnSaveClickedCommand()
+        public async Task OnSave()
         {
             if (HabitVariation != null)
             {
@@ -40,9 +41,10 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
             }
 
             await NavigateToHabitPage();
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
         }
 
-        public async Task OnDeleteClickedCommand()
+        public async Task OnDelete()
         {
             if (HabitVariation != null)
             {
@@ -52,7 +54,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
             }
         }
         
-        public async Task OnCloseClickedCommand()
+        public async Task OnClose()
         {
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
         }
@@ -94,7 +96,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
         {
             var vm = await Mediator.Send(new GetHabitDetailQuery { Id = HabitVariation.HabitId }, CancellationToken.None);
 
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync(false);
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync(animated: false);
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitPageView
             {
                 BindingContext = new HabitPageViewModel
@@ -102,8 +104,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
                     HabitItem = vm as HabitDetailVm
                 }
             });
-
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
         }
 
         private HabitDifficultyDto _mini = new HabitDifficultyDto();

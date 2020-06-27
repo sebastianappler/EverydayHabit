@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EverydayHabit.XamarinApp.Common.Components.ModalNavigationBar"
+             x:Name="this"
+             >
+    <StackLayout 
+        BindingContext="{x:Reference this}"
+        HeightRequest="56"
+        Orientation="Horizontal"
+        BackgroundColor="{DynamicResource PrimaryColor}"
+    >
+        <Button 
+                BackgroundColor="Transparent"
+                WidthRequest="40"
+                CornerRadius="25"
+                Command="{Binding OnCloseCommand}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Start"
+                Margin="8,0,0,0"
+                >
+            <Button.ImageSource>
+                <FontImageSource 
+                        Glyph="arrow_back" 
+                        FontFamily="{StaticResource MaterialIcon}"
+                        Color="{DynamicResource WhiteColor}"
+                        Size="23"    
+                            />
+            </Button.ImageSource>
+        </Button>
+
+        <Label Text="{Binding Title}" 
+                   VerticalOptions="CenterAndExpand"
+                   Margin="20,0,0,0"
+                   Style="{DynamicResource LargeLabelStyle}"
+                   TextColor="{DynamicResource WhiteColor}"
+                   ></Label>
+    </StackLayout>
+</ContentView>

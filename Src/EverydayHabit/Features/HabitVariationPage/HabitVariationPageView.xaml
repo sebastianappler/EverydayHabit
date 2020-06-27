@@ -3,47 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitVariationPage"
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitVariationPage" 
+             xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
              mc:Ignorable="d"
              x:Class="EverydayHabit.XamarinApp.Features.HabitVariationPage.HabitVariationPageView"
-             Title="Add variation"
              Visual="Material"
              >
     <ContentPage.BindingContext>
         <local:HabitVariationPageViewModel />
     </ContentPage.BindingContext>
-    <StackLayout>
-        <StackLayout 
-            HeightRequest="56"
-            Orientation="Horizontal"
-                         BackgroundColor="{DynamicResource PrimaryColor}"
-                         >
-            <Button 
-                BackgroundColor="Transparent"
-                WidthRequest="40"
-                CornerRadius="25"
-                Command="{Binding OnCloseClicked}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Start"
-                Margin="8,0,0,0"
-                >
-                <Button.ImageSource>
-                    <FontImageSource 
-                        Glyph="arrow_back" 
-                        FontFamily="{StaticResource MaterialIcon}"
-                        Color="{DynamicResource WhiteColor}"
-                        Size="23"    
-                            />
-                </Button.ImageSource>
-            </Button>
 
-            <Label Text="Add Variation" 
-                   VerticalOptions="CenterAndExpand"
-                   Margin="20,0,0,0"
-                   Style="{DynamicResource LargeLabelStyle}"
-                   TextColor="{DynamicResource WhiteColor}"
-                   ></Label>
-        </StackLayout>
+
+    <StackLayout>
+        <components:ModalNavigationBar 
+            Title="Add variation" 
+            OnCloseCommand="{Binding OnCloseCommand}"
+         />
 
         <StackLayout 
         Spacing="15" 
@@ -78,7 +53,7 @@
                 Margin="0,5,0,0"
                 VerticalOptions="EndAndExpand">
 
-            <Button Text="Save" Command="{Binding OnSaveClicked}"
+            <Button Text="Save" Command="{Binding OnSaveCommand}"
                         HorizontalOptions="Center"
                         WidthRequest="190"
                         >
@@ -88,7 +63,7 @@
                 </Button.ImageSource>
             </Button>
 
-            <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
+            <Button Text="Delete" Command="{Binding OnDeleteCommand}" 
                         Style="{DynamicResource ButtonDeleteStyle}"
                         HorizontalOptions="Center"
                         WidthRequest="190">

@@ -18,7 +18,8 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
         public string CompletionTitle => $"{DateSelected.ToString("%d MMMM")} - {HabitSelected?.Name}";
         public ICommand OnVariationItemSelected => new Command((item) => OnVariationItemSelectedCommand(item));
         public ICommand OnDifficultyItemSelected => new Command((item) => OnDifficultyItemSelectedCommand(item));
-        public ICommand OnSaveClicked => new Command(async () => await OnSaveClickedCommand());
+        public ICommand SaveHabitCompletionCommand => new Command(async () => await SaveHabitCompletion());
+        public ICommand OnCloseCommand => new Command(async () => await OnClose());
 
         private void OnVariationItemSelectedCommand(object item)
         {
@@ -47,7 +48,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
             }
         }
 
-        public async Task OnSaveClickedCommand()
+        public async Task SaveHabitCompletion()
         {
             if(SelectedHabitVariation.Id > 0 && SelectedDifficulty.Id > 0)
             {
@@ -63,6 +64,11 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
                 await Parent.UpdateCalendarEvents(HabitSelected.Id);
             }
 
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
+        }
+        
+        public async Task OnClose()
+        {
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopModalAsync();
         }
 
@@ -86,7 +92,6 @@ namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
             get => _selectedDifficulty;
             set => SetProperty(ref _selectedDifficulty, value);
         }
-
 
         public ObservableCollection<HabitDifficultyDto> _currentDifficultyList = new ObservableCollection<HabitDifficultyDto> {};
         public ObservableCollection<HabitDifficultyDto> CurrentDifficultyList
