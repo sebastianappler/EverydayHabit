@@ -18,11 +18,13 @@
         />
 
         <StackLayout 
-        Padding="20" VerticalOptions="FillAndExpand" >
+            Padding="20" 
+            VerticalOptions="FillAndExpand"
+            >
 
             <StackLayout 
-                
-                VerticalOptions="StartAndExpand">
+                VerticalOptions="StartAndExpand"
+                >
                 <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15"/>
 
                 <Label Text="Variation"></Label>
@@ -71,7 +73,7 @@
                 <Button WidthRequest="190" 
                         HorizontalOptions="Center" 
                         Text="Save" 
-                        Command="{Binding OnSaveClicked}" >
+                        Command="{Binding SaveHabitCompletionCommand}" >
                     <Button.ImageSource>
                         <FontImageSource 
                                 Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
