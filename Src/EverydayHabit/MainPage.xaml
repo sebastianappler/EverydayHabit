@@ -8,9 +8,11 @@
             xmlns:settings="clr-namespace:EverydayHabit.XamarinApp.Features.Settings"
             mc:Ignorable="d"
             x:Class="EverydayHabit.XamarinApp.MainPage"
-            SelectedTabColor="{DynamicResource BarTextColor}"
-            UnselectedTabColor="{DynamicResource PrimaryTextColor}"
-            BackgroundColor="{DynamicResource PageBackgroundColor}"
+            SelectedTabColor="{DynamicResource WhiteColor}"
+            UnselectedTabColor="{DynamicResource PrimaryColorBackground}"
+            BackgroundColor="{DynamicResource PrimaryColor}"
+            Title="Everyday Habit"
+            Visual="Material"
             >
     <NavigationPage Title="Habits">
         <x:Arguments>

@@ -22,7 +22,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
     {
         public ICommand TodayCommand => new Command(() => { Year = DateTime.Today.Year; Month = DateTime.Today.Month; });
         public ICommand EventSelectedCommand => new Command(async (item) => await ExecuteEventSelectedCommand(item));
-        public ICommand DayTappedCommand => new Command<DateTime>(async (date) => await DayTapped(date));
+        public ICommand DayTappedCommand => new Command<DateTime>((date) => DayTapped(date));
         public ICommand HabitCompletedTapped => new Command(async () => await HabitCompleted());
         public ICommand SelectedHabitChangedCommand => new Command(async (item) => await SelectedHabitChanged(item));
 
@@ -97,7 +97,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             return Color.Black;
         }
 
-        private async Task DayTapped(DateTime dateSelected)
+        private void DayTapped(DateTime dateSelected)
         {
             var selectedEvent = Events.SingleOrDefault(e => e.Key == dateSelected);
             var dayEventColletion = selectedEvent.Value as DayEventCollection<EventModel>;

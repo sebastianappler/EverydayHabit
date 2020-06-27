@@ -10,13 +10,13 @@
     </OnPlatform>
 
     <Color x:Key="PageBackgroundColor">#454545</Color>
-    <Color x:Key="BarTextColor">#92B4F4</Color>
+    <Color x:Key="BarBackgroundColor">#0A369D</Color>
 
     <Color x:Key="PrimaryColor">#5E7CE2</Color> <!-- Glaucous  -->
     <Color x:Key="PrimaryColorDark">#CFDEE7</Color> <!-- Beau Blue  -->
     <Color x:Key="PrimaryColorAlternative">#5E7CE2</Color> <!-- Glaucous  -->
     <Color x:Key="PrimaryColorBackground">#92B4F4</Color> <!-- French Sky Blue  -->
-    <Color x:Key="PrimaryColorLight">#CFDEE7</Color> <!-- Beau Blue  -->
+    <Color x:Key="PrimaryColorLight">#0A369D</Color> <!-- Beau Blue  -->
     
     <Color x:Key="PrimaryRed">#FF6B6B</Color> <!-- Bittersweet  -->
     <Color x:Key="PrimaryYellow">#fcbf49</Color> <!-- Orange Web  -->

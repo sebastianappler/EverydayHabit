@@ -22,8 +22,7 @@
 
     <StackLayout 
         Spacing="15" 
-        Padding="20,0,20,20" 
-        
+        Padding="20,20,20,20" 
         >
 
             <Editor AutoSize="TextChanges"
@@ -84,34 +83,35 @@
                     </ListView.Behaviors>
                 </ListView>
 
-            <StackLayout 
+        </StackLayout>
+
+        <StackLayout 
                 Spacing="20"
-                Margin="0,5,0,0">
-               
-                <Button Text="Save" Command="{Binding OnSaveClicked}"
+                Margin="0,5,0,0"
+                >
+            <Button Text="Save" Command="{Binding OnSaveClicked}"
                         HorizontalOptions="Center"
                         WidthRequest="190"
                         >
-                    <Button.ImageSource>
-                        <FontImageSource 
+                <Button.ImageSource>
+                    <FontImageSource 
                              Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
-                    </Button.ImageSource>
-                </Button>
+                </Button.ImageSource>
+            </Button>
 
-                <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
+            <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
                         Style="{DynamicResource ButtonDeleteStyle}"
                         HorizontalOptions="Center"
                         WidthRequest="190">
 
-                    <Button.ImageSource>
-                        <FontImageSource 
+                <Button.ImageSource>
+                    <FontImageSource 
                              Glyph="delete" FontFamily="{StaticResource MaterialIcon}" Size="25"
                              Color="{DynamicResource PrimaryRed}"
                             
                              />
-                    </Button.ImageSource>
-                </Button>
-            </StackLayout>
+                </Button.ImageSource>
+            </Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

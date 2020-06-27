@@ -12,34 +12,45 @@
     <ContentPage.BindingContext>
         <local:HabitVariationPageViewModel />
     </ContentPage.BindingContext>
-
-    <StackLayout 
-        Spacing="15" 
-        Padding="20,0,20,20" 
-        VerticalOptions="FillAndExpand"
-        >
-        <StackLayout Orientation="Horizontal"
-                     Margin="-5,15,0,0">
+    <StackLayout>
+        <StackLayout 
+            HeightRequest="56"
+            Orientation="Horizontal"
+                         BackgroundColor="{DynamicResource PrimaryColor}"
+                         >
             <Button 
                 BackgroundColor="Transparent"
                 WidthRequest="40"
                 CornerRadius="25"
                 Command="{Binding OnCloseClicked}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Start"
+                Margin="8,0,0,0"
                 >
                 <Button.ImageSource>
                     <FontImageSource 
-                    Glyph="arrow_back" 
-                    FontFamily="{StaticResource MaterialIcon}"
-                    Color="{DynamicResource PrimaryColor}"
-                    Size="22"    
-                        />
+                        Glyph="arrow_back" 
+                        FontFamily="{StaticResource MaterialIcon}"
+                        Color="{DynamicResource WhiteColor}"
+                        Size="23"    
+                            />
                 </Button.ImageSource>
             </Button>
-            
+
             <Label Text="Add Variation" 
-                   Margin="5,5,0,0"
-               Style="{DynamicResource LargeLabelStyle}"></Label>
+                   VerticalOptions="CenterAndExpand"
+                   Margin="20,0,0,0"
+                   Style="{DynamicResource LargeLabelStyle}"
+                   TextColor="{DynamicResource WhiteColor}"
+                   ></Label>
         </StackLayout>
+
+        <StackLayout 
+        Spacing="15" 
+        Padding="20" 
+        VerticalOptions="FillAndExpand"
+        >
+        
         
         <Editor AutoSize="TextChanges"
             Placeholder="Name"
@@ -91,5 +102,6 @@
                 </Button.ImageSource>
             </Button>
         </StackLayout>
+    </StackLayout>
     </StackLayout>
 </ContentPage>

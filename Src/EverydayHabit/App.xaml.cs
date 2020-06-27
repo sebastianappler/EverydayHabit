@@ -11,7 +11,7 @@ namespace EverydayHabit
         public App()
         {
             InitializeComponent();
-            var nav = new NavigationPage(new MainPage());
+            var nav = new NavigationBar(new MainPage());
             MainPage = nav;
             Startup.Init();
         }
