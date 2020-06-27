@@ -22,6 +22,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
         public ICommand OnCloseCommand => new Command(async () => await OnClose());
 
         public HabitVariationDetailVm HabitVariation { get; set; }
+        public bool IsDeletePossible { get; set; }
 
         public async Task OnSave()
         {
@@ -51,7 +52,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
                 await NavigateToHabitPage();
             }
         }
-        
+
         public async Task OnClose()
         {
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();

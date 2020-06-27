@@ -53,7 +53,8 @@
             <Button Text="Delete" Command="{Binding OnDeleteCommand}" 
                         Style="{DynamicResource ButtonDeleteStyle}"
                         HorizontalOptions="Center"
-                        WidthRequest="190">
+                        WidthRequest="190"
+                        IsVisible="{Binding IsDeletePossible}">
 
                 <Button.ImageSource>
                     <FontImageSource 

@@ -26,6 +26,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         public ICommand OnVariationListItemSelected => new Command(async (item) => await OnVariationListItemSelectedCommand(item));
 
         public HabitDetailVm HabitItem { get; set; }
+        public bool IsDeletePossible { get; set; }
 
         public HabitPageViewModel()
         {
@@ -58,6 +59,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             {
                 BindingContext = new HabitVariationPageViewModel
                 {
+                    IsDeletePossible = false,
                     HabitVariation = new HabitVariationDetailVm
                     {
                         HabitId = HabitItem.Id
@@ -103,6 +105,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 {
                     BindingContext = new HabitVariationPageViewModel()
                     {
+                        IsDeletePossible = true,
                         HabitVariation = habitVariation,
                         Mini = mini,
                         Plus = plus,

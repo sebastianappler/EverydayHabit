@@ -15,9 +15,8 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
 {
     public class HabitListViewModel : BasePageViewModel
     {
-        public ICommand OnListItemSelected => new Command(async (item) => await OnListItemSelectedCommand(item));
-        public ICommand AddHabit_Clicked => new Command(async () => await AddHabit_ClickedCommand());
-
+        public ICommand OnListItemSelectedCommand => new Command(async (item) => await OnListItemSelected(item));
+        public ICommand AddHabitCommand => new Command(async () => await AddHabit());
 
         public HabitListViewModel()
         {
@@ -35,7 +34,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
             });
         }
 
-        private async Task OnListItemSelectedCommand(object item)
+        private async Task OnListItemSelected(object item)
         {
             if (item is ItemWithIconCellViewModel selectedHabit)
             {
@@ -45,18 +44,20 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                 {
                     BindingContext = new HabitPageViewModel
                     {
+                        IsDeletePossible = true,
                         HabitItem = vm as HabitDetailVm
                     }
                 });
             }
         }
 
-        public async Task AddHabit_ClickedCommand()
+        public async Task AddHabit()
         {
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitPageView
             {
                 BindingContext = new HabitPageViewModel
                 {
+                    IsDeletePossible = false,
                     HabitItem = new HabitDetailVm()
                 }
             });

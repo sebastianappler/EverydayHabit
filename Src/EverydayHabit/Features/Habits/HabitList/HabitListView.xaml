@@ -34,12 +34,15 @@
             </ListView.ItemTemplate>
             
             <ListView.Behaviors>
-                <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
+                <behaviours:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding OnListItemSelectedCommand}" 
+                    Converter="{StaticResource ItemTappedConverter}" />
             </ListView.Behaviors>
         </ListView>
         
         <Button 
-            Command="{Binding AddHabit_Clicked}"
+            Command="{Binding AddHabitCommand}"
             Style="{StaticResource FabButtonStyle}">
             <Button.ImageSource>
                 <FontImageSource 
