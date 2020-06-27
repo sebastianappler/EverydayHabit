@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage" xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
-             x:Class="EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage.HabitCompletionSelectPageView"
+             xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage" 
+             x:Class="EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage.HabitCompletionPageView"
              Title="{Binding DateSelected.Date}"
-             x:Name="HabitCompletionSelectPage"
+             x:Name="HabitCompletionPage"
              Visual="Material">
 
     <ContentPage.BindingContext>
-        <local:HabitCompletionSelectPageViewModel />
+        <local:HabitCompletionPageViewModel />
     </ContentPage.BindingContext>
     <StackLayout>
 
@@ -38,7 +39,7 @@
                                 <RadioButton Text="{Binding Name}" 
                                          GroupName="HabitVariations" 
                                          Command="{Binding BindingContext.OnVariationItemSelected, 
-                                                    Source={x:Reference HabitCompletionSelectPage}}"
+                                                    Source={x:Reference HabitCompletionPage}}"
                                          CommandParameter="{Binding}"/>
                             </ViewCell>
                         </DataTemplate>
@@ -58,7 +59,7 @@
                                 <RadioButton Text="{Binding Description}" 
                                          GroupName="HabitDifficulties"
                                          Command="{Binding BindingContext.OnDifficultyItemSelected, 
-                                                    Source={x:Reference HabitCompletionSelectPage}}"
+                                                    Source={x:Reference HabitCompletionPage}}"
                                          CommandParameter="{Binding}"/>
                             </ViewCell>
                         </DataTemplate>

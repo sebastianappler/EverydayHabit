@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitVariationPage" 
              xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
+             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage" 
+             x:Class="EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage.HabitVariationPageView"
              mc:Ignorable="d"
-             x:Class="EverydayHabit.XamarinApp.Features.HabitVariationPage.HabitVariationPageView"
              Visual="Material"
              >
     <ContentPage.BindingContext>

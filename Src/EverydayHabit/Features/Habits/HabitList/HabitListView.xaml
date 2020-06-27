@@ -3,9 +3,9 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
             xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters" 
-            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.HabitList" 
             xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
-            x:Class="EverydayHabit.XamarinApp.Features.HabitList.HabitListView"
+            xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Habits.HabitList" 
+            x:Class="EverydayHabit.XamarinApp.Features.Habits.HabitList.HabitListView"
             x:Name="habitList"
             Title="Habits"
             Visual="Material">

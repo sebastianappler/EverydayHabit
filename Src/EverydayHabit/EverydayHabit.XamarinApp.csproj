@@ -42,28 +42,28 @@
     <Compile Update="Common\Themes\DarkTheme.xaml.cs">
       <DependentUpon>DarkTheme.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitCalendar\CalendarFooter.xaml.cs">
+    <Compile Update="Features\Calendar\HabitCalendar\CalendarFooter.xaml.cs">
       <DependentUpon>CalendarFooter.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitCalendar\HabitCalendarView.xaml.cs">
+    <Compile Update="Features\Calendar\HabitCalendar\HabitCalendarView.xaml.cs">
       <DependentUpon>HabitCalendarView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitCompletionSelectPage\HabitCompletionSelectPageView.xaml.cs">
-      <DependentUpon>HabitCompletionSelectPageView.xaml</DependentUpon>
+    <Compile Update="Features\Calendar\HabitCompletionPage\HabitCompletionPageView.xaml.cs">
+      <DependentUpon>HabitCompletionPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitPage\HabitPageView.xaml.cs">
+    <Compile Update="Features\Habits\HabitPage\HabitPageView.xaml.cs">
       <DependentUpon>HabitPageView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Features\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitList\HabitListView.xaml.cs">
+    <Compile Update="Features\Habits\HabitList\HabitListView.xaml.cs">
       <DependentUpon>HabitListView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Common\Themes\LightTheme.xaml.cs">
       <DependentUpon>LightTheme.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Features\HabitVariationPage\HabitVariationPageView.xaml.cs">
+    <Compile Update="Features\Habits\HabitVariationPage\HabitVariationPageView.xaml.cs">
       <DependentUpon>HabitVariationPageView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -81,22 +81,22 @@
     <EmbeddedResource Update="Common\Components\ModalNavigationBar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitCalendar\CalendarFooter.xaml">
+    <EmbeddedResource Update="Features\Calendar\HabitCalendar\CalendarFooter.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitCalendar\CalendarHeader.xaml">
+    <EmbeddedResource Update="Features\Calendar\HabitCalendar\CalendarHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitCalendar\HabitCalendarView.xaml">
+    <EmbeddedResource Update="Features\Calendar\HabitCalendar\HabitCalendarView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitList\HabitListView.xaml">
+    <EmbeddedResource Update="Features\Habits\HabitList\HabitListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitPage\HabitPageView.xaml">
+    <EmbeddedResource Update="Features\Habits\HabitPage\HabitPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Features\HabitVariationPage\HabitVariationPageView.xaml">
+    <EmbeddedResource Update="Features\Habits\HabitVariationPage\HabitVariationPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MainPage.xaml">

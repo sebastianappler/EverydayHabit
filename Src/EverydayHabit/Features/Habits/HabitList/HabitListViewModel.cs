@@ -3,7 +3,7 @@ using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 using EverydayHabit.XamarinApp.Common.Components;
 using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.ViewModels;
-using EverydayHabit.XamarinApp.Features.HabitPage;
+using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace EverydayHabit.XamarinApp.Features.HabitList
+namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
 {
     public class HabitListViewModel : BasePageViewModel
     {

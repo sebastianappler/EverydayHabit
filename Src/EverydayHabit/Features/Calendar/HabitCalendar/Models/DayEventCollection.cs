@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Plugin.Calendar.Interfaces;
 
-namespace EverydayHabit.XamarinApp.Features.HabitCalendar.Models
+namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.Models
 {
     /// <summary>
     /// Wrapper to allow change the dot color

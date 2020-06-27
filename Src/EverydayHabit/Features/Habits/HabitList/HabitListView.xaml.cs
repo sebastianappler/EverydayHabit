@@ -1,13 +1,12 @@
-﻿using EverydayHabit.XamarinApp.Features.HabitCalendar;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
+namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HabitCompletionSelectPageView : ContentPage
+    public partial class HabitListView : ContentPage 
     {
-        public HabitCompletionSelectPageView()
+        public HabitListView()
         {
             InitializeComponent();
         }

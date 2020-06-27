@@ -7,14 +7,13 @@ using EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariation;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.ViewModels;
-using EverydayHabit.XamarinApp.Features.HabitPage;
-using Microsoft.EntityFrameworkCore.Internal;
+using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace EverydayHabit.XamarinApp.Features.HabitVariationPage
+namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
 {
     public class HabitVariationPageViewModel : BasePageViewModel
     {

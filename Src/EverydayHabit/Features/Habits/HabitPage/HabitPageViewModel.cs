@@ -7,7 +7,7 @@ using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.Components;
 using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.ViewModels;
-using EverydayHabit.XamarinApp.Features.HabitVariationPage;
+using EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace EverydayHabit.XamarinApp.Features.HabitPage
+namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
 {
     public class HabitPageViewModel : BasePageViewModel
     {

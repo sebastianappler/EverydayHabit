@@ -3,20 +3,17 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using EverydayHabit.XamarinApp.Features.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Common.ViewModels;
-using EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage;
+using EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 using EverydayHabit.Domain.Enums;
 using System.Collections.Generic;
-using MediatR;
 using System.Linq;
 using System.Collections.ObjectModel;
-using System.Threading;
-using System.ComponentModel;
 using System.Globalization;
+using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.Models;
 
-namespace EverydayHabit.XamarinApp.Features.HabitCalendar
+namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 {
     public class HabitCalendarViewModel : BasePageViewModel
     {
@@ -125,9 +122,9 @@ namespace EverydayHabit.XamarinApp.Features.HabitCalendar
             if(habitId > 0)
             {
                 var habit = await Mediator.Send(new GetHabitDetailQuery { Id = SelectedHabit.Key });
-                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionSelectPageView
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitCompletionPageView
                 {
-                    BindingContext = new HabitCompletionSelectPageViewModel
+                    BindingContext = new HabitCompletionPageViewModel
                     {
                         SelectedHabitCompletionId = SelectedHabitCompletionId,
                         DateSelected = date,

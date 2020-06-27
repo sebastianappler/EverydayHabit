@@ -2,16 +2,16 @@
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.XamarinApp.Common.ViewModels;
-using EverydayHabit.XamarinApp.Features.HabitCalendar;
+using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace EverydayHabit.XamarinApp.Features.HabitCompletionSelectPage
+namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
 {
-    public class HabitCompletionSelectPageViewModel : BasePageViewModel
+    public class HabitCompletionPageViewModel : BasePageViewModel
     {
         public HabitDetailVm HabitSelected { get; set; }
         public DateTime DateSelected { get; set; }
