@@ -3,7 +3,6 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
             xmlns:behaviours="clr-namespace:EverydayHabit.XamarinApp.Common.Behaviours" 
-            xmlns:converters="clr-namespace:EverydayHabit.XamarinApp.Common.Converters"
             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar" 
             x:Class="EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.HabitCalendarView"
             x:Name="habitCalendarPage"
@@ -14,6 +13,7 @@
     <ContentPage.BindingContext>
         <local:HabitCalendarViewModel />
     </ContentPage.BindingContext>
+    
     <AbsoluteLayout>
         <StackLayout 
         Padding="10,0">

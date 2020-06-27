@@ -22,7 +22,6 @@
     <AbsoluteLayout>
         <ListView 
             Margin="10,5,5,5"
-            
             ItemsSource="{Binding HabitList}"
             RowHeight="56"
             SeparatorVisibility="None"
