@@ -99,7 +99,7 @@ namespace EverydayHabit.XamarinApp.Features.HabitPage
                     elite = habitVariation.DifficultiesList.SingleOrDefault(d => d.DifficultyLevel == HabitDifficultyLevel.Elite);
                 }
                
-                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
+                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(new HabitVariationPageView
                 {
                     BindingContext = new HabitVariationPageViewModel()
                     {
