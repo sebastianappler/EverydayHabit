@@ -24,7 +24,10 @@
                 Margin="7,0">
 
                 <Picker.Behaviors>
-                    <behaviours:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedHabitChangedCommand}" CommandParameter="{Binding SelectedHabit}" />
+                    <behaviours:EventToCommandBehavior 
+                        EventName="SelectedIndexChanged" 
+                        Command="{Binding SelectedHabitChangedCommand}" 
+                        CommandParameter="{Binding SelectedHabit}" />
                 </Picker.Behaviors>
             </Picker>
             

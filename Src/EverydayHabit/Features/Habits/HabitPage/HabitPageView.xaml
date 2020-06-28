@@ -28,29 +28,29 @@
             <Editor AutoSize="TextChanges"
                     Placeholder="Name"
                     Text="{Binding HabitItem.Name}"
-                />  
+            />  
 
             <Editor AutoSize="TextChanges"
                     Placeholder="Description"
                     Text="{Binding HabitItem.Description}"
-                />
-            
+            />
+
         <StackLayout 
             Spacing="15" 
             Margin="0,0,0,0" 
             Orientation="Horizontal">
+            
+            <components:IconBubbleFrame 
+                    Margin="0,10,0,0" 
+                    Icon="{Binding SelectedHabitType.Icon}" />
 
-                <components:IconBubbleFrame Margin="0,10,0,0" Icon="{Binding SelectedHabitType.Icon}"></components:IconBubbleFrame>
-
-
-                <Picker Title="Habit type" 
+            <Picker Title="Habit type" 
                         ItemsSource="{Binding PickerHabitTypes}" 
                         ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding SelectedHabitType}"
                         SelectedIndex="{Binding HabitItem.HabitType}"
                         Margin="0"
-                        HorizontalOptions="FillAndExpand"
-                    >
+                        HorizontalOptions="FillAndExpand" >
                 </Picker>
             </StackLayout>
 
@@ -59,7 +59,7 @@
                 <Label Text="Variations" Style="{DynamicResource SmallLabelStyle}" ></Label>
 
                 <Button Text="Add Variation" 
-                    Command="{Binding OnAddVariationClicked}"
+                    Command="{Binding OnAddVariationCommand}"
                     Margin="0,5,0,5"
                     HorizontalOptions="Start"
                     >
@@ -79,7 +79,10 @@
                     </ListView.ItemTemplate>
 
                     <ListView.Behaviors>
-                        <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnVariationListItemSelected}" Converter="{StaticResource ItemTappedConverter}" />
+                    <behaviours:EventToCommandBehavior 
+                        EventName="ItemTapped" 
+                        Command="{Binding OnVariationListItemSelectedCommand}" 
+                        Converter="{StaticResource ItemTappedConverter}" />
                     </ListView.Behaviors>
                 </ListView>
 
@@ -89,7 +92,7 @@
                 Spacing="20"
                 Margin="0,5,0,0"
                 >
-            <Button Text="Save" Command="{Binding OnSaveClicked}"
+            <Button Text="Save" Command="{Binding OnSaveCommand}"
                         HorizontalOptions="Center"
                         WidthRequest="190"
                         >
@@ -99,7 +102,7 @@
                 </Button.ImageSource>
             </Button>
 
-            <Button Text="Delete" Command="{Binding OnDeleteClicked}" 
+            <Button Text="Delete" Command="{Binding OnDeleteCommand}" 
                         Style="{DynamicResource ButtonDeleteStyle}"
                         HorizontalOptions="Center"
                         WidthRequest="190"

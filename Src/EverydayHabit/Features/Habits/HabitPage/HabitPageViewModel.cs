@@ -20,10 +20,10 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
 {
     public class HabitPageViewModel : BasePageViewModel
     {
-        public ICommand OnSaveClicked => new Command(async () => await OnSaveClickedCommand());
-        public ICommand OnDeleteClicked => new Command(async () => await OnDeleteClickedCommand());
-        public ICommand OnAddVariationClicked => new Command(async () => await OnAddVariationClickedCommand());
-        public ICommand OnVariationListItemSelected => new Command(async (item) => await OnVariationListItemSelectedCommand(item));
+        public ICommand OnSaveCommand => new Command(async () => await OnSave());
+        public ICommand OnDeleteCommand => new Command(async () => await OnDelete());
+        public ICommand OnAddVariationCommand => new Command(async () => await OnAddVariation());
+        public ICommand OnVariationListItemSelectedCommand => new Command(async (item) => await OnVariationListItemSelected(item));
 
         public HabitDetailVm HabitItem { get; set; }
 
@@ -34,24 +34,24 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 SelectedHabitType = PickerHabitTypes.SingleOrDefault(ht => ht.Id == (int) HabitItem.HabitType) ?? PickerHabitTypes.First();
             }
         }
-        public async Task OnSaveClickedCommand()
+        public async Task OnSave()
         {
             await UpsertHabitAsync();
 
-            Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
+            Xamarin.Forms.Application.Current.MainPage = new NavigationBar(new MainPage());
         }
 
-        public async Task OnDeleteClickedCommand()
+        public async Task OnDelete()
         {
             if (HabitItem != null && HabitItem.Id > 0)
             {
                 await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
             }
 
-            Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new MainPage());
+            Xamarin.Forms.Application.Current.MainPage = new NavigationBar(new MainPage());
         }
 
-        public async Task OnAddVariationClickedCommand()
+        public async Task OnAddVariation()
         {
             await UpsertHabitAsync();
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
@@ -82,7 +82,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             }
         }
 
-        private async Task OnVariationListItemSelectedCommand(object item)
+        private async Task OnVariationListItemSelected(object item)
         {
             if (item is HabitVariationDto selectedHabitVariation)
             {
