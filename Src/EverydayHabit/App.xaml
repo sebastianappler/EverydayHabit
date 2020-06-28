@@ -68,7 +68,7 @@
         </Style>
 
         <Style x:Key="ButtonDeleteStyle" TargetType="Button" ApplyToDerivedTypes="True">
-            <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundLightColor}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryRed}" />
             <Setter Property="BorderColor" Value="{DynamicResource PrimaryRed}" />
             <Setter Property="BorderWidth" Value="7" />

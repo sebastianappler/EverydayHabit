@@ -29,7 +29,6 @@
     <Color x:Key="TertiaryTextColor">White</Color> <!-- Charcoal -->
     <Color x:Key="TransparentColor">Transparent</Color>
     <Color x:Key="BackgroundGreyColor">#2b2b2b</Color>
-    <Color x:Key="BackgroundLightColor">#454545</Color>
     <Color x:Key="WhiteColor">White</Color>
 
 </ResourceDictionary>
