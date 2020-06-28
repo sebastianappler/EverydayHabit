@@ -10,7 +10,8 @@
             x:Class="EverydayHabit.XamarinApp.MainPage"
             SelectedTabColor="{DynamicResource WhiteColor}"
             UnselectedTabColor="{DynamicResource PrimaryColorBackground}"
-            BackgroundColor="{DynamicResource PrimaryColor}"
+            BarBackgroundColor="{DynamicResource PrimaryColor}"
+            BackgroundColor="{DynamicResource PageBackgroundColor}"
             Title="Everyday Habit"
             Visual="Material"
             >

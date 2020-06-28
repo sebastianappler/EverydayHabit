@@ -25,7 +25,7 @@
 
     <Color x:Key="SecondaryColor">#28818F</Color> <!-- Metallica seaweed -->
     <Color x:Key="PrimaryTextColor">#92B4F4</Color> <!-- Charcoal (lightest) -->
-    <Color x:Key="SecondaryTextColor">White</Color>  <!-- Charcoal (lighter)-->
+    <Color x:Key="SecondaryTextColor">#FFFFFF</Color>  <!-- Charcoal (lighter)-->
     <Color x:Key="TertiaryTextColor">White</Color> <!-- Charcoal -->
     <Color x:Key="TransparentColor">Transparent</Color>
     <Color x:Key="BackgroundGreyColor">#2b2b2b</Color>

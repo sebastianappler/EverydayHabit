@@ -12,8 +12,8 @@
 
         <Style TargetType="NavigationPage">
             <Setter Property="BarTextColor"
-                    Value="{DynamicResource BarTextColor}" />
-            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="BarBackgroundColor"
                     Value="{DynamicResource PageBackgroundColor}" />
         </Style>
         
@@ -38,7 +38,7 @@
         </Style>
 
         <Style TargetType="Button"> 
-            <Setter Property="TextColor" Value="{DynamicResource TertiaryTextColor}" />
+            <Setter Property="TextColor" Value="White" />
             <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="CornerRadius" Value="5" />
             <Setter Property="FontSize" Value="16" />

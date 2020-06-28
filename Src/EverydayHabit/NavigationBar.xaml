@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="EverydayHabit.XamarinApp.NavigationBar"
-             BackgroundColor="{DynamicResource PrimaryColor}"
              Title="Everyday Habits"
              BarTextColor="White"
+             BarBackgroundColor="{DynamicResource PrimaryColor}"
                 >
 </NavigationPage>
