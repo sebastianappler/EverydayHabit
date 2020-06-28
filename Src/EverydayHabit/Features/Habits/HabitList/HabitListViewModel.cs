@@ -44,7 +44,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                 {
                     BindingContext = new HabitPageViewModel
                     {
-                        IsDeletePossible = true,
                         HabitItem = vm as HabitDetailVm
                     }
                 });
@@ -57,7 +56,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
             {
                 BindingContext = new HabitPageViewModel
                 {
-                    IsDeletePossible = false,
                     HabitItem = new HabitDetailVm()
                 }
             });

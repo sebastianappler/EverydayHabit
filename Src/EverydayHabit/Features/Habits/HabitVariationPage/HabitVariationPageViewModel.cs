@@ -22,7 +22,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
         public ICommand OnCloseCommand => new Command(async () => await OnClose());
 
         public HabitVariationDetailVm HabitVariation { get; set; }
-        public bool IsDeletePossible { get; set; }
 
         public async Task OnSave()
         {
@@ -105,6 +104,13 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
                     HabitItem = vm as HabitDetailVm
                 }
             });
+        }
+
+        public bool _isDeletePossible = false;
+        public bool IsDeletePossible
+        {
+            get => HabitVariation?.Id > 0 ? true : false;
+            set => SetProperty(ref _isDeletePossible, value);
         }
 
         private HabitDifficultyDto _mini = new HabitDifficultyDto();
