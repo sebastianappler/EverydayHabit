@@ -13,5 +13,6 @@
         Art = 8,
         Social = 9,
         Sports = 10,
+        MorningRoutine = 11,
     }
 }

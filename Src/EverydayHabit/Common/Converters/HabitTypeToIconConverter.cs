@@ -30,6 +30,8 @@ namespace EverydayHabit.XamarinApp.Common.Converters
                     return "emoji_people";
                 case HabitType.Sports:
                     return "sports_tennis";
+                case HabitType.MorningRoutine:
+                    return "local_cafe";
                 default:
                     return "bubble_chart";
             }

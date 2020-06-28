@@ -123,7 +123,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 habitTypes.Add(new ItemWithIconCellViewModel
                 {
                     Id = (int) habitType,
-                    Name = habitType.ToString(),
+                    Name = EnumToFormattedStringConverter.Convert(habitType),
                     Icon = HabitTypeToIconConverter.Convert(habitType)
                 });
             }
