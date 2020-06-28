@@ -26,6 +26,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         public ICommand OnVariationListItemSelectedCommand => new Command(async (item) => await OnVariationListItemSelected(item));
 
         public HabitDetailVm HabitItem { get; set; }
+        public ObservableCollection<ItemWithIconCellViewModel> HabitList { get; set; }
 
         public HabitPageViewModel()
         {
@@ -34,11 +35,12 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 SelectedHabitType = PickerHabitTypes.SingleOrDefault(ht => ht.Id == (int) HabitItem.HabitType) ?? PickerHabitTypes.First();
             }
         }
+
         public async Task OnSave()
         {
             await UpsertHabitAsync();
-
-            Xamarin.Forms.Application.Current.MainPage = new NavigationBar(new MainPage());
+            UpsertHabitList();
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public async Task OnDelete()
@@ -46,14 +48,22 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             if (HabitItem != null && HabitItem.Id > 0)
             {
                 await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
+
+                var habitInList = HabitList.FirstOrDefault(habit => habit.Id == HabitItem.Id);
+                if(habitInList != null)
+                {
+                    HabitList.Remove(habitInList);
+                }
             }
 
-            Xamarin.Forms.Application.Current.MainPage = new NavigationBar(new MainPage());
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public async Task OnAddVariation()
         {
             await UpsertHabitAsync();
+            UpsertHabitList();
+
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
             {
                 BindingContext = new HabitVariationPageViewModel
@@ -79,6 +89,30 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 });
 
                 HabitItem.Id = habitId;
+            }
+        }
+
+        private void UpsertHabitList()
+        {
+            if (HabitItem != null)
+            {
+                var habitInList = HabitList.FirstOrDefault(habit => habit.Id == HabitItem.Id);
+
+                var newHabitItem = new ItemWithIconCellViewModel
+                {
+                    Id = HabitItem.Id,
+                    Name = HabitItem.Name,
+                    Icon = HabitTypeToIconConverter.Convert((HabitType)SelectedHabitType.Id)
+                };
+
+                if (habitInList != null)
+                {
+                    HabitList[HabitList.IndexOf(habitInList)] = newHabitItem;
+                }
+                else
+                {
+                    HabitList.Add(newHabitItem);
+                }
             }
         }
 

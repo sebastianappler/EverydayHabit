@@ -18,14 +18,17 @@
     <ContentPage.BindingContext>
         <local:HabitListViewModel />
     </ContentPage.BindingContext>
-    
-    <AbsoluteLayout>
+
+    <StackLayout 
+        VerticalOptions="FillAndExpand" >
+
         <ListView 
             Margin="10,5,5,5"
             ItemsSource="{Binding HabitList}"
             RowHeight="56"
             SeparatorVisibility="None"
             ItemTapped="ListView_ItemTapped"
+            VerticalOptions="FillAndExpand"
             >
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -40,17 +43,18 @@
                     Converter="{StaticResource ItemTappedConverter}" />
             </ListView.Behaviors>
         </ListView>
-        
-        <Button 
-            Command="{Binding AddHabitCommand}"
-            Style="{StaticResource FabButtonStyle}">
-            <Button.ImageSource>
-                <FontImageSource 
-                         Glyph="add" 
-                         FontFamily="{StaticResource MaterialIcon}"
-                         Size="30"/>
-            </Button.ImageSource>
-        </Button>
 
-    </AbsoluteLayout>
+        <AbsoluteLayout>
+            <Button 
+                Command="{Binding AddHabitCommand}"
+                Style="{StaticResource FabButtonStyle}">
+                <Button.ImageSource>
+                    <FontImageSource 
+                             Glyph="add" 
+                             FontFamily="{StaticResource MaterialIcon}"
+                             Size="30"/>
+                </Button.ImageSource>
+            </Button>
+        </AbsoluteLayout>
+    </StackLayout>
 </ContentPage>

@@ -1,10 +1,12 @@
 ﻿using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.Components;
 using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +15,7 @@ using Xamarin.Forms;
 
 namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
 {
-    public class HabitListViewModel : BasePageViewModel
+    public class HabitListViewModel : BasePageViewModel, INotifyPropertyChanged
     {
         public ICommand OnListItemSelectedCommand => new Command(async (item) => await OnListItemSelected(item));
         public ICommand AddHabitCommand => new Command(async () => await AddHabit());
@@ -44,6 +46,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                 {
                     BindingContext = new HabitPageViewModel
                     {
+                        HabitList = HabitList,
                         HabitItem = vm as HabitDetailVm
                     }
                 });
@@ -56,6 +59,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
             {
                 BindingContext = new HabitPageViewModel
                 {
+                    HabitList = HabitList,
                     HabitItem = new HabitDetailVm()
                 }
             });
@@ -66,6 +70,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
         {
             get => _habitList;
             set => SetProperty(ref _habitList, value);
+
         }
     }
 }
