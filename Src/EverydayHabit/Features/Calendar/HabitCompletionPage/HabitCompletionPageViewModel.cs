@@ -1,4 +1,5 @@
-﻿using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
+﻿using Application.Habits.Commands.CreateHabit;
+using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.XamarinApp.Common.ViewModels;
@@ -13,34 +14,39 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
 {
     public class HabitCompletionPageViewModel : BasePageViewModel
     {
+        public ICommand OnVariationItemSelectedCommand => new Command((item) => OnVariationItemSelected(item));
+        public ICommand OnDifficultyItemSelectedCommand => new Command((item) => OnDifficultyItemSelected(item));
+        public ICommand OnSaveCommand => new Command(async () => await OnSave());
+        public ICommand OnDeleteCommand => new Command(async () => await OnDelete());
+        public ICommand OnCloseCommand => new Command(async () => await OnClose());
+
         public HabitDetailVm HabitSelected { get; set; }
         public DateTime DateSelected { get; set; }
         public string CompletionTitle => $"{DateSelected.ToString("%d MMMM")} - {HabitSelected?.Name}";
-        public ICommand OnVariationItemSelected => new Command((item) => OnVariationItemSelectedCommand(item));
-        public ICommand OnDifficultyItemSelected => new Command((item) => OnDifficultyItemSelectedCommand(item));
-        public ICommand SaveHabitCompletionCommand => new Command(async () => await SaveHabitCompletion());
-        public ICommand OnCloseCommand => new Command(async () => await OnClose());
+        public int SelectedHabitCompletionId { get; set; }
+        public HabitCalendarViewModel Parent { get; internal set; }
 
-        private void OnVariationItemSelectedCommand(object item)
+        private void OnVariationItemSelected(object item)
         {
             if (item is HabitVariationDto selectedHabitVariation)
             {
                 SelectedHabitVariation = selectedHabitVariation;
-
-                CurrentDifficultyList.Clear();
-                foreach (var difficulty in selectedHabitVariation.DifficultiesList)
-                {
-                    CurrentDifficultyList.Add(difficulty);
-                }
-
+              
                 if(SelectedDifficulty.Id > 0 && SelectedDifficulty?.HabitVariation.HabitId != selectedHabitVariation.Id)
                 {
                     SelectedDifficulty = new HabitDifficultyDto();
                 }
+
+                CurrentDifficultyList.Clear();
+
+                foreach (var difficulty in selectedHabitVariation.DifficultiesList)
+                {
+                    CurrentDifficultyList.Add(difficulty);
+                }
             }
         }
         
-        private void OnDifficultyItemSelectedCommand(object item)
+        private void OnDifficultyItemSelected(object item)
         {
             if (item is HabitDifficultyDto selectedDifficulty)
             {
@@ -48,7 +54,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
             }
         }
 
-        public async Task SaveHabitCompletion()
+        public async Task OnSave()
         {
             if(SelectedHabitVariation.Id > 0 && SelectedDifficulty.Id > 0)
             {
@@ -67,9 +73,30 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
         
+        public async Task OnDelete()
+        {
+            if(SelectedHabitCompletionId > 0)
+            {
+                await Mediator.Send(new DeleteHabitCompletionCommand
+                {
+                    Id = SelectedHabitCompletionId
+                });
+
+                await Parent.UpdateCalendarEvents(HabitSelected.Id);
+            }
+
+            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
+        }
+        
         public async Task OnClose()
         {
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
+        }
+        public bool _isDeletePossible = false;
+        public bool IsDeletePossible
+        {
+            get => SelectedHabitCompletionId > 0 ? true : false;
+            set => SetProperty(ref _isDeletePossible, value);
         }
 
         private DateTime _selectedDate = DateTime.MinValue;
@@ -99,7 +126,5 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
             get => _currentDifficultyList;
             set => SetProperty(ref _currentDifficultyList, value);
         }
-        public HabitCalendarViewModel Parent { get; internal set; }
-        public int SelectedHabitCompletionId { get; set; }
     }
 }

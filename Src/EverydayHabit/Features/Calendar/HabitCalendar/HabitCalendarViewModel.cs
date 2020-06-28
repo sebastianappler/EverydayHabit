@@ -23,7 +23,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
         public ICommand HabitCompletedTapped => new Command(async () => await HabitCompleted());
         public ICommand SelectedHabitChangedCommand => new Command(async (item) => await SelectedHabitChanged(item));
 
-        public HabitCalendarViewModel() : base()
+        public HabitCalendarViewModel()
         {
             Events = new EventCollection();
             Culture = CultureInfo.CreateSpecificCulture("en-GB");
@@ -96,22 +96,28 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
         private void DayTapped(DateTime dateSelected)
         {
-            var selectedEvent = Events.SingleOrDefault(e => e.Key == dateSelected);
+        }
+
+        private int GetHabitCompletionId(DateTime date)
+        {
+            int habitCompletionId = 0;
+            var selectedEvent = Events.SingleOrDefault(e => e.Key == date);
             var dayEventColletion = selectedEvent.Value as DayEventCollection<EventModel>;
 
             if (dayEventColletion != null)
             {
                 var eventModel = dayEventColletion.FirstOrDefault();
-
-                SelectedHabitCompletionId = eventModel?.Id ?? 0;
+                habitCompletionId = eventModel?.Id ?? 0;
             }
 
+            return habitCompletionId;
         }
 
         private async Task HabitCompleted()
         {
             if (SelectedDate <= DateTime.Now)
             {
+                GetHabitCompletionId(SelectedDate);
                 await OpenHabitCompletionPage(SelectedDate);
             }
         }
@@ -126,7 +132,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
                 {
                     BindingContext = new HabitCompletionPageViewModel
                     {
-                        SelectedHabitCompletionId = SelectedHabitCompletionId,
+                        SelectedHabitCompletionId = GetHabitCompletionId(date),
                         DateSelected = date,
                         HabitSelected = habit,
                         Parent = this,

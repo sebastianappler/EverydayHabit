@@ -1,76 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:components="clr-namespace:EverydayHabit.XamarinApp.Common.Components"
-             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage" 
              x:Class="EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage.HabitCompletionPageView"
              Title="Completed Habit"
              x:Name="HabitCompletionPage"
              Visual="Material">
     
     <StackLayout 
-            Padding="20" 
-            VerticalOptions="FillAndExpand"
-            >
+        Padding="20" 
+        VerticalOptions="FillAndExpand" >
 
-            <StackLayout 
-                VerticalOptions="StartAndExpand"
-                >
-                <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15"/>
+        <StackLayout 
+                VerticalOptions="StartAndExpand" >
 
-                <Label Text="Variation"></Label>
-                <ListView 
-                ItemsSource="{Binding HabitSelected.VariationsList}"
-                RowHeight="56"
-                SeparatorVisibility="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <RadioButton Text="{Binding Name}" 
+            <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15" />
+
+            <Label Text="Variation" Style="{DynamicResource SmallLabelStyle}" />
+
+            <ListView 
+                    ItemsSource="{Binding HabitSelected.VariationsList}"
+                    RowHeight="56"
+                    SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <RadioButton Text="{Binding Name}" 
                                          GroupName="HabitVariations" 
-                                         Command="{Binding BindingContext.OnVariationItemSelected, 
-                                                    Source={x:Reference HabitCompletionPage}}"
-                                         CommandParameter="{Binding}"/>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                         Command="{Binding BindingContext.OnVariationItemSelectedCommand, 
+                                                   Source={x:Reference HabitCompletionPage}}"
+                                         CommandParameter="{Binding}">
+                            </RadioButton>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-                <Label Text="Difficulty"></Label>
+            <Label Text="Difficulty" Style="{DynamicResource SmallLabelStyle}" />
 
-                <ListView 
-                ItemsSource="{Binding CurrentDifficultyList}"
-                RowHeight="56"
-                HeightRequest="200"
-                SeparatorVisibility="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <RadioButton Text="{Binding Description}" 
-                                         GroupName="HabitDifficulties"
-                                         Command="{Binding BindingContext.OnDifficultyItemSelected, 
-                                                    Source={x:Reference HabitCompletionPage}}"
-                                         CommandParameter="{Binding}"/>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
+            <ListView 
+                    ItemsSource="{Binding CurrentDifficultyList}"
+                    RowHeight="56"
+                    HeightRequest="200"
+                    SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <RadioButton Text="{Binding Description}" 
+                                        GroupName="HabitDifficulties"
+                                        Command="{Binding BindingContext.OnDifficultyItemSelectedCommand, 
+                                                  Source={x:Reference HabitCompletionPage}}"
+                                        CommandParameter="{Binding}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
 
-            <StackLayout  
-                Spacing="20"
-                Margin="0,5,0,0"
-                VerticalOptions="EndAndExpand">
-                <Button WidthRequest="190" 
-                        HorizontalOptions="Center" 
-                        Text="Save" 
-                        Command="{Binding SaveHabitCompletionCommand}" >
-                    <Button.ImageSource>
-                        <FontImageSource 
-                                Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
-                    </Button.ImageSource>
-                </Button>
+        <StackLayout  
+            Spacing="20"
+            Margin="0,5,0,0"
+            VerticalOptions="EndAndExpand">
+                
+            <Button WidthRequest="190" 
+                    HorizontalOptions="Center" 
+                    Text="Save" 
+                    Command="{Binding OnSaveCommand}" >
+                <Button.ImageSource>
+                    <FontImageSource 
+                        Glyph="save" FontFamily="{StaticResource MaterialIcon}" 
+                        Size="25"/>
+                </Button.ImageSource>
+            </Button>
 
-            </StackLayout>
+            <Button Text="Delete" 
+                Command="{Binding OnDeleteCommand}" 
+                Style="{DynamicResource ButtonDeleteStyle}"
+                HorizontalOptions="Center"
+                WidthRequest="190"
+                IsVisible="{Binding IsDeletePossible}" >
+
+                <Button.ImageSource>
+                    <FontImageSource 
+                        Glyph="delete" 
+                        FontFamily="{StaticResource MaterialIcon}" 
+                        Size="25"
+                        Color="{DynamicResource PrimaryRed}" />
+                </Button.ImageSource>
+            </Button>
+        </StackLayout>
         </StackLayout>
 </ContentPage>
