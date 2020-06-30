@@ -40,5 +40,9 @@
     </array>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>MaterialIcons-All.ttf</string>
+	</array>
 </dict>
 </plist>
