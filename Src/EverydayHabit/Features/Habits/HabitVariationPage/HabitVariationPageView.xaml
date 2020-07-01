@@ -46,7 +46,10 @@
                         >
                 <Button.ImageSource>
                     <FontImageSource 
-                             Glyph="save" FontFamily="{StaticResource MaterialIcon}" Size="25"/>
+                        Glyph="save" 
+                        FontFamily="{StaticResource MaterialIcon}" 
+                        Size="25"
+                        Color="{DynamicResource WhiteColor}"/>
                 </Button.ImageSource>
             </Button>
 
@@ -58,10 +61,10 @@
 
                 <Button.ImageSource>
                     <FontImageSource 
-                             Glyph="delete" FontFamily="{StaticResource MaterialIcon}" Size="25"
-                             Color="{DynamicResource PrimaryRed}"
-                            
-                             />
+                        Glyph="delete" 
+                        FontFamily="{StaticResource MaterialIcon}" 
+                        Size="25"
+                        Color="{DynamicResource PrimaryRed}"/>
                 </Button.ImageSource>
             </Button>
         </StackLayout>

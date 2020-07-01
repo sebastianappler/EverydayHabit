@@ -14,14 +14,16 @@
         <local:HabitCalendarViewModel />
     </ContentPage.BindingContext>
     
-    <AbsoluteLayout>
         <StackLayout 
-        Padding="10,0">
+            Padding="5,10,5,5"
+            VerticalOptions="FillAndExpand">
+            
             <Picker Title="Selected habit" 
                 ItemsSource="{Binding PickerHabitList}" 
                 ItemDisplayBinding="{Binding Value}"
                 SelectedItem="{Binding SelectedHabit}"
-                Margin="7,0">
+                Margin="7,0"
+                    >
 
                 <Picker.Behaviors>
                     <behaviours:EventToCommandBehavior 
@@ -32,7 +34,7 @@
             </Picker>
             
             <plugin:Calendar
-                Padding="10,0"
+                HeightRequest="150"
                 Events="{Binding Events}"
                 Culture="{Binding Culture}"
                 HorizontalOptions="FillAndExpand"
@@ -79,10 +81,10 @@
                     </DataTemplate>
                 </plugin:Calendar.FooterSectionTemplate>
             </plugin:Calendar>
-        </StackLayout>
-
+            
+    <AbsoluteLayout>
         <Button 
-            TextColor="White"
+            TextColor="{DynamicResource WhiteColor}"
             Command="{Binding HabitCompletedTapped}"
             Style="{StaticResource FabButtonStyle}"
             >
@@ -90,8 +92,10 @@
                 <FontImageSource 
                          Glyph="check" 
                          FontFamily="{StaticResource MaterialIcon}"
+                         Color="{DynamicResource WhiteColor}"
                          Size="30"/>
             </Button.ImageSource>
         </Button>
     </AbsoluteLayout>
+    </StackLayout>
 </ContentPage>

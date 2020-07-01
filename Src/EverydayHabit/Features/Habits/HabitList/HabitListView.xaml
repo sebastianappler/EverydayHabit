@@ -20,10 +20,10 @@
     </ContentPage.BindingContext>
 
     <StackLayout 
+        Padding="5,10,5,5"
         VerticalOptions="FillAndExpand" >
-
+        
         <ListView 
-            Margin="10,5,5,5"
             ItemsSource="{Binding HabitList}"
             RowHeight="56"
             SeparatorVisibility="None"
@@ -52,6 +52,7 @@
                     <FontImageSource 
                              Glyph="add" 
                              FontFamily="{StaticResource MaterialIcon}"
+                             Color="{DynamicResource WhiteColor}"
                              Size="30"/>
                 </Button.ImageSource>
             </Button>

@@ -12,16 +12,20 @@
         <Frame 
             BindingContext="{x:Reference this}"
             CornerRadius="25" 
-            Margin="0" 
-            Padding="0" 
-            HeightRequest="45" 
-            WidthRequest="45" 
-            BackgroundColor="{DynamicResource PrimaryColor}">
-            <Image Margin="7">
+            HasShadow="False"
+            Padding="7" 
+            HeightRequest="35" 
+            WidthRequest="35" 
+            BackgroundColor="{DynamicResource PrimaryColor}"
+            
+            >
+            <Image>
                 <Image.Source>
                     <FontImageSource
-                                Glyph="{Binding Icon}"
-                                FontFamily="{StaticResource MaterialIcon}"/>
+                        Glyph="{Binding Icon}"
+                        FontFamily="{StaticResource MaterialIcon}"
+                        Color="{DynamicResource WhiteColor}"
+                    />
                 </Image.Source>
             </Image>
         </Frame>

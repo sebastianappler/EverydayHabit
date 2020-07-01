@@ -7,7 +7,8 @@
         HeightRequest="56"
         Orientation="Horizontal" 
         HorizontalOptions="FillAndExpand"
-        Margin="5,5,0,0">
+        VerticalOptions="CenterAndExpand"
+        Margin="5,2,5,2">
 
         <components:IconBubbleFrame Icon="{Binding Icon}"></components:IconBubbleFrame>
         

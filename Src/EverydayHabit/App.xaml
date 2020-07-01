@@ -42,7 +42,6 @@
             <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="CornerRadius" Value="5" />
             <Setter Property="FontSize" Value="16" />
-
         </Style>
 
         <Style TargetType="RadioButton"> 
@@ -67,6 +66,14 @@
             <Setter Property="FontSize" Value="19" />
         </Style>
 
+        <Style TargetType="ListView">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
+        </Style>
+        
+        <Style TargetType="FontImageSource">
+            <Setter Property="Color" Value="{DynamicResource WhiteColor}" />
+        </Style>
+        
         <Style x:Key="ButtonDeleteStyle" TargetType="Button" ApplyToDerivedTypes="True">
             <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryRed}" />
@@ -85,7 +92,7 @@
             <Setter Property="WidthRequest"
                     Value="56" />
             <Setter Property="CornerRadius"
-                    Value="35" />
+                    Value="28" />
             <Setter Property="Margin"
                     Value="0,0,16,16" />
             <Setter Property="AbsoluteLayout.LayoutFlags"

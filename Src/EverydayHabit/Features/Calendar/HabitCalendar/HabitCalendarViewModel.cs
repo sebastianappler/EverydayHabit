@@ -115,7 +115,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
         private async Task HabitCompleted()
         {
-            if (SelectedDate <= DateTime.Now)
+            if (SelectedDate <= DateTime.Now.Date)
             {
                 GetHabitCompletionId(SelectedDate);
                 await OpenHabitCompletionPage(SelectedDate);
