@@ -55,32 +55,27 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
             MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitUpserted", async (sender, habitId) =>
             {
-                if(sender.HabitList != null)
+                var habit = await Mediator.Send(new GetHabitDetailQuery { Id = habitId });
+                var habitToAdd = new KeyValuePair<int, string>(habit.Id, habit.Name);
+
+                var habitToUpdate = PickerHabitList.FirstOrDefault(h => h.Key == habit.Id);
+                var indexOfHabitToUpdate = PickerHabitList.IndexOf(habitToUpdate);
+
+                if (indexOfHabitToUpdate == -1)
                 {
-                    var habit = sender.HabitList.Where(habit => habit.Id == habitId).FirstOrDefault();
-                    var habitToAdd = new KeyValuePair<int, string>(habit.Id, habit.Name);
+                    PickerHabitList.Add(habitToAdd);
 
-                    var habitToUpdate = PickerHabitList.FirstOrDefault(h => h.Key == habit.Id);
-                    var indexOfHabitToUpdate = PickerHabitList.IndexOf(habitToUpdate);
-
-                    if (indexOfHabitToUpdate == -1)
+                    if (PickerHabitList.Count == 1)
                     {
-                        PickerHabitList.Add(habitToAdd);
-
-                        if (PickerHabitList.Count == 1)
-                        {
-                            SelectedHabit = habitToAdd;
-                            await UpdateCalendarEvents(habitToAdd.Key);
-                        }
+                        SelectedHabit = habitToAdd;
+                        await UpdateCalendarEvents(habitToAdd.Key);
                     }
-                    else
-                    {
-                        PickerHabitList.RemoveAt(indexOfHabitToUpdate);
-                        PickerHabitList.Insert(indexOfHabitToUpdate, habitToAdd);
-                    }
-
                 }
-
+                else
+                {
+                    PickerHabitList.RemoveAt(indexOfHabitToUpdate);
+                    PickerHabitList.Insert(indexOfHabitToUpdate, habitToAdd);
+                }
             });
 
             MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitDeleted", async (sender, habitId) =>
