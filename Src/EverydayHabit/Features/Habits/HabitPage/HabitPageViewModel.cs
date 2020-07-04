@@ -99,7 +99,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
 
         private void UpsertHabitList()
         {
-            if (HabitItem != null)
+            if (HabitItem != null && HabitList != null)
             {
                 var habitInList = HabitList.FirstOrDefault(habit => habit.Id == HabitItem.Id);
 
