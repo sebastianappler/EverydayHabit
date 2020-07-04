@@ -35,7 +35,7 @@
                 HorizontalOptions="CenterAndExpand"
                 HorizontalTextAlignment="Center"
                 InputTransparent="True"
-                TextColor="{Binding ArrowsColor}"
+                TextColor="{DynamicResource PrimaryTextColor}"
                 VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center" />
 
@@ -78,7 +78,7 @@
                 HorizontalOptions="CenterAndExpand"
                 HorizontalTextAlignment="Center"
                 InputTransparent="True"
-                TextColor="{Binding ArrowsColor}"
+                TextColor="{DynamicResource PrimaryTextColor}"
                 VerticalOptions="CenterAndExpand"
                 VerticalTextAlignment="Center" />
 
