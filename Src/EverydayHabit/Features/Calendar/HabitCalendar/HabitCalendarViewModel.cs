@@ -12,6 +12,8 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.Models;
+using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
+using EverydayHabit.Domain.Entities;
 
 namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 {
@@ -50,11 +52,57 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
                 await UpdateCalendarEvents(selectedHabit.Id);
             });
+
+            MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitUpserted", async (sender, habitId) =>
+            {
+                var habit = sender.HabitList.Where(habit => habit.Id == habitId).FirstOrDefault();
+                var habitToAdd = new KeyValuePair<int, string>(habit.Id, habit.Name);
+
+                var habitToUpdate = PickerHabitList.FirstOrDefault(h => h.Key == habit.Id);
+                var indexOfHabitToUpdate = PickerHabitList.IndexOf(habitToUpdate);
+
+                if(indexOfHabitToUpdate == -1)
+                {
+                    PickerHabitList.Add(habitToAdd);
+
+                    if (PickerHabitList.Count == 1)
+                    {
+                        SelectedHabit = habitToAdd;
+                        await UpdateCalendarEvents(habitToAdd.Key);
+                    }
+                }
+                else
+                {
+                    PickerHabitList.RemoveAt(indexOfHabitToUpdate);
+                    PickerHabitList.Insert(indexOfHabitToUpdate, habitToAdd);
+                }
+               
+            });
+
+            MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitDeleted", async (sender, habitId) =>
+            {
+                var habit = PickerHabitList.Where(habit => habit.Key == habitId).FirstOrDefault();
+                PickerHabitList.Remove(habit);
+
+                if(habit.Key == SelectedHabit.Key)
+                {
+                    if (PickerHabitList.Any())
+                    {
+                        SelectedHabit = new KeyValuePair<int, string>(habit.Key, habit.Value);
+                        await UpdateCalendarEvents(habit.Key);
+                    }
+                }
+            });
+        }
+       
+        public void AddHabitToPicker(int id, string name)
+        {
+            PickerHabitList.Add(new KeyValuePair<int, string>(id, name));
         }
 
-        public async Task UpdateCalendarEvents(int selectedHabitId)
+        public async Task UpdateCalendarEvents(int habitId)
         {
-            var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery { HabitId = selectedHabitId });
+            var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery { HabitId = habitId });
             
             Events.Clear();
 

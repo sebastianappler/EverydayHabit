@@ -40,6 +40,9 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         {
             await UpsertHabitAsync();
             UpsertHabitList();
+
+            MessagingCenter.Send(this, "HabitUpserted", HabitItem.Id);
+
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
 
@@ -48,6 +51,8 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             if (HabitItem != null && HabitItem.Id > 0)
             {
                 await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
+
+                MessagingCenter.Send(this, "HabitDeleted", HabitItem.Id);
 
                 var habitInList = HabitList.FirstOrDefault(habit => habit.Id == HabitItem.Id);
                 if(habitInList != null)
