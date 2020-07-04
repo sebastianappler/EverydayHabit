@@ -6,7 +6,7 @@
     <!--  Fonts  -->
     <OnPlatform x:Key="MaterialIcon" x:TypeArguments="x:String">
         <On Platform="Android" Value="MaterialIcons-All.ttf#Material Design Icons" />
-        <On Platform="iOS" Value="Material Design Icons" />
+        <On Platform="iOS" Value="MaterialIcons-Regular" />
     </OnPlatform>
 
     <Color x:Key="PageBackgroundColor">#454545</Color>

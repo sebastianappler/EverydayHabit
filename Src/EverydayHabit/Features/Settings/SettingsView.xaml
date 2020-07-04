@@ -6,13 +6,15 @@
              x:Class="EverydayHabit.XamarinApp.Features.Settings.SettingsView"
              Title="Settings"
              Visual="Material"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
             >
 
     <ContentPage.BindingContext>
         <local:SettingsViewModel />
     </ContentPage.BindingContext>
     
-    <StackLayout VerticalOptions="StartAndExpand" Margin="15,0,15,0">
+    <StackLayout VerticalOptions="StartAndExpand" 
+                 Margin="15">
         <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
             <Label VerticalOptions="Center" 
                     Text="Dark mode enabled" 
