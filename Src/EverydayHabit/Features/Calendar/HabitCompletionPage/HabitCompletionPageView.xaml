@@ -45,11 +45,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <RadioButton Text="{Binding Description}" 
-                                        GroupName="HabitDifficulties"
-                                        Command="{Binding BindingContext.OnDifficultyItemSelectedCommand, 
-                                                  Source={x:Reference HabitCompletionPage}}"
-                                        CommandParameter="{Binding}"/>
+                            <RadioButton 
+                                Text="{Binding Description}"
+                                GroupName="HabitDifficulties"
+                                Command="{Binding BindingContext.OnDifficultyItemSelectedCommand, 
+                                            Source={x:Reference HabitCompletionPage}}"
+                                CommandParameter="{Binding}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -6,6 +6,7 @@ using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -41,8 +42,13 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
 
                 foreach (var difficulty in selectedHabitVariation.DifficultiesList)
                 {
-                    CurrentDifficultyList.Add(difficulty);
+                    if(!string.IsNullOrEmpty(difficulty.Description))
+                    {
+                        CurrentDifficultyList.Add(difficulty);
+                    }
                 }
+
+                SelectedDifficulty = CurrentDifficultyList.FirstOrDefault();
             }
         }
         
@@ -92,6 +98,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
         {
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
+
         public bool _isDeletePossible = false;
         public bool IsDeletePossible
         {
