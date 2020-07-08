@@ -66,10 +66,6 @@
             <Setter Property="FontSize" Value="19" />
         </Style>
 
-        <Style TargetType="ListView">
-            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
-        </Style>
-        
         <Style TargetType="FontImageSource">
             <Setter Property="Color" Value="{DynamicResource WhiteColor}" />
         </Style>

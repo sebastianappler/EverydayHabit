@@ -22,7 +22,7 @@
 
     <StackLayout 
         Spacing="15" 
-        Padding="20,20,20,20" 
+        Padding="20"
         >
 
             <Editor AutoSize="TextChanges"
@@ -55,24 +55,22 @@
             </StackLayout>
 
         <StackLayout
-            Padding="3"
-            >
-                <Label Text="Variations" Style="{DynamicResource SmallLabelStyle}" ></Label>
+            Padding="3" >
+            
+            <Label Text="Variations" Style="{DynamicResource SmallLabelStyle}" />
 
-                <Button Text="Add Variation" 
+            <Button Text="Add Variation" 
                     Command="{Binding OnAddVariationCommand}"
                     Margin="0,5,0,5"
-                    HorizontalOptions="Start"
-                    >
-                </Button>
+                    HorizontalOptions="Start" />
 
-                <ListView 
+            <ListView 
                     ItemsSource="{Binding HabitItem.VariationsList}"
                     RowHeight="56"
                     SeparatorVisibility="None" 
                     ItemTapped="ListView_ItemTapped"
-                    HeightRequest="250"
-                >
+                    HeightRequest="250" >
+                
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <components:ItemWithIconCell />
@@ -85,7 +83,7 @@
                         Command="{Binding OnVariationListItemSelectedCommand}" 
                         Converter="{StaticResource ItemTappedConverter}" />
                     </ListView.Behaviors>
-                </ListView>
+            </ListView>
 
         </StackLayout>
 
