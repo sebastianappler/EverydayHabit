@@ -12,7 +12,7 @@
             UnselectedTabColor="{DynamicResource PrimaryColorBackground}"
             BarBackgroundColor="{DynamicResource PrimaryColor}"
             BackgroundColor="{DynamicResource PageBackgroundColor}"
-            Title="Everyday Habit"
+            Title="Every Habit"
             Visual="Material"
             >
     <NavigationPage Title="Habits">
