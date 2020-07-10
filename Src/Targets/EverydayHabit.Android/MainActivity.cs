@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace EverydayHabit
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/MainTheme", MainLauncher = true,
+    [Activity(Theme = "@style/MainTheme",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
