@@ -12,19 +12,14 @@ namespace EverydayHabit.XamarinApp.Features.Settings
 
         public SettingsViewModel()
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    if (App.Current.Properties.ContainsKey("DarkModeEnabled"))
-                    {
-                        var darkModeEnabled = App.Current.Properties["DarkModeEnabled"] as bool?;
 
-                        DarkModeEnabled = darkModeEnabled ?? false;
-                        DarkModeSwitched();
-                    }
-                });
-            });
+            if (App.Current.Properties.ContainsKey("DarkModeEnabled"))
+            {
+                var darkModeEnabled = App.Current.Properties["DarkModeEnabled"] as bool?;
+
+                DarkModeEnabled = darkModeEnabled ?? false;
+                DarkModeSwitched();
+            }
         }
 
         public void DarkModeSwitched()

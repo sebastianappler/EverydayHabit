@@ -12,6 +12,9 @@ namespace EverydayHabit
         {
             InitializeComponent();
             var nav = new NavigationBar(new MainPage());
+            Current.Resources.TryGetValue("PageBackgroundColor", out var pageBackgroundColor);
+            nav.BackgroundColor = (Color) pageBackgroundColor;
+            
             MainPage = nav;
             Startup.Init();
         }
