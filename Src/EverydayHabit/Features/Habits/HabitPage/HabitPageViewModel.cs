@@ -50,18 +50,22 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         {
             if (HabitItem != null && HabitItem.Id > 0)
             {
-                await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
-
-                MessagingCenter.Send(this, "HabitDeleted", HabitItem.Id);
-
-                var habitInList = HabitList.FirstOrDefault(habit => habit.Id == HabitItem.Id);
-                if(habitInList != null)
+                var isConfirmed = await App.Current.MainPage.DisplayAlert("Delete habit?", $"Are you sure you want to delete \"{HabitItem.Name}\"?", "Yes", "No");
+                if(isConfirmed)
                 {
-                    HabitList.Remove(habitInList);
+                    await Mediator.Send(new DeleteHabitCommand { Id = HabitItem.Id });
+
+                    MessagingCenter.Send(this, "HabitDeleted", HabitItem.Id);
+
+                    var habitInList = HabitList?.FirstOrDefault(habit => habit.Id == HabitItem.Id);
+                    if (habitInList != null)
+                    {
+                        HabitList.Remove(habitInList);
+                    }
+
+                    await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
                 }
             }
-
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public async Task OnAddVariation()
@@ -75,8 +79,9 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 {
                     HabitVariation = new HabitVariationDetailVm
                     {
-                        HabitId = HabitItem.Id
-                    }
+                        HabitId = HabitItem.Id,
+                    },
+                    HabitList = HabitList
                 }
             });
         }
@@ -143,6 +148,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                     BindingContext = new HabitVariationPageViewModel()
                     {
                         HabitVariation = habitVariation,
+                        HabitList = HabitList,
                         Mini = mini,
                         Plus = plus,
                         Elite = elite

@@ -83,15 +83,20 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
         {
             if(SelectedHabitCompletionId > 0)
             {
-                await Mediator.Send(new DeleteHabitCompletionCommand
+                var isConfirmed = await App.Current.MainPage.DisplayAlert("Delete entry?", $"Are you sure you want to delete completion of habit?", "Yes", "No");
+                if (isConfirmed)
                 {
-                    Id = SelectedHabitCompletionId
-                });
 
-                await Parent.UpdateCalendarEvents(HabitSelected.Id);
+                    await Mediator.Send(new DeleteHabitCompletionCommand
+                    {
+                        Id = SelectedHabitCompletionId
+                    });
+
+                    await Parent.UpdateCalendarEvents(HabitSelected.Id);
+
+                    await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
+                }
             }
-
-            await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
         
         public async Task OnClose()

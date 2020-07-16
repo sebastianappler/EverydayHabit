@@ -6,8 +6,10 @@ using EverydayHabit.Application.HabitVariations.Commands.DeleteHabitVariation;
 using EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariation;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Enums;
+using EverydayHabit.XamarinApp.Common.Components;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
+using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,6 +24,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
         public ICommand OnCloseCommand => new Command(async () => await OnClose());
 
         public HabitVariationDetailVm HabitVariation { get; set; }
+        public ObservableCollection<ItemWithIconCellViewModel> HabitList { get; set; }
 
         public async Task OnSave()
         {
@@ -46,9 +49,13 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
         {
             if (HabitVariation != null)
             {
-                await Mediator.Send(new DeleteHabitVariationCommand { Id = HabitVariation.Id });
+                var isConfirmed = await App.Current.MainPage.DisplayAlert("Delete variation?", $"Are you sure you want to delete habit variation \"{HabitVariation.Name}\"?", "Yes", "No");
+                if (isConfirmed)
+                {
+                    await Mediator.Send(new DeleteHabitVariationCommand { Id = HabitVariation.Id });
 
-                await NavigateToHabitPage();
+                    await NavigateToHabitPage();
+                }
             }
         }
 
@@ -101,7 +108,8 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
             {
                 BindingContext = new HabitPageViewModel
                 {
-                    HabitItem = vm as HabitDetailVm
+                    HabitItem = vm as HabitDetailVm,
+                    HabitList = HabitList
                 }
             });
         }

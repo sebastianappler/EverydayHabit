@@ -70,7 +70,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
         {
             get => _habitList;
             set => SetProperty(ref _habitList, value);
-
         }
     }
 }
