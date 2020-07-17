@@ -6,24 +6,28 @@
             xmlns:local="clr-namespace:EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar" 
             x:Class="EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.HabitCalendarView"
             x:Name="habitCalendarPage"
-            Title="Calendar"
             Visual="Material"
+            NavigationPage.HasNavigationBar="false"
             >
-    
     <ContentPage.BindingContext>
         <local:HabitCalendarViewModel />
     </ContentPage.BindingContext>
     
+    <AbsoluteLayout >
+
         <StackLayout 
-            Padding="5,10,5,5"
-            VerticalOptions="FillAndExpand">
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutBounds="0,0,1,1" 
+            AbsoluteLayout.LayoutFlags="All"
+            Margin="5,2,5,0">
             
             <Picker Title="Selected habit" 
                 ItemsSource="{Binding PickerHabitList}" 
                 ItemDisplayBinding="{Binding Value}"
                 SelectedItem="{Binding SelectedHabit}"
-                Margin="7,0"
-                    >
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" >
 
                 <Picker.Behaviors>
                     <behaviours:EventToCommandBehavior 
@@ -32,9 +36,15 @@
                         CommandParameter="{Binding SelectedHabit}" />
                 </Picker.Behaviors>
             </Picker>
+        </StackLayout>
+        
+        <StackLayout 
+            BackgroundColor="Transparent"
+            VerticalOptions="FillAndExpand" 
+            Margin="0,55,0,0">
             
             <plugin:Calendar
-                HeightRequest="150"
+                HeightRequest="550"
                 Events="{Binding Events}"
                 Culture="{Binding Culture}"
                 HorizontalOptions="FillAndExpand"
@@ -57,45 +67,63 @@
                     <local:CalendarHeader />
                 </plugin:Calendar.HeaderSectionTemplate>
 
-                <plugin:Calendar.EventTemplate>
-                    <DataTemplate>
-                        <StackLayout
-                        Padding="15,0,0,0"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Medium"
-                                Text="{Binding Name}" />
-                            <Label
-                                FontSize="Small"
-                                LineBreakMode="WordWrap"
-                                Text="{Binding Description}" />
-                        </StackLayout>
-                    </DataTemplate>
-                </plugin:Calendar.EventTemplate>
-
                 <plugin:Calendar.FooterSectionTemplate>
                     <DataTemplate>
                         <local:CalendarFooter />
                     </DataTemplate>
                 </plugin:Calendar.FooterSectionTemplate>
+                <plugin:Calendar.EventTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Margin="12,0,0,0">
+                            <Label
+                                Text="{Binding Name}"
+                                Style="{StaticResource MediumLabelStyle}"/>
+                            <Label
+                                LineBreakMode="WordWrap"
+                                Text="{Binding Description}" 
+                                Style="{StaticResource SmallLabelStyle}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </plugin:Calendar.EventTemplate>
+                <plugin:Calendar.EmptyTemplate>
+                    <DataTemplate>
+                        <StackLayout 
+                            Orientation="Horizontal" 
+                            HorizontalOptions="StartAndExpand"
+                            Margin="12,25,0,0">
+                            <Label Text="No completed habits" 
+                                   VerticalOptions="End"
+                                   Style="{StaticResource SmallLabelStyle}"/>
+                            <Label
+                                VerticalOptions="End" 
+                                FontSize="25"
+                                TextColor="{DynamicResource PrimaryColor}"
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource MaterialIcon}"
+                                Text="cake"
+                                VerticalTextAlignment="Center">
+                            </Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </plugin:Calendar.EmptyTemplate>
             </plugin:Calendar>
-            
-    <AbsoluteLayout>
-        <Button 
-            TextColor="{DynamicResource WhiteColor}"
-            Command="{Binding HabitCompletedTapped}"
-            Style="{StaticResource FabButtonStyle}"
-            >
-            <Button.ImageSource>
-                <FontImageSource 
-                         Glyph="check" 
-                         FontFamily="{StaticResource MaterialIcon}"
-                         Color="{DynamicResource WhiteColor}"
-                         Size="30"/>
-            </Button.ImageSource>
-        </Button>
+        </StackLayout>
+
+    <Button 
+        TextColor="{DynamicResource WhiteColor}"
+        Command="{Binding HabitCompletedTapped}"
+        Style="{StaticResource FabButtonStyle}"
+        >
+        <Button.ImageSource>
+            <FontImageSource 
+                        Glyph="check" 
+                        FontFamily="{StaticResource MaterialIcon}"
+                        Color="{DynamicResource WhiteColor}"
+                        Size="30"/>
+        </Button.ImageSource>
+    </Button>
     </AbsoluteLayout>
-    </StackLayout>
 </ContentPage>
