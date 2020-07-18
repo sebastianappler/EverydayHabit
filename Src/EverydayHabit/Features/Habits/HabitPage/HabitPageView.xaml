@@ -30,11 +30,6 @@
                     Text="{Binding HabitItem.Name}"
             />  
 
-            <Editor AutoSize="TextChanges"
-                    Placeholder="Description"
-                    Text="{Binding HabitItem.Description}"
-            />
-
         <StackLayout 
             Spacing="15" 
             Margin="0,0,0,0" 

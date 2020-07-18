@@ -94,7 +94,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 {
                     Id = HabitItem.Id,
                     Name = HabitItem.Name,
-                    Description = HabitItem.Description,
                     HabitType = (HabitType) SelectedHabitType.Id
                 });
 
