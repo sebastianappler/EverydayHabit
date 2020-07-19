@@ -14,6 +14,7 @@ using System.Globalization;
 using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using EverydayHabit.Domain.Entities;
+using Xamarin.Essentials;
 
 namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 {
@@ -92,6 +93,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
                     }
                 }
             });
+
         }
        
         public void AddHabitToPicker(int id, string name)
