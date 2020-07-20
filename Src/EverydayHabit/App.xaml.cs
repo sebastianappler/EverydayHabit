@@ -7,18 +7,16 @@ namespace EverydayHabit
 {
     public partial class App : Xamarin.Forms.Application
     {
-
         public App()
         {
             InitializeComponent();
-            var nav = new NavigationBar(new MainPage());
-            Current.Resources.TryGetValue("PageBackgroundColor", out var pageBackgroundColor);
-            nav.BackgroundColor = (Color) pageBackgroundColor;
-            
-            MainPage = nav;
+            var mainPage = Startup.GenerateMainPage();
+            MainPage = mainPage;
             Startup.Init();
         }
         
+     
+
         protected override void OnStart()
         {
 

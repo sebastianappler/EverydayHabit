@@ -1,6 +1,7 @@
 ﻿using EverydayHabit.Application;
 using EverydayHabit.Infrastructure;
 using EverydayHabit.Persistence;
+using EverydayHabit.XamarinApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace EverydayHabit
 {
@@ -49,6 +51,15 @@ namespace EverydayHabit
 
             var context = ServiceProvider.GetRequiredService<EverydayHabitDbContext>();
             context.Database.Migrate();
+        }
+
+        public static NavigationBar GenerateMainPage()
+        {
+            var mainPage = new NavigationBar(new MainPage());
+            App.Current.Resources.TryGetValue("PageBackgroundColor", out var pageBackgroundColor);
+            mainPage.BackgroundColor = (Color) pageBackgroundColor;
+
+            return mainPage;
         }
 
         public static void ConfigureServices(HostBuilderContext ctx, IServiceCollection services)

@@ -86,7 +86,6 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
                 var isConfirmed = await App.Current.MainPage.DisplayAlert("Delete entry?", $"Are you sure you want to delete completion of habit?", "Yes", "No");
                 if (isConfirmed)
                 {
-
                     await Mediator.Send(new DeleteHabitCompletionCommand
                     {
                         Id = SelectedHabitCompletionId

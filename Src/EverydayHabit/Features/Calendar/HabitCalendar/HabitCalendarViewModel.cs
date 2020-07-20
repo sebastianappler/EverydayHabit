@@ -15,6 +15,7 @@ using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using EverydayHabit.Domain.Entities;
 using Xamarin.Essentials;
+using EverydayHabit.XamarinApp.Features.Settings;
 
 namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 {
@@ -29,7 +30,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
         public HabitCalendarViewModel()
         {
             Events = new EventCollection();
-            Culture = CultureInfo.CreateSpecificCulture("en-GB");
+            SetCalendarCulture();
 
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -94,6 +95,13 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
                 }
             });
 
+        }
+
+        private void SetCalendarCulture()
+        {
+            var isSundayStartDayOfWeek = App.Current.Properties[SettingsViewModel.SUNDAY_START_OF_WEEK] as bool?;
+            var calendarCulture = (bool) isSundayStartDayOfWeek ? "en-US" : "en-GB";
+            Culture = CultureInfo.CreateSpecificCulture(calendarCulture);
         }
        
         public void AddHabitToPicker(int id, string name)

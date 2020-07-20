@@ -14,8 +14,12 @@
     </ContentPage.BindingContext>
     
     <StackLayout VerticalOptions="StartAndExpand" 
-                 Margin="15">
-        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                 Margin="15"
+                 >
+        <StackLayout 
+            Orientation="Horizontal" 
+            VerticalOptions="StartAndExpand"
+            Margin="0,0,0,15">
             <Label VerticalOptions="Center" 
                     Text="Dark mode enabled" 
                     Style="{DynamicResource SmallLabelStyle}" />
@@ -23,6 +27,20 @@
             <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding DarkModeEnabled}">
                 <Switch.Behaviors>
                     <behaviours:EventToCommandBehavior EventName="Toggled" Command="{Binding DarkModeSwitchedCommand}"/>
+                </Switch.Behaviors>
+            </Switch>
+        </StackLayout>
+        <StackLayout 
+            Orientation="Horizontal" 
+            VerticalOptions="StartAndExpand"
+            Margin="0,0,0,15">
+            <Label VerticalOptions="Center" 
+                    Text="Sunday start of week" 
+                    Style="{DynamicResource SmallLabelStyle}" />
+
+            <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsSundayStartOfWeek}">
+                <Switch.Behaviors>
+                    <behaviours:EventToCommandBehavior EventName="Toggled" Command="{Binding SundayStartOfWeekSwitchedCommand}"/>
                 </Switch.Behaviors>
             </Switch>
         </StackLayout>

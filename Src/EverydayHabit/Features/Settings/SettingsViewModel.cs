@@ -8,21 +8,47 @@ namespace EverydayHabit.XamarinApp.Features.Settings
 {
     public class SettingsViewModel : BasePageViewModel
     {
-        public ICommand DarkModeSwitchedCommand => new Command(() => DarkModeSwitched());
-
+        public ICommand DarkModeSwitchedCommand => new Command(() => SetThemeFromDarkModeSwitch());
+        public ICommand SundayStartOfWeekSwitchedCommand => new Command(async () => await SetStartDayOfWeek());
+        public const string DARK_MODE_ENABLED = "DarkModeEnabled";
+        public const string SUNDAY_START_OF_WEEK = "SundayStartOfWeek";
         public SettingsViewModel()
         {
+            InitDarkMode();
+            InitStartDayOfWeek();
+        }
 
-            if (App.Current.Properties.ContainsKey("DarkModeEnabled"))
+        private void InitDarkMode()
+        {
+            if (App.Current.Properties.ContainsKey(DARK_MODE_ENABLED))
             {
-                var darkModeEnabled = App.Current.Properties["DarkModeEnabled"] as bool?;
+                var darkModeEnabled = App.Current.Properties[DARK_MODE_ENABLED] as bool?;
 
                 DarkModeEnabled = darkModeEnabled ?? false;
-                DarkModeSwitched();
+                SetThemeFromDarkModeSwitch();
+            }
+        }
+        private void InitStartDayOfWeek()
+        {
+            if (App.Current.Properties.ContainsKey(SUNDAY_START_OF_WEEK))
+            {
+                var isSundayStartOfWeek = App.Current.Properties[SUNDAY_START_OF_WEEK] as bool?;
+                IsSundayStartOfWeek = isSundayStartOfWeek ?? false;
             }
         }
 
-        public void DarkModeSwitched()
+        public async Task SetStartDayOfWeek()
+        {
+            App.Current.Properties[SUNDAY_START_OF_WEEK] = IsSundayStartOfWeek;
+            
+            var selectedAutomaticRestart = await App.Current.MainPage.DisplayAlert("Requires restart","You need to restart the app for the changes to take effect.", "Restart", "Cancel");
+            if (selectedAutomaticRestart)
+            {
+               App.Current.MainPage = Startup.GenerateMainPage();
+            }
+        }
+        
+        public void SetThemeFromDarkModeSwitch()
         {
             var mergedDictionaries = App.Current.Resources.MergedDictionaries;
             if (mergedDictionaries != null)
@@ -38,8 +64,15 @@ namespace EverydayHabit.XamarinApp.Features.Settings
                     mergedDictionaries.Add(new LightTheme());
                 }
 
-                App.Current.Properties["DarkModeEnabled"] = DarkModeEnabled;
+                App.Current.Properties[DARK_MODE_ENABLED] = DarkModeEnabled;
             }
+        }
+
+        private bool _isSundayStartOfWeek = false;
+        public bool IsSundayStartOfWeek
+        {
+            get => _isSundayStartOfWeek;
+            set => SetProperty(ref _isSundayStartOfWeek, value);
         }
 
         private bool _darkModeEnabled = false;
