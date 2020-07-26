@@ -20,6 +20,19 @@
 
         <Label Text="Description" Style="{DynamicResource SmallLabelStyle}" ></Label>
 
+        <StackLayout Orientation="Horizontal">
+            <Image>
+                <Image.Source>
+                    <FontImageSource
+                            Glyph="info"
+                            FontFamily="{StaticResource MaterialIcon}"
+                            Color="{DynamicResource PrimaryColor}"
+                        />
+                </Image.Source>
+            </Image>
+            <Label Margin="5,0" Text="The mini variant should be easy enough to complete every day, no matter what." />
+        </StackLayout>
+        
         <Editor
             Text="{Binding Mini.Description}"
             AutoSize="TextChanges"
