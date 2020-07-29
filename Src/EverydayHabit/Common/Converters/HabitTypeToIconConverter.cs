@@ -32,6 +32,8 @@ namespace EverydayHabit.XamarinApp.Common.Converters
                     return "sports_tennis";
                 case HabitType.MorningRoutine:
                     return "local_cafe";
+                case HabitType.Planning:
+                    return "today";
                 default:
                     return "bubble_chart";
             }

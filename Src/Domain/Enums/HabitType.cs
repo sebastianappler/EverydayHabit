@@ -14,5 +14,6 @@
         Social = 9,
         Sports = 10,
         MorningRoutine = 11,
+        Planning = 12,
     }
 }
