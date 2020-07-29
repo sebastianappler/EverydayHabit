@@ -99,7 +99,12 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
         private void SetCalendarCulture()
         {
-            var isSundayStartDayOfWeek = App.Current.Properties[SettingsViewModel.SUNDAY_START_OF_WEEK] as bool?;
+            bool? isSundayStartDayOfWeek = false;
+            if (App.Current.Properties.ContainsKey(SettingsViewModel.SUNDAY_START_OF_WEEK))
+            {
+                isSundayStartDayOfWeek = App.Current.Properties[SettingsViewModel.SUNDAY_START_OF_WEEK] as bool?;
+            }
+
             var calendarCulture = (bool) isSundayStartDayOfWeek ? "en-US" : "en-GB";
             Culture = CultureInfo.CreateSpecificCulture(calendarCulture);
         }
