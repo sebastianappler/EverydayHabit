@@ -10,8 +10,8 @@
         VerticalOptions="CenterAndExpand"
         Margin="5,2,5,2">
 
-        <components:IconBubbleFrame Icon="{Binding Icon}"></components:IconBubbleFrame>
-        
+        <components:IconBubbleFrame Icon="{Binding Icon}" />
+
         <Label Text="{Binding Name}"
             Margin="2,0,0,8"
             VerticalTextAlignment="Center" 
