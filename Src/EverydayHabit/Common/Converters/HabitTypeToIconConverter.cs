@@ -1,10 +1,24 @@
 ﻿using EverydayHabit.Domain.Enums;
+using System;
+using System.Globalization;
+using Xamarin.Forms;
 
 namespace EverydayHabit.XamarinApp.Common.Converters
 {
-    public static class HabitTypeToIconConverter
+    public class HabitTypeToIconConverter : IValueConverter
     {
-        public static string Convert(HabitType habitType)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var habitType = (HabitType) value;
+            var habitTypeIcon = ConvertToIcon(habitType);
+            return habitTypeIcon;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (string)value;
+        }
+        public static string ConvertToIcon(HabitType habitType)
         {
             switch (habitType)
             {

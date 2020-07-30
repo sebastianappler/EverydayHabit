@@ -111,7 +111,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 {
                     Id = HabitItem.Id,
                     Name = HabitItem.Name,
-                    Icon = HabitTypeToIconConverter.Convert((HabitType)SelectedHabitType.Id)
+                    Icon = HabitTypeToIconConverter.ConvertToIcon((HabitType)SelectedHabitType.Id)
                 };
 
                 if (habitInList != null)
@@ -165,7 +165,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 {
                     Id = (int) habitType,
                     Name = EnumToFormattedStringConverter.Convert(habitType),
-                    Icon = HabitTypeToIconConverter.Convert(habitType)
+                    Icon = HabitTypeToIconConverter.ConvertToIcon(habitType)
                 });
             }
 
