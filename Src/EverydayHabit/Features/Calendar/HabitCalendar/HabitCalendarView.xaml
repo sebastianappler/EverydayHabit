@@ -94,7 +94,7 @@
                             Orientation="Horizontal" 
                             HorizontalOptions="StartAndExpand"
                             Margin="12,25,0,0">
-                            <Label Text="No completed habits today" 
+                            <Label Text="This habit is not completed today" 
                                    VerticalOptions="End"
                                    Style="{StaticResource SmallLabelStyle}"/>
                             <Label
