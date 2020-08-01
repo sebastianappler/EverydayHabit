@@ -23,6 +23,7 @@
     <StackLayout 
         Spacing="15" 
         Padding="20"
+        HorizontalOptions="FillAndExpand"
         >
 
             <Editor AutoSize="TextChanges"
@@ -64,7 +65,7 @@
                     RowHeight="56"
                     SeparatorVisibility="None" 
                     ItemTapped="ListView_ItemTapped"
-                    HeightRequest="250" >
+                    VerticalOptions="FillAndExpand" >
                 
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -85,6 +86,7 @@
         <StackLayout 
                 Spacing="20"
                 Margin="0,5,0,0"
+                VerticalOptions="EndAndExpand"
                 >
             <Button Text="Save" Command="{Binding OnSaveCommand}"
                         HorizontalOptions="Center"
