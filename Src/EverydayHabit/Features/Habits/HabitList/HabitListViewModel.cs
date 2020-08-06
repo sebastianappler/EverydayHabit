@@ -116,6 +116,8 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                 habitToUpdate.CompletedDifficultyId = difficultyId;
 
                 HabitList[HabitList.IndexOf(habitToUpdate)] = habitToUpdate;
+
+                MessagingCenter.Send(this, "CompletionChanged", selectedHabit.Id);
             }
         }
 

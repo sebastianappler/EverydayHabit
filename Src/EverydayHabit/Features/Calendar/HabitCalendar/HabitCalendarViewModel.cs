@@ -15,6 +15,7 @@ using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using EverydayHabit.XamarinApp.Features.Settings;
 using EverydayHabit.XamarinApp.Common.Converters;
+using EverydayHabit.XamarinApp.Features.Habits.HabitList;
 
 namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 {
@@ -39,14 +40,14 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
                 HabitList = new ObservableCollection<HabitListDto>(habitsListVm.Habits);
 
-                foreach(var habit in habitsListVm.Habits)
+                foreach (var habit in habitsListVm.Habits)
                 {
                     PickerHabitList.Add(new KeyValuePair<int, string>(habit.Id, habit.Name));
                 }
 
                 var selectedHabit = habitsListVm.Habits.First();
 
-                if(SelectedHabit.Key == 0)
+                if (SelectedHabit.Key == 0)
                 {
                     SelectedHabit = new KeyValuePair<int, string>(selectedHabit.Id, selectedHabit.Name);
                 }
@@ -84,7 +85,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
                 var habit = PickerHabitList.Where(habit => habit.Key == habitId).FirstOrDefault();
                 PickerHabitList.Remove(habit);
 
-                if(habit.Key == SelectedHabit.Key)
+                if (habit.Key == SelectedHabit.Key)
                 {
                     if (PickerHabitList.Any())
                     {
@@ -94,8 +95,11 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
                 }
             });
 
+            MessagingCenter.Subscribe<HabitListViewModel, int>(this, "CompletionChanged", async (sender, habitId) =>
+            {
+                await UpdateCalendarEvents(habitId);
+            });
         }
-
         private void SetCalendarCulture()
         {
             bool? isSundayStartDayOfWeek = false;
