@@ -116,7 +116,7 @@
             <Setter Property="TextColor"
                     Value="{DynamicResource SecondaryTextColor}" />
             <Setter Property="FontSize"
-                    Value="18" />
+                    Value="16" />
         </Style>
 
     </Application.Resources>

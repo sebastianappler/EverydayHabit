@@ -69,7 +69,13 @@
                 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <components:ItemWithIconCell />
+                            <ViewCell>
+                                <Label Text="{Binding Name}"
+                                       Margin="2,0,0,0"
+                                       VerticalTextAlignment="Center" 
+                                       HorizontalOptions="StartAndExpand"
+                                       Style="{DynamicResource SmallLabelStyle}"/>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
 

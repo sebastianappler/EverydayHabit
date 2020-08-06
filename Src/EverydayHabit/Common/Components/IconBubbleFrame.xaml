@@ -15,18 +15,17 @@
     </ContentView.Resources>
 
 
-    <StackLayout 
-        HeightRequest="56">
+    <StackLayout MinimumWidthRequest="45">
         <Frame 
             IsVisible="{
                 Binding Icon, 
                 Converter={StaticResource StringToBoolConverter}}"
             BindingContext="{x:Reference this}"
-            CornerRadius="25" 
+            CornerRadius="22" 
             HasShadow="False"
             Padding="7" 
-            HeightRequest="35" 
-            WidthRequest="35" 
+            HeightRequest="30" 
+            WidthRequest="30" 
             BackgroundColor="{DynamicResource PrimaryColor}"
             
             >

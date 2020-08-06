@@ -32,7 +32,22 @@
             >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <components:ItemWithIconCell />
+                    <ViewCell>
+                        <StackLayout 
+                                HeightRequest="45"
+                                Orientation="Horizontal" 
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand">
+
+                            <components:IconBubbleFrame Icon="{Binding Icon}" />
+
+                            <Label Text="{Binding Name}"
+                                VerticalTextAlignment="Center" 
+                                HorizontalOptions="StartAndExpand"
+                                Style="{DynamicResource SmallLabelStyle}"/>
+
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
             

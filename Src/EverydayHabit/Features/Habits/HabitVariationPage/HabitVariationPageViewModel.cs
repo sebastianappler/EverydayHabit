@@ -6,7 +6,7 @@ using EverydayHabit.Application.HabitVariations.Commands.DeleteHabitVariation;
 using EverydayHabit.Application.HabitVariations.Commands.UpsertHabitVariation;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Enums;
-using EverydayHabit.XamarinApp.Common.Components;
+using EverydayHabit.XamarinApp.Common.Entities;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using System.Collections.ObjectModel;
@@ -24,7 +24,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage
         public ICommand OnCloseCommand => new Command(async () => await OnClose());
 
         public HabitVariationDetailVm HabitVariation { get; set; }
-        public ObservableCollection<ItemWithIconCellViewModel> HabitList { get; set; }
+        public ObservableCollection<ItemWithIcon> HabitList { get; set; }
 
         public async Task OnSave()
         {

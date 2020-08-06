@@ -1,8 +1,8 @@
 ﻿using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
 using EverydayHabit.Domain.Enums;
-using EverydayHabit.XamarinApp.Common.Components;
 using EverydayHabit.XamarinApp.Common.Converters;
+using EverydayHabit.XamarinApp.Common.Entities;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using System.Collections.ObjectModel;
@@ -25,20 +25,20 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var vm = await Mediator.Send(new GetHabitsListQuery(), CancellationToken.None);
-                var habitList = vm.Habits.Select(habit => new ItemWithIconCellViewModel
+                var habitList = vm.Habits.Select(habit => new ItemWithIcon
                 {
                     Id = habit.Id,
                     Name = habit.Name,
                     Icon = HabitTypeToIconConverter.ConvertToIcon(habit.HabitType)
                 });
 
-                HabitList = new ObservableCollection<ItemWithIconCellViewModel>(habitList);
+                HabitList = new ObservableCollection<ItemWithIcon>(habitList);
             });
         }
 
         private async Task OnListItemSelected(object item)
         {
-            if (item is ItemWithIconCellViewModel selectedHabit)
+            if (item is ItemWithIcon selectedHabit)
             {
                 var vm = await Mediator.Send(new GetHabitDetailQuery { Id = selectedHabit.Id }, CancellationToken.None);
 
@@ -65,8 +65,8 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
             });
         }
 
-        private ObservableCollection<ItemWithIconCellViewModel> _habitList = new ObservableCollection<ItemWithIconCellViewModel>();
-        public ObservableCollection<ItemWithIconCellViewModel> HabitList
+        private ObservableCollection<ItemWithIcon> _habitList = new ObservableCollection<ItemWithIcon>();
+        public ObservableCollection<ItemWithIcon> HabitList
         {
             get => _habitList;
             set => SetProperty(ref _habitList, value);

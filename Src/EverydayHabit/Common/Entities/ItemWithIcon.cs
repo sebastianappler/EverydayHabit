@@ -1,6 +1,6 @@
-﻿namespace EverydayHabit.XamarinApp.Common.Components
+﻿namespace EverydayHabit.XamarinApp.Common.Entities
 {
-    public class ItemWithIconCellViewModel
+    public class ItemWithIcon
     {
         public int Id { get; set; }
         public string Name { get; set; }

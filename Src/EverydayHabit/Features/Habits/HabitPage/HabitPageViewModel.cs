@@ -4,8 +4,8 @@ using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Enums;
-using EverydayHabit.XamarinApp.Common.Components;
 using EverydayHabit.XamarinApp.Common.Converters;
+using EverydayHabit.XamarinApp.Common.Entities;
 using EverydayHabit.XamarinApp.Common.ViewModels;
 using EverydayHabit.XamarinApp.Features.Habits.HabitVariationPage;
 using System;
@@ -26,7 +26,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         public ICommand OnVariationListItemSelectedCommand => new Command(async (item) => await OnVariationListItemSelected(item));
 
         public HabitDetailVm HabitItem { get; set; }
-        public ObservableCollection<ItemWithIconCellViewModel> HabitList { get; set; }
+        public ObservableCollection<ItemWithIcon> HabitList { get; set; }
 
         public HabitPageViewModel()
         {
@@ -107,7 +107,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             {
                 var habitInList = HabitList.FirstOrDefault(habit => habit.Id == HabitItem.Id);
 
-                var newHabitItem = new ItemWithIconCellViewModel
+                var newHabitItem = new ItemWithIcon
                 {
                     Id = HabitItem.Id,
                     Name = HabitItem.Name,
@@ -156,12 +156,12 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             }
         }
 
-        private static ObservableCollection<ItemWithIconCellViewModel> GetHabitTypes()
+        private static ObservableCollection<ItemWithIcon> GetHabitTypes()
         {
-            var habitTypes = new ObservableCollection<ItemWithIconCellViewModel>();
+            var habitTypes = new ObservableCollection<ItemWithIcon>();
             foreach (HabitType habitType in Enum.GetValues(typeof(HabitType)))
             {
-                habitTypes.Add(new ItemWithIconCellViewModel
+                habitTypes.Add(new ItemWithIcon
                 {
                     Id = (int) habitType,
                     Name = EnumToFormattedStringConverter.Convert(habitType),
@@ -172,7 +172,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             return habitTypes;
         }
 
-        private ObservableCollection<ItemWithIconCellViewModel> _pickerHabitTypes = GetHabitTypes();
+        private ObservableCollection<ItemWithIcon> _pickerHabitTypes = GetHabitTypes();
         
         public bool _isDeletePossible = false;
         public bool IsDeletePossible
@@ -180,15 +180,15 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
             get => HabitItem?.Id > 0 ? true : false;
             set => SetProperty(ref _isDeletePossible, value);
         }
-        public ObservableCollection<ItemWithIconCellViewModel> PickerHabitTypes
+        public ObservableCollection<ItemWithIcon> PickerHabitTypes
         {
             get => _pickerHabitTypes;
             set => SetProperty(ref _pickerHabitTypes, value);
         }
 
-        private ItemWithIconCellViewModel _selectedHabitType = GetHabitTypes().First();
+        private ItemWithIcon _selectedHabitType = GetHabitTypes().First();
 
-        public ItemWithIconCellViewModel SelectedHabitType
+        public ItemWithIcon SelectedHabitType
         {
             get => _selectedHabitType;
             set => SetProperty(ref _selectedHabitType, value);
