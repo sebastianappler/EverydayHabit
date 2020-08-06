@@ -32,7 +32,7 @@
             VerticalOptions="FillAndExpand"
             >
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate >
                     <ViewCell>
                         <StackLayout 
                                 HeightRequest="45"
@@ -50,21 +50,30 @@
                             <Button Text="Mini" 
                                     FontSize="12" 
                                     WidthRequest="68" 
-                                    BackgroundColor="{Binding CompletedMini, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    BackgroundColor="{Binding CompletedMini, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource TransparentColor}}"
+                                    BorderColor="{Binding CompletedMini, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    BorderWidth="7"
+                                    TextColor="{StaticResource SecondaryTextColor}"
                                     Command="{Binding Path=BindingContext.SetMiniCompletedCommand, Source={x:Reference habitList} }" 
                                     CommandParameter="{Binding .}" />
                             
                             <Button Text="Plus" 
                                     FontSize="12" 
                                     WidthRequest="68" 
-                                    BackgroundColor="{Binding CompletedPlus, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    BackgroundColor="{Binding CompletedPlus, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource TransparentColor}}"
+                                    BorderColor="{Binding CompletedPlus, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    BorderWidth="7"
+                                    TextColor="{StaticResource SecondaryTextColor}"
                                     Command="{Binding Path=BindingContext.SetPlusCompletedCommand, Source={x:Reference habitList} }" 
                                     CommandParameter="{Binding .}" />
                             
                             <Button Text="Elite" 
                                     FontSize="12" 
                                     WidthRequest="68" 
-                                    BackgroundColor="{Binding CompletedElite, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    BackgroundColor="{Binding CompletedElite, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource TransparentColor}}"
+                                    BorderColor="{Binding CompletedElite, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    BorderWidth="7"
+                                    TextColor="{StaticResource SecondaryTextColor}"
                                     Command="{Binding Path=BindingContext.SetEliteCompletedCommand, Source={x:Reference habitList} }" 
                                     CommandParameter="{Binding .}" />
 
