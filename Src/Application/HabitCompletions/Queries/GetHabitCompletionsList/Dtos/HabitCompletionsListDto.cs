@@ -9,6 +9,7 @@ namespace EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletions
     public class HabitCompletionsListDto : IMapFrom<HabitCompletion>
     {
         public int Id { get; set; }
+        public int HabitId { get; set; }
         public DateTime Date { get; set; }
         public HabitCompletionHabitDto Habit { get; set; }
         public HabitCompletionVariationDto HabitVariation { get; set; }

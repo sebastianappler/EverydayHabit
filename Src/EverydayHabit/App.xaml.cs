@@ -14,8 +14,6 @@ namespace EverydayHabit
             MainPage = mainPage;
             Startup.Init();
         }
-        
-     
 
         protected override void OnStart()
         {

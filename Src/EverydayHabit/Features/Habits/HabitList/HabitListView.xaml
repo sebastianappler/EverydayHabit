@@ -12,6 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
+            <converters:HabitDifficultyToColorConverter x:Key="HabitDifficultyToColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -42,9 +43,30 @@
                             <components:IconBubbleFrame Icon="{Binding Icon}" />
 
                             <Label Text="{Binding Name}"
-                                VerticalTextAlignment="Center" 
-                                HorizontalOptions="StartAndExpand"
-                                Style="{DynamicResource SmallLabelStyle}"/>
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalOptions="StartAndExpand"
+                                   Style="{DynamicResource SmallLabelStyle}"/>
+
+                            <Button Text="Mini" 
+                                    FontSize="12" 
+                                    WidthRequest="68" 
+                                    BackgroundColor="{Binding CompletedMini, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    Command="{Binding Path=BindingContext.SetMiniCompletedCommand, Source={x:Reference habitList} }" 
+                                    CommandParameter="{Binding .}" />
+                            
+                            <Button Text="Plus" 
+                                    FontSize="12" 
+                                    WidthRequest="68" 
+                                    BackgroundColor="{Binding CompletedPlus, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    Command="{Binding Path=BindingContext.SetPlusCompletedCommand, Source={x:Reference habitList} }" 
+                                    CommandParameter="{Binding .}" />
+                            
+                            <Button Text="Elite" 
+                                    FontSize="12" 
+                                    WidthRequest="68" 
+                                    BackgroundColor="{Binding CompletedElite, Converter={StaticResource HabitDifficultyToColorConverter}, FallbackValue={StaticResource PrimaryColor}}"
+                                    Command="{Binding Path=BindingContext.SetEliteCompletedCommand, Source={x:Reference habitList} }" 
+                                    CommandParameter="{Binding .}" />
 
                         </StackLayout>
                     </ViewCell>

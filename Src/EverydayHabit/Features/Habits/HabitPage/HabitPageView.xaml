@@ -26,10 +26,9 @@
         HorizontalOptions="FillAndExpand"
         >
 
-            <Editor AutoSize="TextChanges"
-                    Placeholder="Name"
-                    Text="{Binding HabitItem.Name}"
-            />  
+        <Editor AutoSize="TextChanges"
+                Placeholder="Name"
+                Text="{Binding HabitItem.Name}" />  
 
         <StackLayout 
             Spacing="15" 

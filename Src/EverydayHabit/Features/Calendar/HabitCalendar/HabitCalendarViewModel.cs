@@ -13,9 +13,8 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar.Models;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
-using EverydayHabit.Domain.Entities;
-using Xamarin.Essentials;
 using EverydayHabit.XamarinApp.Features.Settings;
+using EverydayHabit.XamarinApp.Common.Converters;
 
 namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 {
@@ -138,22 +137,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
         private Color GetHabitCompletionColor(HabitDifficultyLevel habitDifficultyLevel)
         {
-            switch (habitDifficultyLevel)
-            {
-                case HabitDifficultyLevel.Mini:
-                    App.Current.Resources.TryGetValue("PrimaryGreen", out var green);
-                    return (Color) green;
-
-                case HabitDifficultyLevel.Plus:
-                    App.Current.Resources.TryGetValue("PrimaryYellow", out var yellow);
-
-                    return (Color) yellow;
-
-                case HabitDifficultyLevel.Elite:
-                    App.Current.Resources.TryGetValue("PrimaryRed", out var red);
-                    return (Color) red;
-            }
-            return Color.Black;
+            return (Color) HabitDifficultyToColorConverter.ConvertToColor(habitDifficultyLevel);
         }
 
         private void DayTapped(DateTime dateSelected)
