@@ -69,7 +69,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         public async Task OnAddVariation()
         {
             await UpsertHabitAsync();
-            MessagingCenter.Send(this, "HabitUpserted", HabitItem.Id);
 
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
             {
