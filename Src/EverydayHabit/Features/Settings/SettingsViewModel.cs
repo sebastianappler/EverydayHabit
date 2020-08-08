@@ -44,7 +44,7 @@ namespace EverydayHabit.XamarinApp.Features.Settings
             var selectedAutomaticRestart = await App.Current.MainPage.DisplayAlert("Requires restart","You need to restart the app for the changes to take effect.", "Restart", "Cancel");
             if (selectedAutomaticRestart)
             {
-               App.Current.MainPage = Startup.GenerateMainPage();
+               Startup.RestartApp();
             }
         }
         

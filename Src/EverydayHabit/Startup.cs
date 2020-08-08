@@ -62,6 +62,11 @@ namespace EverydayHabit
             return mainPage;
         }
 
+        public static void RestartApp()
+        {
+            App.Current.MainPage = Startup.GenerateMainPage();
+        }
+
         public static void ConfigureServices(HostBuilderContext ctx, IServiceCollection services)
         {
             services.AddApplication();
