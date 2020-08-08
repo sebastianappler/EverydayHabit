@@ -93,9 +93,19 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
             if (item is ItemWithIcon selectedHabit)
             {
                 var habit = await Mediator.Send(new GetHabitDetailQuery { Id = selectedHabit.Id }, CancellationToken.None);
+                var variationId = 
+                    //TODO Get default variation for user
+                    habit.VariationsList.Where(v => v.DifficultiesList
+                        .Any(v => v.DifficultyLevel == selectedDifficulty && !string.IsNullOrEmpty(v.Description)))
+                    .FirstOrDefault()?.Id; 
+
+                if (variationId == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("No variation", $"No variation {selectedDifficulty} for {habit.Name}", "Ok");
+                    return;
+                }
 
                 var completionId = selectedHabit.HabitCompletionId ?? 0;
-                var variationId = selectedHabit.CompletedVariationId ?? habit.VariationsList.First().Id; //TODO Get default variation for user
                 var difficultyId = habit.VariationsList
                         .FirstOrDefault(v => v.Id == variationId).DifficultiesList
                         .FirstOrDefault(hd => hd.DifficultyLevel == selectedDifficulty).Id;
@@ -105,7 +115,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                     Id = completionId,
                     HabitId = selectedHabit.Id,
                     Date = DateTime.Now,
-                    HabitVariationId = variationId,
+                    HabitVariationId = (int) variationId,
                     HabitDifficultyId = difficultyId,
                 });
 
