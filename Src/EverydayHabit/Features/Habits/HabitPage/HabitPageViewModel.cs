@@ -39,8 +39,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         public async Task OnSave()
         {
             await UpsertHabitAsync();
-            UpsertHabitList();
-
             MessagingCenter.Send(this, "HabitUpserted", HabitItem.Id);
 
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
@@ -71,7 +69,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
         public async Task OnAddVariation()
         {
             await UpsertHabitAsync();
-            UpsertHabitList();
+            MessagingCenter.Send(this, "HabitUpserted", HabitItem.Id);
 
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new HabitVariationPageView
             {
@@ -98,30 +96,6 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitPage
                 });
 
                 HabitItem.Id = habitId;
-            }
-        }
-
-        private void UpsertHabitList()
-        {
-            if (HabitItem != null && HabitList != null)
-            {
-                var habitInList = HabitList.FirstOrDefault(habit => habit.Id == HabitItem.Id);
-
-                var newHabitItem = new ItemWithIcon
-                {
-                    Id = HabitItem.Id,
-                    Name = HabitItem.Name,
-                    Icon = HabitTypeToIconConverter.ConvertToIcon((HabitType)SelectedHabitType.Id)
-                };
-
-                if (habitInList != null)
-                {
-                    HabitList[HabitList.IndexOf(habitInList)] = newHabitItem;
-                }
-                else
-                {
-                    HabitList.Add(newHabitItem);
-                }
             }
         }
 

@@ -59,16 +59,15 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
                 if (indexOfHabitToUpdate == -1)
                 {
                     PickerHabitList.Add(habitToAdd);
-
-                    if (PickerHabitList.Count == 1)
-                    {
-                        await SetFirstHabitInList();
-                    }
                 }
                 else
                 {
-                    PickerHabitList.RemoveAt(indexOfHabitToUpdate);
-                    PickerHabitList.Insert(indexOfHabitToUpdate, habitToAdd);
+                    PickerHabitList[PickerHabitList.IndexOf(habitToUpdate)] = habitToAdd;
+                }
+
+                if (PickerHabitList.Count == 1)
+                {
+                    await SetFirstHabitInList();
                 }
             });
 
