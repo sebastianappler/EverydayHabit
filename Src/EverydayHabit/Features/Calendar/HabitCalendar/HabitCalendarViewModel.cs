@@ -45,14 +45,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
                     PickerHabitList.Add(new KeyValuePair<int, string>(habit.Id, habit.Name));
                 }
 
-                var selectedHabit = habitsListVm.Habits.First();
-
-                if (SelectedHabit.Key == 0)
-                {
-                    SelectedHabit = new KeyValuePair<int, string>(selectedHabit.Id, selectedHabit.Name);
-                }
-
-                await UpdateCalendarEvents(selectedHabit.Id);
+                await SetFirstHabitInList();
             });
 
             MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitUpserted", async (sender, habitId) =>
@@ -69,8 +62,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
                     if (PickerHabitList.Count == 1)
                     {
-                        SelectedHabit = habitToAdd;
-                        await UpdateCalendarEvents(habitToAdd.Key);
+                        await SetFirstHabitInList();
                     }
                 }
                 else
@@ -82,16 +74,12 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
             MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitDeleted", async (sender, habitId) =>
             {
-                var habit = PickerHabitList.Where(habit => habit.Key == habitId).FirstOrDefault();
-                PickerHabitList.Remove(habit);
+                var habitToDelete = PickerHabitList.Where(habit => habit.Key == habitId).FirstOrDefault();
+                PickerHabitList.Remove(habitToDelete);
 
-                if (habit.Key == SelectedHabit.Key)
+                if (habitToDelete.Key == SelectedHabit.Key)
                 {
-                    if (PickerHabitList.Any())
-                    {
-                        SelectedHabit = new KeyValuePair<int, string>(habit.Key, habit.Value);
-                        await UpdateCalendarEvents(habit.Key);
-                    }
+                    await SetFirstHabitInList();
                 }
             });
 
@@ -111,6 +99,27 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
             var calendarCulture = (bool) isSundayStartDayOfWeek ? "en-US" : "en-GB";
             Culture = CultureInfo.CreateSpecificCulture(calendarCulture);
         }
+
+        private async Task SetFirstHabitInList()
+        {
+            if (PickerHabitList.Any())
+            {
+                var firstHabitInList = PickerHabitList.FirstOrDefault();
+                SetSelectedHabit(firstHabitInList.Key);
+                await UpdateCalendarEvents(firstHabitInList.Key);
+            }
+        }
+
+        private void SetSelectedHabit(int habitId)
+        {
+            if (!PickerHabitList.Any()) return;
+
+            var selectedHabit = PickerHabitList.Where(h => h.Key == habitId).FirstOrDefault();
+            if (selectedHabit.Key > 0)
+            {
+                SelectedHabit = new KeyValuePair<int, string>(selectedHabit.Key, selectedHabit.Value);
+            }
+        }
        
         public void AddHabitToPicker(int id, string name)
         {
@@ -119,6 +128,9 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 
         public async Task UpdateCalendarEvents(int habitId)
         {
+            //Don't override events if the current habit is not selected
+            if (SelectedHabit.Key != habitId) return;
+            
             var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery { HabitId = habitId });
             
             Events.Clear();
