@@ -1647,6 +1647,7 @@ namespace EverydayHabit.Android
 			global::Xamarin.Forms.Material.Android.Resource.String.fab_transformation_sheet_behavior = global::EverydayHabit.Android.Resource.String.fab_transformation_sheet_behavior;
 			global::Xamarin.Forms.Material.Android.Resource.String.hide_bottom_view_on_scroll_behavior = global::EverydayHabit.Android.Resource.String.hide_bottom_view_on_scroll_behavior;
 			global::Xamarin.Forms.Material.Android.Resource.String.mtrl_chip_close_icon_content_description = global::EverydayHabit.Android.Resource.String.mtrl_chip_close_icon_content_description;
+			global::Xamarin.Forms.Material.Android.Resource.String.overflow_tab_title = global::EverydayHabit.Android.Resource.String.overflow_tab_title;
 			global::Xamarin.Forms.Material.Android.Resource.String.password_toggle_content_description = global::EverydayHabit.Android.Resource.String.password_toggle_content_description;
 			global::Xamarin.Forms.Material.Android.Resource.String.path_password_eye = global::EverydayHabit.Android.Resource.String.path_password_eye;
 			global::Xamarin.Forms.Material.Android.Resource.String.path_password_eye_mask_strike_through = global::EverydayHabit.Android.Resource.String.path_password_eye_mask_strike_through;
@@ -4334,6 +4335,7 @@ namespace EverydayHabit.Android
 			global::Xamarin.Forms.Platform.Android.Resource.String.fab_transformation_sheet_behavior = global::EverydayHabit.Android.Resource.String.fab_transformation_sheet_behavior;
 			global::Xamarin.Forms.Platform.Android.Resource.String.hide_bottom_view_on_scroll_behavior = global::EverydayHabit.Android.Resource.String.hide_bottom_view_on_scroll_behavior;
 			global::Xamarin.Forms.Platform.Android.Resource.String.mtrl_chip_close_icon_content_description = global::EverydayHabit.Android.Resource.String.mtrl_chip_close_icon_content_description;
+			global::Xamarin.Forms.Platform.Android.Resource.String.overflow_tab_title = global::EverydayHabit.Android.Resource.String.overflow_tab_title;
 			global::Xamarin.Forms.Platform.Android.Resource.String.password_toggle_content_description = global::EverydayHabit.Android.Resource.String.password_toggle_content_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.path_password_eye = global::EverydayHabit.Android.Resource.String.path_password_eye;
 			global::Xamarin.Forms.Platform.Android.Resource.String.path_password_eye_mask_strike_through = global::EverydayHabit.Android.Resource.String.path_password_eye_mask_strike_through;
@@ -7012,6 +7014,7 @@ namespace EverydayHabit.Android
 			global::Xamarin.Forms.Platform.Resource.String.fab_transformation_sheet_behavior = global::EverydayHabit.Android.Resource.String.fab_transformation_sheet_behavior;
 			global::Xamarin.Forms.Platform.Resource.String.hide_bottom_view_on_scroll_behavior = global::EverydayHabit.Android.Resource.String.hide_bottom_view_on_scroll_behavior;
 			global::Xamarin.Forms.Platform.Resource.String.mtrl_chip_close_icon_content_description = global::EverydayHabit.Android.Resource.String.mtrl_chip_close_icon_content_description;
+			global::Xamarin.Forms.Platform.Resource.String.overflow_tab_title = global::EverydayHabit.Android.Resource.String.overflow_tab_title;
 			global::Xamarin.Forms.Platform.Resource.String.password_toggle_content_description = global::EverydayHabit.Android.Resource.String.password_toggle_content_description;
 			global::Xamarin.Forms.Platform.Resource.String.path_password_eye = global::EverydayHabit.Android.Resource.String.path_password_eye;
 			global::Xamarin.Forms.Platform.Resource.String.path_password_eye_mask_strike_through = global::EverydayHabit.Android.Resource.String.path_password_eye_mask_strike_through;
@@ -14647,25 +14650,28 @@ namespace EverydayHabit.Android
 			public const int mtrl_chip_close_icon_content_description = 2131558434;
 			
 			// aapt resource value: 0x7F0D0023
-			public const int password_toggle_content_description = 2131558435;
+			public const int overflow_tab_title = 2131558435;
 			
 			// aapt resource value: 0x7F0D0024
-			public const int path_password_eye = 2131558436;
+			public const int password_toggle_content_description = 2131558436;
 			
 			// aapt resource value: 0x7F0D0025
-			public const int path_password_eye_mask_strike_through = 2131558437;
+			public const int path_password_eye = 2131558437;
 			
 			// aapt resource value: 0x7F0D0026
-			public const int path_password_eye_mask_visible = 2131558438;
+			public const int path_password_eye_mask_strike_through = 2131558438;
 			
 			// aapt resource value: 0x7F0D0027
-			public const int path_password_strike_through = 2131558439;
+			public const int path_password_eye_mask_visible = 2131558439;
 			
 			// aapt resource value: 0x7F0D0028
-			public const int search_menu_title = 2131558440;
+			public const int path_password_strike_through = 2131558440;
 			
 			// aapt resource value: 0x7F0D0029
-			public const int status_bar_notification_info_overflow = 2131558441;
+			public const int search_menu_title = 2131558441;
+			
+			// aapt resource value: 0x7F0D002A
+			public const int status_bar_notification_info_overflow = 2131558442;
 			
 			static String()
 			{
