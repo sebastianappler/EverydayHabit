@@ -7,13 +7,13 @@
              Visual="Material">
     
     <StackLayout 
-        Padding="20" 
+        Padding="15" 
         VerticalOptions="FillAndExpand" >
 
         <StackLayout 
                 VerticalOptions="StartAndExpand" >
 
-            <Label Text="{Binding CompletionTitle}" FontSize="24" Margin="0,0,0,15" />
+            <Label Text="{Binding CompletionTitle}" Style="{StaticResource MediumLabelStyle}" />
 
             <Label Text="Variation" Style="{DynamicResource SmallLabelStyle}" />
 
@@ -24,12 +24,15 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <RadioButton Text="{Binding Name}" 
+                            <StackLayout Orientation="Horizontal" Padding="5,0">
+                                <RadioButton Text="{Binding Name}" 
                                          GroupName="HabitVariations" 
                                          Command="{Binding BindingContext.OnVariationItemSelectedCommand, 
                                                    Source={x:Reference HabitCompletionPage}}"
                                          CommandParameter="{Binding}">
-                            </RadioButton>
+                                </RadioButton>
+                                <Label Text="{Binding Name}" VerticalOptions="Center"></Label>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -45,12 +48,16 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <RadioButton 
+                            <StackLayout Orientation="Horizontal" Padding="5,0">
+                                <RadioButton 
                                 Text="{Binding Description}"
                                 GroupName="HabitDifficulties"
                                 Command="{Binding BindingContext.OnDifficultyItemSelectedCommand, 
                                             Source={x:Reference HabitCompletionPage}}"
                                 CommandParameter="{Binding}"/>
+                                
+                                <Label Text="{Binding Description}" VerticalOptions="Center"></Label>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

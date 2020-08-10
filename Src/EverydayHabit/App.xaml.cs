@@ -9,6 +9,7 @@ namespace EverydayHabit
     {
         public App()
         {
+            Device.SetFlags(new string[] { "RadioButton_Experimental" });
             InitializeComponent();
             var mainPage = Startup.GenerateMainPage();
             MainPage = mainPage;
