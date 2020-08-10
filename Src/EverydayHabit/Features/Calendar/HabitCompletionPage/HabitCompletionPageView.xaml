@@ -25,12 +25,13 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5,0">
-                                <RadioButton Text="{Binding Name}" 
-                                         GroupName="HabitVariations" 
-                                         Command="{Binding BindingContext.OnVariationItemSelectedCommand, 
-                                                   Source={x:Reference HabitCompletionPage}}"
-                                         CommandParameter="{Binding}">
+                                <RadioButton
+                                    GroupName="HabitVariations" 
+                                    Command="{Binding BindingContext.OnVariationItemSelectedCommand, 
+                                            Source={x:Reference HabitCompletionPage}}"
+                                    CommandParameter="{Binding}">
                                 </RadioButton>
+                                
                                 <Label Text="{Binding Name}" VerticalOptions="Center"></Label>
                             </StackLayout>
                         </ViewCell>
@@ -50,11 +51,10 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5,0">
                                 <RadioButton 
-                                Text="{Binding Description}"
-                                GroupName="HabitDifficulties"
-                                Command="{Binding BindingContext.OnDifficultyItemSelectedCommand, 
+                                    GroupName="HabitDifficulties"
+                                    Command="{Binding BindingContext.OnDifficultyItemSelectedCommand, 
                                             Source={x:Reference HabitCompletionPage}}"
-                                CommandParameter="{Binding}"/>
+                                    CommandParameter="{Binding}"/>
                                 
                                 <Label Text="{Binding Description}" VerticalOptions="Center"></Label>
                             </StackLayout>

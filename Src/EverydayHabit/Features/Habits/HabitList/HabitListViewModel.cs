@@ -1,4 +1,5 @@
-﻿using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
+﻿using Application.Habits.Commands.CreateHabit;
+using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
 using EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletionsList.Dtos;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
@@ -22,9 +23,9 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
     {
         public ICommand OnListItemSelectedCommand => new Command(async (item) => await OnListItemSelected(item));
         public ICommand AddHabitCommand => new Command(async () => await AddHabit());
-        public ICommand SetMiniCompletedCommand => new Command(async (item) => await CompleteHabit(item, HabitDifficultyLevel.Mini));
-        public ICommand SetPlusCompletedCommand => new Command(async (item) => await CompleteHabit(item, HabitDifficultyLevel.Plus));
-        public ICommand SetEliteCompletedCommand => new Command(async (item) => await CompleteHabit(item, HabitDifficultyLevel.Elite));
+        public ICommand SetMiniCompletedCommand => new Command(async (item) => await ToggleCompletedHabit(item, HabitDifficultyLevel.Mini));
+        public ICommand SetPlusCompletedCommand => new Command(async (item) => await ToggleCompletedHabit(item, HabitDifficultyLevel.Plus));
+        public ICommand SetEliteCompletedCommand => new Command(async (item) => await ToggleCompletedHabit(item, HabitDifficultyLevel.Elite));
 
         public HabitListViewModel()
         {
@@ -100,10 +101,23 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
             });
         }
 
-        public async Task CompleteHabit(object item, HabitDifficultyLevel selectedDifficulty)
+        public async Task ToggleCompletedHabit(object item, HabitDifficultyLevel selectedDifficulty)
         {
             if (item is ItemWithIcon selectedHabit)
             {
+                if(selectedHabit.CompletedDifficulty == selectedDifficulty)
+                {
+                    await Mediator.Send(new DeleteHabitCompletionCommand { Id = (int) selectedHabit.HabitCompletionId });
+                    var indexOfHabit = HabitList.IndexOf(selectedHabit);
+                    selectedHabit.HabitCompletionId = null;
+                    selectedHabit.CompletedDifficultyId = null;
+                    selectedHabit.CompletedDifficulty = HabitDifficultyLevel.None;
+
+                    HabitList[indexOfHabit] = selectedHabit;
+                    MessagingCenter.Send(this, "CompletionChanged", selectedHabit.Id);
+                    return;
+                }
+
                 var habit = await Mediator.Send(new GetHabitDetailQuery { Id = selectedHabit.Id }, CancellationToken.None);
                 var variationId = 
                     //TODO Get default variation for user
@@ -121,13 +135,13 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                 var difficultyId = habit.VariationsList
                         .FirstOrDefault(v => v.Id == variationId).DifficultiesList
                         .FirstOrDefault(hd => hd.DifficultyLevel == selectedDifficulty).Id;
-
+               
                 completionId = await Mediator.Send(new UpsertHabitCompletionCommand
                 {
                     Id = completionId,
                     HabitId = selectedHabit.Id,
                     Date = DateTime.Now,
-                    HabitVariationId = (int) variationId,
+                    HabitVariationId = (int)variationId,
                     HabitDifficultyId = difficultyId,
                 });
 
