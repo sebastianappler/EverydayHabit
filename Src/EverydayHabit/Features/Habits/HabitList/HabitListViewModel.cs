@@ -31,33 +31,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var vm = await Mediator.Send(new GetHabitsListQuery(), CancellationToken.None);
-                var habitList = new ObservableCollection<ItemWithIcon>();
-
-                foreach(var habit in vm.Habits)
-                {
-                    var today = DateTime.Now.Date;
-                    var habitCompletionToday = await Mediator.Send(new GetHabitCompletionsListQuery
-                    {
-                        HabitId = habit.Id,
-                        FromDate = today
-                    });
-
-                    var habitCompletion = habitCompletionToday.HabitCompletionsList.LastOrDefault();
-
-                    habitList.Add(new ItemWithIcon
-                    {
-                        Id = habit.Id,
-                        Name = habit.Name,
-                        Icon = HabitTypeToIconConverter.ConvertToIcon(habit.HabitType),
-                        HabitCompletionId = habitCompletion?.Id,
-                        CompletedVariationId = habitCompletion?.HabitVariation.Id,
-                        CompletedDifficultyId = habitCompletion?.HabitDifficulty.Id,
-                        CompletedDifficulty = habitCompletion?.HabitDifficulty.DifficultyLevel ?? HabitDifficultyLevel.None
-                    });
-                }
-
-                HabitList = new ObservableCollection<ItemWithIcon>(habitList);
+                await UpdateHabitList();
 
                 MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitUpserted", async (sender, habitId) =>
                 {
@@ -69,7 +43,48 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
 
                 });
 
+                MessagingCenter.Subscribe<EverydayHabit.App>(this, "AppResumed", async (sender) =>
+                {
+                    var isNextDay = LastHabitListUpdate.Date < DateTime.Now.Date;
+                    //To refresh if quick completes was made yesterday
+                    if (isNextDay)
+                    {
+                        await UpdateHabitList();
+                    }
+                });
             });
+        }
+
+        private async Task UpdateHabitList()
+        {
+            var vm = await Mediator.Send(new GetHabitsListQuery(), CancellationToken.None);
+            var habitList = new ObservableCollection<ItemWithIcon>();
+
+            foreach (var habit in vm.Habits)
+            {
+                var today = DateTime.Now.Date;
+                var habitCompletionToday = await Mediator.Send(new GetHabitCompletionsListQuery
+                {
+                    HabitId = habit.Id,
+                    FromDate = today
+                });
+
+                var habitCompletion = habitCompletionToday.HabitCompletionsList.LastOrDefault();
+
+                habitList.Add(new ItemWithIcon
+                {
+                    Id = habit.Id,
+                    Name = habit.Name,
+                    Icon = HabitTypeToIconConverter.ConvertToIcon(habit.HabitType),
+                    HabitCompletionId = habitCompletion?.Id,
+                    CompletedVariationId = habitCompletion?.HabitVariation.Id,
+                    CompletedDifficultyId = habitCompletion?.HabitDifficulty.Id,
+                    CompletedDifficulty = habitCompletion?.HabitDifficulty.DifficultyLevel ?? HabitDifficultyLevel.None
+                });
+            }
+
+            HabitList = new ObservableCollection<ItemWithIcon>(habitList);
+            LastHabitListUpdate = DateTime.Now;
         }
 
         private async Task OnListItemSelected(object item)
@@ -185,6 +200,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                 });
             }
         }
+        public DateTime LastHabitListUpdate { get; set; }
 
         public async Task<HabitCompletionsListDto> GetTodaysCompletion(int habitId)
         {

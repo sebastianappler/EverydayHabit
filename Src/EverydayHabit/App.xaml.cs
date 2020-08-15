@@ -28,7 +28,7 @@ namespace EverydayHabit
 
         protected override void OnResume()
         {
-
+            MessagingCenter.Send(this, "AppResumed");
         }
     }
 }
