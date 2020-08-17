@@ -7,6 +7,7 @@ using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.Entities;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage;
 using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using System;
 using System.Collections.ObjectModel;
@@ -41,6 +42,11 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                 MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitDeleted", async (sender, habitId) =>
                 {
 
+                });
+
+                MessagingCenter.Subscribe<HabitCompletionPageViewModel>(this, "HabitCompletionUpserted", async (sender) =>
+                {
+                    await UpdateHabitList();
                 });
 
                 MessagingCenter.Subscribe<EverydayHabit.App>(this, "AppResumed", async (sender) =>

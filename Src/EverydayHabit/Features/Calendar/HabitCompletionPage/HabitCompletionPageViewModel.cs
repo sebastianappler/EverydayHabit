@@ -76,6 +76,7 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCompletionPage
                 await Parent.UpdateCalendarEvents(HabitSelected.Id);
             }
 
+            MessagingCenter.Send(this, "HabitCompletionUpserted");
             await Xamarin.Forms.Application.Current.MainPage.Navigation.PopAsync();
         }
         
