@@ -24,10 +24,6 @@
         Padding="5,10,5,5"
         VerticalOptions="FillAndExpand">
 
-        <StackLayout Orientation="Horizontal">
-            <Label Margin="2,0,0,0" Text="Name" WidthRequest="177" Style="{StaticResource SmallLabelStyle}"></Label>
-            <Label Text="Today" Style="{StaticResource SmallLabelStyle}"></Label>
-        </StackLayout>
         <ListView 
             ItemsSource="{Binding HabitList}"
             RowHeight="56"
