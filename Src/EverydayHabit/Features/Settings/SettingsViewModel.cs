@@ -1,7 +1,11 @@
-﻿using EverydayHabit.XamarinApp.Common.Themes;
+﻿using EverydayHabit.XamarinApp.Common.Services;
+using EverydayHabit.XamarinApp.Common.Themes;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EverydayHabit.XamarinApp.Features.Settings
@@ -10,6 +14,7 @@ namespace EverydayHabit.XamarinApp.Features.Settings
     {
         public ICommand DarkModeSwitchedCommand => new Command(() => SetThemeFromDarkModeSwitch());
         public ICommand SundayStartOfWeekSwitchedCommand => new Command(async () => await SetStartDayOfWeek());
+        public ICommand ExportBackupCommand => new Command(async () => await ExportBackup());
         public const string DARK_MODE_ENABLED = "DarkModeEnabled";
         public const string SUNDAY_START_OF_WEEK = "SundayStartOfWeek";
         public SettingsViewModel()
@@ -18,7 +23,29 @@ namespace EverydayHabit.XamarinApp.Features.Settings
             InitStartDayOfWeek();
         }
 
-        private void InitDarkMode()
+        public async Task ExportBackup()
+        {
+            var storageService = DependencyService.Get<IDeviceStorageService>();
+            var downloadPath = storageService.GetDefaultDownloadPath();
+            var dbPath = Preferences.Get("dbPath", string.Empty).ToString(); ;
+
+            if (string.IsNullOrEmpty(dbPath))
+            {
+                await App.Current.MainPage.DisplayAlert("Export failed", $"Should not get path for database.", "Ok");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(downloadPath))
+            {
+                await App.Current.MainPage.DisplayAlert("Export failed", $"Should not get donwload path.", "Ok");
+                return;
+            }
+
+            File.Copy(dbPath, downloadPath, overwrite: true);
+            await App.Current.MainPage.DisplayAlert("Export success", $"Backup successfully exported to Downloads folder", "Ok");
+        }
+
+        public void InitDarkMode()
         {
             if (App.Current.Properties.ContainsKey(DARK_MODE_ENABLED))
             {
@@ -28,7 +55,7 @@ namespace EverydayHabit.XamarinApp.Features.Settings
                 SetThemeFromDarkModeSwitch();
             }
         }
-        private void InitStartDayOfWeek()
+        public void InitStartDayOfWeek()
         {
             if (App.Current.Properties.ContainsKey(SUNDAY_START_OF_WEEK))
             {

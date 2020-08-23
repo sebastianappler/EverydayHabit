@@ -44,5 +44,16 @@
                 </Switch.Behaviors>
             </Switch>
         </StackLayout>
+
+        <StackLayout 
+            VerticalOptions="StartAndExpand"
+            Margin="0,0,0,15">
+            <Label VerticalOptions="Center" 
+                    Text="Backup data" 
+                   Margin="0,0,0,5"
+                    Style="{DynamicResource SmallLabelStyle}" />
+
+            <Button HorizontalOptions="Start" Text="Export" Command="{Binding ExportBackupCommand}"></Button>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

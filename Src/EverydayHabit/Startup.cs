@@ -18,9 +18,11 @@ namespace EverydayHabit
     public class Startup
     {
         public static IServiceProvider ServiceProvider { get; set; }
+
         public static void Init()
         {
             var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "EverydayHabitDatabase.db");
+            Preferences.Set("dbPath", dbPath);
 
             var a = Assembly.GetExecutingAssembly();
             using var stream = a.GetManifestResourceStream("EverydayHabit.XamarinApp.appsettings.json");
