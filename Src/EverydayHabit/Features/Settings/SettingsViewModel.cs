@@ -42,7 +42,7 @@ namespace EverydayHabit.XamarinApp.Features.Settings
 
                 var storageService = DependencyService.Get<IDeviceStorageService>();
                 var downloadPath = storageService.GetDefaultDownloadPath();
-                var backupFileName = $"everyday_habit_backup_{DateTime.Now:yyyy-MM-dd-HHmmss}.db";
+                var backupFileName = $"everyday_habit_backup_{DateTime.Now:yyyy-MM-dd-HHmmss}.sqlite";
                 var exportFullPath = Path.Combine(downloadPath, backupFileName);
                 var dbPath = Preferences.Get("dbPath", string.Empty).ToString(); ;
 
