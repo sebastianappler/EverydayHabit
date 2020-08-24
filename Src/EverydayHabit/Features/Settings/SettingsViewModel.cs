@@ -1,6 +1,7 @@
 ﻿using EverydayHabit.XamarinApp.Common.Services;
 using EverydayHabit.XamarinApp.Common.Themes;
 using EverydayHabit.XamarinApp.Common.ViewModels;
+using Plugin.FilePicker;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace EverydayHabit.XamarinApp.Features.Settings
         public ICommand DarkModeSwitchedCommand => new Command(() => SetThemeFromDarkModeSwitch());
         public ICommand SundayStartOfWeekSwitchedCommand => new Command(async () => await SetStartDayOfWeek());
         public ICommand ExportBackupCommand => new Command(async () => await ExportBackup());
+        public ICommand ImportBackupCommand => new Command(async () => await ImportBackup());
+
         public const string DARK_MODE_ENABLED = "DarkModeEnabled";
         public const string SUNDAY_START_OF_WEEK = "SundayStartOfWeek";
         public SettingsViewModel()
@@ -25,27 +28,89 @@ namespace EverydayHabit.XamarinApp.Features.Settings
 
         public async Task ExportBackup()
         {
+            var userWantsToExport = await App.Current.MainPage.DisplayAlert("Export",
+            $"Do you want to export your data?",
+            "Export data", "Cancel");
+
+            if (!userWantsToExport)
+                return;
+
             var storageService = DependencyService.Get<IDeviceStorageService>();
             var downloadPath = storageService.GetDefaultDownloadPath();
+            var backupFileName = $"everyday_habit_backup_{DateTime.Now.ToString("yyyy-MM-dd-HHmmss")}.db";
+            var exportFullPath = Path.Combine(downloadPath, backupFileName);
             var dbPath = Preferences.Get("dbPath", string.Empty).ToString(); ;
 
             if (string.IsNullOrEmpty(dbPath))
             {
-                await App.Current.MainPage.DisplayAlert("Export failed", $"Should not get path for database.", "Ok");
+                await App.Current.MainPage.DisplayAlert("Export failed", $"Chould not get path for database.", "Ok");
                 return;
             }
 
             if (string.IsNullOrEmpty(downloadPath))
             {
-                await App.Current.MainPage.DisplayAlert("Export failed", $"Should not get donwload path.", "Ok");
+                await App.Current.MainPage.DisplayAlert("Export failed", $"Chould not get donwload path.", "Ok");
                 return;
             }
 
-            File.Copy(dbPath, downloadPath, overwrite: true);
-            await App.Current.MainPage.DisplayAlert("Export success", $"Backup successfully exported to Downloads folder", "Ok");
+            File.Copy(dbPath, exportFullPath, overwrite: true);
+            await App.Current.MainPage.DisplayAlert("Export success", 
+                $"Backup successfully exported to Downloads folder.\n\n" +
+                $"({exportFullPath})", "Ok");
+        }
+        
+        public async Task ImportBackup()
+        {
+            var userWantsToImport = await App.Current.MainPage.DisplayAlert("Import", 
+                $"Import will overwrite all current data.\n" +
+                $"Make sure to backup your data before importing.",
+                "Select file to import", "Cancel");
+
+            if (!userWantsToImport)
+                return;
+
+            var fileData = await CrossFilePicker.Current.PickFile();
+            if (fileData == null)
+                return; // user canceled file picking
+
+            var fileContent = System.Text.Encoding.UTF8.GetString(fileData.DataArray); ;
+
+            if (IsValidDatabase(fileContent))
+            {
+                var userConfirmedImport = await App.Current.MainPage.DisplayAlert(
+                    "Import?", 
+                    $"All current data will be overwritten with data from the selected file.\n\n" +
+                    $"Selected file:\n" +
+                    $"{fileData.FileName}",
+                    $"Start the import", "Cancel");
+
+                if (!userConfirmedImport)
+                    return;
+
+                var selectedDbPath = fileData.FilePath;
+                var dbPath = Preferences.Get("dbPath", string.Empty).ToString(); ;
+
+                File.Copy(selectedDbPath, dbPath, overwrite: true);
+                await App.Current.MainPage.DisplayAlert("Import success", $"Backup successfully Imported. The app will now restart.", "Ok");
+                Startup.RestartApp();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Import failed", $"File is not a valid database.", "Ok");
+            }
         }
 
-        public void InitDarkMode()
+        private bool IsValidDatabase(string databaseContent)
+        {
+            return 
+            databaseContent.StartsWith("SQLite format 3") &&
+            databaseContent.Contains("CREATE TABLE \"Habits\"") &&
+            databaseContent.Contains("CREATE TABLE \"HabitCompletions\"") &&
+            databaseContent.Contains("CREATE TABLE \"HabitVariations\"") &&
+            databaseContent.Contains("CREATE TABLE \"HabitDifficulties\"");
+        }
+
+        private void InitDarkMode()
         {
             if (App.Current.Properties.ContainsKey(DARK_MODE_ENABLED))
             {
@@ -55,7 +120,7 @@ namespace EverydayHabit.XamarinApp.Features.Settings
                 SetThemeFromDarkModeSwitch();
             }
         }
-        public void InitStartDayOfWeek()
+        private void InitStartDayOfWeek()
         {
             if (App.Current.Properties.ContainsKey(SUNDAY_START_OF_WEEK))
             {
@@ -64,7 +129,7 @@ namespace EverydayHabit.XamarinApp.Features.Settings
             }
         }
 
-        public async Task SetStartDayOfWeek()
+        private async Task SetStartDayOfWeek()
         {
             App.Current.Properties[SUNDAY_START_OF_WEEK] = IsSundayStartOfWeek;
             
@@ -75,7 +140,7 @@ namespace EverydayHabit.XamarinApp.Features.Settings
             }
         }
         
-        public void SetThemeFromDarkModeSwitch()
+        private void SetThemeFromDarkModeSwitch()
         {
             var mergedDictionaries = App.Current.Resources.MergedDictionaries;
             if (mergedDictionaries != null)

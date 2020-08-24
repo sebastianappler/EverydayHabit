@@ -50,10 +50,17 @@
             Margin="0,0,0,15">
             <Label VerticalOptions="Center" 
                     Text="Backup data" 
-                   Margin="0,0,0,5"
+                    Margin="0,0,0,5"
                     Style="{DynamicResource SmallLabelStyle}" />
 
-            <Button HorizontalOptions="Start" Text="Export" Command="{Binding ExportBackupCommand}"></Button>
+            <Button Margin="0,0,0,5" 
+                    HorizontalOptions="Start" 
+                    Text="Export" 
+                    Command="{Binding ExportBackupCommand}"></Button>
+            
+            <Button HorizontalOptions="Start" 
+                    Text="Import" 
+                    Command="{Binding ImportBackupCommand}"></Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>
