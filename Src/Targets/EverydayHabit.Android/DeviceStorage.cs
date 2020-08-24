@@ -1,9 +1,6 @@
-﻿using Android.Content;
-using Android.OS;
-using Android.Provider;
+﻿using Android.OS;
 using EverydayHabit.XamarinApp.Common.Services;
 using System.IO;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(EverydayHabit.Android.DeviceStorageService))]
