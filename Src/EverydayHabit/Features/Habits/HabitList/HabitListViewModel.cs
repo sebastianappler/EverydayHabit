@@ -39,7 +39,7 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                     await UpsertHabitInList(habitId);
                 });
 
-                MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitDeleted", async (sender, habitId) =>
+                MessagingCenter.Subscribe<HabitPageViewModel, int>(this, "HabitDeleted", (sender, habitId) =>
                 {
 
                 });

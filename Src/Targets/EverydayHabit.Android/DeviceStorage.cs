@@ -11,7 +11,10 @@ namespace EverydayHabit.Android
     {
         public string GetDefaultDownloadPath()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var downloadPath = Path.Combine(Environment.ExternalStorageDirectory.AbsolutePath, Environment.DirectoryDownloads);
+#pragma warning restore CS0618 // Type or member is obsolete
+
             return downloadPath;
         }
     }
