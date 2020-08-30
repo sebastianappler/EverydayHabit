@@ -5,7 +5,8 @@
             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
             xmlns:habitCalendar="clr-namespace:EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar"
             xmlns:habitList="clr-namespace:EverydayHabit.XamarinApp.Features.Habits.HabitList"
-            xmlns:settings="clr-namespace:EverydayHabit.XamarinApp.Features.Settings"
+            xmlns:settings="clr-namespace:EverydayHabit.XamarinApp.Features.Settings" 
+            xmlns:statistics="clr-namespace:EverydayHabit.XamarinApp.Features.Statistics"
             mc:Ignorable="d"
             x:Class="EverydayHabit.XamarinApp.MainPage"
             SelectedTabColor="{DynamicResource WhiteColor}"
@@ -38,6 +39,17 @@
        
     </NavigationPage>
 
+    <NavigationPage Title="Statistics"  >
+        <x:Arguments>
+            <statistics:StatisticsView />
+        </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource 
+                Glyph="show_chart"
+                FontFamily="{StaticResource MaterialIcon}"/>
+        </NavigationPage.IconImageSource>
+    </NavigationPage>
+   
     <NavigationPage Title="Settings">
         <x:Arguments>
             <settings:SettingsView />
