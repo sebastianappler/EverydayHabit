@@ -22,11 +22,11 @@ namespace EverydayHabit
 
         public static void Init()
         {
-            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "EverydayHabitDatabase.db");
-            Preferences.Set("dbPath", dbPath);
+            SetDbPath();
 
-            var assembly = Assembly.Load("EverydayHabit.Android");
-            using var stream = assembly.GetManifestResourceStream("EverydayHabit.Android.appsettings.json");
+            var assemblyName = $"EverydayHabit.{Device.RuntimePlatform}";
+            var assembly = Assembly.Load(assemblyName);
+            using var stream = assembly.GetManifestResourceStream($"{assemblyName}.appsettings.json");
 
             var host = new HostBuilder()
                 .ConfigureHostConfiguration(configBuilder =>
@@ -54,6 +54,13 @@ namespace EverydayHabit
 
             var context = ServiceProvider.GetRequiredService<EverydayHabitDbContext>();
             context.Database.Migrate();
+        }
+
+        private static void SetDbPath()
+        {
+            var storageService = DependencyService.Get<IDeviceStorageService>();
+            var dbPath = storageService.GetDatabasePath();
+            Preferences.Set("dbPath", dbPath);
         }
 
         public static NavigationBar GenerateMainPage()

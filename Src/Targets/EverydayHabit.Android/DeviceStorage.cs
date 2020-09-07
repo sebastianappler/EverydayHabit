@@ -17,5 +17,11 @@ namespace EverydayHabit.Android
 
             return downloadPath;
         }
+
+        public string GetDatabasePath()
+        {
+            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "EverydayHabitDatabase.db");
+            return dbPath;
+        }
     }
 }

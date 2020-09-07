@@ -3,5 +3,6 @@
     public interface IDeviceStorageService
     {
         string GetDefaultDownloadPath();
+        string GetDatabasePath();
     }
 }
