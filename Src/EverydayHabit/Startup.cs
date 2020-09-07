@@ -2,6 +2,7 @@
 using EverydayHabit.Infrastructure;
 using EverydayHabit.Persistence;
 using EverydayHabit.XamarinApp;
+using EverydayHabit.XamarinApp.Common.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,27 +25,27 @@ namespace EverydayHabit
             var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "EverydayHabitDatabase.db");
             Preferences.Set("dbPath", dbPath);
 
-            var a = Assembly.GetExecutingAssembly();
-            using var stream = a.GetManifestResourceStream("EverydayHabit.XamarinApp.appsettings.json");
+            var assembly = Assembly.Load("EverydayHabit.Android");
+            using var stream = assembly.GetManifestResourceStream("EverydayHabit.Android.appsettings.json");
 
             var host = new HostBuilder()
-                .ConfigureHostConfiguration(c =>
+                .ConfigureHostConfiguration(configBuilder =>
                 {
-                // Tell the host configuration where to file the file (this is required for Xamarin apps)
-                c.AddCommandLine(new string[] { $"ContentRoot={FileSystem.AppDataDirectory}" });
+                    // Tell the host configuration where to file the file (this is required for Xamarin apps)
+                    configBuilder.AddCommandLine(new string[] { $"ContentRoot={FileSystem.AppDataDirectory}" });
 
-                //read in the configuration file!
-                c.AddJsonStream(stream);
+                    //read in the configuration file!
+                    configBuilder.AddJsonStream(stream);
                 })
-                .ConfigureServices((c, x) =>
+                .ConfigureServices((context, service) =>
                 {
-                // Configure our local services and access the host configuration
-                ConfigureServices(c, x);
+                    // Configure our local services and access the host configuration
+                    ConfigureServices(context, service);
                 })
-                .ConfigureLogging(l => l.AddConsole(o =>
+                .ConfigureLogging(loggiingBuilder => loggiingBuilder.AddConsole(loggerOptions =>
                 {
-                //setup a console logger and disable colors since they don't have any colors in VS
-                o.DisableColors = true;
+                    //setup a console logger and disable colors since they don't have any colors in VS
+                    loggerOptions.DisableColors = true;
                 }))
                 .Build();
 
