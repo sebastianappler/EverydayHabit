@@ -1,16 +1,18 @@
 # Everyday Habit
 
-Everyday Habit is an app that honors the idea to make habits that last. It's easy to set up too hard habits that's not possible to keep up every day. The minimum effort must be low enough to complete even the worst day in life. It's fine to make a small effort every day as long as the habit is still going, everything is better than nothing! 
+## Introduction
+Everyday Habit is a habit tracker that honors the idea to make habits permanent. When we promise ourselves to introduce a good habit in our life it's easy to fall into the trap of making it too hard. The key is to trick the brain to make something easy every day that will give results in the long run. The minimum effort of every day must be low enough to complete the worst day of your life. You will soon realize you will often spend more time than the minimum effort anyway. As long as you do something every day you can be proud, you just did something that's infinite more than nothing. 
 
-This app is proof that lasting habits is working. I set a habit to work for at least 2 minutes every day with this app, and here we are!
+This app is a proof that this is working to some degree. I set myself the goal to make an app to keep track of my habits. I set my minimum effort to spend at least 2 minutes every day. If it worked I would have developed an app or if it wouldn't work, well I would at least not lose anything. But here we are!
 
 ## Features
 
-* Add habits with icon
-* Set variations of how to complete each habit
-* Set difficulty level for each variation. (The most important is to set a minimum difficulty to complete every day).
-* Calendar that shows completions for each habit 
-* Show completed difficulty for each day
-* Track multiple habits in separate calendars
+* Habits with icon and type
+* Variations to complete habit
+* Effort per variation (mini, plus or elite)
+* Calendar progress 
+* Multiple calendars
+* Quick complete
+* Export/Import data
 * Material design
 * Dark mode
