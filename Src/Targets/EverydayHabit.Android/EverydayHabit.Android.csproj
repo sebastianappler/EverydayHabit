@@ -129,7 +129,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionEverydayHabitAndroidHideInfoBar="True" XamarinHotReloadUnhandledDeviceExceptionEverydayHabitAndroidHideInfoBar="True" />
+      <UserProperties XamarinHotReloadUnhandledDeviceExceptionEverydayHabitAndroidHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionEverydayHabitAndroidHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

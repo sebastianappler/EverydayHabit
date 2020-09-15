@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="29" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<application android:label="Every Habit" android:icon="@mipmap/ic_launcher" android:theme="@android:style/Theme.Material" android:requestLegacyExternalStorage="true"></application>
+	<application android:label="Everyday Habit" android:icon="@mipmap/ic_launcher" android:theme="@android:style/Theme.Material" android:requestLegacyExternalStorage="true"></application>
 </manifest>

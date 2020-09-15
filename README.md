@@ -1,6 +1,6 @@
-# Every Habit
+# Everyday Habit
 
-Every Habit is an app that honors the idea to make habits that last. It's easy to set up too hard habits that's not possible to keep up every day. The minimum effort must be low enough to complete even the worst day in life. It's fine to make a small effort every day as long as the habit is still going, everything is better than nothing! 
+Everyday Habit is an app that honors the idea to make habits that last. It's easy to set up too hard habits that's not possible to keep up every day. The minimum effort must be low enough to complete even the worst day in life. It's fine to make a small effort every day as long as the habit is still going, everything is better than nothing! 
 
 This app is proof that lasting habits is working. I set a habit to work for at least 2 minutes every day with this app, and here we are!
 
