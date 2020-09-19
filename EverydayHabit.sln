@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{0D66C300-1B7A-4247-B1C2-5689E4B4966E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverydayHabit.Android", "Src\Targets\EverydayHabit.Android\EverydayHabit.Android.csproj", "{76E2C1B6-41F5-4E43-999F-8BE72075D7A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverydayHabit.Android", "Src\Xamarin\Targets\EverydayHabit.Android\EverydayHabit.Android.csproj", "{76E2C1B6-41F5-4E43-999F-8BE72075D7A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EverydayHabit.XamarinApp", "Src\EverydayHabit\EverydayHabit.XamarinApp.csproj", "{DF4B24B0-F17F-4B91-B420-4584F3120293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EverydayHabit.XamarinApp", "Src\Xamarin\EverydayHabit\EverydayHabit.XamarinApp.csproj", "{DF4B24B0-F17F-4B91-B420-4584F3120293}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E9E256F6-CE5F-4060-9CF0-2AB50522291A}"
 EndProject
@@ -19,13 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.IntegrationTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Tests\Application.UnitTests\Application.UnitTests.csproj", "{7F24F827-4A0D-4BE7-BEE1-45121758D2F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverydayHabit.iOS", "Src\Targets\EverydayHabit.iOS\EverydayHabit.iOS.csproj", "{D7F9ACD7-AB47-464A-942F-370959CB1ED2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverydayHabit.iOS", "Src\Xamarin\Targets\EverydayHabit.iOS\EverydayHabit.iOS.csproj", "{D7F9ACD7-AB47-464A-942F-370959CB1ED2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Src\Core\Domain\Domain.csproj", "{72252032-C0CB-4716-BF29-0E26416F4E7F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Src\Core\Application\Application.csproj", "{1121BC7B-65EA-498D-98B9-130F9C73B153}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Src\Infrastructure\Persistence\Persistence.csproj", "{66D7AB3C-B2B7-42C8-B2DD-45EE35805562}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamarin", "Xamarin", "{3F6880C2-6A29-4785-A0E8-1F29887E5312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -278,7 +280,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{0D66C300-1B7A-4247-B1C2-5689E4B4966E} = {3F6880C2-6A29-4785-A0E8-1F29887E5312}
 		{76E2C1B6-41F5-4E43-999F-8BE72075D7A0} = {0D66C300-1B7A-4247-B1C2-5689E4B4966E}
+		{DF4B24B0-F17F-4B91-B420-4584F3120293} = {3F6880C2-6A29-4785-A0E8-1F29887E5312}
 		{D7F5DF5E-E38B-4A52-A1A4-A417841017DC} = {E9E256F6-CE5F-4060-9CF0-2AB50522291A}
 		{7F24F827-4A0D-4BE7-BEE1-45121758D2F7} = {E9E256F6-CE5F-4060-9CF0-2AB50522291A}
 		{D7F9ACD7-AB47-464A-942F-370959CB1ED2} = {0D66C300-1B7A-4247-B1C2-5689E4B4966E}
