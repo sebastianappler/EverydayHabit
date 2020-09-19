@@ -1,5 +1,4 @@
 ﻿using EverydayHabit.Application;
-using EverydayHabit.Infrastructure;
 using EverydayHabit.Persistence;
 using EverydayHabit.XamarinApp;
 using EverydayHabit.XamarinApp.Common.Services;
@@ -80,7 +79,6 @@ namespace EverydayHabit
         public static void ConfigureServices(HostBuilderContext ctx, IServiceCollection services)
         {
             services.AddApplication();
-            services.AddInfrasctructure(ctx.Configuration);
             services.AddPersistence(ctx.Configuration);
         }
     }
