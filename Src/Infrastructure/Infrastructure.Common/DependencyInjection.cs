@@ -1,13 +1,12 @@
 ﻿using Application.Common.Interfaces;
 using EverydayHabit.Application.Common.Interfaces;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EverydayHabit.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrasctructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureCommon(this IServiceCollection services)
         {
             services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IDateTime, MachineDateTime>();
