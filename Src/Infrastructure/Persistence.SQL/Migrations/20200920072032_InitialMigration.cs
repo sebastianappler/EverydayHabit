@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EverydayHabit.Persistence.Migrations
+namespace Persistence.SQL.Migrations
 {
     public partial class InitialMigration : Migration
     {
@@ -12,7 +12,7 @@ namespace EverydayHabit.Persistence.Migrations
                 columns: table => new
                 {
                     HabitId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     HabitType = table.Column<int>(nullable: false)
@@ -27,7 +27,7 @@ namespace EverydayHabit.Persistence.Migrations
                 columns: table => new
                 {
                     HabitVariationId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     HabitId = table.Column<int>(nullable: false),
                     HabitVariantName = table.Column<string>(nullable: true)
                 },
@@ -47,7 +47,7 @@ namespace EverydayHabit.Persistence.Migrations
                 columns: table => new
                 {
                     HabitDifficultyId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     HabitVariationId = table.Column<int>(nullable: false),
                     DifficultyLevel = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true)
@@ -68,7 +68,7 @@ namespace EverydayHabit.Persistence.Migrations
                 columns: table => new
                 {
                     HabitCompletionId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     HabitId = table.Column<int>(nullable: false),
                     HabitVariationId = table.Column<int>(nullable: false),
                     HabitDifficultyId = table.Column<int>(nullable: false),

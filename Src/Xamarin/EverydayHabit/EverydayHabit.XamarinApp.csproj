@@ -21,7 +21,7 @@
     <ProjectReference Include="..\..\Core\Application\Application.csproj" />
     <ProjectReference Include="..\..\Core\Domain\Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.Common\Infrastructure.Common.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Persistence\Persistence.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Persistence.SQLite\Persistence.SQLite.csproj" />
   </ItemGroup>
 
   <ItemGroup>

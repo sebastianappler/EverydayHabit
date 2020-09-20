@@ -3,16 +3,14 @@ using System;
 using EverydayHabit.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EverydayHabit.Persistence.Migrations
+namespace EverydayHabit.PersistenceSQLite.Migrations
 {
     [DbContext(typeof(EverydayHabitDbContext))]
-    [Migration("20200624202443_InitialMigration")]
-    partial class InitialMigration
+    partial class EverydayHabitDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

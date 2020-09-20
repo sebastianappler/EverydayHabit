@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Persistence.SQL;
 using System;
 using System.IO;
 using System.Reflection;
@@ -81,7 +82,7 @@ namespace EverydayHabit
         {
             services.AddApplication();
             services.AddInfrastructureCommon();
-            services.AddPersistence(ctx.Configuration);
+            services.AddPersistenceSQLite(ctx.Configuration);
         }
     }
 }
