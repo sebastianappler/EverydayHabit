@@ -1,5 +1,4 @@
-﻿using EverydayHabit.Domain.Enums;
-using System;
+﻿using System;
 
 namespace EverydayHabit.Domain.Entities
 {
@@ -12,7 +11,5 @@ namespace EverydayHabit.Domain.Entities
         public DateTime Date { get; set; }
 
         public Habit Habit { get; set; }
-        public HabitVariation HabitVariation { get; set; }
-        public HabitDifficulty HabitDifficulty { get; set; }
     }
 }

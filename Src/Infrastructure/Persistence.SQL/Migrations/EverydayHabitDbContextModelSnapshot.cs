@@ -61,11 +61,7 @@ namespace Persistence.SQL.Migrations
 
                     b.HasKey("HabitCompletionId");
 
-                    b.HasIndex("HabitDifficultyId");
-
                     b.HasIndex("HabitId");
-
-                    b.HasIndex("HabitVariationId");
 
                     b.ToTable("HabitCompletions");
                 });
@@ -115,21 +111,9 @@ namespace Persistence.SQL.Migrations
 
             modelBuilder.Entity("EverydayHabit.Domain.Entities.HabitCompletion", b =>
                 {
-                    b.HasOne("EverydayHabit.Domain.Entities.HabitDifficulty", "HabitDifficulty")
-                        .WithMany()
-                        .HasForeignKey("HabitDifficultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EverydayHabit.Domain.Entities.Habit", "Habit")
                         .WithMany()
                         .HasForeignKey("HabitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EverydayHabit.Domain.Entities.HabitVariation", "HabitVariation")
-                        .WithMany()
-                        .HasForeignKey("HabitVariationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
