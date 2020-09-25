@@ -3,6 +3,7 @@ using EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletionsList
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail.Dtos;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Entities;
 using Shouldly;
 using Xunit;
@@ -112,6 +113,17 @@ namespace Application.UnitTests.Mappings
 
             result.ShouldNotBeNull();
             result.ShouldBeOfType<HabitCompletionsListDto>();
+        }
+
+        [Fact]
+        public void ShouldMapHabitDifficultyToHabitDifficultyDetailVm()
+        {
+            var entity = new HabitDifficulty();
+
+            var result = _mapper.Map<HabitDifficultyDetailVm>(entity);
+
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType<HabitDifficultyDetailVm>();
         }
     }
 }
