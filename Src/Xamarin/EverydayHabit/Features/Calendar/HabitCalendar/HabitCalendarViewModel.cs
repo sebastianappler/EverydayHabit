@@ -16,6 +16,7 @@ using EverydayHabit.XamarinApp.Features.Habits.HabitPage;
 using EverydayHabit.XamarinApp.Features.Settings;
 using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Features.Habits.HabitList;
+using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 
 namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
 {
@@ -131,20 +132,25 @@ namespace EverydayHabit.XamarinApp.Features.Calendar.HabitCalendar
             if (SelectedHabit.Key != habitId) return;
             
             var habitCompletionVm = await Mediator.Send(new GetHabitCompletionsListQuery { HabitId = habitId });
-            
             Events.Clear();
 
             foreach (var habitCompletion in habitCompletionVm.HabitCompletionsList)
             {
-                var habitCompletionColor = GetHabitCompletionColor(habitCompletion.HabitDifficulty.DifficultyLevel);
+                if (habitCompletion == null) continue;
+
+                var habitDifficulty = await Mediator.Send(new GetHabitDifficultyDetailQuery { Id = habitCompletion.HabitDifficultyId });
+                var habitVariation = await Mediator.Send(new GetHabitVariationDetailQuery { Id = habitCompletion.HabitVariationId });
+
+                if (habitDifficulty == null) continue;
+                var habitCompletionColor = GetHabitCompletionColor(habitDifficulty.DifficultyLevel);
 
                 Events[habitCompletion.Date] = new DayEventCollection<EventModel>(habitCompletionColor, habitCompletionColor)
                 {
                     new EventModel
                     {
                         Id = habitCompletion.Id,
-                        Name = habitCompletion.HabitDifficulty.DifficultyLevel.ToString(), 
-                        Description = $"{habitCompletion.HabitVariation.Name} - {habitCompletion.HabitDifficulty.Description}"
+                        Name = habitDifficulty.DifficultyLevel.ToString(), 
+                        Description = $"{habitVariation?.Name} - {habitDifficulty.Description}"
                     }
                 };
             }

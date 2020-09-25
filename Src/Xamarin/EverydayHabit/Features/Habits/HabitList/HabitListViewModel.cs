@@ -3,6 +3,7 @@ using EverydayHabit.Application.HabitCompletions.Commands.UpsertHabitCompletion;
 using EverydayHabit.Application.HabitCompletions.Queries.GetHabitCompletionsList.Dtos;
 using EverydayHabit.Application.Habits.Queries.GetHabitDetail;
 using EverydayHabit.Application.Habits.Queries.GetHabitsList;
+using EverydayHabit.Application.HabitVariations.Queries.GetHabitVariation;
 using EverydayHabit.Domain.Enums;
 using EverydayHabit.XamarinApp.Common.Converters;
 using EverydayHabit.XamarinApp.Common.Entities;
@@ -75,18 +76,8 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
                     FromDate = today
                 });
 
-                var habitCompletion = habitCompletionToday.HabitCompletionsList.LastOrDefault();
-
-                habitList.Add(new ItemWithIcon
-                {
-                    Id = habit.Id,
-                    Name = habit.Name,
-                    Icon = HabitTypeToIconConverter.ConvertToIcon(habit.HabitType),
-                    HabitCompletionId = habitCompletion?.Id,
-                    CompletedVariationId = habitCompletion?.HabitVariation.Id,
-                    CompletedDifficultyId = habitCompletion?.HabitDifficulty.Id,
-                    CompletedDifficulty = habitCompletion?.HabitDifficulty.DifficultyLevel ?? HabitDifficultyLevel.None
-                });
+                var habitItemToAdd = await UpdateHabitListItem(habit.Id);
+                habitList.Add(habitItemToAdd);
             }
 
             HabitList = new ObservableCollection<ItemWithIcon>(habitList);
@@ -174,38 +165,47 @@ namespace EverydayHabit.XamarinApp.Features.Habits.HabitList
 
         public async Task UpsertHabitInList(int habitId)
         {
-            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = habitId });
-
             var isHabitInList = HabitList.Any(h => h.Id == habitId);
+            var habitToUpdate = new ItemWithIcon { Id = habitId };
+            
             if (isHabitInList)
             {
-                var habitToUpdate = HabitList.FirstOrDefault(h => h.Id == habitId);
-                var habitCompletion = await GetTodaysCompletion(habitId);
-
-                habitToUpdate.Name = habit.Name;
-                habitToUpdate.Icon = HabitTypeToIconConverter.ConvertToIcon(habit.HabitType);
-                habitToUpdate.HabitCompletionId = habitCompletion?.Id;
-                habitToUpdate.CompletedVariationId = habitCompletion?.HabitVariation.Id;
-                habitToUpdate.CompletedDifficultyId = habitCompletion?.HabitDifficulty.Id;
-                habitToUpdate.CompletedDifficulty = habitCompletion?.HabitDifficulty.DifficultyLevel ?? HabitDifficultyLevel.None;
+                habitToUpdate = HabitList.FirstOrDefault(h => h.Id == habitId);
+                await UpdateHabitListItem(habitId, habitToUpdate);
 
                 HabitList[HabitList.IndexOf(habitToUpdate)] = habitToUpdate;
             }
             else
             {
-                var habitCompletion = await GetTodaysCompletion(habitId);
-                HabitList.Add(new ItemWithIcon
-                {
-                    Id = habitId,
-                    Name = habit.Name,
-                    Icon = HabitTypeToIconConverter.ConvertToIcon(habit.HabitType),
-                    HabitCompletionId = habitCompletion?.Id,
-                    CompletedVariationId = habitCompletion?.HabitVariation.Id,
-                    CompletedDifficultyId = habitCompletion?.HabitDifficulty.Id,
-                    CompletedDifficulty = habitCompletion?.HabitDifficulty.DifficultyLevel ?? HabitDifficultyLevel.None
-                });
+                habitToUpdate = await UpdateHabitListItem(habitId, habitToUpdate);
+                HabitList.Add(habitToUpdate);
             }
         }
+
+        private async Task<ItemWithIcon> UpdateHabitListItem(int habitId, ItemWithIcon habitListItem = null)
+        {
+            if (habitListItem == null) habitListItem = new ItemWithIcon { Id = habitId };
+            var habit = await Mediator.Send(new GetHabitDetailQuery { Id = habitId });
+
+            habitListItem.Name = habit.Name;
+            habitListItem.Icon = HabitTypeToIconConverter.ConvertToIcon(habit.HabitType);
+
+            var habitCompletion = await GetTodaysCompletion(habitId);
+
+            if (habitCompletion != null)
+            {
+                var habitDifficulty = await Mediator.Send(new GetHabitDifficultyDetailQuery { Id = habitCompletion.HabitDifficultyId });
+                var habitVariation = await Mediator.Send(new GetHabitVariationDetailQuery { Id = habitCompletion.HabitVariationId });
+                
+                habitListItem.HabitCompletionId = habitCompletion?.Id;
+                habitListItem.CompletedVariationId = habitVariation.Id;
+                habitListItem.CompletedDifficultyId = habitDifficulty.Id;
+                habitListItem.CompletedDifficulty = habitDifficulty.DifficultyLevel;
+            }
+
+            return habitListItem;
+        }
+
         public DateTime LastHabitListUpdate { get; set; }
 
         public async Task<HabitCompletionsListDto> GetTodaysCompletion(int habitId)

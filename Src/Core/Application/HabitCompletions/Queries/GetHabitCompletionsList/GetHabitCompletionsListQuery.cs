@@ -31,15 +31,15 @@ namespace EverydayHabit.Application.Habits.Queries.GetHabitsList
 
             public async Task<HabitCompletionsListVm> Handle(GetHabitCompletionsListQuery request, CancellationToken cancellationToken)
             {
-                var habitCompletions = await _context.HabitCompletions
-                    .Where(
+                var habitCompletions = await _context.HabitCompletions.Where
+                (
                     hc => hc.Habit.HabitId == request.HabitId
-                    && (request.FromDate == null || hc.Date >= request.FromDate)
-                    && (request.ToDate == null || hc.Date < request.ToDate)
-                    )
-                    .Include(habitCompletion => habitCompletion.Habit)
-                    .ProjectTo<HabitCompletionsListDto>(_mapper.ConfigurationProvider)
-                    .ToListAsync(cancellationToken);
+                        && (request.FromDate == null || hc.Date >= request.FromDate)
+                        && (request.ToDate == null || hc.Date < request.ToDate)
+                )
+                .Include(habitCompletion => habitCompletion.Habit)
+                .ProjectTo<HabitCompletionsListDto>(_mapper.ConfigurationProvider)
+                .ToListAsync(cancellationToken);
 
                 var vm = new HabitCompletionsListVm
                 {
